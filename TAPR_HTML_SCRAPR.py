@@ -16,7 +16,9 @@ urls = [
     "https://rptsvr1.tea.texas.gov/perfreport/tapr/2023/download/dstaff.html",
     "https://rptsvr1.tea.texas.gov/perfreport/tapr/2023/download/dgrad1.html",
     "https://rptsvr1.tea.texas.gov/perfreport/tapr/2023/download/dstud.html",
-    "https://rptsvr1.tea.texas.gov/perfreport/tapr/2023/download/dgrad.html"
+    "https://rptsvr1.tea.texas.gov/perfreport/tapr/2023/download/dgrad.html",
+    "https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/diststaar1a.html",
+    "https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/diststaar1b.html"
 ]
 
 # User-Agent header to mimic a real browser
