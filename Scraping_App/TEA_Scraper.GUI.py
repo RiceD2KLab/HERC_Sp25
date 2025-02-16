@@ -11,6 +11,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import WebDriverException
 import os
 import requests
 from bs4 import BeautifulSoup
