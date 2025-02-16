@@ -1,0 +1,1219 @@
+,District,District Number,TEA District Type,TEA Description,NCES District Type,NCES Description,Charter School (Y/N)
+0,A W BROWN LEADERSHIP ACADEMY,57816,I,Charter Schools,11,City-Large,Y
+1,A+ ACADEMY,57829,I,Charter Schools,11,City-Large,Y
+2,A+ UNLIMITED POTENTIAL,101871,I,Charter Schools,11,City-Large,Y
+3,ABBOTT ISD,109901,H,Rural,42,Rural-Distant,N
+4,ABERNATHY ISD,95901,H,Rural,31,Town-Fringe,N
+5,ABILENE ISD,221901,C,Other Central City,12,City-Midsize,N
+6,ACADEMY FOR ACADEMIC EXCELLENCE,57814,I,Charter Schools,11,City-Large,Y
+7,ACADEMY ISD,14901,G,Non-metropolitan Stable,41,Rural-Fringe,N
+8,ACADEMY OF ACCELERATED LEARNING INC,101810,I,Charter Schools,11,City-Large,Y
+9,ACADEMY OF DALLAS,57810,I,Charter Schools,11,City-Large,Y
+10,ACCELERATED INTERMEDIATE ACADEMY,101849,I,Charter Schools,11,City-Large,Y
+11,ADRIAN ISD,180903,H,Rural,43,Rural-Remote,N
+12,ADVANTAGE ACADEMY,57806,I,Charter Schools,21,Suburb-Large,Y
+13,AGUA DULCE ISD,178901,H,Rural,42,Rural-Distant,N
+14,ALAMO HEIGHTS ISD,15901,B,Major Suburban,21,Suburb-Large,N
+15,ALBA-GOLDEN ISD,250906,H,Rural,42,Rural-Distant,N
+16,ALBANY ISD,209901,H,Rural,43,Rural-Remote,N
+17,ALDINE ISD,101902,B,Major Suburban,21,Suburb-Large,N
+18,ALEDO ISD,184907,B,Major Suburban,41,Rural-Fringe,N
+19,ALICE ISD,125901,E,Independent Town,32,Town-Distant,N
+20,ALIEF ISD,101903,B,Major Suburban,11,City-Large,N
+21,ALIEF MONTESSORI COMMUNITY SCHOOL,101815,I,Charter Schools,11,City-Large,Y
+22,ALLEN ISD,43901,D,Other Central City Suburban,21,Suburb-Large,N
+23,ALPINE ISD,22901,G,Non-metropolitan Stable,33,Town-Remote,N
+24,ALTO ISD,37901,H,Rural,42,Rural-Distant,N
+25,ALVARADO ISD,126901,D,Other Central City Suburban,41,Rural-Fringe,N
+26,ALVIN ISD,20901,B,Major Suburban,21,Suburb-Large,N
+27,ALVORD ISD,249901,H,Rural,42,Rural-Distant,N
+28,AMARILLO ISD,188901,C,Other Central City,12,City-Midsize,N
+29,AMBASSADORS PREPARATORY ACADEMY,84804,I,Charter Schools,31,Town-Fringe,Y
+30,AMHERST ISD,140901,H,Rural,42,Rural-Distant,N
+31,AMIGOS POR VIDA-FRIENDS FOR LIFE PUB CHTR SCH,101819,I,Charter Schools,11,City-Large,Y
+32,ANAHUAC ISD,36901,G,Non-metropolitan Stable,42,Rural-Distant,N
+33,ANDERSON-SHIRO CISD,93901,D,Other Central City Suburban,42,Rural-Distant,N
+34,ANDREWS ISD,2901,D,Other Central City Suburban,32,Town-Distant,N
+35,ANGLETON ISD,20902,D,Other Central City Suburban,41,Rural-Fringe,N
+36,ANNA ISD,43902,F,Non-metropolitan Fast Growing,41,Rural-Fringe,N
+37,ANSON ISD,127901,H,Rural,42,Rural-Distant,N
+38,ANTHONY ISD,71906,H,Rural,21,Suburb-Large,N
+39,ANTON ISD,110901,H,Rural,42,Rural-Distant,N
+40,APPLE SPRINGS ISD,228905,H,Rural,42,Rural-Distant,N
+41,AQUILLA ISD,109912,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+42,ARANSAS COUNTY ISD,4901,G,Non-metropolitan Stable,32,Town-Distant,N
+43,ARANSAS PASS ISD,205901,D,Other Central City Suburban,31,Town-Fringe,N
+44,ARCHER CITY ISD,5901,H,Rural,42,Rural-Distant,N
+45,ARGYLE ISD,61910,D,Other Central City Suburban,41,Rural-Fringe,N
+46,ARISTOI CLASSICAL ACADEMY,101803,I,Charter Schools,21,Suburb-Large,Y
+47,ARLINGTON CLASSICS ACADEMY,220802,I,Charter Schools,21,Suburb-Large,Y
+48,ARLINGTON ISD,220901,A,Major Urban,11,City-Large,N
+49,ARP ISD,212901,G,Non-metropolitan Stable,42,Rural-Distant,N
+50,ARROW ACADEMY,21805,I,Charter Schools,21,Suburb-Large,Y
+51,ASPERMONT ISD,217901,H,Rural,43,Rural-Remote,N
+52,ATHENS ISD,107901,E,Independent Town,32,Town-Distant,N
+53,ATLANTA ISD,34901,E,Independent Town,41,Rural-Fringe,N
+54,AUBREY ISD,61907,F,Non-metropolitan Fast Growing,41,Rural-Fringe,N
+55,AUSTIN ACHIEVE PUBLIC SCHOOLS,227825,I,Charter Schools,11,City-Large,Y
+56,AUSTIN DISCOVERY SCHOOL,227821,I,Charter Schools,11,City-Large,Y
+57,AUSTIN ISD,227901,A,Major Urban,11,City-Large,N
+58,AUSTWELL-TIVOLI ISD,196901,H,Rural,42,Rural-Distant,N
+59,AVALON ISD,70901,H,Rural,42,Rural-Distant,N
+60,AVERY ISD,194902,H,Rural,43,Rural-Remote,N
+61,AVINGER ISD,34902,H,Rural,42,Rural-Distant,N
+62,AXTELL ISD,161918,H,Rural,42,Rural-Distant,N
+63,AZLE ISD,220915,B,Major Suburban,21,Suburb-Large,N
+64,BAIRD ISD,30903,H,Rural,42,Rural-Distant,N
+65,BALLINGER ISD,200901,H,Rural,41,Rural-Fringe,N
+66,BALMORHEA ISD,195902,H,Rural,43,Rural-Remote,N
+67,BANDERA ISD,10902,G,Non-metropolitan Stable,42,Rural-Distant,N
+68,BANGS ISD,25901,H,Rural,42,Rural-Distant,N
+69,BANQUETE ISD,178913,H,Rural,42,Rural-Distant,N
+70,BARBERS HILL ISD,36902,D,Other Central City Suburban,41,Rural-Fringe,N
+71,BARTLETT ISD,14902,H,Rural,32,Town-Distant,N
+72,BASIS TEXAS,15834,I,Charter Schools,11,City-Large,Y
+73,BASTROP ISD,11901,C,Other Central City,42,Rural-Distant,N
+74,BAY CITY ISD,158901,E,Independent Town,32,Town-Distant,N
+75,BEATRICE MAYES INSTITUTE CHARTER SCHOOL,101847,I,Charter Schools,11,City-Large,Y
+76,BEAUMONT ISD,123910,C,Other Central City,12,City-Midsize,N
+77,BECKVILLE ISD,183901,H,Rural,42,Rural-Distant,N
+78,BEEVILLE ISD,13901,E,Independent Town,32,Town-Distant,N
+79,BELLEVUE ISD,39904,H,Rural,42,Rural-Distant,N
+80,BELLS ISD,91901,D,Other Central City Suburban,42,Rural-Distant,N
+81,BELLVILLE ISD,8901,E,Independent Town,32,Town-Distant,N
+82,BELTON ISD,14903,D,Other Central City Suburban,13,City-Small,N
+83,BEN BOLT-PALITO BLANCO ISD,125902,H,Rural,42,Rural-Distant,N
+84,BENAVIDES ISD,66901,H,Rural,43,Rural-Remote,N
+85,BENJAMIN ISD,138904,H,Rural,43,Rural-Remote,N
+86,BETA ACADEMY,101870,I,Charter Schools,11,City-Large,Y
+87,BETTY M CONDRA SCHOOL FOR EDUCATION INNOVATION,152806,I,Charter Schools,11,City-Large,Y
+88,BEXAR COUNTY ACADEMY,15809,I,Charter Schools,11,City-Large,Y
+89,BIG SANDY ISD,187901,H,Rural,43,Rural-Remote,N
+90,BIG SANDY ISD,230901,H,Rural,42,Rural-Distant,N
+91,BIG SPRING ISD,114901,E,Independent Town,32,Town-Distant,N
+92,BIG SPRINGS CHARTER SCHOOL,193801,I,Charter Schools,43,Rural-Remote,Y
+93,BIRDVILLE ISD,220902,B,Major Suburban,21,Suburb-Large,N
+94,BISHOP CISD,178902,G,Non-metropolitan Stable,32,Town-Distant,N
+95,BLACKWELL CISD,177903,H,Rural,43,Rural-Remote,N
+96,BLANCO ISD,16902,G,Non-metropolitan Stable,42,Rural-Distant,N
+97,BLAND ISD,116915,H,Rural,42,Rural-Distant,N
+98,BLANKET ISD,25904,H,Rural,42,Rural-Distant,N
+99,BLOOM ACADEMY CHARTER SCHOOL,101875,I,Charter Schools,11,City-Large,Y
+100,BLOOMBURG ISD,34909,H,Rural,42,Rural-Distant,N
+101,BLOOMING GROVE ISD,175902,G,Non-metropolitan Stable,42,Rural-Distant,N
+102,BLOOMINGTON ISD,235901,H,Rural,42,Rural-Distant,N
+103,BLUE RIDGE ISD,43917,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+104,BLUFF DALE ISD,72904,H,Rural,43,Rural-Remote,N
+105,BLUM ISD,109913,H,Rural,42,Rural-Distant,N
+106,BOB HOPE SCHOOL,123807,I,Charter Schools,13,City-Small,Y
+107,BOERNE ISD,130901,B,Major Suburban,41,Rural-Fringe,N
+108,BOLES ISD,116916,H,Rural,41,Rural-Fringe,N
+109,BOLING ISD,241901,G,Non-metropolitan Stable,42,Rural-Distant,N
+110,BONHAM ISD,74903,E,Independent Town,32,Town-Distant,N
+111,BOOKER ISD,148901,H,Rural,43,Rural-Remote,N
+112,BORDEN COUNTY ISD,17901,H,Rural,43,Rural-Remote,N
+113,BORGER ISD,117901,G,Non-metropolitan Stable,32,Town-Distant,N
+114,BOSQUEVILLE ISD,161923,H,Rural,41,Rural-Fringe,N
+115,BOVINA ISD,185901,H,Rural,43,Rural-Remote,N
+116,BOWIE ISD,169901,G,Non-metropolitan Stable,33,Town-Remote,N
+117,BOYD ISD,249902,G,Non-metropolitan Stable,42,Rural-Distant,N
+118,BOYS RANCH ISD,180901,H,Rural,43,Rural-Remote,N
+119,BRACKETT ISD,136901,H,Rural,33,Town-Remote,N
+120,BRADY ISD,160901,G,Non-metropolitan Stable,41,Rural-Fringe,N
+121,BRAZOS ISD,8903,H,Rural,42,Rural-Distant,N
+122,BRAZOS RIVER CHARTER SCHOOL,213801,I,Charter Schools,42,Rural-Distant,Y
+123,BRAZOS SCHOOL FOR INQUIRY & CREATIVITY,21803,I,Charter Schools,13,City-Small,Y
+124,BRAZOSPORT ISD,20905,D,Other Central City Suburban,23,Suburb-Small,N
+125,BRECKENRIDGE ISD,215901,G,Non-metropolitan Stable,33,Town-Remote,N
+126,BREMOND ISD,198901,H,Rural,43,Rural-Remote,N
+127,BRENHAM ISD,239901,E,Independent Town,32,Town-Distant,N
+128,BRIDGE CITY ISD,181901,E,Independent Town,22,Suburb-Midsize,N
+129,BRIDGEPORT ISD,249903,G,Non-metropolitan Stable,41,Rural-Fringe,N
+130,BRIDGEWAY PREPARATORY ACADEMY,57851,I,Charter Schools,21,Suburb-Large,Y
+131,BRILLANTE ACADEMY,108810,,,21,Suburb-Large,Y
+132,BROADDUS ISD,203902,H,Rural,43,Rural-Remote,N
+133,BROCK ISD,184909,D,Other Central City Suburban,42,Rural-Distant,N
+134,BRONTE ISD,41901,H,Rural,43,Rural-Remote,N
+135,BROOKELAND ISD,121902,H,Rural,43,Rural-Remote,N
+136,BROOKESMITH ISD,25908,H,Rural,43,Rural-Remote,N
+137,BROOKS ACADEMIES OF TEXAS,15830,I,Charter Schools,11,City-Large,Y
+138,BROOKS COUNTY ISD,24901,D,Other Central City Suburban,33,Town-Remote,N
+139,BROWNFIELD ISD,223901,G,Non-metropolitan Stable,32,Town-Distant,N
+140,BROWNSBORO ISD,107902,D,Other Central City Suburban,42,Rural-Distant,N
+141,BROWNSVILLE ISD,31901,C,Other Central City,12,City-Midsize,N
+142,BROWNWOOD ISD,25902,E,Independent Town,33,Town-Remote,N
+143,BRUCEVILLE-EDDY ISD,161919,H,Rural,42,Rural-Distant,N
+144,BRYAN ISD,21902,C,Other Central City,13,City-Small,N
+145,BRYSON ISD,119901,H,Rural,43,Rural-Remote,N
+146,BUCKHOLTS ISD,166907,H,Rural,42,Rural-Distant,N
+147,BUENA VISTA ISD,186901,H,Rural,43,Rural-Remote,N
+148,BUFFALO ISD,145901,G,Non-metropolitan Stable,43,Rural-Remote,N
+149,BULLARD ISD,212902,D,Other Central City Suburban,41,Rural-Fringe,N
+150,BUNA ISD,121903,G,Non-metropolitan Stable,42,Rural-Distant,N
+151,BURKBURNETT ISD,243901,D,Other Central City Suburban,31,Town-Fringe,N
+152,BURKEVILLE ISD,176901,H,Rural,43,Rural-Remote,N
+153,BURLESON ISD,126902,C,Other Central City,21,Suburb-Large,N
+154,BURNET CISD,27903,D,Other Central City Suburban,41,Rural-Fringe,N
+155,BURNHAM WOOD CHARTER SCHOOL DISTRICT,71801,I,Charter Schools,11,City-Large,Y
+156,BURTON ISD,239903,H,Rural,42,Rural-Distant,N
+157,BUSHLAND ISD,188904,D,Other Central City Suburban,41,Rural-Fringe,N
+158,BYNUM ISD,109902,H,Rural,42,Rural-Distant,N
+159,CADDO MILLS ISD,116901,D,Other Central City Suburban,42,Rural-Distant,N
+160,CALALLEN ISD,178903,G,Non-metropolitan Stable,11,City-Large,N
+161,CALDWELL ISD,26901,D,Other Central City Suburban,41,Rural-Fringe,N
+162,CALHOUN COUNTY ISD,29901,G,Non-metropolitan Stable,32,Town-Distant,N
+163,CALLISBURG ISD,49905,G,Non-metropolitan Stable,42,Rural-Distant,N
+164,CALVERT ISD,198902,H,Rural,42,Rural-Distant,N
+165,CALVIN NELMS CHARTER SCHOOLS,101837,I,Charter Schools,21,Suburb-Large,Y
+166,CAMERON ISD,166901,E,Independent Town,41,Rural-Fringe,N
+167,CAMPBELL ISD,116910,H,Rural,42,Rural-Distant,N
+168,CANADIAN ISD,106901,H,Rural,33,Town-Remote,N
+169,CANTON ISD,234902,E,Independent Town,32,Town-Distant,N
+170,CANUTILLO ISD,71907,B,Major Suburban,11,City-Large,N
+171,CANYON ISD,191901,C,Other Central City,12,City-Midsize,N
+172,CARLISLE ISD,201913,H,Rural,42,Rural-Distant,N
+173,CARRIZO SPRINGS CISD,64903,D,Other Central City Suburban,33,Town-Remote,N
+174,CARROLL ISD,220919,B,Major Suburban,21,Suburb-Large,N
+175,CARROLLTON-FARMERS BRANCH ISD,57903,B,Major Suburban,21,Suburb-Large,N
+176,CARTHAGE ISD,183902,G,Non-metropolitan Stable,32,Town-Distant,N
+177,CASTLEBERRY ISD,220917,B,Major Suburban,21,Suburb-Large,N
+178,CAYUGA ISD,1902,H,Rural,43,Rural-Remote,N
+179,CEDAR HILL ISD,57904,B,Major Suburban,21,Suburb-Large,N
+180,CEDARS INTERNATIONAL ACADEMY,227817,I,Charter Schools,11,City-Large,Y
+181,CELESTE ISD,116902,H,Rural,42,Rural-Distant,N
+182,CELINA ISD,43903,F,Non-metropolitan Fast Growing,41,Rural-Fringe,N
+183,CENTER ISD,210901,G,Non-metropolitan Stable,33,Town-Remote,N
+184,CENTER POINT ISD,133901,H,Rural,42,Rural-Distant,N
+185,CENTERVILLE ISD,145902,H,Rural,43,Rural-Remote,N
+186,CENTERVILLE ISD,228904,H,Rural,43,Rural-Remote,N
+187,CENTRAL HEIGHTS ISD,174908,G,Non-metropolitan Stable,41,Rural-Fringe,N
+188,CENTRAL ISD,3907,G,Non-metropolitan Stable,41,Rural-Fringe,N
+189,CHANNELVIEW ISD,101905,B,Major Suburban,21,Suburb-Large,N
+190,CHANNING ISD,103901,H,Rural,43,Rural-Remote,N
+191,CHAPARRAL STAR ACADEMY,227814,I,Charter Schools,21,Suburb-Large,Y
+192,CHAPEL HILL ACADEMY,220815,I,Charter Schools,11,City-Large,Y
+193,CHAPEL HILL ISD,212909,D,Other Central City Suburban,41,Rural-Fringe,N
+194,CHAPEL HILL ISD,225906,G,Non-metropolitan Stable,42,Rural-Distant,N
+195,CHARLOTTE ISD,7901,H,Rural,42,Rural-Distant,N
+196,CHEROKEE ISD,206903,H,Rural,43,Rural-Remote,N
+197,CHESTER ISD,229906,H,Rural,43,Rural-Remote,N
+198,CHICO ISD,249904,H,Rural,42,Rural-Distant,N
+199,CHILDRESS ISD,38901,G,Non-metropolitan Stable,33,Town-Remote,N
+200,CHILLICOTHE ISD,99902,H,Rural,43,Rural-Remote,N
+201,CHILTON ISD,73901,H,Rural,42,Rural-Distant,N
+202,CHINA SPRING ISD,161920,D,Other Central City Suburban,41,Rural-Fringe,N
+203,CHIRENO ISD,174901,H,Rural,43,Rural-Remote,N
+204,CHISUM ISD,139905,G,Non-metropolitan Stable,41,Rural-Fringe,N
+205,CHRISTOVAL ISD,226901,H,Rural,42,Rural-Distant,N
+206,CISCO ISD,67902,H,Rural,33,Town-Remote,N
+207,CITY VIEW ISD,243906,D,Other Central City Suburban,41,Rural-Fringe,N
+208,CITYSCAPE SCHOOLS,57841,I,Charter Schools,11,City-Large,Y
+209,CLARENDON ISD,65901,H,Rural,43,Rural-Remote,N
+210,CLARKSVILLE ISD,194904,H,Rural,33,Town-Remote,N
+211,CLAUDE ISD,6902,H,Rural,42,Rural-Distant,N
+212,CLEAR CREEK ISD,84910,C,Other Central City,21,Suburb-Large,N
+213,CLEBURNE ISD,126903,D,Other Central City Suburban,41,Rural-Fringe,N
+214,CLEVELAND ISD,146901,C,Other Central City,31,Town-Fringe,N
+215,CLIFTON ISD,18901,G,Non-metropolitan Stable,32,Town-Distant,N
+216,CLINT ISD,71901,B,Major Suburban,21,Suburb-Large,N
+217,CLYDE CISD,30902,D,Other Central City Suburban,32,Town-Distant,N
+218,COAHOMA ISD,114902,G,Non-metropolitan Stable,42,Rural-Distant,N
+219,COLDSPRING-OAKHURST CISD,204901,D,Other Central City Suburban,42,Rural-Distant,N
+220,COLEMAN ISD,42901,H,Rural,33,Town-Remote,N
+221,COLLEGE STATION ISD,21901,C,Other Central City,12,City-Midsize,N
+222,COLLINSVILLE ISD,91902,H,Rural,42,Rural-Distant,N
+223,COLMESNEIL ISD,229901,H,Rural,42,Rural-Distant,N
+224,COLORADO ISD,168901,H,Rural,41,Rural-Fringe,N
+225,COLUMBIA-BRAZORIA ISD,20907,G,Non-metropolitan Stable,32,Town-Distant,N
+226,COLUMBUS ISD,45902,G,Non-metropolitan Stable,33,Town-Remote,N
+227,COMAL ISD,46902,B,Major Suburban,41,Rural-Fringe,N
+228,COMANCHE ISD,47901,G,Non-metropolitan Stable,41,Rural-Fringe,N
+229,COMFORT ISD,130902,G,Non-metropolitan Stable,32,Town-Distant,N
+230,COMMERCE ISD,116903,D,Other Central City Suburban,41,Rural-Fringe,N
+231,COMMUNITY ISD,43918,D,Other Central City Suburban,41,Rural-Fringe,N
+232,COMO-PICKTON CISD,112908,H,Rural,42,Rural-Distant,N
+233,COMPASS ACADEMY CHARTER SCHOOL,68802,I,Charter Schools,12,City-Midsize,Y
+234,COMPASS ROSE PUBLIC SCHOOLS,15838,I,Charter Schools,11,City-Large,Y
+235,COMQUEST ACADEMY,101842,I,Charter Schools,21,Suburb-Large,Y
+236,COMSTOCK ISD,233903,H,Rural,43,Rural-Remote,N
+237,CONNALLY ISD,161921,D,Other Central City Suburban,22,Suburb-Midsize,N
+238,CONROE ISD,170902,C,Other Central City,12,City-Midsize,N
+239,COOLIDGE ISD,147901,H,Rural,42,Rural-Distant,N
+240,COOPER ISD,60902,H,Rural,43,Rural-Remote,N
+241,COPPELL ISD,57922,B,Major Suburban,21,Suburb-Large,N
+242,COPPERAS COVE ISD,50910,D,Other Central City Suburban,22,Suburb-Midsize,N
+243,CORPUS CHRISTI ISD,178904,C,Other Central City,11,City-Large,N
+244,CORPUS CHRISTI MONTESSORI SCHOOL,178807,I,Charter Schools,11,City-Large,Y
+245,CORRIGAN-CAMDEN ISD,187904,H,Rural,43,Rural-Remote,N
+246,CORSICANA ISD,175903,E,Independent Town,32,Town-Distant,N
+247,COTTON CENTER ISD,95902,H,Rural,42,Rural-Distant,N
+248,COTULLA ISD,142901,G,Non-metropolitan Stable,33,Town-Remote,N
+249,COUPLAND ISD,246914,H,Rural,42,Rural-Distant,N
+250,COVINGTON ISD,109903,H,Rural,42,Rural-Distant,N
+251,CRANDALL ISD,129901,B,Major Suburban,41,Rural-Fringe,N
+252,CRANE ISD,52901,D,Other Central City Suburban,32,Town-Distant,N
+253,CRANFILLS GAP ISD,18908,H,Rural,43,Rural-Remote,N
+254,CRAWFORD ISD,161901,H,Rural,42,Rural-Distant,N
+255,CROCKETT COUNTY CONSOLIDATED CSD,53001,H,Rural,33,Town-Remote,N
+256,CROCKETT ISD,113901,G,Non-metropolitan Stable,33,Town-Remote,N
+257,CROSBY ISD,101906,B,Major Suburban,41,Rural-Fringe,N
+258,CROSBYTON CISD,54901,H,Rural,43,Rural-Remote,N
+259,CROSS PLAINS ISD,30901,H,Rural,43,Rural-Remote,N
+260,CROSS ROADS ISD,107904,H,Rural,42,Rural-Distant,N
+261,CROSSTIMBERS ACADEMY,184801,I,Charter Schools,41,Rural-Fringe,Y
+262,CROWELL ISD,78901,H,Rural,43,Rural-Remote,N
+263,CROWLEY ISD,220912,B,Major Suburban,11,City-Large,N
+264,CRYSTAL CITY ISD,254901,G,Non-metropolitan Stable,33,Town-Remote,N
+265,CUERO ISD,62901,G,Non-metropolitan Stable,32,Town-Distant,N
+266,CULBERSON COUNTY-ALLAMOORE ISD,55901,H,Rural,43,Rural-Remote,N
+267,CUMBERLAND ACADEMY,212801,I,Charter Schools,12,City-Midsize,Y
+268,CUMBY ISD,112905,H,Rural,42,Rural-Distant,N
+269,CUSHING ISD,174902,H,Rural,43,Rural-Remote,N
+270,CYPRESS-FAIRBANKS ISD,101907,B,Major Suburban,21,Suburb-Large,N
+271,D'HANIS ISD,163902,H,Rural,42,Rural-Distant,N
+272,DAINGERFIELD-LONE STAR ISD,172902,G,Non-metropolitan Stable,32,Town-Distant,N
+273,DALHART ISD,56901,G,Non-metropolitan Stable,33,Town-Remote,N
+274,DALLAS ISD,57905,A,Major Urban,11,City-Large,N
+275,DAMON ISD,20910,H,Rural,42,Rural-Distant,N
+276,DANBURY ISD,20904,H,Rural,41,Rural-Fringe,N
+277,DARROUZETT ISD,148905,H,Rural,43,Rural-Remote,N
+278,DAWSON ISD,58902,H,Rural,43,Rural-Remote,N
+279,DAWSON ISD,175904,H,Rural,43,Rural-Remote,N
+280,DAYTON ISD,146902,D,Other Central City Suburban,32,Town-Distant,N
+281,DE LEON ISD,47902,H,Rural,43,Rural-Remote,N
+282,DECATUR ISD,249905,E,Independent Town,32,Town-Distant,N
+283,DEER PARK ISD,101908,B,Major Suburban,21,Suburb-Large,N
+284,DEKALB ISD,19901,H,Rural,42,Rural-Distant,N
+285,DEL VALLE ISD,227910,B,Major Suburban,41,Rural-Fringe,N
+286,DELL CITY ISD,115903,H,Rural,43,Rural-Remote,N
+287,DENISON ISD,91903,D,Other Central City Suburban,13,City-Small,N
+288,DENTON ISD,61901,D,Other Central City Suburban,12,City-Midsize,N
+289,DENVER CITY ISD,251901,G,Non-metropolitan Stable,33,Town-Remote,N
+290,DESOTO ISD,57906,B,Major Suburban,21,Suburb-Large,N
+291,DETROIT ISD,194905,H,Rural,43,Rural-Remote,N
+292,DEVERS ISD,146903,H,Rural,42,Rural-Distant,N
+293,DEVINE ISD,163901,G,Non-metropolitan Stable,41,Rural-Fringe,N
+294,DEW ISD,81906,H,Rural,42,Rural-Distant,N
+295,DEWEYVILLE ISD,176903,H,Rural,42,Rural-Distant,N
+296,DIBOLL ISD,3905,G,Non-metropolitan Stable,33,Town-Remote,N
+297,DICKINSON ISD,84901,D,Other Central City Suburban,22,Suburb-Midsize,N
+298,DILLEY ISD,82902,G,Non-metropolitan Stable,41,Rural-Fringe,N
+299,DIME BOX ISD,144903,H,Rural,43,Rural-Remote,N
+300,DIMMITT ISD,35901,D,Other Central City Suburban,33,Town-Remote,N
+301,DIVIDE ISD,133905,H,Rural,43,Rural-Remote,N
+302,DODD CITY ISD,74904,H,Rural,42,Rural-Distant,N
+303,DONNA ISD,108902,D,Other Central City Suburban,21,Suburb-Large,N
+304,DORAL ACADEMY OF TEXAS,105804,,,41,Rural-Fringe,Y
+305,DOSS CONSOLIDATED CSD,86024,H,Rural,43,Rural-Remote,N
+306,DOUGLASS ISD,174911,H,Rural,43,Rural-Remote,N
+307,DR M L GARZA-GONZALEZ CHARTER SCHOOL,178801,I,Charter Schools,11,City-Large,Y
+308,DRAW ACADEMY,101856,I,Charter Schools,11,City-Large,Y
+309,DRIPPING SPRINGS ISD,105904,B,Major Suburban,42,Rural-Distant,N
+310,DRISCOLL ISD,178905,H,Rural,42,Rural-Distant,N
+311,DUBLIN ISD,72902,G,Non-metropolitan Stable,41,Rural-Fringe,N
+312,DUMAS ISD,171901,G,Non-metropolitan Stable,33,Town-Remote,N
+313,DUNCANVILLE ISD,57907,B,Major Suburban,21,Suburb-Large,N
+314,EAGLE MT-SAGINAW ISD,220918,B,Major Suburban,11,City-Large,N
+315,EAGLE PASS ISD,159901,D,Other Central City Suburban,33,Town-Remote,N
+316,EANES ISD,227909,B,Major Suburban,21,Suburb-Large,N
+317,EARLY ISD,25909,G,Non-metropolitan Stable,33,Town-Remote,N
+318,EAST BERNARD ISD,241902,G,Non-metropolitan Stable,42,Rural-Distant,N
+319,EAST CENTRAL ISD,15911,B,Major Suburban,41,Rural-Fringe,N
+320,EAST CHAMBERS ISD,36903,G,Non-metropolitan Stable,32,Town-Distant,N
+321,EAST FORT WORTH MONTESSORI ACADEMY,220811,I,Charter Schools,11,City-Large,Y
+322,EAST TEXAS CHARTER SCHOOLS,92801,I,Charter Schools,13,City-Small,Y
+323,EASTLAND ISD,67903,G,Non-metropolitan Stable,33,Town-Remote,N
+324,ECTOR COUNTY ISD,68901,C,Other Central City,12,City-Midsize,N
+325,ECTOR ISD,74905,H,Rural,41,Rural-Fringe,N
+326,EDCOUCH-ELSA ISD,108903,D,Other Central City Suburban,21,Suburb-Large,N
+327,EDEN CISD,48901,H,Rural,43,Rural-Remote,N
+328,EDGEWOOD ISD,15905,B,Major Suburban,11,City-Large,N
+329,EDGEWOOD ISD,234903,G,Non-metropolitan Stable,42,Rural-Distant,N
+330,EDINBURG CISD,108904,C,Other Central City,12,City-Midsize,N
+331,EDNA ISD,120901,G,Non-metropolitan Stable,32,Town-Distant,N
+332,EDUCATION CENTER INTERNATIONAL ACADEMY,57833,I,Charter Schools,21,Suburb-Large,Y
+333,EHRHART SCHOOL,123805,I,Charter Schools,12,City-Midsize,Y
+334,EL CAMPO ISD,241903,E,Independent Town,32,Town-Distant,N
+335,EL PASO ACADEMY,71804,I,Charter Schools,11,City-Large,Y
+336,EL PASO ISD,71902,A,Major Urban,11,City-Large,N
+337,EL PASO LEADERSHIP ACADEMY,71810,I,Charter Schools,11,City-Large,Y
+338,ELEANOR KOLITZ HEBREW LANGUAGE ACADEMY,15836,I,Charter Schools,11,City-Large,Y
+339,ELECTRA ISD,243902,H,Rural,32,Town-Distant,N
+340,ELEVATE COLLEGIATE CHARTER SCHOOL,101877,I,Charter Schools,11,City-Large,Y
+341,ELGIN ISD,11902,D,Other Central City Suburban,31,Town-Fringe,N
+342,ELKHART ISD,1903,G,Non-metropolitan Stable,42,Rural-Distant,N
+343,ELYSIAN FIELDS ISD,102906,H,Rural,42,Rural-Distant,N
+344,ENNIS ISD,70903,D,Other Central City Suburban,41,Rural-Fringe,N
+345,ERA ISD,49906,H,Rural,42,Rural-Distant,N
+346,ERATH EXCELS ACADEMY INC,72802,I,Charter Schools,31,Town-Fringe,Y
+347,ESSENCE PREPARATORY CHARTER SCHOOL,15844,,,11,City-Large,Y
+348,ETOILE ACADEMY CHARTER SCHOOL,101872,I,Charter Schools,11,City-Large,Y
+349,ETOILE ISD,174910,H,Rural,43,Rural-Remote,N
+350,EULA ISD,30906,H,Rural,42,Rural-Distant,N
+351,EUSTACE ISD,107905,G,Non-metropolitan Stable,42,Rural-Distant,N
+352,EVADALE ISD,121906,H,Rural,42,Rural-Distant,N
+353,EVANT ISD,50901,H,Rural,43,Rural-Remote,N
+354,EVERMAN ISD,220904,B,Major Suburban,21,Suburb-Large,N
+355,EVOLUTION ACADEMY CHARTER SCHOOL,57834,I,Charter Schools,12,City-Midsize,Y
+356,EXCEL ACADEMY,101811,I,Charter Schools,11,City-Large,Y
+357,EXCELLENCE IN LEADERSHIP ACADEMY,108809,I,Charter Schools,13,City-Small,Y
+358,EXCELSIOR ISD,210906,H,Rural,43,Rural-Remote,N
+359,EZZELL ISD,143906,H,Rural,43,Rural-Remote,N
+360,FABENS ISD,71903,G,Non-metropolitan Stable,31,Town-Fringe,N
+361,FAIRFIELD ISD,81902,G,Non-metropolitan Stable,33,Town-Remote,N
+362,FALLS CITY ISD,128904,H,Rural,42,Rural-Distant,N
+363,FANNINDEL ISD,60914,H,Rural,43,Rural-Remote,N
+364,FARMERSVILLE ISD,43904,F,Non-metropolitan Fast Growing,31,Town-Fringe,N
+365,FARWELL ISD,185902,H,Rural,42,Rural-Distant,N
+366,FAYETTEVILLE ISD,75906,H,Rural,43,Rural-Remote,N
+367,FERRIS ISD,70905,D,Other Central City Suburban,41,Rural-Fringe,N
+368,FLATONIA ISD,75901,H,Rural,43,Rural-Remote,N
+369,FLORENCE ISD,246902,G,Non-metropolitan Stable,42,Rural-Distant,N
+370,FLORESVILLE ISD,247901,E,Independent Town,32,Town-Distant,N
+371,FLOUR BLUFF ISD,178914,D,Other Central City Suburban,11,City-Large,N
+372,FLOYDADA COLLEGIATE ISD,77901,H,Rural,32,Town-Distant,N
+373,FOLLETT ISD,148902,H,Rural,43,Rural-Remote,N
+374,FORESTBURG ISD,169910,H,Rural,43,Rural-Remote,N
+375,FORNEY ISD,129902,B,Major Suburban,41,Rural-Fringe,N
+376,FORSAN ISD,114904,H,Rural,42,Rural-Distant,N
+377,FORT BEND ISD,79907,B,Major Suburban,21,Suburb-Large,N
+378,FORT ELLIOTT CISD,242906,H,Rural,43,Rural-Remote,N
+379,FORT STOCKTON ISD,186902,G,Non-metropolitan Stable,33,Town-Remote,N
+380,FORT WORTH ACADEMY OF FINE ARTS,220809,I,Charter Schools,11,City-Large,Y
+381,FORT WORTH ISD,220905,A,Major Urban,11,City-Large,N
+382,FRANKLIN ISD,198903,D,Other Central City Suburban,42,Rural-Distant,N
+383,FRANKSTON ISD,1904,H,Rural,42,Rural-Distant,N
+384,FREDERICKSBURG ISD,86901,E,Independent Town,33,Town-Remote,N
+385,FREER ISD,66903,H,Rural,43,Rural-Remote,N
+386,FRENSHIP ISD,152907,D,Other Central City Suburban,22,Suburb-Midsize,N
+387,FRIENDSWOOD ISD,84911,D,Other Central City Suburban,21,Suburb-Large,N
+388,FRIONA ISD,185903,G,Non-metropolitan Stable,33,Town-Remote,N
+389,FRISCO ISD,43905,C,Other Central City,21,Suburb-Large,N
+390,FROST ISD,175905,H,Rural,42,Rural-Distant,N
+391,FRUITVALE ISD,234909,H,Rural,42,Rural-Distant,N
+392,FT DAVIS ISD,122901,H,Rural,43,Rural-Remote,N
+393,FT HANCOCK ISD,115901,H,Rural,43,Rural-Remote,N
+394,FT SAM HOUSTON ISD,15914,G,Non-metropolitan Stable,11,City-Large,N
+395,GAINESVILLE ISD,49901,E,Independent Town,41,Rural-Fringe,N
+396,GALENA PARK ISD,101910,B,Major Suburban,21,Suburb-Large,N
+397,GALVESTON ISD,84902,D,Other Central City Suburban,31,Town-Fringe,N
+398,GANADO ISD,120902,H,Rural,42,Rural-Distant,N
+399,GARLAND ISD,57909,B,Major Suburban,21,Suburb-Large,N
+400,GARNER ISD,184911,H,Rural,42,Rural-Distant,N
+401,GARRISON ISD,174903,H,Rural,43,Rural-Remote,N
+402,GARY ISD,183904,H,Rural,42,Rural-Distant,N
+403,GATESVILLE ISD,50902,D,Other Central City Suburban,32,Town-Distant,N
+404,GATEWAY CHARTER ACADEMY,57831,I,Charter Schools,11,City-Large,Y
+405,GAUSE ISD,166902,H,Rural,42,Rural-Distant,N
+406,GEORGE GERVIN ACADEMY,15802,I,Charter Schools,11,City-Large,Y
+407,GEORGE I SANCHEZ CHARTER,101804,I,Charter Schools,11,City-Large,Y
+408,GEORGE WEST ISD,149901,G,Non-metropolitan Stable,43,Rural-Remote,N
+409,GEORGETOWN ISD,246904,D,Other Central City Suburban,13,City-Small,N
+410,GHOLSON ISD,161925,H,Rural,42,Rural-Distant,N
+411,GIDDINGS ISD,144901,D,Other Central City Suburban,41,Rural-Fringe,N
+412,GILMER ISD,230902,D,Other Central City Suburban,41,Rural-Fringe,N
+413,GLADEWATER ISD,92901,D,Other Central City Suburban,23,Suburb-Small,N
+414,GLASSCOCK COUNTY ISD,87901,H,Rural,43,Rural-Remote,N
+415,GLEN ROSE ISD,213901,G,Non-metropolitan Stable,42,Rural-Distant,N
+416,GODLEY ISD,126911,B,Major Suburban,42,Rural-Distant,N
+417,GOLD BURG ISD,169906,H,Rural,42,Rural-Distant,N
+418,GOLDEN RULE CHARTER SCHOOL,57835,I,Charter Schools,11,City-Large,Y
+419,GOLDTHWAITE ISD,167901,H,Rural,43,Rural-Remote,N
+420,GOLIAD ISD,88902,G,Non-metropolitan Stable,42,Rural-Distant,N
+421,GONZALES ISD,89901,G,Non-metropolitan Stable,32,Town-Distant,N
+422,GOODRICH ISD,187903,H,Rural,42,Rural-Distant,N
+423,GOODWATER MONTESSORI SCHOOL,246802,I,Charter Schools,13,City-Small,Y
+424,GOOSE CREEK CISD,101911,B,Major Suburban,13,City-Small,N
+425,GORDON ISD,182901,H,Rural,43,Rural-Remote,N
+426,GORMAN ISD,67904,H,Rural,43,Rural-Remote,N
+427,GRADY ISD,156905,H,Rural,42,Rural-Distant,N
+428,GRAFORD ISD,182902,H,Rural,43,Rural-Remote,N
+429,GRAHAM ISD,252901,G,Non-metropolitan Stable,33,Town-Remote,N
+430,GRANBURY ISD,111901,D,Other Central City Suburban,32,Town-Distant,N
+431,GRAND PRAIRIE ISD,57910,B,Major Suburban,21,Suburb-Large,N
+432,GRAND SALINE ISD,234904,G,Non-metropolitan Stable,32,Town-Distant,N
+433,GRANDFALLS-ROYALTY ISD,238904,H,Rural,43,Rural-Remote,N
+434,GRANDVIEW ISD,126904,G,Non-metropolitan Stable,42,Rural-Distant,N
+435,GRANDVIEW-HOPKINS ISD,90905,H,Rural,43,Rural-Remote,N
+436,GRANGER ISD,246905,H,Rural,42,Rural-Distant,N
+437,GRAPE CREEK ISD,226907,D,Other Central City Suburban,41,Rural-Fringe,N
+438,GRAPELAND ISD,113902,F,Non-metropolitan Fast Growing,43,Rural-Remote,N
+439,GRAPEVINE-COLLEYVILLE ISD,220906,B,Major Suburban,13,City-Small,N
+440,GREAT HEARTS TEXAS,15835,I,Charter Schools,11,City-Large,Y
+441,GREENVILLE ISD,116905,C,Other Central City,32,Town-Distant,N
+442,GREENWOOD ISD,165902,D,Other Central City Suburban,42,Rural-Distant,N
+443,GREGORY-PORTLAND ISD,205902,D,Other Central City Suburban,21,Suburb-Large,N
+444,GROESBECK ISD,147902,G,Non-metropolitan Stable,41,Rural-Fringe,N
+445,GROOM ISD,33901,H,Rural,43,Rural-Remote,N
+446,GROVETON ISD,228901,H,Rural,43,Rural-Remote,N
+447,GRUVER ISD,98901,H,Rural,43,Rural-Remote,N
+448,GUNTER ISD,91917,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+449,GUSTINE ISD,47903,H,Rural,43,Rural-Remote,N
+450,GUTHRIE CSD,135001,H,Rural,43,Rural-Remote,N
+451,HALE CENTER ISD,95903,H,Rural,42,Rural-Distant,N
+452,HALLETTSVILLE ISD,143901,G,Non-metropolitan Stable,43,Rural-Remote,N
+453,HALLSBURG ISD,161924,H,Rural,42,Rural-Distant,N
+454,HALLSVILLE ISD,102904,D,Other Central City Suburban,31,Town-Fringe,N
+455,HAMILTON ISD,97902,H,Rural,33,Town-Remote,N
+456,HAMLIN COLLEGIATE ISD,127903,H,Rural,43,Rural-Remote,N
+457,HAMSHIRE-FANNETT ISD,123914,D,Other Central City Suburban,42,Rural-Distant,N
+458,HAPPY ISD,219901,H,Rural,42,Rural-Distant,N
+459,HARDIN ISD,146904,G,Non-metropolitan Stable,42,Rural-Distant,N
+460,HARDIN-JEFFERSON ISD,100905,D,Other Central City Suburban,42,Rural-Distant,N
+461,HARLANDALE ISD,15904,B,Major Suburban,11,City-Large,N
+462,HARLETON ISD,102905,H,Rural,42,Rural-Distant,N
+463,HARLINGEN CISD,31903,D,Other Central City Suburban,13,City-Small,N
+464,HARMONY ISD,230905,G,Non-metropolitan Stable,42,Rural-Distant,N
+465,HARMONY PUBLIC SCHOOLS - CENTRAL TEXAS,227816,I,Charter Schools,11,City-Large,Y
+466,HARMONY PUBLIC SCHOOLS - HOUSTON NORTH,101858,I,Charter Schools,11,City-Large,Y
+467,HARMONY PUBLIC SCHOOLS - HOUSTON SOUTH,101846,I,Charter Schools,11,City-Large,Y
+468,HARMONY PUBLIC SCHOOLS - HOUSTON WEST,101862,I,Charter Schools,12,City-Midsize,Y
+469,HARMONY PUBLIC SCHOOLS - NORTH TEXAS,161807,I,Charter Schools,21,Suburb-Large,Y
+470,HARMONY PUBLIC SCHOOLS - SOUTH TEXAS,15828,I,Charter Schools,11,City-Large,Y
+471,HARMONY PUBLIC SCHOOLS - WEST TEXAS,71806,I,Charter Schools,11,City-Large,Y
+472,HARPER ISD,86902,H,Rural,43,Rural-Remote,N
+473,HARRIS COUNTY DEPT OF ED,101000,,,21,Suburb-Large,N
+474,HARROLD ISD,244901,H,Rural,42,Rural-Distant,N
+475,HART ISD,35902,H,Rural,43,Rural-Remote,N
+476,HARTLEY ISD,103902,H,Rural,43,Rural-Remote,N
+477,HARTS BLUFF ISD,225907,F,Non-metropolitan Fast Growing,41,Rural-Fringe,N
+478,HASKELL CISD,104901,H,Rural,41,Rural-Fringe,N
+479,HAWKINS ISD,250902,H,Rural,42,Rural-Distant,N
+480,HAWLEY ISD,127904,H,Rural,42,Rural-Distant,N
+481,HAYS CISD,105906,B,Major Suburban,41,Rural-Fringe,N
+482,HEARNE ISD,198905,H,Rural,32,Town-Distant,N
+483,HEDLEY ISD,65902,H,Rural,43,Rural-Remote,N
+484,HEMPHILL ISD,202903,G,Non-metropolitan Stable,43,Rural-Remote,N
+485,HEMPSTEAD ISD,237902,G,Non-metropolitan Stable,32,Town-Distant,N
+486,HENDERSON ISD,201902,E,Independent Town,32,Town-Distant,N
+487,HENRIETTA ISD,39902,D,Other Central City Suburban,41,Rural-Fringe,N
+488,HENRY FORD ACADEMY ALAMEDA SCHOOL FOR ART + DESIGN,15833,I,Charter Schools,11,City-Large,Y
+489,HEREFORD ISD,59901,D,Other Central City Suburban,32,Town-Distant,N
+490,HERITAGE ACADEMY,15815,I,Charter Schools,33,Town-Remote,Y
+491,HERMLEIGH ISD,208901,H,Rural,42,Rural-Distant,N
+492,HICO ISD,97903,H,Rural,43,Rural-Remote,N
+493,HIDALGO ISD,108905,D,Other Central City Suburban,21,Suburb-Large,N
+494,HIGH ISLAND ISD,84903,H,Rural,43,Rural-Remote,N
+495,HIGH POINT ACADEMY,220819,I,Charter Schools,21,Suburb-Large,Y
+496,HIGHLAND ISD,177905,H,Rural,42,Rural-Distant,N
+497,HIGHLAND PARK ISD,57911,B,Major Suburban,21,Suburb-Large,N
+498,HIGHLAND PARK ISD,188903,H,Rural,41,Rural-Fringe,N
+499,HILLSBORO ISD,109904,E,Independent Town,41,Rural-Fringe,N
+500,HITCHCOCK ISD,84908,G,Non-metropolitan Stable,22,Suburb-Midsize,N
+501,HOLLAND ISD,14905,H,Rural,42,Rural-Distant,N
+502,HOLLIDAY ISD,5902,D,Other Central City Suburban,42,Rural-Distant,N
+503,HONDO ISD,163904,G,Non-metropolitan Stable,32,Town-Distant,N
+504,HONEY GROVE ISD,74907,H,Rural,43,Rural-Remote,N
+505,HOOKS ISD,19902,G,Non-metropolitan Stable,31,Town-Fringe,N
+506,HORIZON MONTESSORI PUBLIC SCHOOLS,108802,I,Charter Schools,12,City-Midsize,Y
+507,HOUSTON CLASSICAL CHARTER SCHOOL,101878,I,Charter Schools,21,Suburb-Large,Y
+508,HOUSTON GATEWAY ACADEMY INC,101828,I,Charter Schools,11,City-Large,Y
+509,HOUSTON HEIGHTS HIGH SCHOOL,101821,I,Charter Schools,11,City-Large,Y
+510,HOUSTON ISD,101912,A,Major Urban,11,City-Large,N
+511,HOWE ISD,91905,D,Other Central City Suburban,41,Rural-Fringe,N
+512,HUBBARD ISD,19913,H,Rural,42,Rural-Distant,N
+513,HUBBARD ISD,109905,H,Rural,42,Rural-Distant,N
+514,HUCKABAY ISD,72908,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+515,HUDSON ISD,3902,G,Non-metropolitan Stable,33,Town-Remote,N
+516,HUFFMAN ISD,101925,D,Other Central City Suburban,41,Rural-Fringe,N
+517,HUGHES SPRINGS ISD,34903,G,Non-metropolitan Stable,32,Town-Distant,N
+518,HULL-DAISETTA ISD,146905,H,Rural,42,Rural-Distant,N
+519,HUMBLE ISD,101913,B,Major Suburban,21,Suburb-Large,N
+520,HUNT ISD,133902,H,Rural,42,Rural-Distant,N
+521,HUNTINGTON ISD,3904,G,Non-metropolitan Stable,42,Rural-Distant,N
+522,HUNTSVILLE ISD,236902,E,Independent Town,32,Town-Distant,N
+523,HURST-EULESS-BEDFORD ISD,220916,B,Major Suburban,21,Suburb-Large,N
+524,HUTTO ISD,246906,D,Other Central City Suburban,21,Suburb-Large,N
+525,IDALOU ISD,152910,D,Other Central City Suburban,42,Rural-Distant,N
+526,IDEA PUBLIC SCHOOLS,108807,I,Charter Schools,11,City-Large,Y
+527,IMAGINE INTERNATIONAL ACADEMY OF NORTH TEXAS,43801,I,Charter Schools,22,Suburb-Midsize,Y
+528,INDUSTRIAL ISD,120905,G,Non-metropolitan Stable,42,Rural-Distant,N
+529,INGLESIDE ISD,205903,D,Other Central City Suburban,31,Town-Fringe,N
+530,INGRAM ISD,133904,G,Non-metropolitan Stable,41,Rural-Fringe,N
+531,INSPIRE ACADEMIES,15808,I,Charter Schools,11,City-Large,Y
+532,INSPIRED VISION ACADEMY,57830,I,Charter Schools,11,City-Large,Y
+533,INTERNATIONAL LEADERSHIP OF TEXAS (ILTEXAS),57848,I,Charter Schools,21,Suburb-Large,Y
+534,IOLA ISD,93903,H,Rural,42,Rural-Distant,N
+535,IOWA PARK CISD,243903,D,Other Central City Suburban,31,Town-Fringe,N
+536,IRA ISD,208903,H,Rural,42,Rural-Distant,N
+537,IRAAN-SHEFFIELD ISD,186903,H,Rural,43,Rural-Remote,N
+538,IREDELL ISD,18906,H,Rural,43,Rural-Remote,N
+539,IRION COUNTY ISD,118902,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+540,IRVING ISD,57912,B,Major Suburban,11,City-Large,N
+541,ITALY ISD,70907,H,Rural,42,Rural-Distant,N
+542,ITASCA ISD,109907,H,Rural,42,Rural-Distant,N
+543,JACKSBORO ISD,119902,G,Non-metropolitan Stable,33,Town-Remote,N
+544,JACKSONVILLE ISD,37904,E,Independent Town,32,Town-Distant,N
+545,JARRELL ISD,246907,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+546,JASPER ISD,121904,E,Independent Town,33,Town-Remote,N
+547,JAYTON-GIRARD ISD,132902,H,Rural,43,Rural-Remote,N
+548,JEAN MASSIEU ACADEMY,57819,I,Charter Schools,11,City-Large,Y
+549,JEFFERSON ISD,155901,G,Non-metropolitan Stable,42,Rural-Distant,N
+550,JIM HOGG COUNTY ISD,124901,G,Non-metropolitan Stable,33,Town-Remote,N
+551,JIM NED CISD,221911,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+552,JOAQUIN ISD,210902,H,Rural,43,Rural-Remote,N
+553,JOHNSON CITY ISD,16901,H,Rural,42,Rural-Distant,N
+554,JONESBORO ISD,50909,H,Rural,43,Rural-Remote,N
+555,JOSHUA ISD,126905,D,Other Central City Suburban,41,Rural-Fringe,N
+556,JOURDANTON ISD,7902,G,Non-metropolitan Stable,32,Town-Distant,N
+557,JUBILEE ACADEMIES,15822,I,Charter Schools,11,City-Large,Y
+558,JUDSON ISD,15916,B,Major Suburban,21,Suburb-Large,N
+559,JUNCTION ISD,134901,H,Rural,33,Town-Remote,N
+560,KARNACK ISD,102901,H,Rural,42,Rural-Distant,N
+561,KARNES CITY ISD,128901,G,Non-metropolitan Stable,33,Town-Remote,N
+562,KATHERINE ANNE PORTER SCHOOL,105801,I,Charter Schools,32,Town-Distant,Y
+563,KATY ISD,101914,B,Major Suburban,21,Suburb-Large,N
+564,KAUFMAN ISD,129903,D,Other Central City Suburban,32,Town-Distant,N
+565,KEENE ISD,126906,G,Non-metropolitan Stable,31,Town-Fringe,N
+566,KELLER ISD,220907,B,Major Suburban,11,City-Large,N
+567,KELTON ISD,242905,H,Rural,43,Rural-Remote,N
+568,KEMP ISD,129904,G,Non-metropolitan Stable,42,Rural-Distant,N
+569,KENEDY COUNTY WIDE CSD,131001,H,Rural,43,Rural-Remote,N
+570,KENEDY ISD,128902,H,Rural,41,Rural-Fringe,N
+571,KENNARD ISD,113906,H,Rural,43,Rural-Remote,N
+572,KENNEDALE ISD,220914,B,Major Suburban,21,Suburb-Large,N
+573,KERENS ISD,175907,H,Rural,43,Rural-Remote,N
+574,KERMIT ISD,248901,D,Other Central City Suburban,32,Town-Distant,N
+575,KERRVILLE ISD,133903,E,Independent Town,41,Rural-Fringe,N
+576,KI CHARTER ACADEMY,105803,I,Charter Schools,13,City-Small,Y
+577,KILGORE ISD,92902,D,Other Central City Suburban,31,Town-Fringe,N
+578,KILLEEN ISD,14906,C,Other Central City,12,City-Midsize,N
+579,KINGSVILLE ISD,137901,E,Independent Town,32,Town-Distant,N
+580,KIPP TEXAS PUBLIC SCHOOLS,227820,I,Charter Schools,11,City-Large,Y
+581,KIRBYVILLE CISD,121905,G,Non-metropolitan Stable,43,Rural-Remote,N
+582,KLEIN ISD,101915,B,Major Suburban,21,Suburb-Large,N
+583,KLONDIKE ISD,58905,H,Rural,43,Rural-Remote,N
+584,KNIPPA ISD,232901,H,Rural,42,Rural-Distant,N
+585,KNOX CITY-O'BRIEN CISD,138902,H,Rural,43,Rural-Remote,N
+586,KOPPERL ISD,18907,H,Rural,43,Rural-Remote,N
+587,KOUNTZE ISD,100903,G,Non-metropolitan Stable,42,Rural-Distant,N
+588,KRESS ISD,219905,H,Rural,42,Rural-Distant,N
+589,KRUM ISD,61905,G,Non-metropolitan Stable,31,Town-Fringe,N
+590,LA ACADEMIA DE ESTRELLAS,57839,I,Charter Schools,11,City-Large,Y
+591,LA FE PREPARATORY SCHOOL,71807,I,Charter Schools,11,City-Large,Y
+592,LA FERIA ISD,31905,G,Non-metropolitan Stable,22,Suburb-Midsize,N
+593,LA GLORIA ISD,125906,H,Rural,42,Rural-Distant,N
+594,LA GRANGE ISD,75902,G,Non-metropolitan Stable,33,Town-Remote,N
+595,LA JOYA ISD,108912,C,Other Central City,21,Suburb-Large,N
+596,LA PORTE ISD,101916,B,Major Suburban,21,Suburb-Large,N
+597,LA PRYOR ISD,254902,H,Rural,43,Rural-Remote,N
+598,LA VEGA ISD,161906,D,Other Central City Suburban,22,Suburb-Midsize,N
+599,LA VERNIA ISD,247903,E,Independent Town,42,Rural-Distant,N
+600,LA VILLA ISD,108914,H,Rural,21,Suburb-Large,N
+601,LACKLAND ISD,15913,G,Non-metropolitan Stable,21,Suburb-Large,N
+602,LAGO VISTA ISD,227912,F,Non-metropolitan Fast Growing,31,Town-Fringe,N
+603,LAKE DALLAS ISD,61912,D,Other Central City Suburban,21,Suburb-Large,N
+604,LAKE GRANBURY ACADEMY CHARTER SCHOOL,111801,I,Charter Schools,41,Rural-Fringe,Y
+605,LAKE TRAVIS ISD,227913,B,Major Suburban,21,Suburb-Large,N
+606,LAKE WORTH ISD,220910,B,Major Suburban,21,Suburb-Large,N
+607,LAMAR CISD,79901,D,Other Central City Suburban,41,Rural-Fringe,N
+608,LAMESA ISD,58906,G,Non-metropolitan Stable,33,Town-Remote,N
+609,LAMPASAS ISD,141901,D,Other Central City Suburban,41,Rural-Fringe,N
+610,LANCASTER ISD,57913,B,Major Suburban,21,Suburb-Large,N
+611,LANEVILLE ISD,201903,H,Rural,42,Rural-Distant,N
+612,LAPOYNOR ISD,107910,H,Rural,42,Rural-Distant,N
+613,LAREDO ISD,240901,D,Other Central City Suburban,11,City-Large,N
+614,LASARA ISD,245901,H,Rural,42,Rural-Distant,N
+615,LATEXO ISD,113905,H,Rural,42,Rural-Distant,N
+616,LAZBUDDIE ISD,185904,H,Rural,43,Rural-Remote,N
+617,LEADERSHIP PREP SCHOOL,61804,I,Charter Schools,21,Suburb-Large,Y
+618,LEAKEY ISD,193902,H,Rural,43,Rural-Remote,N
+619,LEANDER ISD,246913,B,Major Suburban,21,Suburb-Large,N
+620,LEARN4LIFE-AUSTIN,227830,,,11,City-Large,Y
+621,LEARY ISD,19914,H,Rural,41,Rural-Fringe,N
+622,LEFORS ISD,90902,H,Rural,42,Rural-Distant,N
+623,LEGACY PREPARATORY,57846,I,Charter Schools,21,Suburb-Large,Y
+624,LEGACY SCHOOL OF SPORT SCIENCES,101874,I,Charter Schools,21,Suburb-Large,Y
+625,LEGACY TRADITIONAL SCHOOLS - TEXAS,15806,I,Charter Schools,11,City-Large,Y
+626,LEGGETT ISD,187906,H,Rural,42,Rural-Distant,N
+627,LEON ISD,145911,H,Rural,43,Rural-Remote,N
+628,LEONARD ISD,74909,H,Rural,42,Rural-Distant,N
+629,LEVELLAND ISD,110902,G,Non-metropolitan Stable,32,Town-Distant,N
+630,LEVERETTS CHAPEL ISD,201904,H,Rural,42,Rural-Distant,N
+631,LEWISVILLE ISD,61902,C,Other Central City,21,Suburb-Large,N
+632,LEXINGTON ISD,144902,D,Other Central City Suburban,43,Rural-Remote,N
+633,LIBERTY HILL ISD,246908,F,Non-metropolitan Fast Growing,41,Rural-Fringe,N
+634,LIBERTY ISD,146906,D,Other Central City Suburban,41,Rural-Fringe,N
+635,LIBERTY-EYLAU ISD,19908,G,Non-metropolitan Stable,13,City-Small,N
+636,LIFE SCHOOL,57807,I,Charter Schools,21,Suburb-Large,Y
+637,LIGHTHOUSE PUBLIC SCHOOLS,15825,I,Charter Schools,11,City-Large,Y
+638,LINDALE ISD,212903,D,Other Central City Suburban,31,Town-Fringe,N
+639,LINDEN-KILDARE CISD,34905,H,Rural,43,Rural-Remote,N
+640,LINDSAY ISD,49907,H,Rural,42,Rural-Distant,N
+641,LINGLEVILLE ISD,72909,H,Rural,42,Rural-Distant,N
+642,LIPAN ISD,111902,H,Rural,43,Rural-Remote,N
+643,LITTLE CYPRESS-MAURICEVILLE CISD,181908,E,Independent Town,22,Suburb-Midsize,N
+644,LITTLE ELM ISD,61914,D,Other Central City Suburban,21,Suburb-Large,N
+645,LITTLEFIELD ISD,140904,G,Non-metropolitan Stable,32,Town-Distant,N
+646,LIVINGSTON ISD,187907,E,Independent Town,41,Rural-Fringe,N
+647,LLANO ISD,150901,G,Non-metropolitan Stable,41,Rural-Fringe,N
+648,LOCKHART ISD,28902,D,Other Central City Suburban,31,Town-Fringe,N
+649,LOCKNEY ISD,77902,H,Rural,43,Rural-Remote,N
+650,LOHN ISD,160905,H,Rural,43,Rural-Remote,N
+651,LOMETA ISD,141902,H,Rural,43,Rural-Remote,N
+652,LONDON ISD,178906,D,Other Central City Suburban,41,Rural-Fringe,N
+653,LONE OAK ISD,116906,D,Other Central City Suburban,42,Rural-Distant,N
+654,LONE STAR LANGUAGE ACADEMY,43802,I,Charter Schools,11,City-Large,Y
+655,LONGVIEW ISD,92903,C,Other Central City,13,City-Small,N
+656,LOOP ISD,83902,H,Rural,43,Rural-Remote,N
+657,LORAINE ISD,168902,H,Rural,42,Rural-Distant,N
+658,LORENA ISD,161907,G,Non-metropolitan Stable,41,Rural-Fringe,N
+659,LORENZO ISD,54902,H,Rural,42,Rural-Distant,N
+660,LOS FRESNOS CISD,31906,D,Other Central City Suburban,22,Suburb-Midsize,N
+661,LOUISE ISD,241906,H,Rural,42,Rural-Distant,N
+662,LOVEJOY ISD,43919,G,Non-metropolitan Stable,21,Suburb-Large,N
+663,LOVELADY ISD,113903,H,Rural,43,Rural-Remote,N
+664,LUBBOCK ISD,152901,C,Other Central City,11,City-Large,N
+665,LUBBOCK-COOPER ISD,152906,D,Other Central City Suburban,41,Rural-Fringe,N
+666,LUEDERS-AVOCA ISD,127905,H,Rural,42,Rural-Distant,N
+667,LUFKIN ISD,3903,E,Independent Town,33,Town-Remote,N
+668,LULING ISD,28903,G,Non-metropolitan Stable,32,Town-Distant,N
+669,LUMBERTON ISD,100907,D,Other Central City Suburban,22,Suburb-Midsize,N
+670,LUMIN EDUCATION,57805,I,Charter Schools,11,City-Large,Y
+671,LYFORD CISD,245902,G,Non-metropolitan Stable,32,Town-Distant,N
+672,LYTLE ISD,7904,G,Non-metropolitan Stable,41,Rural-Fringe,N
+673,MABANK ISD,129905,D,Other Central City Suburban,32,Town-Distant,N
+674,MADISONVILLE CISD,154901,G,Non-metropolitan Stable,32,Town-Distant,N
+675,MAGNOLIA ISD,170906,D,Other Central City Suburban,41,Rural-Fringe,N
+676,MALAKOFF ISD,107906,G,Non-metropolitan Stable,33,Town-Remote,N
+677,MALONE ISD,109908,H,Rural,42,Rural-Distant,N
+678,MALTA ISD,19910,H,Rural,42,Rural-Distant,N
+679,MANARA ACADEMY,57844,I,Charter Schools,11,City-Large,Y
+680,MANOR ISD,227907,B,Major Suburban,41,Rural-Fringe,N
+681,MANSFIELD ISD,220908,B,Major Suburban,21,Suburb-Large,N
+682,MARATHON ISD,22902,H,Rural,43,Rural-Remote,N
+683,MARBLE FALLS ISD,27904,E,Independent Town,32,Town-Distant,N
+684,MARFA ISD,189901,H,Rural,43,Rural-Remote,N
+685,MARION ISD,94904,D,Other Central City Suburban,21,Suburb-Large,N
+686,MARLIN ISD,73903,H,Rural,32,Town-Distant,N
+687,MARSHALL ISD,102902,G,Non-metropolitan Stable,32,Town-Distant,N
+688,MART ISD,161908,H,Rural,42,Rural-Distant,N
+689,MARTINS MILL ISD,234905,H,Rural,42,Rural-Distant,N
+690,MARTINSVILLE ISD,174909,H,Rural,43,Rural-Remote,N
+691,MASON ISD,157901,H,Rural,43,Rural-Remote,N
+692,MATAGORDA ISD,158904,H,Rural,43,Rural-Remote,N
+693,MATHIS ISD,205904,G,Non-metropolitan Stable,32,Town-Distant,N
+694,MAUD ISD,19903,H,Rural,42,Rural-Distant,N
+695,MAY ISD,25905,H,Rural,43,Rural-Remote,N
+696,MAYPEARL ISD,70915,D,Other Central City Suburban,42,Rural-Distant,N
+697,MCALLEN ISD,108906,D,Other Central City Suburban,12,City-Midsize,N
+698,MCCAMEY ISD,231901,H,Rural,43,Rural-Remote,N
+699,MCDADE ISD,11905,H,Rural,42,Rural-Distant,N
+700,MCGREGOR ISD,161909,G,Non-metropolitan Stable,31,Town-Fringe,N
+701,MCKINNEY ISD,43907,D,Other Central City Suburban,22,Suburb-Midsize,N
+702,MCLEAN ISD,90903,H,Rural,43,Rural-Remote,N
+703,MCLEOD ISD,34906,H,Rural,42,Rural-Distant,N
+704,MCMULLEN COUNTY ISD,162904,H,Rural,43,Rural-Remote,N
+705,MEADOW ISD,223902,H,Rural,42,Rural-Distant,N
+706,MEADOWLAND CHARTER DISTRICT,130801,I,Charter Schools,41,Rural-Fringe,Y
+707,MEDINA ISD,10901,H,Rural,43,Rural-Remote,N
+708,MEDINA VALLEY ISD,163908,B,Major Suburban,41,Rural-Fringe,N
+709,MELISSA ISD,43908,F,Non-metropolitan Fast Growing,41,Rural-Fringe,N
+710,MEMPHIS ISD,96904,H,Rural,43,Rural-Remote,N
+711,MENARD ISD,164901,H,Rural,43,Rural-Remote,N
+712,MERCEDES ISD,108907,G,Non-metropolitan Stable,21,Suburb-Large,N
+713,MERIDIAN ISD,18902,H,Rural,43,Rural-Remote,N
+714,MERIDIAN WORLD SCHOOL LLC,246801,I,Charter Schools,12,City-Midsize,Y
+715,MERKEL ISD,221904,D,Other Central City Suburban,42,Rural-Distant,N
+716,MESQUITE ISD,57914,B,Major Suburban,21,Suburb-Large,N
+717,MEXIA ISD,147903,G,Non-metropolitan Stable,33,Town-Remote,N
+718,MEYERPARK ELEMENTARY,101855,I,Charter Schools,11,City-Large,Y
+719,MEYERSVILLE ISD,62906,H,Rural,42,Rural-Distant,N
+720,MIAMI ISD,197902,H,Rural,43,Rural-Remote,N
+721,MIDLAND ACADEMY CHARTER SCHOOL,165802,I,Charter Schools,12,City-Midsize,Y
+722,MIDLAND ISD,165901,C,Other Central City,12,City-Midsize,N
+723,MIDLOTHIAN ISD,70908,C,Other Central City,21,Suburb-Large,N
+724,MIDWAY ISD,39905,H,Rural,42,Rural-Distant,N
+725,MIDWAY ISD,161903,D,Other Central City Suburban,22,Suburb-Midsize,N
+726,MILANO ISD,166903,H,Rural,42,Rural-Distant,N
+727,MILDRED ISD,175910,H,Rural,42,Rural-Distant,N
+728,MILES ISD,200902,H,Rural,42,Rural-Distant,N
+729,MILFORD ISD,70909,H,Rural,42,Rural-Distant,N
+730,MILLER GROVE ISD,112907,H,Rural,43,Rural-Remote,N
+731,MILLSAP ISD,184904,D,Other Central City Suburban,42,Rural-Distant,N
+732,MINEOLA ISD,250903,E,Independent Town,32,Town-Distant,N
+733,MINERAL WELLS ISD,182903,E,Independent Town,32,Town-Distant,N
+734,MISSION CISD,108908,D,Other Central City Suburban,13,City-Small,N
+735,MONAHANS-WICKETT-PYOTE ISD,238902,D,Other Central City Suburban,32,Town-Distant,N
+736,MONTAGUE ISD,169908,H,Rural,42,Rural-Distant,N
+737,MONTE ALTO ISD,108915,G,Non-metropolitan Stable,41,Rural-Fringe,N
+738,MONTESSORI FOR ALL,227826,I,Charter Schools,11,City-Large,Y
+739,MONTGOMERY ISD,170903,D,Other Central City Suburban,41,Rural-Fringe,N
+740,MOODY ISD,161910,H,Rural,42,Rural-Distant,N
+741,MORAN ISD,209902,H,Rural,43,Rural-Remote,N
+742,MORGAN ISD,18903,H,Rural,43,Rural-Remote,N
+743,MORGAN MILL ISD,72910,H,Rural,43,Rural-Remote,N
+744,MORTON ISD,40901,H,Rural,43,Rural-Remote,N
+745,MOTLEY COUNTY ISD,173901,H,Rural,43,Rural-Remote,N
+746,MOULTON ISD,143902,H,Rural,43,Rural-Remote,N
+747,MOUNT CALM ISD,109910,H,Rural,42,Rural-Distant,N
+748,MOUNT ENTERPRISE ISD,201907,H,Rural,43,Rural-Remote,N
+749,MOUNT PLEASANT ISD,225902,E,Independent Town,33,Town-Remote,N
+750,MOUNT VERNON ISD,80901,G,Non-metropolitan Stable,33,Town-Remote,N
+751,MUENSTER ISD,49902,H,Rural,43,Rural-Remote,N
+752,MULESHOE ISD,9901,G,Non-metropolitan Stable,33,Town-Remote,N
+753,MULLIN ISD,167902,H,Rural,43,Rural-Remote,N
+754,MUMFORD ISD,198906,H,Rural,42,Rural-Distant,N
+755,MUNDAY CISD,138903,H,Rural,43,Rural-Remote,N
+756,MURCHISON ISD,107908,H,Rural,42,Rural-Distant,N
+757,NACOGDOCHES ISD,174904,E,Independent Town,33,Town-Remote,N
+758,NATALIA ISD,163903,G,Non-metropolitan Stable,41,Rural-Fringe,N
+759,NAVARRO ISD,94903,G,Non-metropolitan Stable,41,Rural-Fringe,N
+760,NAVASOTA ISD,93904,D,Other Central City Suburban,32,Town-Distant,N
+761,NAZARETH ISD,35903,H,Rural,43,Rural-Remote,N
+762,NECHES ISD,1906,H,Rural,42,Rural-Distant,N
+763,NEDERLAND ISD,123905,D,Other Central City Suburban,22,Suburb-Midsize,N
+764,NEEDVILLE ISD,79906,G,Non-metropolitan Stable,41,Rural-Fringe,N
+765,NEW BOSTON ISD,19905,G,Non-metropolitan Stable,32,Town-Distant,N
+766,NEW BRAUNFELS ISD,46901,D,Other Central City Suburban,13,City-Small,N
+767,NEW CANEY ISD,170908,D,Other Central City Suburban,21,Suburb-Large,N
+768,NEW DEAL ISD,152902,H,Rural,41,Rural-Fringe,N
+769,NEW DIANA ISD,230906,D,Other Central City Suburban,42,Rural-Distant,N
+770,NEW FRONTIERS PUBLIC SCHOOLS INC,15805,I,Charter Schools,11,City-Large,Y
+771,NEW HOME ISD,153905,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+772,NEW SUMMERFIELD ISD,37908,H,Rural,42,Rural-Distant,N
+773,NEW WAVERLY ISD,236901,G,Non-metropolitan Stable,41,Rural-Fringe,N
+774,NEWCASTLE ISD,252902,H,Rural,42,Rural-Distant,N
+775,NEWMAN INTERNATIONAL ACADEMY OF ARLINGTON,220817,I,Charter Schools,11,City-Large,Y
+776,NEWTON ISD,176902,G,Non-metropolitan Stable,43,Rural-Remote,N
+777,NIXON-SMILEY CISD,89903,G,Non-metropolitan Stable,43,Rural-Remote,N
+778,NOCONA ISD,169902,H,Rural,33,Town-Remote,N
+779,NORDHEIM ISD,62902,H,Rural,43,Rural-Remote,N
+780,NORMANGEE ISD,145906,H,Rural,43,Rural-Remote,N
+781,NORTH EAST ISD,15910,A,Major Urban,11,City-Large,N
+782,NORTH HOPKINS ISD,112906,H,Rural,42,Rural-Distant,N
+783,NORTH LAMAR ISD,139911,G,Non-metropolitan Stable,41,Rural-Fringe,N
+784,NORTH TEXAS COLLEGIATE ACADEMY,61802,I,Charter Schools,21,Suburb-Large,Y
+785,NORTH ZULCH ISD,154903,H,Rural,42,Rural-Distant,N
+786,NORTHSIDE ISD,15915,A,Major Urban,11,City-Large,N
+787,NORTHSIDE ISD,244905,H,Rural,42,Rural-Distant,N
+788,NORTHWEST ISD,61911,D,Other Central City Suburban,41,Rural-Fringe,N
+789,NOVA ACADEMY,57809,I,Charter Schools,11,City-Large,Y
+790,NOVA ACADEMY SOUTHEAST,57827,I,Charter Schools,11,City-Large,Y
+791,NUECES CANYON CISD,69902,H,Rural,43,Rural-Remote,N
+792,NURSERY ISD,235904,H,Rural,41,Rural-Fringe,N
+793,NYOS CHARTER SCHOOL,227804,I,Charter Schools,11,City-Large,Y
+794,O'DONNELL ISD,153903,H,Rural,43,Rural-Remote,N
+795,OAKWOOD ISD,145907,H,Rural,43,Rural-Remote,N
+796,ODEM-EDROY ISD,205905,H,Rural,31,Town-Fringe,N
+797,ODYSSEY ACADEMY INC,84802,I,Charter Schools,31,Town-Fringe,Y
+798,OGLESBY ISD,50904,H,Rural,42,Rural-Distant,N
+799,OLFEN ISD,200906,H,Rural,42,Rural-Distant,N
+800,OLNEY ISD,252903,H,Rural,32,Town-Distant,N
+801,OLTON ISD,140905,H,Rural,43,Rural-Remote,N
+802,ONALASKA ISD,187910,G,Non-metropolitan Stable,32,Town-Distant,N
+803,ORANGE GROVE ISD,125903,G,Non-metropolitan Stable,42,Rural-Distant,N
+804,ORANGEFIELD ISD,181905,D,Other Central City Suburban,41,Rural-Fringe,N
+805,ORE CITY ISD,230903,H,Rural,42,Rural-Distant,N
+806,ORENDA CHARTER SCHOOL,14804,I,Charter Schools,41,Rural-Fringe,Y
+807,OVERTON ISD,201908,H,Rural,42,Rural-Distant,N
+808,PADUCAH ISD,51901,H,Rural,43,Rural-Remote,N
+809,PAINT CREEK ISD,104907,H,Rural,42,Rural-Distant,N
+810,PAINT ROCK ISD,48903,H,Rural,43,Rural-Remote,N
+811,PALACIOS ISD,158905,G,Non-metropolitan Stable,33,Town-Remote,N
+812,PALESTINE ISD,1907,E,Independent Town,32,Town-Distant,N
+813,PALMER ISD,70910,D,Other Central City Suburban,41,Rural-Fringe,N
+814,PALO PINTO ISD,182906,H,Rural,42,Rural-Distant,N
+815,PAMPA ISD,90904,G,Non-metropolitan Stable,33,Town-Remote,N
+816,PANHANDLE ISD,33902,H,Rural,42,Rural-Distant,N
+817,PANOLA CHARTER SCHOOL,183801,I,Charter Schools,32,Town-Distant,Y
+818,PANTHER CREEK CISD,42905,H,Rural,43,Rural-Remote,N
+819,PARADISE ISD,249906,G,Non-metropolitan Stable,42,Rural-Distant,N
+820,PARIS ISD,139909,E,Independent Town,33,Town-Remote,N
+821,PASADENA ISD,101917,B,Major Suburban,21,Suburb-Large,N
+822,PATTON SPRINGS ISD,63906,H,Rural,43,Rural-Remote,N
+823,PAWNEE ISD,13902,F,Non-metropolitan Fast Growing,43,Rural-Remote,N
+824,PEARLAND ISD,20908,B,Major Suburban,21,Suburb-Large,N
+825,PEARSALL ISD,82903,G,Non-metropolitan Stable,33,Town-Remote,N
+826,PEASTER ISD,184908,D,Other Central City Suburban,42,Rural-Distant,N
+827,PECOS-BARSTOW-TOYAH ISD,195901,G,Non-metropolitan Stable,33,Town-Remote,N
+828,PEGASUS SCHOOL OF LIBERAL ARTS AND SCIENCES,57802,I,Charter Schools,11,City-Large,Y
+829,PENELOPE ISD,109914,H,Rural,42,Rural-Distant,N
+830,PERRIN-WHITT CISD,119903,H,Rural,43,Rural-Remote,N
+831,PERRYTON ISD,179901,G,Non-metropolitan Stable,33,Town-Remote,N
+832,PETERSBURG ISD,95904,H,Rural,42,Rural-Distant,N
+833,PETROLIA CISD,39903,H,Rural,42,Rural-Distant,N
+834,PETTUS ISD,13903,H,Rural,42,Rural-Distant,N
+835,PEWITT CISD,172905,H,Rural,42,Rural-Distant,N
+836,PFLUGERVILLE ISD,227904,B,Major Suburban,21,Suburb-Large,N
+837,PHARR-SAN JUAN-ALAMO ISD,108909,C,Other Central City,21,Suburb-Large,N
+838,PILOT POINT ISD,61903,G,Non-metropolitan Stable,31,Town-Fringe,N
+839,PINE TREE ISD,92904,D,Other Central City Suburban,13,City-Small,N
+840,PINEYWOODS COMMUNITY ACADEMY,3801,I,Charter Schools,33,Town-Remote,Y
+841,PIONEER TECHNOLOGY & ARTS ACADEMY,57850,I,Charter Schools,41,Rural-Fringe,Y
+842,PITTSBURG ISD,32902,G,Non-metropolitan Stable,32,Town-Distant,N
+843,PLAINS ISD,251902,H,Rural,43,Rural-Remote,N
+844,PLAINVIEW ISD,95905,E,Independent Town,33,Town-Remote,N
+845,PLANO ISD,43910,B,Major Suburban,11,City-Large,N
+846,PLEASANT GROVE ISD,19912,G,Non-metropolitan Stable,13,City-Small,N
+847,PLEASANTON ISD,7905,E,Independent Town,32,Town-Distant,N
+848,PLEMONS-STINNETT-PHILLIPS CISD,117904,H,Rural,42,Rural-Distant,N
+849,POINT ISABEL ISD,31909,D,Other Central City Suburban,32,Town-Distant,N
+850,PONDER ISD,61906,G,Non-metropolitan Stable,42,Rural-Distant,N
+851,POOLVILLE ISD,184901,H,Rural,42,Rural-Distant,N
+852,POR VIDA ACADEMY,15801,I,Charter Schools,11,City-Large,Y
+853,PORT ARANSAS ISD,178908,H,Rural,42,Rural-Distant,N
+854,PORT ARTHUR ISD,123907,D,Other Central City Suburban,13,City-Small,N
+855,PORT NECHES-GROVES ISD,123908,D,Other Central City Suburban,22,Suburb-Midsize,N
+856,POSITIVE SOLUTIONS CHARTER SCHOOL,15814,I,Charter Schools,11,City-Large,Y
+857,POST ISD,85902,H,Rural,32,Town-Distant,N
+858,POTEET ISD,7906,G,Non-metropolitan Stable,32,Town-Distant,N
+859,POTH ISD,247904,G,Non-metropolitan Stable,42,Rural-Distant,N
+860,POTTSBORO ISD,91913,D,Other Central City Suburban,23,Suburb-Small,N
+861,PRAIRIE LEA ISD,28906,H,Rural,42,Rural-Distant,N
+862,PRAIRIE VALLEY ISD,169909,H,Rural,42,Rural-Distant,N
+863,PRAIRILAND ISD,139912,G,Non-metropolitan Stable,42,Rural-Distant,N
+864,PRELUDE PREPARATORY CHARTER SCHOOL,15843,I,Charter Schools,11,City-Large,Y
+865,PREMIER HIGH SCHOOLS,72801,I,Charter Schools,21,Suburb-Large,Y
+866,PREMONT ISD,125905,F,Non-metropolitan Fast Growing,33,Town-Remote,N
+867,PRESIDIO ISD,189902,G,Non-metropolitan Stable,33,Town-Remote,N
+868,PRIDDY ISD,167904,H,Rural,43,Rural-Remote,N
+869,PRINCETON ISD,43911,F,Non-metropolitan Fast Growing,22,Suburb-Midsize,N
+870,PRINGLE-MORSE CISD,98903,H,Rural,43,Rural-Remote,N
+871,PRIORITY CHARTER SCHOOLS,14803,I,Charter Schools,41,Rural-Fringe,Y
+872,PROGRESO ISD,108910,G,Non-metropolitan Stable,21,Suburb-Large,N
+873,PROMESA ACADEMY CHARTER SCHOOL,15839,I,Charter Schools,11,City-Large,Y
+874,PROMISE COMMUNITY SCHOOL,101853,I,Charter Schools,11,City-Large,Y
+875,PROSPER ISD,43912,D,Other Central City Suburban,41,Rural-Fringe,N
+876,QUANAH ISD,99903,H,Rural,43,Rural-Remote,N
+877,QUEEN CITY ISD,34907,G,Non-metropolitan Stable,32,Town-Distant,N
+878,QUINLAN ISD,116908,D,Other Central City Suburban,41,Rural-Fringe,N
+879,QUITMAN ISD,250904,E,Independent Town,32,Town-Distant,N
+880,RAINS ISD,190903,G,Non-metropolitan Stable,42,Rural-Distant,N
+881,RALLS ISD,54903,H,Rural,42,Rural-Distant,N
+882,RAMIREZ CSD,66005,H,Rural,43,Rural-Remote,N
+883,RANCH ACADEMY,234801,I,Charter Schools,42,Rural-Distant,Y
+884,RANDOLPH FIELD ISD,15906,D,Other Central City Suburban,41,Rural-Fringe,N
+885,RANGER ISD,67907,H,Rural,43,Rural-Remote,N
+886,RANKIN ISD,231902,H,Rural,43,Rural-Remote,N
+887,RAPOPORT ACADEMY PUBLIC SCHOOL,161802,I,Charter Schools,12,City-Midsize,Y
+888,RAUL YZAGUIRRE SCHOOLS FOR SUCCESS,101806,I,Charter Schools,11,City-Large,Y
+889,RAVEN SCHOOL,236801,I,Charter Schools,42,Rural-Distant,Y
+890,RAYMONDVILLE ISD,245903,D,Other Central City Suburban,32,Town-Distant,N
+891,REAGAN COUNTY ISD,192901,H,Rural,33,Town-Remote,N
+892,RED LICK ISD,19911,H,Rural,23,Suburb-Small,N
+893,RED OAK ISD,70911,D,Other Central City Suburban,21,Suburb-Large,N
+894,REDWATER ISD,19906,G,Non-metropolitan Stable,42,Rural-Distant,N
+895,REFUGIO ISD,196903,H,Rural,32,Town-Distant,N
+896,REVE PREPARATORY CHARTER SCHOOL,101876,I,Charter Schools,11,City-Large,Y
+897,RICARDO ISD,137902,H,Rural,42,Rural-Distant,N
+898,RICE CISD,45903,G,Non-metropolitan Stable,42,Rural-Distant,N
+899,RICE ISD,175911,G,Non-metropolitan Stable,42,Rural-Distant,N
+900,RICHARD MILBURN ALTER HIGH SCHOOL - KILLEEN,14801,I,Charter Schools,12,City-Midsize,Y
+901,RICHARDS ISD,93905,H,Rural,42,Rural-Distant,N
+902,RICHARDSON ISD,57916,B,Major Suburban,11,City-Large,N
+903,RICHLAND COLLEGIATE HIGH SCHOOL,57840,I,Charter Schools,11,City-Large,Y
+904,RICHLAND SPRINGS ISD,206902,H,Rural,43,Rural-Remote,N
+905,RIESEL ISD,161912,H,Rural,42,Rural-Distant,N
+906,RIO GRANDE CITY GRULLA ISD,214901,D,Other Central City Suburban,41,Rural-Fringe,N
+907,RIO HONDO ISD,31911,G,Non-metropolitan Stable,41,Rural-Fringe,N
+908,RIO VISTA ISD,126907,H,Rural,42,Rural-Distant,N
+909,RISE ACADEMY,152802,I,Charter Schools,11,City-Large,Y
+910,RISING STAR ISD,67908,H,Rural,43,Rural-Remote,N
+911,RIVER ROAD ISD,188902,D,Other Central City Suburban,22,Suburb-Midsize,N
+912,RIVERCREST ISD,194903,H,Rural,43,Rural-Remote,N
+913,RIVIERA ISD,137903,H,Rural,43,Rural-Remote,N
+914,ROBERT LEE ISD,41902,H,Rural,42,Rural-Distant,N
+915,ROBINSON ISD,161922,D,Other Central City Suburban,22,Suburb-Midsize,N
+916,ROBSTOWN ISD,178909,G,Non-metropolitan Stable,31,Town-Fringe,N
+917,ROBY CISD,76903,H,Rural,43,Rural-Remote,N
+918,ROCHELLE ISD,160904,H,Rural,42,Rural-Distant,N
+919,ROCKDALE ISD,166904,E,Independent Town,32,Town-Distant,N
+920,ROCKETSHIP PUBLIC SCHOOLS,220820,,,11,City-Large,Y
+921,ROCKSPRINGS ISD,69901,H,Rural,43,Rural-Remote,N
+922,ROCKWALL ISD,199901,C,Other Central City,21,Suburb-Large,N
+923,ROGERS ISD,14907,G,Non-metropolitan Stable,42,Rural-Distant,N
+924,ROMA ISD,214903,G,Non-metropolitan Stable,41,Rural-Fringe,N
+925,ROOSEVELT ISD,152908,D,Other Central City Suburban,42,Rural-Distant,N
+926,ROPES ISD,110905,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+927,ROSCOE COLLEGIATE ISD,177901,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+928,ROSEBUD-LOTT ISD,73905,H,Rural,42,Rural-Distant,N
+929,ROTAN ISD,76904,H,Rural,43,Rural-Remote,N
+930,ROUND ROCK ISD,246909,B,Major Suburban,12,City-Midsize,N
+931,ROUND TOP-CARMINE ISD,75908,H,Rural,43,Rural-Remote,N
+932,ROYAL ISD,237905,G,Non-metropolitan Stable,41,Rural-Fringe,N
+933,ROYAL PUBLIC SCHOOLS,15842,I,Charter Schools,11,City-Large,Y
+934,ROYSE CITY ISD,199902,D,Other Central City Suburban,41,Rural-Fringe,N
+935,RULE ISD,104903,H,Rural,42,Rural-Distant,N
+936,RUNGE ISD,128903,H,Rural,42,Rural-Distant,N
+937,RUSK ISD,37907,G,Non-metropolitan Stable,41,Rural-Fringe,N
+938,S AND S CISD,91914,D,Other Central City Suburban,41,Rural-Fringe,N
+939,SABINAL ISD,232902,H,Rural,43,Rural-Remote,N
+940,SABINE ISD,92906,D,Other Central City Suburban,41,Rural-Fringe,N
+941,SABINE PASS ISD,123913,H,Rural,42,Rural-Distant,N
+942,SAINT JO ISD,169911,H,Rural,43,Rural-Remote,N
+943,SALADO ISD,14908,D,Other Central City Suburban,42,Rural-Distant,N
+944,SALTILLO ISD,112909,H,Rural,42,Rural-Distant,N
+945,SAM HOUSTON STATE UNIVERSITY CHARTER SCHOOL,236802,I,Charter Schools,21,Suburb-Large,Y
+946,SAM RAYBURN ISD,74917,H,Rural,42,Rural-Distant,N
+947,SAN ANGELO ISD,226903,C,Other Central City,13,City-Small,N
+948,SAN ANTONIO ISD,15907,A,Major Urban,11,City-Large,N
+949,SAN ANTONIO PREPARATORY SCHOOLS,15840,I,Charter Schools,11,City-Large,Y
+950,SAN AUGUSTINE ISD,203901,H,Rural,43,Rural-Remote,N
+951,SAN BENITO CISD,31912,D,Other Central City Suburban,22,Suburb-Midsize,N
+952,SAN DIEGO ISD,66902,G,Non-metropolitan Stable,32,Town-Distant,N
+953,SAN ELIZARIO ISD,71904,B,Major Suburban,21,Suburb-Large,N
+954,SAN FELIPE-DEL RIO CISD,233901,E,Independent Town,33,Town-Remote,N
+955,SAN ISIDRO ISD,214902,H,Rural,42,Rural-Distant,N
+956,SAN MARCOS CISD,105902,D,Other Central City Suburban,13,City-Small,N
+957,SAN PERLITA ISD,245904,H,Rural,42,Rural-Distant,N
+958,SAN SABA ISD,206901,H,Rural,33,Town-Remote,N
+959,SAN VICENTE ISD,22903,H,Rural,43,Rural-Remote,N
+960,SANDS CISD,58909,H,Rural,43,Rural-Remote,N
+961,SANFORD-FRITCH ISD,117903,H,Rural,32,Town-Distant,N
+962,SANGER ISD,61908,G,Non-metropolitan Stable,41,Rural-Fringe,N
+963,SANTA ANNA ISD,42903,H,Rural,42,Rural-Distant,N
+964,SANTA FE ISD,84909,D,Other Central City Suburban,22,Suburb-Midsize,N
+965,SANTA GERTRUDIS ISD,137904,H,Rural,32,Town-Distant,N
+966,SANTA MARIA ISD,31913,H,Rural,41,Rural-Fringe,N
+967,SANTA ROSA ISD,31914,H,Rural,22,Suburb-Midsize,N
+968,SANTO ISD,182904,H,Rural,43,Rural-Remote,N
+969,SAVOY ISD,74911,H,Rural,42,Rural-Distant,N
+970,SCHERTZ-CIBOLO-U CITY ISD,94902,C,Other Central City,21,Suburb-Large,N
+971,SCHLEICHER ISD,207901,H,Rural,43,Rural-Remote,N
+972,SCHOOL OF SCIENCE AND TECHNOLOGY,15827,I,Charter Schools,11,City-Large,Y
+973,SCHOOL OF SCIENCE AND TECHNOLOGY DISCOVERY,15831,I,Charter Schools,41,Rural-Fringe,Y
+974,SCHULENBURG ISD,75903,H,Rural,33,Town-Remote,N
+975,SCURRY-ROSSER ISD,129910,G,Non-metropolitan Stable,42,Rural-Distant,N
+976,SEAGRAVES ISD,83901,H,Rural,43,Rural-Remote,N
+977,SEALY ISD,8902,E,Independent Town,41,Rural-Fringe,N
+978,SEASHORE CHARTER SCHOOLS,178808,I,Charter Schools,11,City-Large,Y
+979,SEGUIN ISD,94901,D,Other Central City Suburban,31,Town-Fringe,N
+980,SEMINOLE ISD,83903,G,Non-metropolitan Stable,33,Town-Remote,N
+981,SER-NINOS CHARTER SCHOOL,101802,I,Charter Schools,11,City-Large,Y
+982,SEYMOUR ISD,12901,H,Rural,43,Rural-Remote,N
+983,SHALLOWATER ISD,152909,D,Other Central City Suburban,31,Town-Fringe,N
+984,SHAMROCK ISD,242902,H,Rural,43,Rural-Remote,N
+985,SHARYLAND ISD,108911,D,Other Central City Suburban,13,City-Small,N
+986,SHELBYVILLE ISD,210903,H,Rural,42,Rural-Distant,N
+987,SHELDON ISD,101924,B,Major Suburban,21,Suburb-Large,N
+988,SHEPHERD ISD,204904,D,Other Central City Suburban,42,Rural-Distant,N
+989,SHERMAN ISD,91906,C,Other Central City,13,City-Small,N
+990,SHINER ISD,143903,H,Rural,42,Rural-Distant,N
+991,SIDNEY ISD,47905,H,Rural,42,Rural-Distant,N
+992,SIERRA BLANCA ISD,115902,H,Rural,43,Rural-Remote,N
+993,SILSBEE ISD,100904,G,Non-metropolitan Stable,31,Town-Fringe,N
+994,SILVERTON ISD,23902,H,Rural,43,Rural-Remote,N
+995,SIMMS ISD,19909,H,Rural,42,Rural-Distant,N
+996,SINTON ISD,205906,G,Non-metropolitan Stable,32,Town-Distant,N
+997,SIVELLS BEND ISD,49909,H,Rural,43,Rural-Remote,N
+998,SKIDMORE-TYNAN ISD,13905,H,Rural,42,Rural-Distant,N
+999,SLATON ISD,152903,G,Non-metropolitan Stable,31,Town-Fringe,N
+1000,SLIDELL ISD,249908,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+1001,SLOCUM ISD,1909,H,Rural,43,Rural-Remote,N
+1002,SMITHVILLE ISD,11904,D,Other Central City Suburban,41,Rural-Fringe,N
+1003,SMYER ISD,110906,H,Rural,42,Rural-Distant,N
+1004,SNOOK ISD,26903,H,Rural,42,Rural-Distant,N
+1005,SNYDER ISD,208902,G,Non-metropolitan Stable,33,Town-Remote,N
+1006,SOCORRO ISD,71909,A,Major Urban,11,City-Large,N
+1007,SOMERSET ISD,15909,G,Non-metropolitan Stable,41,Rural-Fringe,N
+1008,SOMERVILLE ISD,26902,H,Rural,42,Rural-Distant,N
+1009,SONORA ISD,218901,H,Rural,33,Town-Remote,N
+1010,SOUTH SAN ANTONIO ISD,15908,B,Major Suburban,11,City-Large,N
+1011,SOUTH TEXAS ISD,31916,G,Non-metropolitan Stable,41,Rural-Fringe,N
+1012,SOUTHLAND ISD,85903,H,Rural,42,Rural-Distant,N
+1013,SOUTHSIDE ISD,15917,B,Major Suburban,41,Rural-Fringe,N
+1014,SOUTHWEST ISD,15912,B,Major Suburban,41,Rural-Fringe,N
+1015,SOUTHWEST PREPARATORY SCHOOL,15807,I,Charter Schools,11,City-Large,Y
+1016,SOUTHWEST SCHOOL,101838,I,Charter Schools,11,City-Large,Y
+1017,SPEARMAN ISD,98904,H,Rural,33,Town-Remote,N
+1018,SPLENDORA ISD,170907,D,Other Central City Suburban,41,Rural-Fringe,N
+1019,SPRING BRANCH ISD,101920,B,Major Suburban,11,City-Large,N
+1020,SPRING CREEK ISD,117907,H,Rural,42,Rural-Distant,N
+1021,SPRING HILL ISD,92907,D,Other Central City Suburban,13,City-Small,N
+1022,SPRING ISD,101919,B,Major Suburban,21,Suburb-Large,N
+1023,SPRINGLAKE-EARTH ISD,140907,H,Rural,43,Rural-Remote,N
+1024,SPRINGTOWN ISD,184902,D,Other Central City Suburban,31,Town-Fringe,N
+1025,SPUR ISD,63903,H,Rural,43,Rural-Remote,N
+1026,SPURGER ISD,229905,H,Rural,43,Rural-Remote,N
+1027,ST ANTHONY SCHOOL,57836,I,Charter Schools,11,City-Large,Y
+1028,ST MARY'S ACADEMY CHARTER SCHOOL,13801,I,Charter Schools,32,Town-Distant,Y
+1029,STAFFORD MSD,79910,G,Non-metropolitan Stable,21,Suburb-Large,N
+1030,STAMFORD ISD,127906,H,Rural,32,Town-Distant,N
+1031,STANTON ISD,156902,D,Other Central City Suburban,42,Rural-Distant,N
+1032,STEP CHARTER SCHOOL,101859,I,Charter Schools,11,City-Large,Y
+1033,STEPHEN F AUSTIN STATE UNIVERSITY CHARTER SCHOOL,174801,I,Charter Schools,33,Town-Remote,Y
+1034,STEPHENVILLE ISD,72903,E,Independent Town,33,Town-Remote,N
+1035,STERLING CITY ISD,216901,H,Rural,43,Rural-Remote,N
+1036,STOCKDALE ISD,247906,H,Rural,42,Rural-Distant,N
+1037,STRATFORD ISD,211902,H,Rural,43,Rural-Remote,N
+1038,STRAWN ISD,182905,H,Rural,43,Rural-Remote,N
+1039,SUDAN ISD,140908,H,Rural,43,Rural-Remote,N
+1040,SULPHUR BLUFF ISD,112910,H,Rural,43,Rural-Remote,N
+1041,SULPHUR SPRINGS ISD,112901,E,Independent Town,33,Town-Remote,N
+1042,SUNDOWN ISD,110907,H,Rural,42,Rural-Distant,N
+1043,SUNNYVALE ISD,57919,D,Other Central City Suburban,41,Rural-Fringe,N
+1044,SUNRAY COLLEGIATE ISD,171902,H,Rural,42,Rural-Distant,N
+1045,SWEENY ISD,20906,G,Non-metropolitan Stable,32,Town-Distant,N
+1046,SWEET HOME ISD,143905,H,Rural,42,Rural-Distant,N
+1047,SWEETWATER ISD,177902,G,Non-metropolitan Stable,32,Town-Distant,N
+1048,TAFT ISD,205907,G,Non-metropolitan Stable,31,Town-Fringe,N
+1049,TAHOKA ISD,153904,H,Rural,32,Town-Distant,N
+1050,TARKINGTON ISD,146907,D,Other Central City Suburban,42,Rural-Distant,N
+1051,TATUM ISD,201910,D,Other Central City Suburban,42,Rural-Distant,N
+1052,TAYLOR ISD,246911,G,Non-metropolitan Stable,31,Town-Fringe,N
+1053,TEAGUE ISD,81904,G,Non-metropolitan Stable,33,Town-Remote,N
+1054,TEKOA ACADEMY OF ACCELERATED STUDIES STEM SCHOOL,123803,I,Charter Schools,13,City-Small,Y
+1055,TEMPLE ISD,14909,D,Other Central City Suburban,13,City-Small,N
+1056,TENAHA ISD,210904,H,Rural,42,Rural-Distant,N
+1057,TERLINGUA CSD,22004,H,Rural,43,Rural-Remote,N
+1058,TERRELL COUNTY ISD,222901,H,Rural,43,Rural-Remote,N
+1059,TERRELL ISD,129906,D,Other Central City Suburban,32,Town-Distant,N
+1060,TEXANS CAN ACADEMIES,57804,I,Charter Schools,11,City-Large,Y
+1061,TEXARKANA ISD,19907,E,Independent Town,13,City-Small,N
+1062,TEXAS CITY ISD,84906,D,Other Central City Suburban,22,Suburb-Midsize,N
+1063,TEXAS COLLEGE PREPARATORY ACADEMIES,221801,I,Charter Schools,21,Suburb-Large,Y
+1064,TEXAS EMPOWERMENT ACADEMY,227805,I,Charter Schools,11,City-Large,Y
+1065,TEXAS JUVENILE JUSTICE DEPARTMENT,227622,,,33,Town-Remote,N
+1066,TEXAS LEADERSHIP PUBLIC SCHOOLS,226801,I,Charter Schools,13,City-Small,Y
+1067,TEXAS PREPARATORY SCHOOL,105802,I,Charter Schools,13,City-Small,Y
+1068,TEXAS SCH FOR THE BLIND & VISUALLY IMPAIRED,227905,,,11,City-Large,N
+1069,TEXAS SCH FOR THE DEAF,227906,,,11,City-Large,N
+1070,TEXAS SCHOOL OF THE ARTS,220814,I,Charter Schools,21,Suburb-Large,Y
+1071,TEXAS SERENITY ACADEMY,170801,I,Charter Schools,21,Suburb-Large,Y
+1072,TEXAS TECH UNIVERSITY K-12,152504,D,Other Central City Suburban,11,City-Large,N
+1073,TEXHOMA ISD,211901,H,Rural,43,Rural-Remote,N
+1074,TEXLINE ISD,56902,H,Rural,43,Rural-Remote,N
+1075,THE EXCEL CENTER - FOR ADULTS,227827,I,Charter Schools,11,City-Large,Y
+1076,THE GATHERING PLACE,15841,I,Charter Schools,11,City-Large,Y
+1077,THE LAWSON ACADEMY,101864,I,Charter Schools,11,City-Large,Y
+1078,THE PRO-VISION ACADEMY,101868,I,Charter Schools,11,City-Large,Y
+1079,THE RHODES SCHOOL FOR PERFORMING ARTS,101861,I,Charter Schools,21,Suburb-Large,Y
+1080,THE VARNETT PUBLIC SCHOOL,101814,I,Charter Schools,11,City-Large,Y
+1081,THORNDALE ISD,166905,H,Rural,42,Rural-Distant,N
+1082,THRALL ISD,246912,H,Rural,42,Rural-Distant,N
+1083,THREE RIVERS ISD,149902,H,Rural,43,Rural-Remote,N
+1084,THREE WAY ISD,72901,H,Rural,42,Rural-Distant,N
+1085,THRIVE CENTER FOR SUCCESS,170802,,,22,Suburb-Midsize,Y
+1086,THROCKMORTON COLLEGIATE ISD,224901,H,Rural,43,Rural-Remote,N
+1087,TIDEHAVEN ISD,158902,G,Non-metropolitan Stable,42,Rural-Distant,N
+1088,TIMPSON ISD,210905,H,Rural,43,Rural-Remote,N
+1089,TIOGA ISD,91907,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+1090,TOLAR ISD,111903,H,Rural,42,Rural-Distant,N
+1091,TOM BEAN ISD,91918,H,Rural,42,Rural-Distant,N
+1092,TOMBALL ISD,101921,B,Major Suburban,21,Suburb-Large,N
+1093,TORNILLO ISD,71908,G,Non-metropolitan Stable,41,Rural-Fringe,N
+1094,TREETOPS SCHOOL INTERNATIONAL,220801,I,Charter Schools,11,City-Large,Y
+1095,TRENT ISD,221905,H,Rural,42,Rural-Distant,N
+1096,TRENTON ISD,74912,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+1097,TRINIDAD ISD,107907,H,Rural,42,Rural-Distant,N
+1098,TRINITY BASIN PREPARATORY,57813,I,Charter Schools,11,City-Large,Y
+1099,TRINITY CHARTER SCHOOL,46802,I,Charter Schools,41,Rural-Fringe,Y
+1100,TRINITY ISD,228903,G,Non-metropolitan Stable,41,Rural-Fringe,N
+1101,TRIUMPH PUBLIC HIGH SCHOOLS-EL PASO,71803,I,Charter Schools,11,City-Large,Y
+1102,TRIUMPH PUBLIC HIGH SCHOOLS-LAREDO,240801,I,Charter Schools,11,City-Large,Y
+1103,TRIUMPH PUBLIC HIGH SCHOOLS-LUBBOCK,152803,I,Charter Schools,11,City-Large,Y
+1104,TRIUMPH PUBLIC HIGH SCHOOLS-RIO GRANDE VALLEY,108804,I,Charter Schools,22,Suburb-Midsize,Y
+1105,TRIVIUM ACADEMY,61805,I,Charter Schools,21,Suburb-Large,Y
+1106,TROUP ISD,212904,G,Non-metropolitan Stable,42,Rural-Distant,N
+1107,TROY ISD,14910,G,Non-metropolitan Stable,41,Rural-Fringe,N
+1108,TULIA ISD,219903,G,Non-metropolitan Stable,33,Town-Remote,N
+1109,TULOSO-MIDWAY ISD,178912,D,Other Central City Suburban,11,City-Large,N
+1110,TURKEY-QUITAQUE ISD,96905,H,Rural,43,Rural-Remote,N
+1111,TWO DIMENSIONS PREPARATORY ACADEMY,101840,I,Charter Schools,21,Suburb-Large,Y
+1112,TYLER ISD,212905,C,Other Central City,12,City-Midsize,N
+1113,UME PREPARATORY ACADEMY,57845,I,Charter Schools,41,Rural-Fringe,Y
+1114,UNION GROVE ISD,230908,H,Rural,41,Rural-Fringe,N
+1115,UNION HILL ISD,230904,H,Rural,42,Rural-Distant,N
+1116,UNITED ISD,240903,C,Other Central City,11,City-Large,N
+1117,UNIVERSAL ACADEMY,57808,I,Charter Schools,21,Suburb-Large,Y
+1118,UNIVERSITY OF TEXAS AT AUSTIN H S,227506,B,Major Suburban,11,City-Large,N
+1119,UNIVERSITY OF TEXAS ELEMENTARY CHARTER SCHOOL,227819,I,Charter Schools,11,City-Large,Y
+1120,UNIVERSITY OF TEXAS UNIVERSITY CHARTER SCHOOL,227806,I,Charter Schools,11,City-Large,Y
+1121,UPLIFT EDUCATION,57803,I,Charter Schools,11,City-Large,Y
+1122,UT TYLER UNIVERSITY ACADEMY,212804,I,Charter Schools,12,City-Midsize,Y
+1123,UTOPIA ISD,232904,H,Rural,43,Rural-Remote,N
+1124,UTPB STEM ACADEMY,68803,I,Charter Schools,12,City-Midsize,Y
+1125,UVALDE CISD,232903,G,Non-metropolitan Stable,33,Town-Remote,N
+1126,VALENTINE ISD,122902,H,Rural,43,Rural-Remote,N
+1127,VALERE PUBLIC SCHOOLS,227824,I,Charter Schools,11,City-Large,Y
+1128,VALLEY MILLS ISD,18904,H,Rural,42,Rural-Distant,N
+1129,VALLEY VIEW ISD,49903,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+1130,VALLEY VIEW ISD,108916,D,Other Central City Suburban,21,Suburb-Large,N
+1131,VALOR PUBLIC SCHOOLS,227829,I,Charter Schools,21,Suburb-Large,Y
+1132,VAN ALSTYNE ISD,91908,D,Other Central City Suburban,31,Town-Fringe,N
+1133,VAN ISD,234906,D,Other Central City Suburban,32,Town-Distant,N
+1134,VAN VLECK ISD,158906,G,Non-metropolitan Stable,41,Rural-Fringe,N
+1135,VANGUARD ACADEMY,108808,I,Charter Schools,21,Suburb-Large,Y
+1136,VEGA ISD,180902,H,Rural,43,Rural-Remote,N
+1137,VENUS ISD,126908,D,Other Central City Suburban,31,Town-Fringe,N
+1138,VERIBEST ISD,226908,H,Rural,42,Rural-Distant,N
+1139,VERNON ISD,244903,G,Non-metropolitan Stable,33,Town-Remote,N
+1140,VICTORIA ISD,235902,E,Independent Town,13,City-Small,N
+1141,VIDOR ISD,181907,D,Other Central City Suburban,22,Suburb-Midsize,N
+1142,VILLAGE TECH SCHOOLS,57847,I,Charter Schools,21,Suburb-Large,Y
+1143,VISTA DEL FUTURO CHARTER SCHOOL,71809,I,Charter Schools,11,City-Large,Y
+1144,VYSEHRAD ISD,143904,H,Rural,43,Rural-Remote,N
+1145,WACO CHARTER SCHOOL,161801,I,Charter Schools,12,City-Midsize,Y
+1146,WACO ISD,161914,C,Other Central City,12,City-Midsize,N
+1147,WAELDER ISD,89905,H,Rural,43,Rural-Remote,N
+1148,WALCOTT ISD,59902,H,Rural,43,Rural-Remote,N
+1149,WALL ISD,226906,D,Other Central City Suburban,41,Rural-Fringe,N
+1150,WALLER ISD,237904,E,Independent Town,42,Rural-Distant,N
+1151,WALNUT BEND ISD,49908,H,Rural,42,Rural-Distant,N
+1152,WALNUT SPRINGS ISD,18905,H,Rural,43,Rural-Remote,N
+1153,WARREN ISD,229904,G,Non-metropolitan Stable,42,Rural-Distant,N
+1154,WASKOM ISD,102903,H,Rural,42,Rural-Distant,N
+1155,WATER VALLEY ISD,226905,H,Rural,42,Rural-Distant,N
+1156,WAXAHACHIE FAITH FAMILY ACADEMY,70801,I,Charter Schools,11,City-Large,Y
+1157,WAXAHACHIE ISD,70912,C,Other Central City,21,Suburb-Large,N
+1158,WAYSIDE SCHOOLS,227803,I,Charter Schools,11,City-Large,Y
+1159,WEATHERFORD ISD,184903,C,Other Central City,31,Town-Fringe,N
+1160,WEBB CISD,240904,H,Rural,43,Rural-Remote,N
+1161,WEIMAR ISD,45905,H,Rural,42,Rural-Distant,N
+1162,WELLINGTON ISD,44902,H,Rural,43,Rural-Remote,N
+1163,WELLMAN-UNION CISD,223904,H,Rural,42,Rural-Distant,N
+1164,WELLS ISD,37909,H,Rural,42,Rural-Distant,N
+1165,WESLACO ISD,108913,D,Other Central City Suburban,21,Suburb-Large,N
+1166,WEST HARDIN COUNTY CISD,100908,H,Rural,42,Rural-Distant,N
+1167,WEST ISD,161916,G,Non-metropolitan Stable,41,Rural-Fringe,N
+1168,WEST ORANGE-COVE CISD,181906,G,Non-metropolitan Stable,22,Suburb-Midsize,N
+1169,WEST OSO ISD,178915,D,Other Central City Suburban,11,City-Large,N
+1170,WEST RUSK COUNTY CONSOLIDATED ISD,201914,G,Non-metropolitan Stable,42,Rural-Distant,N
+1171,WEST SABINE ISD,202905,H,Rural,43,Rural-Remote,N
+1172,WESTBROOK ISD,168903,H,Rural,42,Rural-Distant,N
+1173,WESTHOFF ISD,62905,H,Rural,43,Rural-Remote,N
+1174,WESTLAKE ACADEMY CHARTER SCHOOL,220810,I,Charter Schools,41,Rural-Fringe,Y
+1175,WESTPHALIA ISD,73904,H,Rural,42,Rural-Distant,N
+1176,WESTWOOD ISD,1908,G,Non-metropolitan Stable,32,Town-Distant,N
+1177,WHARTON ISD,241904,G,Non-metropolitan Stable,32,Town-Distant,N
+1178,WHEELER ISD,242903,H,Rural,43,Rural-Remote,N
+1179,WHITE DEER ISD,33904,H,Rural,43,Rural-Remote,N
+1180,WHITE OAK ISD,92908,D,Other Central City Suburban,23,Suburb-Small,N
+1181,WHITE SETTLEMENT ISD,220920,B,Major Suburban,41,Rural-Fringe,N
+1182,WHITEFACE CISD,40902,H,Rural,43,Rural-Remote,N
+1183,WHITEHOUSE ISD,212906,D,Other Central City Suburban,22,Suburb-Midsize,N
+1184,WHITESBORO ISD,91909,D,Other Central City Suburban,32,Town-Distant,N
+1185,WHITEWRIGHT ISD,91910,H,Rural,42,Rural-Distant,N
+1186,WHITHARRAL ISD,110908,H,Rural,42,Rural-Distant,N
+1187,WHITNEY ISD,109911,E,Independent Town,42,Rural-Distant,N
+1188,WICHITA FALLS ISD,243905,C,Other Central City,12,City-Midsize,N
+1189,WILDORADO ISD,180904,H,Rural,42,Rural-Distant,N
+1190,WILLIS ISD,170904,D,Other Central City Suburban,41,Rural-Fringe,N
+1191,WILLS POINT ISD,234907,E,Independent Town,32,Town-Distant,N
+1192,WILSON ISD,153907,H,Rural,42,Rural-Distant,N
+1193,WIMBERLEY ISD,105905,G,Non-metropolitan Stable,41,Rural-Fringe,N
+1194,WINDHAM SCHOOL DISTRICT,236903,,,32,Town-Distant,N
+1195,WINDTHORST ISD,5904,F,Non-metropolitan Fast Growing,42,Rural-Distant,N
+1196,WINFREE ACADEMY CHARTER SCHOOLS,57828,I,Charter Schools,21,Suburb-Large,Y
+1197,WINK-LOVING ISD,248902,H,Rural,42,Rural-Distant,N
+1198,WINNSBORO ISD,250907,E,Independent Town,32,Town-Distant,N
+1199,WINONA ISD,212910,D,Other Central City Suburban,41,Rural-Fringe,N
+1200,WINTERS ISD,200904,H,Rural,32,Town-Distant,N
+1201,WODEN ISD,174906,H,Rural,42,Rural-Distant,N
+1202,WOLFE CITY ISD,116909,H,Rural,43,Rural-Remote,N
+1203,WOODSBORO ISD,196902,H,Rural,42,Rural-Distant,N
+1204,WOODSON ISD,224902,H,Rural,43,Rural-Remote,N
+1205,WOODVILLE ISD,229903,G,Non-metropolitan Stable,33,Town-Remote,N
+1206,WORTHAM ISD,81905,H,Rural,42,Rural-Distant,N
+1207,WYLIE ISD,43914,D,Other Central City Suburban,21,Suburb-Large,N
+1208,WYLIE ISD,221912,D,Other Central City Suburban,12,City-Midsize,N
+1209,YANTIS ISD,250905,H,Rural,43,Rural-Remote,N
+1210,YELLOWSTONE COLLEGE PREPARATORY,101873,I,Charter Schools,11,City-Large,Y
+1211,YES PREP PUBLIC SCHOOLS INC,101845,I,Charter Schools,11,City-Large,Y
+1212,YOAKUM ISD,62903,G,Non-metropolitan Stable,32,Town-Distant,N
+1213,YORKTOWN ISD,62904,H,Rural,43,Rural-Remote,N
+1214,YSLETA ISD,71905,A,Major Urban,11,City-Large,N
+1215,ZAPATA COUNTY ISD,253901,D,Other Central City Suburban,33,Town-Remote,N
+1216,ZAVALLA ISD,3906,H,Rural,43,Rural-Remote,N
+1217,ZEPHYR ISD,25906,H,Rural,42,Rural-Distant,N
