@@ -73,8 +73,14 @@ Here's an overview of the various data files you can download
   
 * **KG**: Kindergarten Readiness (TPRS Only)
  
-* **K_EFF**: Prekindergarten Effectiveness
+* **K_EFF**: Prekindergarten Effectiveness  
 
+
+Primary Student Groups (2nd & 3rd position):
+All Students (DA), African American (DB), Hispanic (DH), White (DW), American Indian (DI), Asian (D3), Pacific Islander (D4), Two or More Races (D2), Current Special Ed (DS), Former Special Ed (NS), Continuously Enrolled (NC), Non-Continuously Enrolled (NM), Economically Disadvantaged (DE), Current & Monitored EB/EL (D0), Current EB/EL (DL), At-Risk (DR), Male (DM), Female (DF)
+ 
+Additional Student Groups (2nd & 3rd position):
+Non-Special Ed (D6), Non-Econ Disadv (DN), Non-At-Risk (D7), Migrant (DG), Non-Migrant (D9), 1st Year Monitored EB/EL (DO), 2nd Year Monitored EB/EL (DP), Non-EB/EL (D8), LEP w/Services (D5)
 
   
 
