@@ -25,15 +25,16 @@ Simply download the Test1.exe file, open it to get access to the application. Yo
 2. **Enter Years:**  
    Provide the academic years you want to download, separated by commas, **inside square brackets** like this: `[2018, 2019, 2020]`.  
    Ensure that the years are **2018 and onwards**.  
+   **Note:** The year corresponds to the latter half of an academic school year. For example, 2018 represents the 2017-2018 academic year.
 
-3. **Enter data files you would like downloaded:**  
+4. **Enter data files you would like downloaded:**  
    Enter the variables (data files) that you wish to retrieve, **inside square brackets with each item in quotes**, like this: `["GRAD", "STAAR1", "PROF"]`.  
 
-4. **Select Data Level:**  
+5. **Select Data Level:**  
    Choose the data level from the dropdown menu (Campus, District, Region, State).
    This parameter will affect the granularity of the data.   
 
-5. **Run Scraper:**  
+6. **Run Scraper:**  
    Click **"Run Scraper"** to download the datasets. Files should be downloaded into the directory specified in step 1
 
 
