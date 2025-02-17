@@ -40,7 +40,21 @@ Simply download the Test1.exe file, open it to get access to the application. Yo
 ## Variable Summary
 Below are summaries of different data files available for download.  
 Here's an overview of the various data files you can download  
-**STAAR1**  
-**GRAD**  
-**PROF**  
-**PERF**  
+* **STAAR1**: STAAR Assessment Data (Primary Student Groups): Approaches, Meets, and Masters Grade Level (Grades 3 to 8)
+  
+* **STAAR2**: STAAR Assessment Data (Primary Student Groups): Approaches, Meets, and Masters Grade Level (Grades 3 to 8)
+  
+* **STAAR3**: STAAR Assessment Data (Primary Student Groups): Academic Growth and Accelerated Learning
+  
+* **PART1**: STAAR Assessment Data (Primary Student Groups): Participation
+  
+* **STAAR4**: STAAR Assessment Data (Additional Student Groups): Approaches, Meets, and Masters Grade Level (Grades 3 to 8)
+  
+* **STAAR5**: STAAR Assessment Data (Additional Student Groups): Approaches, Meets, and Masters Grade Level (EOC, All Grades)
+  
+* **STAAR6**: STAAR Assessment Data (Additional Student Groups):  Academic Growth and Accelerated Learning
+
+* **PART2**: STAAR Assessment Data (Additional Student Groups): Participation
+
+* **PROF**  
+* **PERF**  
