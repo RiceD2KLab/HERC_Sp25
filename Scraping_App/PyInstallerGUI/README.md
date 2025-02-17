@@ -56,5 +56,24 @@ Here's an overview of the various data files you can download
 
 * **PART2**: STAAR Assessment Data (Additional Student Groups): Participation
 
-* **PROF**  
-* **PERF**  
+* **STAAR_ADD1** Additional STAAR Assessment Data (TPRS Only): Rate by Enrolled Grade at Meets Grade Level or Above
+
+* **GRAD**  Attendance, Chronic Absenteeism, Graduation (RHSP/DAP & FHSP), and Dropout Rates
+  
+* **COMP**  Attendance and Graduation  Longitudinal Rate (4-Year, 5-Year, & 6-Year)
+  
+* **PERF1** Postsecondary Indicators:  College, Career, and Military Readiness (CCMR), TSIA, College Prep
+
+* **PERF2** Postsecondary Indicators:  AP/IB, SAT/ACT
+
+* **PERF3** Postsecondary Indicators:  Advanced Courses, TX IHE
+
+* **PROF**: Profile: Staff, Student, and Annual Graduates
+  
+* **KG**: Kindergarten Readiness (TPRS Only)
+ 
+* **K_EFF**: Prekindergarten Effectiveness
+
+
+  
+
