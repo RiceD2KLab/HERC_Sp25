@@ -1,0 +1,16 @@
+NAME_x,LABEL_x,NAME_y,TYPE,LENGTH,LABEL_y,Source_URL,Year,NAME_2
+DISTRICT,District Number,DISTRICT,Character,6,District Number,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/xplore/ddrop_att.html,2020,DISTRICT
+DPSTKIDR,Teacher to Student Ratio,DPSTKIDR,Numeric,8,District 2020 Staff: Teacher Student Ratio,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstaff.html,2020,DPSTKIDR
+DPETALLC,All Students Count in district,DPETALLC,Numeric,8,District 2020 Student Membership: All Students Count,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETALLC
+DPETBLAP,African American Student Percent,DPETBLAP,Numeric,8,District 2020 Student Membership: African American Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETBLAP
+DPETINDP,American Indian Student Percent,DPETINDP,Numeric,8,District 2020 Student Membership: American Indian Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETINDP
+DPETASIP,Asian American Student Percent,DPETASIP,Numeric,8,District 2020 Student Membership: Asian Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETASIP
+DPETHISP,Hispanic Student Percent,DPETHISP,Numeric,8,District 2020 Student Membership: Hispanic Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETHISP
+DPETPCIP,Pacific Islander Student Percent,DPETPCIP,Numeric,8,District 2020 Student Membership: Pacific Islander Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETPCIP
+DPETTWOP,Two or More Races Student Percent,DPETTWOP,Numeric,8,District 2020 Student Membership: Two or More Races Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETTWOP
+DPETWHIP,White Student Percent,DPETWHIP,Numeric,8,District 2020 Student Membership: White Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETWHIP
+DPETECOP,Economically Disadvantaged Student Percent,DPETECOP,Numeric,8,District 2020 Student Membership: Econ Disadv Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETECOP
+DPETSPEP,Special Education Student Percent,DPETSPEP,Numeric,8,District 2020 Student Membership: Special Ed Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETSPEP
+DPETGIFP,Gifted & Talented Student Percent,DPETGIFP,Numeric,8,District 2020 Student Membership: Gifted & Talented Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETGIFP
+DPETIMMP,Immigrant Student Percent,DPETIMMP,Numeric,8,District 2020 Student Membership: Immigrant Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETIMMP
+DPETBILP,Bilingual & ESL Student Percent,DPETBILP,Numeric,8,District 2020 Student Membership: Bilingual/ESL Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2020/download/dstud.html,2020,DPETBILP
