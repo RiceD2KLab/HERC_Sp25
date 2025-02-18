@@ -1,0 +1,27 @@
+NAME_x,LABEL_x,NAME_y,TYPE,LENGTH,LABEL_y,Source_URL,Year,NAME_2
+DISTNAME,District Name,DISTNAME,Character,34,District Name,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/xplore/ddrop_att.html,2021,DISTNAME
+DISTRICT,District Number,DISTRICT,Character,6,District Number,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/xplore/ddrop_att.html,2021,DISTRICT
+DPSTKIDR,Teacher to Student Ratio,DPSTKIDR,Numeric,8,District 2021 Staff: Teacher Student Ratio,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstaff.html,2021,DPSTKIDR
+DPETALLC,All Students Count in district,DPETALLC,Numeric,8,District 2021 Student Membership: All Students Count,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETALLC
+DPETBLAP,African American Student Percent,DPETBLAP,Numeric,8,District 2021 Student Membership: African American Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETBLAP
+DPETINDP,American Indian Student Percent,DPETINDP,Numeric,8,District 2021 Student Membership: American Indian Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETINDP
+DPETASIP,Asian American Student Percent,DPETASIP,Numeric,8,District 2021 Student Membership: Asian Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETASIP
+DPETHISP,Hispanic Student Percent,DPETHISP,Numeric,8,District 2021 Student Membership: Hispanic Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETHISP
+DPETPCIP,Pacific Islander Student Percent,DPETPCIP,Numeric,8,District 2021 Student Membership: Pacific Islander Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETPCIP
+DPETTWOP,Two or More Races Student Percent,DPETTWOP,Numeric,8,District 2021 Student Membership: Two or More Races Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETTWOP
+DPETWHIP,White Student Percent,DPETWHIP,Numeric,8,District 2021 Student Membership: White Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETWHIP
+DPETECOP,Economically Disadvantaged Student Percent,DPETECOP,Numeric,8,District 2021 Student Membership: Econ Disadv Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETECOP
+DPETSPEP,Special Education Student Percent,DPETSPEP,Numeric,8,District 2021 Student Membership: Special Ed Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETSPEP
+DPETGIFP,Gifted & Talented Student Percent,DPETGIFP,Numeric,8,District 2021 Student Membership: Gifted & Talented Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETGIFP
+DPETIMMP,Immigrant Student Percent,DPETIMMP,Numeric,8,District 2021 Student Membership: Immigrant Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETIMMP
+DPETBILP,Bilingual & ESL Student Percent,DPETBILP,Numeric,8,District 2021 Student Membership: Bilingual/ESL Percent,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dstud.html,2021,DPETBILP
+DA0GR19R,All Student Graduation Rate ,DA0GR20R,Numeric,8,District 2020 Graduates: All Students Group %,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad.html,2021,DA0GR19R
+DB0GR19R,African American Student Graduation Rate,DB0GR20R,Numeric,8,District 2020 Graduates: African American Student Group %,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad.html,2021,DB0GR19R
+DI0GR19R,American Indian Student Graduation Rate,DI0GR20R,Numeric,8,District 2020 Graduates: American Indian Student Group %,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad.html,2021,DI0GR19R
+D30GR19R,Asian American Student Graduation Rate,D30GR20R,Numeric,8,District 2020 Graduates: Asian Student Group %,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad.html,2021,D30GR19R
+DH0GR19R,Hispanic Student Graduation Rate,DH0GR20R,Numeric,8,District 2020 Graduates: Hispanic Student Group %,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad.html,2021,DH0GR19R
+D40GR19R,Pacific Islander Student Graduation Rate,D40GR20R,Numeric,8,District 2020 Graduates: Pacific Islander Student Group %,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad.html,2021,D40GR19R
+DW0GR19R,White Student Graduation Rate,DW0GR20R,Numeric,8,District 2020 Graduates: White Student Group %,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad.html,2021,DW0GR19R
+DE0GR19R,Economically Disadvantaged Student Graduation Rate,DE0GR20R,Numeric,8,District 2020 Graduates: Econ Disadv Student Group %,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad.html,2021,DE0GR19R
+DS0GR19R,Special Education Student Graduation Rate,DS0GR20R,Numeric,8,District 2020 Graduates: Special Ed Student Group %,https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad.html,2021,DS0GR19R
+DA0GP19R,Percent of Graduates who are CCMR (College_Career_Military_Ready),DA0GP19R,Numeric,8,"District 2019 College, Career, & Military Ready Graduates: All Students Rate",https://rptsvr1.tea.texas.gov/perfreport/tapr/2021/download/dgrad1.html,2021,DA0GP19R
