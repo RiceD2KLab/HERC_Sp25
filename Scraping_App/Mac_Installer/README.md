@@ -4,7 +4,7 @@
 From the Google Drive, download the .dmg installer here: https://drive.google.com/file/d/1iyhG-yyNh_C61esBfIyqpgpHbXzJcvOY/view?usp=drive_link. You must specify that you would like to "Download anyways" as Google Drive will flag it as a potential virus. 
 
 ### Open the .dmg and bypass initial quarantine
-1. Open the .dmg and drag the TEA Scraper App into your Applications folder.
+1. Open the .dmg and drag the TEA Scraper App into your Applications folder. DO NOT OPEN THE APP!!
 2. Open your terminal and run the command ```xattr -d com.apple.quarantine "/Applications/TEA Scraper.app"```.
 
 ### Open the Scraper App
