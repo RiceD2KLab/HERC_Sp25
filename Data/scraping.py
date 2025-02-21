@@ -282,6 +282,9 @@ def tea_scraper(directory_path, years, variables, level, dist_type=True):
     Returns: 
         Specified files stored in folders located in users current directory. 
     """
+    #Appending REF files to the selected variables. This helps you encode the campus, district, and region ids
+    variables.append('REF')
+
     ### Checking to see if directory is a valid path and continuing code if it is  ### 
     if not os.path.isdir(directory_path):
         print(f"Error: {directory_path} is not a valid directory.")
@@ -427,4 +430,5 @@ def tea_scraper(directory_path, years, variables, level, dist_type=True):
 
 
     print("All Data Downloaded!")
+
     
