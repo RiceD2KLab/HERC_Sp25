@@ -1,7 +1,7 @@
 ## Instructions to Use Mac Scraping Application
 
 ### Download the .dmg
-From the Google Drive, download the .dmg installer here: (https://drive.google.com/file/d/1iyhG-yyNh_C61esBfIyqpgpHbXzJcvOY/view?usp=drive_link). You must specify that you would like to "Download anyways" as Google Drive will flag it as a potential virus. 
+From the Google Drive, download the .dmg installer here: https://drive.google.com/file/d/1iyhG-yyNh_C61esBfIyqpgpHbXzJcvOY/view?usp=drive_link. You must specify that you would like to "Download anyways" as Google Drive will flag it as a potential virus. 
 
 ### Open the .dmg and bypass initial quarantine
 1. Open the .dmg and drag the TEA Scraper App into your Applications folder.
