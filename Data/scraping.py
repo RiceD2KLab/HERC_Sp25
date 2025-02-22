@@ -1,3 +1,13 @@
+"""
+Comprehensive Texas Academic Performance Report (TAPR) Data Scraper
+This scraper allows users to select the level (Campus, District, Region, State) and type of data they would like to download from the TAPR data download on the TEA website. If the level is "D" for District, district type data will also be downloaded in addition to the TAPR data unless the user has indicated they do not want the data (set dist_type = False).
+
+If the files already exist, the scraper will not download new files.
+
+The scraper creates separate folders for each year of data and names the files with the appropriate year.
+"""
+
+#Loading necessary packages
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -10,6 +20,7 @@ import re
 import pandas as pd
 import random
 
+### Helper Function 1: Scraping district type data
 def district_type_scraper(year):
    """
    Scrapes the Texas Education Agency (TEA) website for district type data of a given school year.
@@ -36,6 +47,7 @@ def district_type_scraper(year):
          return pd.read_excel(f"https://tea.texas.gov{data}", sheet_name= 2)
       
 
+### Helper Function 2: Ensure adequate time is given for files to properly download
 def wait_for_downloads(variables, year, directory, level, timeout=200):
     """
     Waits for the expected data files to be downloaded within a specified timeout period.
@@ -69,10 +81,12 @@ def wait_for_downloads(variables, year, directory, level, timeout=200):
 
     # Determine expected file names based on the year
     for var in variables:
-        if year < 2021:
-            expected_files.append(f"{file_prefix}{var}.dat" if var != "REF" else "DREF.dat")
+        if var == "REF":
+            # Only add REF files if level is NOT 'S'
+            if level != 'S':
+                expected_files.append(f"{level}REF.dat" if year < 2021 else f"{level}REF.csv")
         else:
-            expected_files.append(f"{file_prefix}{var}.csv" if var != "REF" else "DREF.csv")
+            expected_files.append(f"{file_prefix}{var}.dat" if year < 2021 else f"{file_prefix}{var}.csv")  
 
     check = 1  # Variable to print waiting message only once
     while time.time() - start_time < timeout:  # Continue checking until timeout is reached
@@ -85,14 +99,14 @@ def wait_for_downloads(variables, year, directory, level, timeout=200):
         
         # Print waiting message only once at the start
         if check == 1:
-            print("Waiting for all files to download...")
+            print("Waiting for all files to download!...")
         check += 1
 
         time.sleep(5)  # Wait for 5 seconds before checking again
 
     return False  # Return False if the timeout is reached before all files are downloaded
 
-
+### Helper Function 3: Rename file downloads to contain year in file name 
 def file_renamer(directory, year, prefix, var, level):
     """
     Renames downloaded files in the specified directory based on naming conventions.
@@ -136,6 +150,7 @@ def file_renamer(directory, year, prefix, var, level):
                 break  # Stop checking after renaming the first matching file
 
 
+### Helper Function 4: Convert .dat files to .csv for better convenience
 def convert_dat_to_csv(directory):
     """
     Converts all .dat files in the specified directory to .csv files and deletes the .dat files after conversion.
@@ -168,7 +183,7 @@ def convert_dat_to_csv(directory):
             except Exception as e:
                 print(f"Error converting {file_name}: {e}")
 
-
+### Helper Function 5: Grab the column refrence files to join onto dataset in later steps 
 def tea_reference_scraper(directory_path, year, level):
     """
     Scrape reference files for a specified year and level of data.
@@ -221,7 +236,6 @@ def tea_reference_scraper(directory_path, year, level):
         # **Add a delay before accessing the page**
         time.sleep(random.uniform(3, 7))  # Wait between 3 to 7 seconds
         driver.get(url)
-        driver.get(url)
         
         # Check if the page loaded properly
         if "Page Not Found" in driver.page_source or "404" in driver.page_source:
@@ -264,7 +278,8 @@ def tea_reference_scraper(directory_path, year, level):
     
     print("Reference file download complete!")
 
-
+### Master Function: Combine helper functions to let you download specified ### 
+### years, data files, and levels from TAPR advanced data download ### 
 def tea_scraper(directory_path, years, variables, level, dist_type=True):
     """
     Scrape all HERC data for specified years, variables, and level of data.

@@ -4,9 +4,7 @@ Data Wrangling File (2020-2023). The capabilities of this file are the following
 * Perform preliminary data cleaning steps (Converting columns to numeric, renaming '.', '-1', '-3' values to NA)
 * Mapping column IDs with real column names from refrence files 
 * Combining level refrence file with datasets
-
-
-Note: This should work for 2020 - 2023 data. \
+Note: This should work for 2020 - 2023 data. 
 """
 
 #Importing necessary packages
@@ -17,6 +15,7 @@ import warnings
 import re
 warnings.simplefilter("ignore")
 
+# Helper Function 1: Loading in downloaded data to begin cleaning process 
 def load_data(directory, year):
     """
     Reads all CSV files in the specified directory into a dictionary (RAWDATA) 
@@ -53,12 +52,11 @@ def load_data(directory, year):
     # Return both dictionaries
     return RAWDATA, REF
 
+# Helper Function 2: Performing primary datacleaning of datasets including remove nas 
 def primary_data_cleaning(df_dict, level):
     """
     Converts all columns in each DataFrame (except the one containing the specified level) to numeric.
     Replaces '.', '-1', and '-3' values with NaN.
-    Drops columns containing 'rate' or 'percent' in their name if any values exceed 100,
-    except for DataFrames with 'ref' in their title.
     
     Additionally, searches the DataFrame's columns for a column that contains the specified level's long form
     and renames it to '{original_name}_id' if found.
@@ -111,7 +109,7 @@ def primary_data_cleaning(df_dict, level):
     
     return processed_dict
 
-
+# Helper Function 3: Using column refrence files to rename encoded files 
 def rename_columns_using_ref(rawdata, ref):
     """
     Renames columns in each DataFrame in rawdata using the corresponding mapping found in ref.
@@ -158,7 +156,7 @@ def rename_columns_using_ref(rawdata, ref):
 
     return updated_data
 
-
+# Helper Function 4: Using level refrence files to join on datasets. Understand what value level_id corresponds to 
 def join_with_reference(df_dict, level):
     """
     Identifies the DataFrame with 'ref' in its key and left joins it with all other DataFrames 
@@ -221,6 +219,7 @@ def join_with_reference(df_dict, level):
     return updated_dict
 
 
+# Helper Function 5: Combining the previous 4 functions in 1 to fully process the data in python environment 
 def processing(directory, year, level):
     """
     Processes raw data by loading, cleaning, renaming columns, and joining level refrence.
@@ -242,6 +241,7 @@ def processing(directory, year, level):
     else:
         return column_data
 
+# Master Function: Process data and store it into a specified directory. 
 def process_and_save_all_data(base_directory, level):
     """
     Loops through all Data{year} folders, processes the data, and saves the output
