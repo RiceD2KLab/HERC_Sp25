@@ -203,5 +203,5 @@ make_demographic_map <- function(variable, level, year) {
   }
 }
 
-make_demographic_map("Student Membership: Hispanic Percent", "Houston", 2023)
+# make_demographic_map("Student Membership: Hispanic Percent", "Houston", 2023)
 ```
