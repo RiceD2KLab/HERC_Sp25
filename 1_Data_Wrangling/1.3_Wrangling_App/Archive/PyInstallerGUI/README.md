@@ -8,12 +8,13 @@ The TAPR Scraper App allows users to efficiently download multiple files from th
 This tool simplifies the process of retrieving datasets by enabling users to specify download parameters and execute a batch download.
 
 ## Features
-* Download multiple TAPR datasets based on selected years and variables
+* Download multiple raw TAPR datasets based on selected years and variables
 * Choose the data level (e.g., campus, district, region, or state)
 * Save files directly to a specified directory
+* Automatically cleans all downloaded information (Fixes NA value formatting, Joins column id names, joins district/region IDs)
 
 ## Installation & Setup 
-To use the TAPR Scraper app, access the .exe file via box here:  
+For Windows Devices, access the .exe file via box here:  
 [Hopefully erin can give us a box file here](box.com)
 
 Simply download the Test1.exe file, open it to get access to the application. You can save this file to a directory of your choice to access it later. 
