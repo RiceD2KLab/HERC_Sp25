@@ -15,9 +15,9 @@ This tool simplifies the process of retrieving datasets by enabling users to spe
 
 ## Installation & Setup 
 For Windows Devices, access the .exe file via box here:  
-[Hopefully erin can give us a box file here](box.com)
+[Insert Box Drive Here](box.com)
 
-Simply download the Test1.exe file, open it to get access to the application. You can save this file to a directory of your choice to access it later. 
+Simply download the TAPR_Scraper.exe file, open it to get access to the application. You can save this file to a directory of your choice to access it later. 
 
 ## How to Use the TAPR Scraping App
 1. **Specify download directory:**  
