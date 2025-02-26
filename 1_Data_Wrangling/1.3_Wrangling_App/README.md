@@ -11,9 +11,7 @@ This tool simplifies the process of retrieving datasets by enabling users to spe
 * Download multiple raw TAPR datasets based on selected years and variables to a raw_data folder
 * Choose the data level (e.g., campus, district, region, or state)
 * Save files directly to a specified directory
-* Automatically cleans all raw_data files into a new clean_data folder.
-*     (Properly formats NA values, maps column IDs with real column names, joins  information (Fixes NA value formatting, Joins column id names, joins district/region IDs)
-*    
+* Automatically cleans all raw_data files into a new clean_data folder. (Properly formats NA values, maps column IDs with real column names, joins district/region IDs with true names)
 
 ## Installation & Setup 
 For Windows Devices, access the .exe file via box here:  
