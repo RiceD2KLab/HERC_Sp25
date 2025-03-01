@@ -21,7 +21,7 @@ py TAPR_Scraper.py
 
 Step 5: Use PyInstaller to Build the .exe File
 pyinstaller --onefile --noconsole --hidden-import=scraping --hidden-import=wrangling TAPR_Scraper.py
-
+c
 
 
 
