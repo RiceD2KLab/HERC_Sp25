@@ -1,0 +1,143 @@
+---
+title: "DISTPROF Exploratory Data Analysis"
+format: html
+---
+
+# Data Wrangling
+
+## Loading in the data
+
+```{r}
+setwd("/Users/biancaschutz/HERC_Sp25")
+```
+
+```{r}
+load_distprof_data <- function(years) {
+  distprof_dataframes <- list()
+  for (i in 1:length(years)) {
+    year <- years[[i]]
+    path <- paste0("0_Datasets_csv/Data", year, "/District/clean_data/distprof_", year, "_clean.csv")
+    df <- read.csv(path)
+    distprof_dataframes[[i]] <- data.frame(df)
+    names(distprof_dataframes)[[i]] <- paste0("distprof", year)
+    cat("Loaded in DISTPROF for", year, "\n")
+  }
+  return(distprof_dataframes)
+}
+
+distprof_list <- load_distprof_data(2020:2023)
+```
+
+## Remove Columns with Too Many NAs
+
+```{r}
+library(dplyr)
+
+calculate_missing_percentage <- function(df) {
+  na_counts <- lapply(df, function(x) sum(is.na(x))/nrow(df))
+  return(na_counts)
+}
+
+drop_columns <- function(df, threshold = .5) {
+  percents <- calculate_missing_percentage(df)
+  column_ref <- names(percents)
+  percent_ref <- unname(unlist(percents))
+
+  drop_cols <- data.frame(column = column_ref, percent_na = percent_ref) %>%
+    filter(percent_na >= threshold) %>% pull(column)
+  
+  new_df <- df %>% select(-all_of(drop_cols))
+  
+  return(new_df)
+}
+
+# drop_columns(distprof_list[[1]])
+```
+
+```{r}
+distprof_drop_cols <- lapply(distprof_list, drop_columns)
+```
+
+## Extract Relevant Columns
+
+For DISTPROF, we are interested in the following data:
+* African American Student Percent
+* American Indian Student Percent
+* Asian American Student Percent
+* Hispanic Student Percent
+* Pacific Islander Student Percent
+* Two or More Races Student Percent
+* White Student Percent
+* Economically Disadvantaged Student Percent
+* Special Education Student Percent
+* Gifted & Talented Student Percent
+* Immigrant Student Percent
+* Bilingual & ESL Student Percent
+* Teacher to Student Ratio
+* All Students Count/number of students in district/enrollment
+
+```{r}
+distprof_selected <- list()
+for (i in 1:length(years)) {
+  distprof_yr <- distprof_drop_cols[[i]]
+  
+  year <- years[[i]]
+  
+  column_names <- c(paste0("District.", year, ".Student.Membership..", c("White.Percent", "African.American.Percent", "Hispanic.Percent", "American.Indian.Percent", "Asian.Percent", "Pacific.Islander.Percent", "Two.or.More.Races.Percent", "Econ.Disadv.Percent", "Bilingual.ESL.Percent", "Gifted...Talented.Percent", "Immigrant.Percent", "Special.Ed.Percent", "All.Students.Count")), paste0("District.", year, ".Staff..Teacher.Student.Ratio"), "DISTRICT", "DISTNAME")
+  
+  distprof_selected[[i]] <- distprof_yr[,column_names]
+  names(distprof_selected)[[i]] <- paste0("distprof", year)
+}
+```
+
+## Rbind dataframes
+
+```{r}
+# new column names
+for (i in 1:length(distprof_selected)) {
+  column_names_no_year <- gsub("_+", "_", gsub("\\.{2}", "_",  
+                             gsub("\\.", "_", 
+                                  gsub("District\\.\\d{4}\\.", "",
+                                       colnames(distprof_selected[[i]])))))
+
+  colnames(distprof_selected[[i]]) <- column_names_no_year
+  
+  distprof_selected[[i]]$Year <- years[[i]]
+}
+```
+
+```{r}
+distprof <- do.call(rbind, distprof_selected)
+rownames(distprof) <- NULL
+```
+
+First change colnames so they're the same
+# Exploratory Data Analysis
+
+## African American Student Percent
+
+Takeaway: the schools with the largest percentage of Black students are college preparatory schools or academies (likely private schools).
+
+```{r, fig.width = 10, fig.height = 5}
+library(ggplot2)
+distprof2023 <- distprof_selected[[4]]
+
+top10_black_student_pct <- distprof2023 %>% arrange(desc(Student_Membership_African_American_Percent)) %>% slice_head(n = 10) %>% select(DISTNAME, Student_Membership_African_American_Percent)
+
+black_student_pct <- ggplot(top10_black_student_pct, aes(x = DISTNAME, y = Student_Membership_African_American_Percent)) +
+  geom_col(fill = 'green4') +
+  scale_x_discrete(labels = scales::label_wrap(5)) +
+  theme(legend.position = 'none') +
+  labs(title = "10 Highest African American Student Populations in Texas School Districts, 2023",
+       x = "District Name",
+       y = "African American Student Percent")
+
+black_student_pct
+```
+Next, let's look at the 
+
+```{r}
+# Insert code loading in DREF here
+
+# then join by district ID and year, then filter to eliminate private/prep schools. 
+```
