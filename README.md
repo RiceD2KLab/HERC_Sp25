@@ -24,26 +24,14 @@ Our project, supported by the Houston Education Research Consortium (HERC), simp
 
 In this semester, our team plans to build on the work done in Fall 2024, expanding on some of their strengths while addressing the areas they were unable to accomplish. Specifically, our objectives include:
 
-* **Develop a User-Friendly Data Extraction Tool:** Create a web scraping tool that enables
-users to retrieve datasets from the TEA website, with the ability to update annually as new
-information is added, solving the problem of data becoming outdated. Unlike traditional
-methods that rely on data compression techniques like PCA, this tool will allow users to
-access complete, raw datasets while enhancing their usability through automated cleaning
-and standardization.
+* **Develop a User-Friendly Data Extraction Tool:** Create a web scraping tool that enables users to retrieve datasets from the TEA website, with the ability to update annually as new information is added, solving the problem of data becoming outdated. Unlike traditional methods that rely on data compression techniques like PCA, this tool will allow users to access complete, raw datasets while enhancing their usability through automated cleaning and standardization.
 
-• Facilitate Comparative Analysis Among School Districts: Assist school districts in iden-
-tifying and comparing themselves with similar districts by allowing users to select and
+* **Facilitate Comparative Analysis Among School Districts:** Assist school districts in identifying and comparing themselves with similar districts by allowing users to select and prioritize relevant demographic features, thereby enhancing data-driven decision-making. The matching process should focus on demographic factors for similarities, rather than test scores and graduation rates, to allow districts to use those outcomes as a comparison after the fact.
 
-prioritize relevant demographic features, thereby enhancing data-driven decision-making.
-The matching process should focus on demographic factors for similarities, rather than test
-scores and graduation rates, to allow districts to use those outcomes as a comparison after
-the fact.
+* **Engage and Collaborate with Local School Districts:** Actively consult with Houston area school districts to gather insights and feedback, ensuring the tool aligns with their specific needs and preferences, and provide comprehensive documentation to support its effective use. 
 
-• Engage and Collaborate with Local School Districts: Actively consult with Houston-
-area school districts to gather insights and feedback, ensuring the tool aligns with their
+* **Develop an Interactive Dashboard for District Comparisons:** Create a web-based or GUI-driven dashboard that allows users to visualize, compare, and analyze school district data interactively, making insights more accessible and actionable. This dashboard should be simpler and more applicable for districts than the one made in the prior semester. 
 
-specific needs and preferences, and provide comprehensive documentation to support its
-effective use.
 
 #### Key Impacts
 
@@ -90,12 +78,12 @@ The modeling results are presented intuitively to districts as an interactive vi
 ![til](./assets/HERC_Dashboard_1125.gif)
 
 ## Team Members & Contact Information
-Bianca Schutz: mbs5@rice.edu \
-Everett Adkins: ena4@rice.edu \
-Manav Mathur: mm175@rice.edu \
-Sachin Shurpalekar: sss20@rice.edu \
-Trey McCray: wlm2@rice.edu \
-PHD Mentor: Konstantin Larin: kl83@rice.edu
+Victor Xie: vyx2@rice.edu \
+Melissa Mar: mm174@rice.edu \
+Nate Lee: ncl4@rice.edu \
+Anu Jain: aj103@rice.edu \
+Ananya Kapoor: ak270@rice.edu \
+Wensheng Chu: wc57@rice.edu
 
 ## License
 
