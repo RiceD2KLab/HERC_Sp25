@@ -43,8 +43,7 @@ In this semester, our team plans to build on the work done in Fall 2024, expandi
    Please see [0_Datasets_csv/README.md](0_Datasets_csv/README.md) for detailed dataset descriptions.
 
 ## Data Wrangling
-   Please see [1_Data_Wrangling/README.md](1_Data_Wrangling/README.md) for details on data cleaning and preprocessing. It contains the code utilized to transform the raw data files into various cohesive datasets for exploration and modeling, as further detailed in the subdirectory.
-
+   Please see [1_Data_Wrangling/README.md](1_Data_Wrangling/README.md) for details on data cleaning and preprocessing. It contains the code utilized to webscrape, clean raw datasets, and create a GUI Scraper tool. 
 ##  Data Exploration
    Please see [2_Data_Exploration/README.md](2_Data_Exploration/README.md) for details on exploratory data analysis.
 
