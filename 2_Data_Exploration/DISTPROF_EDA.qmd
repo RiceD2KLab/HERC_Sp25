@@ -1,9 +1,16 @@
 ---
 title: "DISTPROF Exploratory Data Analysis"
 format: html
+toc: true
+toc-depth: 3
 ---
 
 # Data Wrangling
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+```
 
 ## Loading in the data
 
@@ -29,8 +36,6 @@ distprof_list <- load_distprof_data(2020:2023)
 ## Remove Columns with Too Many NAs
 
 ```{r}
-library(dplyr)
-
 calculate_missing_percentage <- function(df) {
   na_counts <- lapply(df, function(x) sum(is.na(x))/nrow(df))
   return(na_counts)
@@ -58,21 +63,7 @@ distprof_drop_cols <- lapply(distprof_list, drop_columns)
 
 ## Extract Relevant Columns
 
-For DISTPROF, we are interested in the following data:
-* African American Student Percent
-* American Indian Student Percent
-* Asian American Student Percent
-* Hispanic Student Percent
-* Pacific Islander Student Percent
-* Two or More Races Student Percent
-* White Student Percent
-* Economically Disadvantaged Student Percent
-* Special Education Student Percent
-* Gifted & Talented Student Percent
-* Immigrant Student Percent
-* Bilingual & ESL Student Percent
-* Teacher to Student Ratio
-* All Students Count/number of students in district/enrollment
+For DISTPROF, we are interested in the following data: \* African American Student Percent \* American Indian Student Percent \* Asian American Student Percent \* Hispanic Student Percent \* Pacific Islander Student Percent \* Two or More Races Student Percent \* White Student Percent \* Economically Disadvantaged Student Percent \* Special Education Student Percent \* Gifted & Talented Student Percent \* Immigrant Student Percent \* Bilingual & ESL Student Percent \* Teacher to Student Ratio \* All Students Count/number of students in district/enrollment
 
 ```{r}
 distprof_selected <- list()
@@ -110,33 +101,9 @@ distprof <- do.call(rbind, distprof_selected)
 rownames(distprof) <- NULL
 ```
 
-First change colnames so they're the same
-# Exploratory Data Analysis
+## Join with district_type
 
-## African American Student Percent
-
-Takeaway: the schools with the largest percentage of Black students are college preparatory schools or academies (likely private schools).
-
-```{r, fig.width = 10, fig.height = 5}
-library(ggplot2)
-distprof2023 <- distprof_selected[[4]]
-
-top10_black_student_pct <- distprof2023 %>% arrange(desc(Student_Membership_African_American_Percent)) %>% slice_head(n = 10) %>% select(DISTNAME, Student_Membership_African_American_Percent)
-
-black_student_pct <- ggplot(top10_black_student_pct, aes(x = DISTNAME, y = Student_Membership_African_American_Percent)) +
-  geom_col(fill = 'green4') +
-  scale_x_discrete(labels = scales::label_wrap(5)) +
-  theme(legend.position = 'none') +
-  labs(title = "10 Highest African American Student Populations in Texas School Districts, 2023",
-       x = "District Name",
-       y = "African American Student Percent")
-
-black_student_pct
-```
-Next, let's look at the 
-
-```{r, fig.width = 10, fig.height = 5}
-# Insert code loading in district type here
+```{r}
 setwd("/Users/biancaschutz/HERC_Sp25")
 
 load_dtype_data <- function(years) {
@@ -158,31 +125,129 @@ dtype_list <- load_dtype_data(2020:2023)
 district_type <- do.call(rbind, dtype_list)
 rownames(district_type) <- NULL
 
-# join by school district year and ID
+# make sure there's no NAs
 sum(is.na(distprof$DISTRICT))
 distprof$DISTRICT <- as.integer(gsub("[^[:alnum:]_]", "", distprof$DISTRICT))
 sum(is.na(distprof$DISTRICT))
 
-dref$DISTRICT <- as.integer(gsub("[^[:alnum:]_]", "", dref$DISTRICT))
-#sum(is.na(dref$DISTRICT))
-
-dref$COUNTY <- as.integer(gsub("[^[:alnum:]_]", "", dref$COUNTY))
-#sum(is.na(dref$COUNTY))
+# Now join the two
 
 distprof_joined <- distprof %>% left_join(district_type, by = c("DISTNAME" = "District", "DISTRICT" = "District.Number", "Year"))
-
-# Filter out Charters
-no_charter_distprof2023 <- distprof_joined %>% filter(Charter.School..Y.N. != "Y", Year == 2023)
-
-top10_black_student_pct_no_charter <- no_charter_distprof2023 %>% arrange(desc(Student_Membership_African_American_Percent)) %>% slice_head(n = 10) %>% select(DISTNAME, Student_Membership_African_American_Percent)
-
-black_student_pct_nocharter <- ggplot(top10_black_student_pct_no_charter, aes(x = reorder(DISTNAME, Student_Membership_African_American_Percent), y = Student_Membership_African_American_Percent)) +
-  geom_col(fill = 'green4') +
-  scale_x_discrete(labels = scales::label_wrap(5)) +
-  theme(legend.position = 'none') +
-  labs(title = "10 Highest African American Student Populations in Texas School Districts, 2023",
-       x = "District Name",
-       y = "African American Student Percent")
-
-black_student_pct_nocharter
 ```
+
+# Barplots
+
+## Function to create bar plot of the top N school districts on a particular demographic.
+
+Inputs are as follows:
+
+-   year = an integer formatted as YYYY representing a year from 2020-2023
+
+-   top_n = an integer representing the number of top school districts to show. Default value is 10.
+
+-   include_charter = a Boolean value indicating whether or not to include charter schools in the plot (FALSE is do not include charters, TRUE includes them). Default value is FALSE.
+
+-   demographic = a string of the following values:
+
+    -   "Student_Membership_White_Percent"
+
+    -   "Student_Membership_African_American_Percent"
+
+    -   "Student_Membership_Hispanic_Percent"
+
+    -   "Student_Membership_American_Indian_Percent"
+
+    -   "Student_Membership_Asian_Percent"
+
+    -   "Student_Membership_Pacific_Islander_Percent"
+
+    -   "Student_Membership_Two_or_More_Races_Percent"
+
+    -   "Student_Membership_Econ_Disadv_Percent"
+
+    -   "Student_Membership_Bilingual_ESL_Percent"
+
+    -   "Student_Membership_Gifted_Talented_Percent"
+
+    -   "Student_Membership_Immigrant_Percent"
+
+    -   "Student_Membership_Special_Ed_Percent"
+
+    -   "Student_Membership_All_Students_Count"
+
+    -   "Staff_Teacher_Student_Ratio"
+
+```{r, eval=FALSE}
+# Bar Plot Generator Function
+generate_demographic_barplot <- function(year, top_n = 10, include_charter = FALSE, demographic) {
+  demographic_key <- list(
+  "Student_Membership_White_Percent" = "White Student Percent",
+  "Student_Membership_African_American_Percent" = "Black Student Percent",
+  "Student_Membership_Hispanic_Percent" = "Hispanic Student Percent",
+  "Student_Membership_American_Indian_Percent" = "American Indian Student Percent",
+  "Student_Membership_Asian_Percent" = "Asian Student Percent",
+  "Student_Membership_Pacific_Islander_Percent" = "Pacific Islander Student Percent",
+  "Student_Membership_Two_or_More_Races_Percent" = "Multiracial Student Percent",
+  "Student_Membership_Econ_Disadv_Percent" = "Economically Disadvantaged Student Percent",
+  "Student_Membership_Bilingual_ESL_Percent" = "Bilingual/ESL Student Percent",
+  "Student_Membership_Gifted_Talented_Percent" = "Gifted & Talented Student Percent",
+  "Student_Membership_Immigrant_Percent" = "Immigrant Student Percent",
+  "Student_Membership_Special_Ed_Percent" = "Special Education Student Percent",
+  "Student_Membership_All_Students_Count" = "Total Student Enrollment",
+  "Staff_Teacher_Student_Ratio" = "Teacher-Student Ratio"
+)
+  
+  if (include_charter == FALSE) {
+    year_distprof <- distprof_joined %>% filter(Year == year & 
+                                                  Charter.School..Y.N. != "Y")
+  }
+  else if (include_charter == TRUE) {
+    year_distprof <- distprof_joined %>% filter(Year == year)
+  }
+  else stop("Invalid input for charter school inclusion")
+  
+  topN_demographic <- year_distprof %>%
+    arrange(desc(.data[[demographic]])) %>%
+    slice_head(n = top_n) %>% select(all_of(c("DISTNAME", demographic)))
+  
+  barplot <- ggplot(topN_demographic, aes(x = reorder(DISTNAME, desc(.data[[demographic]])), y = .data[[demographic]])) +
+  geom_col(fill = 'green4') +
+  scale_x_discrete(labels = scales::label_wrap(18)) +
+  theme(legend.position = 'none') +
+  labs(title = paste0("10 Highest ", demographic_key[[demographic]], " in Texas School Districts, ", year),
+       x = "District Name",
+       y = demographic_key[[demographic]]) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  return(barplot)
+}
+```
+
+## African American Student Percent
+
+Takeaway: the schools with the largest percentage of Black students are college preparatory schools or academies.
+
+```{r}
+generate_demographic_barplot(2023, include_charter = TRUE, demographic = "Student_Membership_African_American_Percent")
+```
+
+Compare this to without the charter schools, the percentages drop by almost 20%.
+
+```{r}
+generate_demographic_barplot(2023, demographic = "Student_Membership_African_American_Percent")
+```
+This is likely due to the population sizes where these percentages are drawn from.
+
+```{r}
+lancaster_isd_count <- distprof %>% 
+  filter(Year == 2023 & DISTNAME == "LANCASTER ISD") %>%
+  pull(Student_Membership_All_Students_Count)
+
+beatrice_mayes_count <- distprof %>% 
+  filter(Year == 2023 & DISTNAME == "BEATRICE MAYES INSTITUTE CHARTER SCHOOL") %>% 
+  pull(Student_Membership_All_Students_Count)
+
+cat("Lancaster ISD Total Student Count:", lancaster_isd_count[[1]], "\n",
+    "Beatrice Mayes Total Student Count:", beatrice_mayes_count[[1]])
+```
+
+Ultimately, this gives us reason to separate charter schools out from school districts, as their percentages may not be comparable with public school districts. Or, at least, create a separate filter for charters. 
