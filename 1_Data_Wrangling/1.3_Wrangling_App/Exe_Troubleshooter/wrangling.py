@@ -274,7 +274,7 @@ def process_and_save_all_data(base_directory, level):
             processed_data_needed = False
             
             for file_name in os.listdir(raw_data_folder):
-                clean_file_name = f"{os.path.splitext(file_name)[0]}_clean.xlsx"
+                clean_file_name = f"{os.path.splitext(file_name)[0]}_clean.csv"
                 output_file = os.path.join(clean_data_folder, clean_file_name)
                 if not os.path.exists(output_file):
                     processed_data_needed = True
@@ -291,13 +291,13 @@ def process_and_save_all_data(base_directory, level):
             
             # Save each DataFrame in the dictionary as a separate Excel file
             for file_name, df in processed_data.items():
-                clean_file_name = f"{file_name}_clean.xlsx"
+                clean_file_name = f"{file_name}_clean.csv"
                 output_file = os.path.join(clean_data_folder, clean_file_name)
                 
                 if os.path.exists(output_file):
                     print(f"Skipping {clean_file_name} as it already exists.")
                 else:
-                    df.to_excel(output_file, index=False)
+                    df.to_csv(output_file, index=False)
                     print(f"Saved cleaned data for {year}, level {level}: {clean_file_name}")
         else:
             print(f"Warning: Raw data folder for {year} at level {level} does not exist, skipping...")
