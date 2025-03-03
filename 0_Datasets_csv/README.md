@@ -1,1 +1,1 @@
-
+This project’s dataset includes detailed information on schools within Texas split up by the state, region, district, and campus level. Datasets within include demographics and performance metrics for approximately 1,200 Texas school districts from 2017 to 2024. The data is compiled from publicly available information provided by the TEA website. The individual files in the dataset are explained here. 
