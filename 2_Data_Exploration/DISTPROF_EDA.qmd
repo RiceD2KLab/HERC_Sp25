@@ -251,3 +251,93 @@ cat("Lancaster ISD Total Student Count:", lancaster_isd_count[[1]], "\n",
 ```
 
 Ultimately, this gives us reason to separate charter schools out from school districts, as their percentages may not be comparable with public school districts. Or, at least, create a separate filter for charters. 
+
+# Histograms
+
+## Function to create histogram of demographic distribution
+
+Inputs are as follows:
+
+-   year = an integer formatted as YYYY representing a year from 2020-2023
+
+-   include_charter = a Boolean value indicating whether or not to include charter schools in the plot (FALSE is do not include charters, TRUE includes them). Default value is FALSE.
+
+-   demographic = a string of the following values:
+
+    -   "Student_Membership_White_Percent"
+
+    -   "Student_Membership_African_American_Percent"
+
+    -   "Student_Membership_Hispanic_Percent"
+
+    -   "Student_Membership_American_Indian_Percent"
+
+    -   "Student_Membership_Asian_Percent"
+
+    -   "Student_Membership_Pacific_Islander_Percent"
+
+    -   "Student_Membership_Two_or_More_Races_Percent"
+
+    -   "Student_Membership_Econ_Disadv_Percent"
+
+    -   "Student_Membership_Bilingual_ESL_Percent"
+
+    -   "Student_Membership_Gifted_Talented_Percent"
+
+    -   "Student_Membership_Immigrant_Percent"
+
+    -   "Student_Membership_Special_Ed_Percent"
+
+    -   "Student_Membership_All_Students_Count"
+
+    -   "Staff_Teacher_Student_Ratio"
+
+```{r}
+generate_demographic_hist <- function(year, include_charter = FALSE, demographic) {
+  demographic_key <- list(
+  "Student_Membership_White_Percent" = "White Student Percent",
+  "Student_Membership_African_American_Percent" = "Black Student Percent",
+  "Student_Membership_Hispanic_Percent" = "Hispanic Student Percent",
+  "Student_Membership_American_Indian_Percent" = "American Indian Student Percent",
+  "Student_Membership_Asian_Percent" = "Asian Student Percent",
+  "Student_Membership_Pacific_Islander_Percent" = "Pacific Islander Student Percent",
+  "Student_Membership_Two_or_More_Races_Percent" = "Multiracial Student Percent",
+  "Student_Membership_Econ_Disadv_Percent" = "Economically Disadvantaged Student Percent",
+  "Student_Membership_Bilingual_ESL_Percent" = "Bilingual/ESL Student Percent",
+  "Student_Membership_Gifted_Talented_Percent" = "Gifted & Talented Student Percent",
+  "Student_Membership_Immigrant_Percent" = "Immigrant Student Percent",
+  "Student_Membership_Special_Ed_Percent" = "Special Education Student Percent",
+  "Student_Membership_All_Students_Count" = "Total Student Enrollment",
+  "Staff_Teacher_Student_Ratio" = "Teacher-Student Ratio"
+)
+  
+  if (include_charter == FALSE) {
+    year_distprof <- distprof_joined %>% filter(Year == year & 
+                                                  Charter.School..Y.N. != "Y")
+  }
+  else if (include_charter == TRUE) {
+    year_distprof <- distprof_joined %>% filter(Year == year)
+  }
+  else stop("Invalid input for charter school inclusion")
+  
+  demographic_data <- year_distprof %>% select(all_of(c("DISTNAME", demographic)))
+  
+hist <- ggplot(demographic_data, aes(x = .data[[demographic]])) +
+  geom_histogram(fill = 'green4', binwidth = 5) +
+  scale_x_continuous(labels = scales::label_wrap(18)) +  # Ensure x is continuous
+  labs(title = paste0("Distribution of ", demographic_key[[demographic]], " in Texas School Districts, ", year),
+       x = demographic_key[[demographic]],
+       y = "Count") +  # Histogram y-axis represents count
+  theme(
+    legend.position = 'none',
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+  return(hist)
+}
+```
+
+## African American Percent Distribution
+
+```{r}
+generate_demographic_hist(2023, demographic = "Student_Membership_African_American_Percent")
+```
