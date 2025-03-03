@@ -82,7 +82,7 @@ Bianca Schutz: mbs5@rice.edu \
 Everett Adkins: ena4@rice.edu \
 Manav Mathur: mm175@rice.edu \
 Sachin Shurpalekar: sss20@rice.edu \
-Trey McCray: wlm2@rice.edu \
+Trey McCray: wlm2@rice.edu
 
 ## License
 
