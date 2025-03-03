@@ -43,13 +43,13 @@ In this semester, our team plans to build on the work done in Fall 2024, expandi
    Please see [0_Datasets_csv/README.md](0_Datasets_csv/README.md) for detailed dataset descriptions.
 
 ## Data Wrangling
-   Please see [01_Data_Wrangling/README.md](01_Data_Wrangling/README.md) for details on data cleaning and preprocessing. It contains the code utilized to transform the raw data files into various cohesive datasets for exploration and modeling, as further detailed in the subdirectory.
+   Please see [01_Data_Wrangling/README.md](1_Data_Wrangling/README.md) for details on data cleaning and preprocessing. It contains the code utilized to transform the raw data files into various cohesive datasets for exploration and modeling, as further detailed in the subdirectory.
 
 ##  Data Exploration
-   Please see [02_Data_Exploration/README.md](02_Data_Exploration/README.md) for details on exploratory data analysis.
+   Please see [2_Data_Exploration/README.md](2_Data_Exploration/README.md) for details on exploratory data analysis.
 
 ## Data Modeling
-   Please see [04_Data_Modeling/README.md](04_Data_Modeling/README.md) for details on modeling approaches, training, and validation.
+   Please see [3_Data_Modeling/README.md](3_Data_Modeling/README.md) for details on modeling approaches, training, and validation.
 
 ## Team Members & Contact Information
 Bianca Schutz: mbs5@rice.edu \
