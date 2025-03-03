@@ -7,11 +7,9 @@ format: html
 
 ## Loading in the data
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 setwd("/Users/biancaschutz/HERC_Sp25")
-```
 
-```{r}
 load_distprof_data <- function(years) {
   distprof_dataframes <- list()
   for (i in 1:length(years)) {
@@ -78,6 +76,7 @@ For DISTPROF, we are interested in the following data:
 
 ```{r}
 distprof_selected <- list()
+years <- 2020:2023
 for (i in 1:length(years)) {
   distprof_yr <- distprof_drop_cols[[i]]
   
@@ -136,8 +135,54 @@ black_student_pct
 ```
 Next, let's look at the 
 
-```{r}
-# Insert code loading in DREF here
+```{r, fig.width = 10, fig.height = 5}
+# Insert code loading in district type here
+setwd("/Users/biancaschutz/HERC_Sp25")
 
-# then join by district ID and year, then filter to eliminate private/prep schools. 
+load_dtype_data <- function(years) {
+  dtype_dataframes <- list()
+  for (i in 1:length(years)) {
+    year <- years[[i]]
+    path <- paste0("0_Datasets_csv/Data", year, "/District/clean_data/district_type", year, "_clean.csv")
+    df <- read.csv(path)
+    df$Year <- year
+    dtype_dataframes[[i]] <- data.frame(df)
+    names(dtype_dataframes)[[i]] <- paste0("dist_type", year)
+    cat("Loaded in District Type for", year, "\n")
+  }
+  return(dtype_dataframes)
+}
+
+dtype_list <- load_dtype_data(2020:2023)
+
+district_type <- do.call(rbind, dtype_list)
+rownames(district_type) <- NULL
+
+# join by school district year and ID
+sum(is.na(distprof$DISTRICT))
+distprof$DISTRICT <- as.integer(gsub("[^[:alnum:]_]", "", distprof$DISTRICT))
+sum(is.na(distprof$DISTRICT))
+
+dref$DISTRICT <- as.integer(gsub("[^[:alnum:]_]", "", dref$DISTRICT))
+#sum(is.na(dref$DISTRICT))
+
+dref$COUNTY <- as.integer(gsub("[^[:alnum:]_]", "", dref$COUNTY))
+#sum(is.na(dref$COUNTY))
+
+distprof_joined <- distprof %>% left_join(district_type, by = c("DISTNAME" = "District", "DISTRICT" = "District.Number", "Year"))
+
+# Filter out Charters
+no_charter_distprof2023 <- distprof_joined %>% filter(Charter.School..Y.N. != "Y", Year == 2023)
+
+top10_black_student_pct_no_charter <- no_charter_distprof2023 %>% arrange(desc(Student_Membership_African_American_Percent)) %>% slice_head(n = 10) %>% select(DISTNAME, Student_Membership_African_American_Percent)
+
+black_student_pct_nocharter <- ggplot(top10_black_student_pct_no_charter, aes(x = reorder(DISTNAME, Student_Membership_African_American_Percent), y = Student_Membership_African_American_Percent)) +
+  geom_col(fill = 'green4') +
+  scale_x_discrete(labels = scales::label_wrap(5)) +
+  theme(legend.position = 'none') +
+  labs(title = "10 Highest African American Student Populations in Texas School Districts, 2023",
+       x = "District Name",
+       y = "African American Student Percent")
+
+black_student_pct_nocharter
 ```
