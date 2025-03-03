@@ -1,7 +1,7 @@
 # Bridging the Data Gap: Empowering Texas School Districts with Analytics
 
 
-## Table of Contents
+## Table of Contents 
 1. [Overview](#overview)
 2. [Installation](#installation)
 3. [Dataset Description](#dataset-description)
