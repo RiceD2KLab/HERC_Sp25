@@ -78,12 +78,11 @@ The modeling results are presented intuitively to districts as an interactive vi
 ![til](./assets/HERC_Dashboard_1125.gif)
 
 ## Team Members & Contact Information
-Victor Xie: vyx2@rice.edu \
-Melissa Mar: mm174@rice.edu \
-Nate Lee: ncl4@rice.edu \
-Anu Jain: aj103@rice.edu \
-Ananya Kapoor: ak270@rice.edu \
-Wensheng Chu: wc57@rice.edu
+Bianca Schutz: mbs5@rice.edu \
+Everett Adkins: ena4@rice.edu \
+Manav Mathur: mm175@rice.edu \
+Sachin Shurpalekar: sss20@rice.edu \
+Trey McCray: wlm2@rice.edu \
 
 ## License
 
@@ -91,5 +90,5 @@ This project is licensed under the Rice University D2K License.
 
 ## Acknowledgments
 
-- Special thanks to the sponsor HERC, Instructor Dr. Xinjie Lan, and PhD mentors Mauro Flores for their guidance throughout this project.
+- Special thanks to the sponsor HERC, Instructor Dr. Xinjie Lan, and PhD mentor Konstantin Larin for their guidance throughout this project.
 - Thanks to the Texas Education Agency for making educational data accessible.
