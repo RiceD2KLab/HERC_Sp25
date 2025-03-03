@@ -10,6 +10,7 @@ toc-depth: 3
 ```{r}
 library(ggplot2)
 library(tidyverse)
+library(sf)
 ```
 
 ## Loading in the data
@@ -350,48 +351,57 @@ generate_demographic_hist(2023, demographic = "Student_Membership_African_Americ
 
 ```{r}
 library(sf)
-geo_tx <- read_sf("Texas_SchoolDistricts_2024.geojson")
+setwd("/Users/biancaschutz/HERC_Sp25")
+
+geo_tx <- read_sf("0_Datasets/Geometry/Texas_SchoolDistricts_2024.geojson")
 
 geo_tx$DISTRICT_N <- as.integer(geo_tx$DISTRICT_N)
 
-geo_htx <- st_transform(read_sf("Houston_SchoolDistricts_2019.geojson"))
+geo_htx <- st_transform(read_sf("0_Datasets/Geometry/Houston_SchoolDistricts_2019.geojson"))
 
 geo_htx$DISTRICT_N <- as.integer(geo_htx$DISTRICT_N)
+
+distprof_nocharter <- distprof_joined %>% filter(Charter.School..Y.N. == "N" & Year == 2023)
 ```
 
 ## Binning Helper Function
 
 ```{r}
 binning <- function(x) {
-  quantiles <- round(quantile(x, probs = seq(0, 1, 0.2)), 0)
+  quantiles <- unique(round(quantile(x, probs = seq(0, 1, 0.2), na.rm = TRUE), 0))
 
-  breaks <- quantiles
+  if (length(quantiles) < 2) {
+    stop("Not enough unique bins to create categories")
+  }
 
-  if (min(quantiles) > 0) { # if the quantiles don't include both 0 and 100
-    breaks <- c(0, quantiles)  # add them to the vector
+  # Ensure 0 and 100 are included if missing
+  if (min(quantiles) > 0) {
+    quantiles <- c(0, quantiles)
   }
   if (max(quantiles) < 100) {
-    breaks <- c(breaks, 100)
+    quantiles <- c(quantiles, 100)
   }
 
-labels <- paste0(quantiles[-length(quantiles)], "-", quantiles[-1], "%") # base labels
+  # Ensure breakpoints are strictly increasing
+  breaks <- sort(unique(quantiles))
 
-if (min(quantiles) > 0) { # append a minimum % label if 0 is not included
-  labels <- c(paste0("<", quantiles[1], "%"), labels)
-}
-if (max(quantiles) < 100) { # append a maximum % label if 100 is not included
-  labels <- c(labels, paste0(">", quantiles[length(quantiles)], "%"))
-}
+  # Create labels
+  labels <- paste0(breaks[-length(breaks)], "-", breaks[-1], "%")
 
-# check that they're the correct lengths
-if (length(labels) != length(breaks) - 1) {
-  stop("Labels and breaks are not the same length")
-}
-  
-  bins <- cut(x, 
-              breaks = breaks, 
-              labels = labels)
-  
+  if (min(breaks) > 0) {
+    labels <- c(paste0("<", breaks[2], "%"), labels)
+  }
+  if (max(breaks) < 100) {
+    labels <- c(labels, paste0(">", breaks[length(breaks) - 1], "%"))
+  }
+
+  # Ensure labels and breaks align
+  if (length(labels) != length(breaks) - 1) {
+    stop("Labels and breaks are not the same length")
+  }
+
+  bins <- cut(x, breaks = breaks, labels = labels, include.lowest = TRUE)
+
   return(bins)
 }
 ```
@@ -400,6 +410,92 @@ if (length(labels) != length(breaks) - 1) {
 
 ```{r}
 generate_demographic_map <- function(year, include_charter = FALSE, level = "State", demographic) {
+  demographic_key <- list(
+  "Student_Membership_White_Percent" = "White Student Percent",
+  "Student_Membership_African_American_Percent" = "Black Student Percent",
+  "Student_Membership_Hispanic_Percent" = "Hispanic Student Percent",
+  "Student_Membership_American_Indian_Percent" = "American Indian Student Percent",
+  "Student_Membership_Asian_Percent" = "Asian Student Percent",
+  "Student_Membership_Pacific_Islander_Percent" = "Pacific Islander Student Percent",
+  "Student_Membership_Two_or_More_Races_Percent" = "Multiracial Student Percent",
+  "Student_Membership_Econ_Disadv_Percent" = "Economically Disadvantaged Student Percent",
+  "Student_Membership_Bilingual_ESL_Percent" = "Bilingual/ESL Student Percent",
+  "Student_Membership_Gifted_Talented_Percent" = "Gifted & Talented Student Percent",
+  "Student_Membership_Immigrant_Percent" = "Immigrant Student Percent",
+  "Student_Membership_Special_Ed_Percent" = "Special Education Student Percent",
+  "Student_Membership_All_Students_Count" = "Total Student Enrollment",
+  "Staff_Teacher_Student_Ratio" = "Teacher-Student Ratio"
+)
   
+  if (include_charter == FALSE) {
+    year_distprof <- distprof_joined %>% filter(Year == year & 
+                                                  Charter.School..Y.N. != "Y")
+  }
+  else if (include_charter == TRUE) {
+    year_distprof <- distprof_joined %>% filter(Year == year)
+  }
+  else stop("Invalid input for charter school inclusion")
+  
+  demographic_data <- year_distprof %>% select(all_of(c("DISTRICT", "DISTNAME", demographic)))
+  
+  if (level == "Houston") {
+    demographic_with_geo <- demographic_data %>% inner_join(geo_htx, join_by("DISTRICT" == "DISTRICT_N"))
+    
+    demographic_with_geo$bins <- binning(demographic_with_geo[[demographic]])
+    
+    map <- ggplot() + 
+  geom_sf(data = geo_tx, fill = "gray90", color = "grey20", lwd = 0.2) +
+
+  geom_sf(data = demographic_with_geo, aes(geometry = geometry, fill = bins)) +
+    
+ labs(title = paste0(demographic_key[[demographic]], " in Houston Area School Districts, ", year),
+       x = demographic_key[[demographic]],
+       y = "Count") +
+  
+  ggthemes::theme_few() +
+    
+  scale_fill_brewer(palette = "Blues") + 
+    
+  theme(plot.title = element_text(size=10)) +
+    
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+  }
+  
+  if (level == "State") {
+    demographic_with_geo <- demographic_data %>% inner_join(geo_tx, join_by("DISTRICT" == "DISTRICT_N"))
+    
+    demographic_with_geo$bins <- binning(demographic_with_geo[[demographic]])
+    
+    map <- ggplot() + 
+  geom_sf(data = geo_tx, fill = "gray90", color = "grey20", lwd = 0.2) +
+
+  geom_sf(data = demographic_with_geo, aes(geometry = geometry, fill = bins)) +
+    
+ labs(title = paste0(demographic_key[[demographic]], " in Texas School Districts, ", year),
+      fill = demographic_key[[demographic]]) +
+  
+  ggthemes::theme_few() +
+    
+  scale_fill_brewer(palette = "Blues") + 
+    
+  theme(plot.title = element_text(size=10)) +
+    
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+  }
+  
+  else stop("Invalid input for level")
+  
+  
+  return(map)
 }
+```
+
+```{r}
+generate_demographic_map(2023, demographic = "Student_Membership_African_American_Percent")
 ```
