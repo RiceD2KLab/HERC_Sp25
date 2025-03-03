@@ -16,15 +16,34 @@
 ## Overview
 
 #### Project Overview
+Texas school districts face increasing pressure to meet accountability standards, yet many lack the resources to effectively analyze performance data. While public datasets exist, they are often fragmented, inconsistent, and difficult to navigate.
 
-In an era of fluctuating accountability standards and increasing usage of data to make policy decisions, Texas school districts face immense pressure to make use of the large volume of educational data spanning demographic and performance characteristics to better serve their student populations. With over 1,200 districts, many of which struggle to utilize the fragmented public data sources with limited bandwidth and time, identifying and learning from similar or "peer" districts presents a significant challenge but a large possibility of great rewards. This project, in collaboration with the Houston Education Research Consortium (HERC), enables district leaders to both identify their most similar peers quickly and understand actionable insights where they can best learn from each other.
+Our project, supported by the Houston Education Research Consortium (HERC), simplifies this process by enabling districts to identify peer districts—those with similar demographics—for performance comparison and strategic collaboration. By providing a streamlined, data-driven approach, we help districts extract meaningful insights to drive informed decision-making and improve academic outcomes.
 
 #### Objectives
 
-This project focuses on two key goals:
+In this semester, our team plans to build on the work done in Fall 2024, expanding on some of their strengths while addressing the areas they were unable to accomplish. Specifically, our objectives include:
 
-1. **Scalar-Value Similarity Analysis**: Model the identity of districts as a single scalar value, allowing districts to quickly identify their peers based on whose scalar data representations are closest to themselves. 
-2. **Interactive Visualization Tool**: Create an intuitive online platform for visualizing data and similarity scores with interactive geospatial capabilities.
+* **Develop a User-Friendly Data Extraction Tool:** Create a web scraping tool that enables
+users to retrieve datasets from the TEA website, with the ability to update annually as new
+information is added, solving the problem of data becoming outdated. Unlike traditional
+methods that rely on data compression techniques like PCA, this tool will allow users to
+access complete, raw datasets while enhancing their usability through automated cleaning
+and standardization.
+
+• Facilitate Comparative Analysis Among School Districts: Assist school districts in iden-
+tifying and comparing themselves with similar districts by allowing users to select and
+
+prioritize relevant demographic features, thereby enhancing data-driven decision-making.
+The matching process should focus on demographic factors for similarities, rather than test
+scores and graduation rates, to allow districts to use those outcomes as a comparison after
+the fact.
+
+• Engage and Collaborate with Local School Districts: Actively consult with Houston-
+area school districts to gather insights and feedback, ensuring the tool aligns with their
+
+specific needs and preferences, and provide comprehensive documentation to support its
+effective use.
 
 #### Key Impacts
 
