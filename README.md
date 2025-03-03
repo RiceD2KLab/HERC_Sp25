@@ -33,14 +33,6 @@ In this semester, our team plans to build on the work done in Fall 2024, expandi
 * **Develop an Interactive Dashboard for District Comparisons:** Create a web-based or GUI-driven dashboard that allows users to visualize, compare, and analyze school district data interactively, making insights more accessible and actionable. This dashboard should be simpler and more applicable for districts than the one made in the prior semester. 
 
 
-#### Key Impacts
-
-- **Efficient Decision-Making**: Instead of districts needing to deploy resources to sift through vast amounts of state educational data, the model and tooling provides a single source of truth, unifying all data sources into a single dataset and providing an immediate identification of a district's most similar peers.
-- **Motivating Actionable Collaboration**: By highlighting comparable districts and the best areas they can learn from each other, the modeling encourages districts to tackle tailored areas for improvement and faciliate mutual knowledge transfer to best design policies tailored to their situations.
-- **User-Friendly Access**: The visualization platform modernizes existening opaque and unintuive data access sources, simplifying access and analysis for district leaders across a range of technical and non-technical backgrounds.
-
-This project is a practical and efficient solution to the challenge of understanding school district performance and improvement across Texas, enabling equitable access to a path towards stronger schools based on analyses extracted from data for every district in the state.
-
 
 ## Installation
 
