@@ -38,10 +38,9 @@ In this semester, our team plans to build on the work done in Fall 2024, expandi
 
 
 ## Running the Codebase
-The codebase follows the data science pipeline and is mostly comprised of Jupyter notebooks. Thus, after performing the aforementioned installation to ensure the correct dependencies, please run the notebooks in the following directories in order (`01_Data_Wrangling`, `02_Data_Exploration`, `03_Feature_Engineering`, and `04_Data_Modeling`) to run the entire pipeline, or run specific subdirectories to perform one stage of the pipeline, as all intermediary data is saved and re-loaded in the next stage. The following five sections cover the subdirectories, starting with the datasets and then how the data is wrangled and explored, how feature engineering is conducted, and how the model is trained.
 
 ## Dataset Description
-   Please see [00_Datasets/README.md](00_Datasets/README.md) for detailed dataset descriptions.
+   Please see [0_Datasets_csv/README.md](0_Datasets_csv/README.md) for detailed dataset descriptions.
 
 ## Data Wrangling
    Please see [01_Data_Wrangling/README.md](01_Data_Wrangling/README.md) for details on data cleaning and preprocessing. It contains the code utilized to transform the raw data files into various cohesive datasets for exploration and modeling, as further detailed in the subdirectory.
