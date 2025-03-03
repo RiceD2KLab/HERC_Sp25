@@ -324,10 +324,10 @@ generate_demographic_hist <- function(year, include_charter = FALSE, demographic
   
 hist <- ggplot(demographic_data, aes(x = .data[[demographic]])) +
   geom_histogram(fill = 'green4', binwidth = 5) +
-  scale_x_continuous(labels = scales::label_wrap(18)) +  # Ensure x is continuous
+  scale_x_continuous(labels = scales::label_wrap(18)) +
   labs(title = paste0("Distribution of ", demographic_key[[demographic]], " in Texas School Districts, ", year),
        x = demographic_key[[demographic]],
-       y = "Count") +  # Histogram y-axis represents count
+       y = "Count") + 
   theme(
     legend.position = 'none',
     axis.text.x = element_text(angle = 45, hjust = 1)
@@ -340,4 +340,66 @@ hist <- ggplot(demographic_data, aes(x = .data[[demographic]])) +
 
 ```{r}
 generate_demographic_hist(2023, demographic = "Student_Membership_African_American_Percent")
+```
+
+# Maps
+
+## Set-Up
+
+### Loading in the Geometry 
+
+```{r}
+library(sf)
+geo_tx <- read_sf("Texas_SchoolDistricts_2024.geojson")
+
+geo_tx$DISTRICT_N <- as.integer(geo_tx$DISTRICT_N)
+
+geo_htx <- st_transform(read_sf("Houston_SchoolDistricts_2019.geojson"))
+
+geo_htx$DISTRICT_N <- as.integer(geo_htx$DISTRICT_N)
+```
+
+## Binning Helper Function
+
+```{r}
+binning <- function(x) {
+  quantiles <- round(quantile(x, probs = seq(0, 1, 0.2)), 0)
+
+  breaks <- quantiles
+
+  if (min(quantiles) > 0) { # if the quantiles don't include both 0 and 100
+    breaks <- c(0, quantiles)  # add them to the vector
+  }
+  if (max(quantiles) < 100) {
+    breaks <- c(breaks, 100)
+  }
+
+labels <- paste0(quantiles[-length(quantiles)], "-", quantiles[-1], "%") # base labels
+
+if (min(quantiles) > 0) { # append a minimum % label if 0 is not included
+  labels <- c(paste0("<", quantiles[1], "%"), labels)
+}
+if (max(quantiles) < 100) { # append a maximum % label if 100 is not included
+  labels <- c(labels, paste0(">", quantiles[length(quantiles)], "%"))
+}
+
+# check that they're the correct lengths
+if (length(labels) != length(breaks) - 1) {
+  stop("Labels and breaks are not the same length")
+}
+  
+  bins <- cut(x, 
+              breaks = breaks, 
+              labels = labels)
+  
+  return(bins)
+}
+```
+
+## Map Function
+
+```{r}
+generate_demographic_map <- function(year, include_charter = FALSE, level = "State", demographic) {
+  
+}
 ```
