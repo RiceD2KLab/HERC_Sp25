@@ -56,45 +56,6 @@ This project is a practical and efficient solution to the challenge of understan
 
 ## Installation
 
-1. **Ensure Python 3.10.11 is installed:**
-Make sure you have Python 3.10.11 installed on your system. If not, download it from [Python's official website](https://www.python.org/downloads/release/python-31011/)
-
-2. **Clone the repository:**
-   ```bash
-   git clone https://github.com/RiceD2KLab/Kinder_HERC_F24.git
-
-3. **Navigate to the project directory:** 
-   ```bash
-   cd Kinder_HERC_F24
-
-4. **Create a virtual environment:**
-- **On Windows:**
-  ```bash
-   py -3.10 -m venv .venv
-
-- **On macOS/Linux:**
-  ```bash
-   python3.10 -m venv .venv
-
-5. **Activate the Virtual Environment**
-- **On Windows:**
-  ```bash
-  .venv\Scripts\activate
-
-- **On macOS/Linux:**
-  ```bash
-   source .venv/bin/activate
-
-6. **Install the required libraries:**
-   ```bash
-   pip install -r requirements.txt
-
-7. **Verify the setup** 
-  Run the following command to ensure the environment is correctly configured:
-   ```bash
-     python -V
-     pip list
-   ```
 
 ## Running the Codebase
 The codebase follows the data science pipeline and is mostly comprised of Jupyter notebooks. Thus, after performing the aforementioned installation to ensure the correct dependencies, please run the notebooks in the following directories in order (`01_Data_Wrangling`, `02_Data_Exploration`, `03_Feature_Engineering`, and `04_Data_Modeling`) to run the entire pipeline, or run specific subdirectories to perform one stage of the pipeline, as all intermediary data is saved and re-loaded in the next stage. The following five sections cover the subdirectories, starting with the datasets and then how the data is wrangled and explored, how feature engineering is conducted, and how the model is trained.
