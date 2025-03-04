@@ -1,0 +1,84 @@
+import os
+import pandas as pd
+import glob
+
+def find_common_columns(desktop_path, start_year=2018, end_year=2023):
+    """
+    Identifies common columns across yearly_data_2018 to yearly_data_2023.
+
+    Returns:
+    - set: Common columns across all datasets.
+    - dict: Loaded DataFrames keyed by filename.
+    """
+    all_columns = []  # Store column names for comparison
+    dataframes = {}   # Store DataFrames
+
+    for year in range(start_year, end_year + 1):
+        file_path = os.path.join(desktop_path, f"yearly_data_{year}.csv")
+
+        if not os.path.exists(file_path):
+            print(f"❌ File not found: {file_path}")
+            continue
+        
+        # Load dataset
+        df = pd.read_csv(file_path)
+
+        # Remove "year" column if it exists
+        if "year" in df.columns:
+            df = df.drop(columns=["year"])
+
+        # Store column names as a set
+        all_columns.append(set(df.columns))
+        dataframes[year] = df
+
+        print(f"✅ Loaded {file_path}: {df.shape[0]} rows, {df.shape[1]} columns")
+
+    # Find common columns across all datasets
+    common_columns = set.intersection(*all_columns) if all_columns else set()
+
+    print("\n📌 Common columns found across all datasets:")
+    print(sorted(common_columns))
+
+    return common_columns, dataframes
+
+def full_outer_join_all_data(desktop_path, start_year=2018, end_year=2023):
+    """
+    Performs a full outer join on yearly_data_2018 to yearly_data_2023 based on common columns.
+    Saves the merged dataset to the desktop.
+
+    Returns:
+    - None (Saves file to desktop and prints result).
+    """
+    common_columns, dataframes = find_common_columns(desktop_path, start_year, end_year)
+
+    if not common_columns or not dataframes:
+        print("❌ No common columns found or no data to merge.")
+        return
+
+    print("\n✅ Performing a FULL OUTER JOIN on common columns...")
+
+    # Convert common columns set to a sorted list
+    common_columns = sorted(common_columns)
+    merged_df = None
+
+    for year, df in dataframes.items():
+        if merged_df is None:
+            merged_df = df  # Initialize with first dataset
+        else:
+            # Full outer join on common columns
+            merged_df = merged_df.merge(df, on=list(common_columns), how="outer", suffixes=("", f"_{year}"))
+
+    # Output final row and column count
+    print(f"\n✅ Final Merged Data: {merged_df.shape[0]} rows, {merged_df.shape[1]} columns")
+
+    # Define local desktop path
+    output_file = os.path.join(desktop_path, "merged_yearly_data.csv")
+
+    # Save the final dataset to the desktop
+    merged_df.to_csv(output_file, index=False)
+
+    print(f"\n✅ Merged dataset saved successfully: {output_file}")
+
+# Example Usage
+desktop_path = os.path.expanduser("~/Desktop")
+full_outer_join_all_data(desktop_path)

@@ -1,0 +1,102 @@
+import os
+import pandas as pd
+import glob
+
+def find_common_columns_and_load_data(year, base_path="/Users/treymccray/HERC_Sp25"):
+    folder_path = os.path.join(base_path, "0_Datasets_csv", f"Data{year}", "District", "clean_data")
+
+    if not os.path.exists(folder_path):
+        print(f"❌ Folder for year {year} does not exist: {folder_path}")
+        return None, None, []
+
+    # Get all CSV files except those containing 'district_type'
+    csv_files = [file for file in glob.glob(os.path.join(folder_path, "*.csv")) 
+                 if "district_type" not in os.path.basename(file).lower()]
+
+    if not csv_files:
+        print(f"⚠️ No valid CSV files found in {folder_path}")
+        return None, None, []
+
+    print(f"\n✅ Loading CSV files from: {folder_path}")
+
+    column_sets = []  # Store sets of column names for each file
+    dataframes = {}   # Store DataFrames
+    loaded_files = [] # Track successfully loaded files
+
+    for file in csv_files:
+        file_name = os.path.basename(file)
+
+        # Load CSV file into a DataFrame
+        df = pd.read_csv(file)
+
+        # Store column names as a set (without modifying them)
+        column_sets.append(set(df.columns))
+        dataframes[file_name] = df
+        loaded_files.append(file_name)
+
+        print(f"   📂 {file_name}: {len(df.columns)} columns")
+
+    # Find common columns across all datasets (used for joining)
+    common_columns = set.intersection(*column_sets) if column_sets else set()
+
+    print("\n✅ Common columns across all CSV files:")
+    print(sorted(common_columns))  
+
+    return common_columns, dataframes, loaded_files
+
+
+def full_outer_join_district_data(year, base_path="/Users/treymccray/HERC_Sp25"):
+    common_columns, dataframes, loaded_files = find_common_columns_and_load_data(year, base_path)
+
+    if not common_columns or not dataframes:
+        print("❌ No common columns found or no data to merge.")
+        return None
+
+    print("\n✅ Performing a FULL OUTER JOIN while keeping ALL columns...")
+
+    # Convert common columns set to a sorted list
+    common_columns = sorted(common_columns)
+    merged_df = None
+
+    for file_name, df in dataframes.items():
+        if merged_df is None:
+            merged_df = df  # Initialize with first dataset (keep all columns)
+        else:
+            # Resolve duplicate column names dynamically
+            duplicate_cols = set(merged_df.columns) & set(df.columns) - set(common_columns)
+            df = df.rename(columns={col: f"{col}_from_{file_name}" for col in duplicate_cols})
+
+            # Perform outer join on common columns, keeping all columns from both datasets
+            merged_df = merged_df.merge(df, on=list(common_columns), how="outer")
+
+    # Add "year" column at the end
+    merged_df["year"] = year
+
+    # Print files that were merged
+    print("\n📌 Files Combined in Final Dataset:")
+    for file in loaded_files:
+        print(f"   📂 {file}")
+
+    # Output final row and column count
+    print(f"\n✅ Final Merged Data: {merged_df.shape[0]} rows, {merged_df.shape[1]} columns (including 'year')")
+
+    # Check if the column exists in the final dataset
+    column_to_check = "District 2021 AP/IB Course Completion Graduates: All Students Denominator"
+    if column_to_check in merged_df.columns:
+        print(f"\n✅ The column '{column_to_check}' EXISTS in the final dataset.")
+    else:
+        print(f"\n❌ The column '{column_to_check}' was NOT found in the final dataset.")
+
+    # Define local desktop path
+    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop", f"master_sheet_{year}.csv")
+
+    # Save the final dataset to the desktop
+    merged_df.to_csv(desktop_path, index=False)
+
+    print(f"\n✅ File saved successfully: {desktop_path}")
+
+    return merged_df
+
+# Example Usage
+year_input = input("Enter the year: ").strip()
+final_dataset = full_outer_join_district_data(year_input)
