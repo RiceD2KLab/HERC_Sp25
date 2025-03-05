@@ -79,12 +79,22 @@ for col in merged_df.columns:
             col_assignment[col] = correct_year
             yearly_datasets[correct_year].append(col)
 
-# Step 4: Split the Dataset by Year and Verify Before Saving
+# Step 5: Clean and Remove Duplicates from Final Datasets
 for year, cols in yearly_datasets.items():
     if cols:
         # Keep common columns + year-specific columns
         final_cols = list(common_columns) + cols
         year_df = merged_df[final_cols].copy()
+
+        # Clean 'region', 'district', 'district_id', and 'county' columns
+        for col in ['region', 'district', 'district_id', 'county']:
+            if col in year_df.columns:
+                # Remove apostrophes and convert to numeric
+                year_df[col] = year_df[col].astype(str).str.replace("'", "").apply(pd.to_numeric, errors='coerce')
+
+        # Remove duplicates based on 'district', 'district_id', and 'county'
+        if all(col in year_df.columns for col in ['district', 'district_id', 'county']):
+            year_df = year_df.drop_duplicates(subset=['district', 'district_id', 'county'])
 
         # **Check which years are still in column names**
         found_years = [y for y in years_to_check if any(y in col for col in year_df.columns)]
@@ -100,4 +110,6 @@ for year, cols in yearly_datasets.items():
         year_df.to_csv(output_path, index=False)
         print(f"✅ Saved {year}: {year_df.shape[0]} rows, {year_df.shape[1]} columns → {output_path}")
 
-print("\n✅ All yearly datasets have been checked, verified, and saved on the desktop!")
+print("\n✅ All yearly datasets have been checked, verified, cleaned, and saved on the desktop!")
+
+ 
