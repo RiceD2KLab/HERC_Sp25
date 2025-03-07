@@ -1,3 +1,7 @@
+## TAPR Scraper Mac Version
+
+This Mac Installer encapsulates the final TAPR Scraper version without the cleaning functionality. It allows Mac users to use the app to automatically scrape the raw data files of their choice from the TAPR Advanced Data Download page. Because the Windows version is packaged as a .exe, we created a .app version for Mac users since .exe files do not run on MacOS. This was bundled into a .app using Nuitka and downloads as a .dmg, allowing users to follow the steps below to move the app to their Applications folder and use the app as they would any other app on their Mac! 
+
 ## Instructions to Use Mac Scraping Application
 
 ### Download the .dmg
