@@ -14,10 +14,56 @@ This tool simplifies the process of retrieving datasets by enabling users to spe
 * Automatically cleans all raw_data files into a new clean_data folder. (Properly formats NA values, maps column IDs with real column names, joins district/region IDs with true names)
 
 ## Installation & Setup 
-For Windows Devices, access the .exe file via box here:  
-[Insert Box Drive Here](box.com)
+Here’s the **final improved Installation & Setup section**, integrating both Windows and Mac installation instructions with clear formatting and improved readability:
 
-Simply download the TAPR_Scraper.exe file, open it to get access to the application. You can save this file to a directory of your choice to access it later. 
+
+## **Installation & Setup**  
+
+The TAPR Scraper App is available for both **Windows** and **Mac** users. Follow the appropriate instructions below to install and run the application on your device.
+
+
+### **Windows Installation**  
+1. **Download the application:**  
+   - Access the `.exe` file via Google Drive:  
+     [TAPR Scraper for Windows](https://drive.google.com/drive/folders/1ee4Aw85x6BBq-QAIKfZ_aqhJ3FmCgcL6?usp=drive_link)  
+
+2. **Run the installer:**  
+   - Download `TAPR_Scraper.exe` to your preferred directory.  
+   - Double-click the file to open the application.  
+   - (Optional) Move the file to a permanent directory for easy access.  
+
+
+### **Mac Installation**  
+
+This Mac version allows users to scrape **raw data files** from the TAPR Advanced Data Download page. Due to macOS security restrictions, **the cleaning functionality is not included** in this version.  
+
+#### **Step 1: Download the .dmg**  
+- Download the **TAPR Scraper for Mac** from Google Drive:  
+  [Download TAPR Scraper for Mac](https://drive.google.com/file/d/1iyhG-yyNh_C61esBfIyqpgpHbXzJcvOY/view?usp=drive_link)  
+- When prompted, select **"Download Anyway"** (Google Drive may flag the file as a potential virus).  
+
+#### **Step 2: Open the .dmg and Bypass Quarantine**  
+1. Open the **.dmg** file and **drag the TEA Scraper App into your Applications folder**.  
+   **⚠️ DO NOT open the app yet!**  
+2. Open **Terminal** and run the following command to remove Apple’s quarantine flag:  
+   ```sh
+   xattr -d com.apple.quarantine "/Applications/TEA Scraper.app"
+   ```
+
+#### **Step 3: Open the Scraper App**  
+1. Double-click the **TEA Scraper** app to open it.  
+2. If you see the message:  
+   > “TEA Scraper” Not Opened: Apple could not verify “TEA Scraper” is free of malware that may harm your Mac or compromise your privacy.  
+   Click **"Done"** to close the window.  
+3. Navigate to **System Settings > Privacy & Security**.  
+4. Scroll down to the **Security** section. You should see a message stating:  
+   > “TEA Scraper was blocked to protect your Mac.”  
+5. Click **"Open Anyway"** next to this message.  
+
+#### **Step 4: Use the Scraper!**  
+- The scraper should now launch successfully without any further security issues.  
+
+---
 
 ## How to Use the TAPR Scraping App
 1. **Specify download directory:**  
