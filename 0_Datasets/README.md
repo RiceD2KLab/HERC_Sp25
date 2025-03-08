@@ -21,8 +21,6 @@ This repository contains **district-level** datasets covering Texas school distr
     │   ├── Data2023/  → (2022-2023 school year)
     │   ├── Geometry/  → (Geographic Data Files)
     │   ├── Archive/  → (Old Unused Files)
-
-
 ```
 
 ### **Inside Each Year’s Folder (e.g., `Data2020/`)**
@@ -57,6 +55,13 @@ Data{Year}/
 
 ### **Geometry Folder**  
 - These files are datasets used to create map visualizations in R  
-  
 
 ---
+
+## **Clean Data File Descriptions**
+
+- **GRAD:** Attendance, Chronic Absenteeism, Graduation (RHSP/DAP & FHSP), and Dropout Rates  
+- **PERF1:** Postsecondary Indicators: College, Career, and Military Readiness (CCMR), TSIA, College Prep
+- **PERF2:** PERF2 Postsecondary Indicators: AP/IB, SAT/ACT
+- **PROF:** Profile: Staff, Student, and Annual Graduates  
+- **STAAR1:** STAAR Assessment Data (Primary Student Groups): Approaches, Meets, and Masters Grade Level (Grades 3 to 8)  
