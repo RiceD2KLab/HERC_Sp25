@@ -1,7 +1,3 @@
-Here’s your **README file** with improved formatting and **industry-standard dependency management** using `requirements.txt` (which is the preferred method in most professional projects).  
-
----
-
 # **Building the TAPR Scraper Executable**  
 
 This guide provides step-by-step instructions to **package the TAPR Scraper application into a standalone executable (.exe)** using `PyInstaller`.  
