@@ -40,8 +40,6 @@ Data{Year}/
     │   ├── raw_data/
     │   ├── clean_data/
 ```
-Here’s the updated README section incorporating the new folder and dataset information:
-
 ---
 
 ### **Master Files Explained**  
