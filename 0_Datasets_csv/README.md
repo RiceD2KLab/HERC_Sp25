@@ -1,4 +1,4 @@
-# **Dataset Description README (2018-2023)**  
+# **Dataset Description README**  
 
 ## **Overview**  
 This repository contains **district-level** datasets covering Texas school districts' **demographics** and **performance metrics** from **2018 to 2023**.  
