@@ -20,6 +20,8 @@ This repository contains **district-level** datasets covering Texas school distr
     │   ├── Data2022/  → (2021-2022 school year)
     │   ├── Data2023/  → (2022-2023 school year)
     │   ├── Geometry/  → (Geographic Data Files)
+    │   ├── Archive/  → (Old Unused Files)
+
 
 ```
 
