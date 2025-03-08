@@ -1,6 +1,6 @@
 # **Data Wrangling README**  
 
-This directory contains all scripts and tools related to extracting, cleaning, and processing data from the Texas Academic Performance Report (TAPR) online portal. It is organized into three main subfolders, each dedicated to a specific stage of data handling.
+This directory contains all scripts and tools related to extracting, cleaning, and processing data from the Texas Academic Performance Report (TAPR) online portal. It is organized into three main subfolders, each dedicated to a specific stage of data wrangling.
 
 ## **1.1_Web_Scraping**
 This folder contains code for accessing the **TAPR online portal** and scraping files directly from the website.
