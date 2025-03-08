@@ -12,7 +12,7 @@ This folder contains code for accessing the **TAPR online portal** and scraping 
 
 ## **1.2_Data_Cleaning**
 This folder processes the **raw data** scraped in the previous step, ensuring consistency and usability.
-
+- **Main Script:** `Data_Cleaning.ipynb`
 - **Functionality:**  
   - Converts appropriate columns to numeric format.  
   - Replaces encoded missing values with standardized `NA`.  
