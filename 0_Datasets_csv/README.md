@@ -19,7 +19,6 @@ This repository contains **district-level** datasets covering Texas school distr
     │   ├── Data2021/  → (2020-2021 school year)
     │   ├── Data2022/  → (2021-2022 school year)
     │   ├── Data2023/  → (2022-2023 school year)
-    │   ├── Data2018-2019/  → (Legacy dataset)
 ```
 
 ### **Inside Each Year’s Folder (e.g., `Data2020/`)**
