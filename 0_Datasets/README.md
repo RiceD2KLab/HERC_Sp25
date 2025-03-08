@@ -9,6 +9,16 @@ This repository contains **district-level** datasets covering Texas school distr
 
 ---
 
+## **Clean Data File Descriptions**
+
+- **GRAD:** Attendance, Chronic Absenteeism, Graduation (RHSP/DAP & FHSP), and Dropout Rates  
+- **PERF1:** Postsecondary Indicators: College, Career, and Military Readiness (CCMR), TSIA, College Prep
+- **PERF2:** PERF2 Postsecondary Indicators: AP/IB, SAT/ACT
+- **PROF:** Profile: Staff, Student, and Annual Graduates  
+- **STAAR1:** STAAR Assessment Data (Primary Student Groups): Approaches, Meets, and Masters Grade Level (Grades 3 to 8)
+
+---
+
 ## **Repository Structure**  
 
 ```
@@ -46,13 +56,7 @@ Data{Year}/
 
 The `0_Datasets/1.7Master_Files/Individual Year Files` folder contains the **result of merging** multiple datasets into a single dataset per year. These merged datasets combine critical performance and demographic indicators, simplifying the next stage of feature engineering.
 
-### **Datasets Included in Merged Files:**
-- **GRAD:** 
-- **PERF1:** 
-- **PERF2:** 
-- **PROF:** 
-- **STAAR1:** 
-
+### **Datasets Included in Merged Files:** GRAD, PERF1, PERF2, PROF, STAAR1
 These **fully integrated datasets** will be used in the **next stage of feature engineering**, ensuring a more comprehensive analysis of district-level trends across Texas school districts.
 
 ---
@@ -71,12 +75,5 @@ These **fully integrated datasets** will be used in the **next stage of feature 
 ### **Geometry Folder**  
 - These files are datasets used to create map visualizations in R  
 
----
 
-## **Clean Data File Descriptions**
 
-- **GRAD:** Attendance, Chronic Absenteeism, Graduation (RHSP/DAP & FHSP), and Dropout Rates  
-- **PERF1:** Postsecondary Indicators: College, Career, and Military Readiness (CCMR), TSIA, College Prep
-- **PERF2:** PERF2 Postsecondary Indicators: AP/IB, SAT/ACT
-- **PROF:** Profile: Staff, Student, and Annual Graduates  
-- **STAAR1:** STAAR Assessment Data (Primary Student Groups): Approaches, Meets, and Masters Grade Level (Grades 3 to 8)  
