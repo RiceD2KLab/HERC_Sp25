@@ -70,7 +70,6 @@ These **fully integrated datasets** will be used in the **next stage of feature 
 ### **Data Cleaning Standards**  
 - **2020-2023** datasets follow a **standardized** cleaning process.  
 - **2018 & 2019** data follows a **different methodology** due to structural changes in TEA data formatting. These years contain one single unified clean dataset that last semester's team worked on.  
-- The **final combined district-level datasets** for 2018-2019 are stored separately.
 
 ### **Geometry Folder**  
 - These files are datasets used to create map visualizations in R  
