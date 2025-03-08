@@ -40,6 +40,22 @@ Data{Year}/
     │   ├── raw_data/
     │   ├── clean_data/
 ```
+Here’s the updated README section incorporating the new folder and dataset information:
+
+---
+
+### **Master Files Explained**  
+
+The `0_Datasets/1.7Master_Files/Individual Year Files` folder contains the **result of merging** multiple datasets into a single dataset per year. These merged datasets combine critical performance and demographic indicators, simplifying the next stage of feature engineering.
+
+### **Datasets Included in Merged Files:**
+- **GRAD:** 
+- **PERF1:** 
+- **PERF2:** 
+- **PROF:** 
+- **STAAR1:** 
+
+These **fully integrated datasets** will be used in the **next stage of feature engineering**, ensuring a more comprehensive analysis of district-level trends across Texas school districts.
 
 ---
 
