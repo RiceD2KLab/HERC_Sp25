@@ -13,10 +13,6 @@ This tool simplifies the process of retrieving datasets by enabling users to spe
 * Save files directly to a specified directory
 * Automatically cleans all raw_data files into a new clean_data folder. (Properly formats NA values, maps column IDs with real column names, joins district/region IDs with true names)
 
-## Installation & Setup 
-Here’s the **final improved Installation & Setup section**, integrating both Windows and Mac installation instructions with clear formatting and improved readability:
-
-
 ## **Installation & Setup**  
 
 The TAPR Scraper App is available for both **Windows** and **Mac** users. Follow the appropriate instructions below to install and run the application on your device.
