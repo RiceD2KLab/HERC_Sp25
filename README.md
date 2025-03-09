@@ -35,9 +35,48 @@ In this semester, our team plans to build on the work done in Fall 2024, expandi
 
 
 ## Installation
+1. **Ensure Python 3.10.11 is installed:**
+Make sure you have Python 3.12.4 installed on your system. If not, download it from [Python's official website](https://www.python.org/downloads/release/python-31011/)
 
+2. **Clone the repository:**
+   
+bash
+   git clone https://github.com/RiceD2KLab/Kinder_HERC_F24.git
 
-## Running the Codebase
+3. **Navigate to the project directory:**
+bash
+   cd Kinder_HERC_F24
+
+4. **Create a virtual environment:**
+- **On Windows:**
+  
+bash
+   py -3.12 -m venv .venv
+
+- **On macOS/Linux:**
+bash
+   python3.12 -m venv .venv
+
+5. **Activate the Virtual Environment**
+- **On Windows:**
+  
+bash
+  .venv\Scripts\activate
+
+- **On macOS/Linux:**
+bash
+   source .venv/bin/activate
+
+6. **Install the required libraries:**
+   
+bash
+   pip install -r requirements.txt
+
+7. **Verify the setup** 
+  Run the following command to ensure the environment is correctly configured:
+bash
+     python -V
+     pip list
 
 ## Dataset Description
    Please see [0_Datasets/README.md](0_Datasets/README.md) for detailed dataset descriptions.
