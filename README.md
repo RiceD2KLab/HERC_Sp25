@@ -7,7 +7,8 @@
 3. [Dataset Description](#dataset-description)
 4. [Data Wrangling](#data-wrangling)
 5. [Data Exploration](#data-exploration)
-7. [Data Modeling](#data-modeling)
+6. [Feature_Engineering](#feature-engineering)
+8. [Data Modeling](#data-modeling)
 9. [Team Members & Contact Information](#team-members--contact-information)
 10. [License](#license)
 11. [Acknowledgments](#acknowledgments)
@@ -40,11 +41,11 @@ Make sure you have Python 3.12.4 installed on your system. If not, download it f
 
 2. **Clone the repository:**
    ```bash
-   git clone https://github.com/RiceD2KLab/Kinder_HERC_F24.git
+   git clone https://github.com/RiceD2KLab/HERC_Sp25.git
 
 3. **Navigate to the project directory:** 
    ```bash
-   cd Kinder_HERC_F24
+   cd HERC_Sp25
 
 4. **Create a virtual environment:**
 - **On Windows:**
@@ -86,8 +87,6 @@ Make sure you have Python 3.12.4 installed on your system. If not, download it f
    Please see [3_Feature_Engineering/README.md](3_Feature_Engineering/README.md) for details on feature engineering
 ## Data Modeling
    Please see [4_Data_Modeling/README.md](4_Data_Modeling/README.md) for details on modeling approaches, training, and validation.
-
-   3_Feature_Engineering
 
 ## Team Members & Contact Information
 Bianca Schutz: mbs5@rice.edu \
