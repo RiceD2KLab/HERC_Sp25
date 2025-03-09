@@ -82,9 +82,10 @@ Make sure you have Python 3.12.4 installed on your system. If not, download it f
    Please see [1_Data_Wrangling/README.md](1_Data_Wrangling/README.md) for details on data cleaning and preprocessing. It contains the code utilized to webscrape, clean raw datasets, and create a GUI Scraper tool. 
 ##  Data Exploration
    Please see [2_Data_Exploration/README.md](2_Data_Exploration/README.md) for details on exploratory data analysis.
-
+##  Feature Engineering
+   Please see [3_Feature_Engineering/README.md](3_Feature_Engineering/README.md) for details on feature engineering
 ## Data Modeling
-   Please see [3_Data_Modeling/README.md](3_Data_Modeling/README.md) for details on modeling approaches, training, and validation.
+   Please see [4_Data_Modeling/README.md](4_Data_Modeling/README.md) for details on modeling approaches, training, and validation.
 
 ## Team Members & Contact Information
 Bianca Schutz: mbs5@rice.edu \
