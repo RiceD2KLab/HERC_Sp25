@@ -3,6 +3,41 @@ import pandas as pd
 import glob
 import re
 
+
+def check_column_contains(file_path, words):
+    """
+    Checks if any column name in the given CSV file contains any of the specified words/patterns 
+    and prints their values.
+
+    Parameters:
+    file_path (str): Path to the CSV file.
+    words (list of str): List of words or patterns to check for in the column names.
+
+    Returns:
+    None (prints results)
+    """
+    # Load the dataset
+    df = pd.read_csv(file_path, dtype=str, low_memory=False)
+    
+    # Standardize column names (lowercase & strip spaces)
+    df.columns = df.columns.str.lower().str.strip()
+
+    # Check if any column name contains any of the specified words
+    matching_columns = [col for col in df.columns if any(word.lower() in col for word in words)]
+    
+    if matching_columns:
+        print(f"\n✅ Columns in {file_path} that contain any of the words {', '.join(words)}:")
+        for col in matching_columns:
+            print(f"  - {col}:")
+            non_nan_values = df[col].dropna()
+            if not non_nan_values.empty:
+                print(non_nan_values.head()) # Print the first few values of the column
+            else:
+                print("No non nan values in this col")
+    else:
+        print(f"❌ No columns in {file_path} contain any of the specified words: {', '.join(words)}.")
+
+
 def find_misplaced_columns(desktop_path, start_year=2017, end_year=2024, check_specific_year=None):
     """
     Checks yearly_data_YYYY.csv files to find:
@@ -57,4 +92,7 @@ def find_misplaced_columns(desktop_path, start_year=2017, end_year=2024, check_s
 
 # Example Usage
 desktop_path = os.path.expanduser("~/Desktop")
-find_misplaced_columns(desktop_path, check_specific_year=2023)  # Change 2019 to the year you want to check
+#find_misplaced_columns(desktop_path, check_specific_year=2023)  # Change 2019 to the year you want to check
+
+file_path = os.path.join(desktop_path, "yearly_data_2023.csv")
+check_column_contains(file_path, ["district 2023 domain"])
