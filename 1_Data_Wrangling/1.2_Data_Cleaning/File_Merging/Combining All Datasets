@@ -82,7 +82,7 @@ def full_outer_join_district_data(year, base_path="/Users/treymccray/HERC_Sp25")
     print(f"\n✅ Final Merged Data: {merged_df.shape[0]} rows, {merged_df.shape[1]} columns (including 'year')")
 
     # Check if the column exists in the final dataset
-    column_to_check = "District 2021 AP/IB Course Completion Graduates: All Students Denominator"
+    column_to_check = "DISTRICT"
     if column_to_check in merged_df.columns:
         print(f"\n✅ The column '{column_to_check}' EXISTS in the final dataset.")
     else:
@@ -90,6 +90,11 @@ def full_outer_join_district_data(year, base_path="/Users/treymccray/HERC_Sp25")
 
     # Define local desktop path
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop", f"master_sheet_{year}.csv")
+
+    for col in ['REGION', 'DISTRICT', 'DISTRICT_id', 'COUNTY']:
+        if col in merged_df.columns:
+            # Remove apostrophes and convert to numeric
+            merged_df[col] = merged_df[col].astype(str).str.replace("'", "").apply(pd.to_numeric, errors='coerce')
 
     # Save the final dataset to the desktop
     merged_df.to_csv(desktop_path, index=False)
