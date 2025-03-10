@@ -89,12 +89,15 @@ for year, cols in yearly_datasets.items():
         # Clean 'region', 'district', 'district_id', and 'county' columns
         for col in ['region', 'district', 'district_id', 'county']:
             if col in year_df.columns:
-                # Remove apostrophes and convert to numeric
-                year_df[col] = year_df[col].astype(str).str.replace("'", "").apply(pd.to_numeric, errors='coerce')
+                # Check if the column contains any apostrophes
+                if year_df[col].str.contains("'").any():
+                    print(f"⚠️ Column '{col}' contains apostrophes. Cleaning the column...")
+                    # Remove apostrophes and convert to numeric
+                    year_df[col] = year_df[col].astype(str).str.replace("'", "").apply(pd.to_numeric, errors='coerce')
 
         # Remove duplicates based on 'district', 'district_id', and 'county'
-        if all(col in year_df.columns for col in ['district', 'district_id', 'county']):
-            year_df = year_df.drop_duplicates(subset=['district', 'district_id', 'county'])
+        if all(col in year_df.columns for col in ['region','district', 'district_id', 'county']):
+            year_df = year_df.drop_duplicates(subset=['region','district', 'district_id', 'county'])
 
         # **Check which years are still in column names**
         found_years = [y for y in years_to_check if any(y in col for col in year_df.columns)]
