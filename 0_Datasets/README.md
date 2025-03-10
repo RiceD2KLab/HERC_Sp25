@@ -54,7 +54,7 @@ Data{Year}/
 
 ### **Master Files Explained**  
 
-The `0_Datasets/1.7Master_Files/Individual Year Files` folder contains the **result of merging** multiple datasets into a single dataset per year. These merged datasets combine critical performance and demographic indicators, simplifying the next stage of feature engineering.
+The `0_Datasets/1.7Master_Files/Individual Year Files` folder contains the **result of merging** multiple datasets into a single dataset per year. These merged datasets combine critical performance and demographic indicators, simplifying the next stage of feature engineering. In order to combine all the files together you have to go to `HERC_Sp25/1_Data_Wrangling/1.2_Data_Cleaning/File_Merging` and use `Final_Mast_Sheet_ATT` to merge all of the individual year files together, make sure to download them to your desktop. 
 
 ### **Datasets Included in Merged Files:** GRAD, PERF1, PERF2, PROF, STAAR1
 These **fully integrated datasets** will be used in the **next stage of feature engineering**, ensuring a more comprehensive analysis of district-level trends across Texas school districts.
