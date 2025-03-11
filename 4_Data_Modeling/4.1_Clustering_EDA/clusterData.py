@@ -7,6 +7,7 @@ def import_data(years, directory):
 
     Inputs: 
     - years: a list of 4 digit YYYY integers representing years (possible values are from 2018 to 2023)
+    - directory: a string specifying your local directory where the Github is cloned
 
     Returns:
     - a dictionary with key-value pairs where keys are years and the values are pandas dataframes

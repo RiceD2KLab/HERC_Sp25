@@ -10,14 +10,13 @@ import pandas as pd
 
 def visualize_tnse(year, data_dict, components = 2, selected_columns = None, y_var = 'TEA Description'):
     """
-    Runs t-SNE based on two specified columns, to visualize the relationship between the two. 
+    Runs t-SNE based on either all columns or specified columns, to visualize potential clusters, based on a variable of your choice.
 
     Inputs:
     - year: a 4 digit integer representing a year, YYYY, such as 2020
     - components: the number of components you want t-SNE to use. Default is 2
     - data_dict: a dictionary with key-value pairs where the key is a year, and the value is a DISTPROF dataset as a dataframe
-    - column1: a string representing the first demographic you want plotted
-    - column2: a string representing the second demographic you want plotted
+    - selected_columns: either None (default) or a list of strings of the variables you want to include in the t-SNE visualization.
     - y_var: a string or a Pandas series representing a column that you want to classify the data with. Default is TEA Description. 
              If a series, must have the same rows as the data_dict[year]
     """
@@ -65,6 +64,17 @@ def visualize_tnse(year, data_dict, components = 2, selected_columns = None, y_v
     fig.show()
 
 def visualize_pca(year, data_dict, components = 2, selected_columns = None, y_var = 'TEA Description'):
+    """
+    Runs PCA based on either all columns or specified columns, to visualize potential clusters, based on a variable of your choice.
+
+    Inputs:
+    - year: a 4 digit integer representing a year, YYYY, such as 2020
+    - components: the number of components you want t-SNE to use. Default is 2
+    - data_dict: a dictionary with key-value pairs where the key is a year, and the value is a DISTPROF dataset as a dataframe
+    - selected_columns: either None (default) or a list of strings of the variables you want to include in the PCA visualization.
+    - y_var: a string or a Pandas series representing a column that you want to classify the data with. Default is TEA Description. 
+             If a series, must have the same rows as the data_dict[year]
+    """
     data = data_dict[year].dropna()
 
     if y_var == 'TEA Description' or y_var == 'NCES Description':
