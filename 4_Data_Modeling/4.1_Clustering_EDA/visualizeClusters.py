@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-def visualize_tnse(year, data_dict, components = 2, selected_columns = None, y_var = 'TEA Description'):
+def visualize_tsne(year, data_dict, components = 2, selected_columns = None, y_var = 'TEA Description'):
     """
     Runs t-SNE based on either all columns or specified columns, to visualize potential clusters, based on a variable of your choice.
 
