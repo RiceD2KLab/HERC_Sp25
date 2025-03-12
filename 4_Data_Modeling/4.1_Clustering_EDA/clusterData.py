@@ -68,7 +68,7 @@ def select_columns(dist_prof_type_dict):
                         'Student Membership: Two or More Races Percent', 'Student Membership: Econ Disadv Percent',
                         'Student Membership: Special Ed Percent', 'Student Membership: Bilingual/ESL Percent',
                         'Student Membership: Gifted & Talented Percent', 'Student Membership: Immigrant Percent',
-                        'Student Membership: All Students Count']
+                        'Student Membership: All Students Count', 'Staff: Teacher Student Ratio', 'Student Membership: At Risk Percent']
         
         
         colnames = year_dependent_colnames_generator(year, year_dep_cols) # use helper function
