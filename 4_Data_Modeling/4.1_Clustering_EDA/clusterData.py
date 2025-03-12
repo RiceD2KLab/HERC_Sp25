@@ -96,3 +96,15 @@ def filter_out_charters(data_dict):
     (data_dict[year]['TEA Description'] != 'Charter Schools')] # remove charters
        
     return no_charters 
+
+def master_cluster_data(data_dict):
+    by_year = []
+    data_dict2 = select_columns(filter_out_charters(data_dict))
+    for year in data_dict2.keys():
+        df = data_dict2[year].copy()
+        df.columns = df.columns.str.replace(f'District {year} ', '')
+        df.loc[:,"Year"] = year
+        by_year.append(df)
+
+    combined_data = pd.concat(by_year)
+    return(combined_data)
