@@ -54,83 +54,169 @@ def drop_columns(df, threshold=50):
     print(f"Dropped Dataset Shape: {resulting_df.shape}")
     return resulting_df
 
-def find_nearest_districts(df, district_id, feature_buckets, n_neighbors=5, impute_strategy="median"):
+def preprocess_data(df, feature_columns, impute_strategy="median", standardize=True):
     """
-    Finds the nearest neighboring districts using K-Nearest Neighbors (KNN) based on selected demographic features.
+    Handles missing values and optionally standardizes selected feature columns.
 
     Parameters:
-        df (pd.DataFrame): The dataset containing school district data.
-        district_id (int or str): The ID of the district for which to find similar districts.
-        feature_buckets (list): List of feature columns to be used for similarity comparison.
-        n_neighbors (int, optional): Number of nearest neighbors to find (default is 5).
-        impute_strategy (str, optional): Strategy for handling missing values, options include 
-                                         'mean', 'median', 'most_frequent', or 'constant' (default is "median").
+        df (pd.DataFrame): The input dataset.
+        feature_columns (list): List of columns to be used for KNN.
+        impute_strategy (str): Strategy to fill missing values ('mean', 'median', etc.).
+        standardize (bool): Whether to scale the features using StandardScaler.
 
     Returns:
-        list: A list of district IDs corresponding to the nearest neighboring districts.
-
-    Raises:
-        ValueError: If the specified district_id is not found in the dataset.
-
-    Process:
-        1. Filters the dataset to include only the relevant feature columns.
-        2. Handles missing values in the selected feature columns using the specified imputation strategy.
-        3. Standardizes (normalizes) the feature values to ensure consistent distance calculations.
-        4. Fits a K-Nearest Neighbors (KNN) model using Euclidean distance as the similarity metric.
-        5. Identifies the closest districts to the specified district_id based on the trained KNN model.
-        6. Returns the list of nearest district IDs.
-
-    Example Usage:
-        ```python
-        nearest_districts = find_nearest_districts(df, district_id=1023, 
-                                                   feature_buckets=["Student_Teacher_Ratio", "Econ_Disadv_Percent"],
-                                                   n_neighbors=5, impute_strategy="mean")
-        print(nearest_districts)
-        ```
+        pd.DataFrame: Preprocessed DataFrame containing 'DISTRICT_id' and transformed feature columns.
     """
-    # Step 1: Filter dataset for selected features
-    existing_columns = [col for col in feature_buckets if col in df.columns]
-    
-    # Select only available columns
-    knn_df = df[["DISTRICT_id"] + existing_columns].copy()
-    
-    # Step 2: Handle missing values
+    df_copy = df[["DISTRICT_id", "DISTNAME"] + feature_columns].copy()
+
+    # Impute missing values
     imputer = SimpleImputer(strategy=impute_strategy)
-    knn_df[existing_columns] = imputer.fit_transform(knn_df[existing_columns])
-    
-    # Step 3: Normalize the feature set
-    scaler = StandardScaler()
-    knn_df[existing_columns] = scaler.fit_transform(knn_df[existing_columns])
-    
-    # Step 4: Fit KNN model (excluding DISTRICT_id)
-    knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric="euclidean")
-    knn_model.fit(knn_df[existing_columns])
-    
-    # Step 5: Find the nearest neighbors for the specified district
-    query_point = knn_df[knn_df["DISTRICT_id"] == district_id][existing_columns]
+    df_copy[feature_columns] = imputer.fit_transform(df_copy[feature_columns])
+
+    # Standardize features if required
+    if standardize:
+        scaler = StandardScaler()
+        df_copy[feature_columns] = scaler.fit_transform(df_copy[feature_columns])
+
+    return df_copy
+
+def knn_distance(df, district_id, feature_columns, n_neighbors=5, metric="euclidean", impute_strategy="median"):
+    """
+    Finds nearest neighbors using Euclidean, Manhattan, or Mahalanobis distance.
+
+    Parameters:
+        df (pd.DataFrame): Dataset containing school district data.
+        district_id (int or str): District ID to find neighbors for.
+        feature_columns (list): Features to use for similarity.
+        n_neighbors (int): Number of neighbors to return.
+        metric (str): 'euclidean', 'manhattan', or 'mahalanobis'.
+        impute_strategy (str): Strategy to impute missing values.
+
+    Returns:
+        list: List of DISTRICT_id values of nearest neighbors.
+    """
+    knn_df = preprocess_data(df, feature_columns, impute_strategy, standardize=True)
+
+    if metric == "mahalanobis":
+        # Compute inverse covariance matrix for Mahalanobis distance
+        cov_matrix = np.cov(knn_df[feature_columns].values, rowvar=False)
+        try:
+            inv_cov = np.linalg.inv(cov_matrix)
+        except np.linalg.LinAlgError:
+            raise ValueError("Covariance matrix is singular; Mahalanobis distance cannot be used.")
+        knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric="mahalanobis", metric_params={"VI": inv_cov})
+    else:
+        knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric=metric)
+
+    # Fit the model and get nearest neighbors
+    knn_model.fit(knn_df[feature_columns])
+    query_point = knn_df[knn_df["DISTRICT_id"] == district_id][feature_columns]
+
     if query_point.empty:
         raise ValueError(f"District ID {district_id} not found in dataset.")
-    
+
     distances, indices = knn_model.kneighbors(query_point)
-    
-    # Step 6: Get the closest districts
-    nearest_districts = knn_df.iloc[indices[0]]["DISTRICT_id"].tolist()
+    #return indices
+    return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
 
-    return nearest_districts
 
-def plot_texas_districts(district_ids, df):
+
+def knn_cosine(df, district_id, feature_columns, n_neighbors=5, impute_strategy="median"):
+    """
+    Finds nearest neighbors using Cosine similarity (does not standardize).
+
+    Parameters:
+        df (pd.DataFrame): Dataset containing school district data.
+        district_id (int or str): District ID to find neighbors for.
+        feature_columns (list): Features to use for similarity.
+        n_neighbors (int): Number of neighbors to return.
+        impute_strategy (str): Strategy to impute missing values.
+
+    Returns:
+        list: List of DISTRICT_id values of nearest neighbors.
+    """
+    knn_df = preprocess_data(df, feature_columns, impute_strategy, standardize=False)
+    knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric="cosine")
+    knn_model.fit(knn_df[feature_columns])
+    query_point = knn_df[knn_df["DISTRICT_id"] == district_id][feature_columns]
+
+    if query_point.empty:
+        raise ValueError(f"District ID {district_id} not found in dataset.")
+
+    distances, indices = knn_model.kneighbors(query_point)
+    return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
+
+def knn_canberra(df, district_id, feature_columns, n_neighbors=5, impute_strategy="median"):
+    """
+    Finds nearest neighbors using Canberra distance (requires non-negative raw values).
+
+    Parameters:
+        df (pd.DataFrame): Dataset containing school district data.
+        district_id (int or str): District ID to find neighbors for.
+        feature_columns (list): Features to use for similarity.
+        n_neighbors (int): Number of neighbors to return.
+        impute_strategy (str): Strategy to impute missing values.
+
+    Returns:
+        list: List of DISTRICT_id values of nearest neighbors.
+    """
+    knn_df = preprocess_data(df, feature_columns, impute_strategy, standardize=False)
+
+    # Check for non-negativity
+    if (knn_df[feature_columns] < 0).any().any():
+        raise ValueError("Canberra distance cannot be used with negative values.")
+
+    knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric="canberra")
+    knn_model.fit(knn_df[feature_columns])
+    query_point = knn_df[knn_df["DISTRICT_id"] == district_id][feature_columns]
+
+    if query_point.empty:
+        raise ValueError(f"District ID {district_id} not found in dataset.")
+
+    distances, indices = knn_model.kneighbors(query_point)
+    return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
+
+def find_nearest_districts(df, district_id, feature_columns, n_neighbors=5, distance_metric="euclidean", impute_strategy="median"):
+    """
+    Wrapper function that selects the appropriate distance metric for finding nearest neighbors.
+
+    Parameters:
+        df (pd.DataFrame): Dataset containing school district data.
+        district_id (int or str): District ID to find neighbors for.
+        feature_columns (list): Features to use for similarity.
+        n_neighbors (int): Number of neighbors to return.
+        distance_metric (str): Distance metric to use ('euclidean', 'manhattan', 'mahalanobis', 'cosine', 'canberra').
+        impute_strategy (str): Strategy to impute missing values.
+
+    Returns:
+        list: List of DISTRICT_id values of nearest neighbors.
+    """
+    metric = distance_metric.lower()
+
+    if metric in ["euclidean", "manhattan", "mahalanobis"]:
+        return knn_distance(df, district_id, feature_columns, n_neighbors, metric, impute_strategy)
+    elif metric == "cosine":
+        return knn_cosine(df, district_id, feature_columns, n_neighbors, impute_strategy)
+    elif metric == "canberra":
+        return knn_canberra(df, district_id, feature_columns, n_neighbors, impute_strategy)
+    else:
+        raise ValueError(f"Unsupported distance metric: {distance_metric}")
+
+
+def plot_texas_districts(neighbors, df):
     """
     Plots selected school districts on a Texas map based on district IDs, with intelligent
     label placement to prevent overlap regardless of location density.
     
     Parameters:
-    - district_ids (list): List of district IDs to plot. The first district is the main focus.
+    - neighbors (df): DF containing neighbors district id and distname 
     - df (pd.DataFrame): DataFrame containing 'DISTRICT_id', 'DISTNAME', and 'CNTYNAME' columns.
     
     Returns:
     - A map plot of Texas highlighting the selected school districts with smart non-overlapping labels.
     """
-    
+    district_ids = list(neighbors["DISTRICT_id"])
+
     if not district_ids:
         print("No district IDs provided.")
         return
@@ -342,18 +428,23 @@ def plot_texas_districts(district_ids, df):
     plt.tight_layout()
     plt.show()
 
+
+
+   
+
 from Demographic_Buckets import race_ethnicity_percent
-def plot_race_ethnicity_stacked_bar(district_ids, df):
+def plot_race_ethnicity_stacked_bar(neighbors, df):
     """
     Visualizes race/ethnicity distribution as percentages using a stacked bar chart.
 
     Parameters:
-    - district_ids (list): List of district IDs to visualize.
+    - neighbors (df): DF of neighbors DISTRICT_ID and DISTNAME
     - df (pd.DataFrame): DataFrame containing district race/ethnicity data.
 
     Returns:
     - A stacked bar chart comparing race/ethnicity distributions as percentages.
     """
+    district_ids = list(neighbors['DISTRICT_id'])
     # Step0: Locate the Inputed District 
     input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
     print((input_dist))
