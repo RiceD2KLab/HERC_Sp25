@@ -497,5 +497,61 @@ def plot_race_ethnicity_stacked_bar(neighbors, df):
     plt.tight_layout()
     plt.show()
 
+class_size_k6_cols = [
+    "District 2023 Class Size: Kindergarten- Avg Size",
+    "District 2023 Class Size: Grade 1     - Avg Size",
+    "District 2023 Class Size: Grade 2     - Avg Size",
+    "District 2023 Class Size: Grade 3     - Avg Size",
+    "District 2023 Class Size: Grade 4     - Avg Size",
+    "District 2023 Class Size: Grade 5     - Avg Size",
+    "District 2023 Class Size: Grade 6     - Avg Size"
+]
+
+def plot_class_size_k6_bar(neighbors, df):
+    """
+    Visualizes class sizes from Kindergarten through Grade 6 across selected districts using a grouped bar chart.
+
+    Parameters:
+    - neighbors (df): DF of neighbors DISTRICT_ID and DISTNAME
+    - df (pd.DataFrame): DataFrame containing district class size data.
+
+    Returns:
+    - A grouped bar chart comparing K-6 class sizes across selected districts.
+    """
+    district_ids = list(neighbors['DISTRICT_id'])
+    
+    # Step0: Locate the Inputed District 
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+    print(f"Input District: {input_dist}")
+    
+    # Step 1: Filter the DataFrame to include only selected districts
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + class_size_k6_cols]
+
+    # Step 2: Check if any districts were found
+    if selected_districts.empty:
+        print("No matching districts found. Check the district IDs.")
+        return
+
+    # Step 3: Melt the dataframe for easier plotting
+    melted_df = selected_districts.melt(id_vars=["DISTNAME"], 
+                                        value_vars=class_size_k6_cols, 
+                                        var_name="Grade", 
+                                        value_name="Avg Class Size")
+
+    # Step 4: Clean up grade labels
+    melted_df["Grade"] = melted_df["Grade"].str.extract(r'Class Size:\s*(.*)- Avg Size')
+
+    # Step 5: Plot
+    plt.figure(figsize=(14, 7))
+    ax = sns.barplot(data=melted_df, x="Grade", y="Avg Class Size", hue="DISTNAME")
+
+    # Step 6: Formatting
+    plt.title(f"K-6 Average Class Sizes for Districts Similar to {input_dist}", fontsize=14)
+    plt.xlabel("Grade", fontsize=12)
+    plt.ylabel("Average Class Size", fontsize=12)
+    plt.xticks(rotation=30, ha='right')
+    plt.legend(title="District", bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0.)
+    plt.tight_layout()
+    plt.show()
 
 
