@@ -1,64 +1,17 @@
-class_size_student_teacher_ratios = [
-    "District 2023 Class Size: Sec Soc Stud- Avg Size",
-    "District 2023 Class Size: Sec Sci     - Avg Size",
-    "District 2023 Class Size: Sec Math    - Avg Size",
-    "District 2023 Class Size: Kindergarten- Avg Size",
-    "District 2023 Class Size: Grade 6     - Avg Size",
-    "District 2023 Class Size: Grade 5     - Avg Size",
-    "District 2023 Class Size: Grade 4     - Avg Size",
-    "District 2023 Class Size: Grade 3     - Avg Size",
-    "District 2023 Class Size: Grade 2     - Avg Size",
-    "District 2023 Class Size: Grade 1     - Avg Size",
-    "District 2023 Class Size: Sec For Lng - Avg Size",
-    "District 2023 Class Size: Sec English - Avg Size",
+# Student to teacher ratio 
+student_teacher_ratio = [
     "District 2023 Staff: Teacher Student Ratio"
 ]
 
+# District Student Count
+student_count = ["District 2022-23 Total Students Count"]
 
-student_mobility = [
-    "District 2023 Student Membership: 2022 Mobility All Students Percent",
-    "District 2023 Student Membership: 2022 Mobility White Percent",
-    "District 2023 Student Membership: 2022 Mobility Hispanic Percent",
-    "District 2023 Student Membership: 2022 Mobility African American Percent",
-    "District 2023 Student Membership: 2022 Mobility Asian Percent",
-    "District 2023 Student Membership: 2022 Mobility American Indian Percent",
-    "District 2023 Student Membership: 2022 Mobility Pacific Islander Percent",
-    "District 2023 Student Membership: 2022 Mobility Two or More Races Percent",
-    "District 2023 Student Membership: 2022 Mobility Econ Disadv Percent",
-    "District 2023 Student Membership: 2022 Mobility EB/EL Percent",
-    "District 2023 Student Membership: 2022 Mobility Special Ed Percent",
-    "District 2022 Underreported Students: Rate"
+# District Staff Count
+staff_count = [
+    "District 2023 Staff: All Staff Total Full Time Equiv Count"
 ]
 
-
-
-staff_demographics_experience = [
-    "District 2023 Staff: Teacher Total Full Time Equiv Percent",
-    "District 2023 Staff: Support Total Full Time Equiv Percent",
-    "District 2023 Staff: School Admin Total Full Time Equiv Percent",
-    "District 2023 Staff: Central Admin Total Full Time Equiv Percent",
-    "District 2023 Staff: Educ Aide Total Full Time Equiv Percent",
-    "District 2023 Staff: Auxiliary Total Full Time Equiv Percent",
-    "District 2023 Staff: All Staff Minority Full Time Equiv Percent",
-    "District 2023 Staff: Teacher No Degree Full Time Equiv Percent",
-    "District 2023 Staff: Teacher BA Degree Full Time Equiv Percent",
-    "District 2023 Staff: Teacher MS Degree Full Time Equiv Percent",
-    "District 2023 Staff: Teacher PH Degree Full Time Equiv Percent",
-    "District 2023 Staff: Teacher Beginning Full Time Equiv Percent",
-    "District 2023 Staff: Teacher 1-5 Years Full Time Equiv Percent",
-    "District 2023 Staff: Teacher 6-10 Years Full Time Equiv Percent",
-    "District 2023 Staff: Teacher 11-20 Years Full Time Equiv Percent",
-    "District 2023 Staff: Teacher 21-30 Years Full Time Equiv Percent",
-    "District 2023 Staff: Teacher > 30 Years Full Time Equiv Percent",
-    "District 2023 Staff: Teacher Turnover Ratio",
-    "District 2023 Staff: Teacher Experience Average",
-    "District 2023 Staff: Principal Experience Average",
-    "District 2023 Staff: Principal Tenure Average",
-    "District 2023 Staff: Assistant Principal Experience Average",
-    "District 2023 Staff: Assistant Principal Tenure Average"
-]
-
-# Race/Ethnicity Percentages
+# School District Race/Ethnicity Makeup
 race_ethnicity_percent = [
     "District 2022-23 African American Students Percent",
     "District 2022-23 American Indian Students Percent",
@@ -69,14 +22,16 @@ race_ethnicity_percent = [
     "District 2022-23 Two or More Races Students Percent"
 ]
 
-# Economic Disadvantage & Special Needs
-economic_special_needs_percent = [
+# Economically Disadvantaged Students
+economically_disadvantaged = [
     "District 2022-23 Economically Disadvantaged Students Percent",
-    "District 2022-23 Non-Educationally Disadvantaged Students Percent",
-    "District 2022-23 At-Risk Students Percent",
+    "District 2022-23 Title I Students percent"
+]
+
+# Special Education and 504 Disability Student Populations
+special_ed_504 = [
     "District 2022-23 Special Education Students Percent",
-    "District 2022-23 Section 504 Students Percent",
-    "District 2022-23 Students with Dyslexia Percent"
+    "District 2022-23 Section 504 Students Percent"
 ]
 
 # Language & Bilingual Education
@@ -85,30 +40,7 @@ language_education_percent = [
     "District 2022-23 Emergent Bilingual/English Learner Students Percent"
 ]
 
-# Gender Distribution
-gender_distribution_percent = [
-    "District 2022-23 Male Students Percent",
-    "District 2022-23 Female Students Percent"
-]
-
-# Grade-Level Distribution
-grade_level_percent = [
-    "District 2022-23 Kindergarten Students Percent",
-    "District 2022-23 Grade 1 Students Percent",
-    "District 2022-23 Grade 2 Students Percent",
-    "District 2022-23 Grade 3 Students Percent",
-    "District 2022-23 Grade 4 Students Percent",
-    "District 2022-23 Grade 5 Students Percent",
-    "District 2022-23 Grade 6 Students Percent",
-    "District 2022-23 Grade 7 Students Percent",
-    "District 2022-23 Grade 8 Students Percent",
-    "District 2022-23 Grade 9 Students Percent",
-    "District 2022-23 Grade 10 Students Percent",
-    "District 2022-23 Grade 11 Students Percent",
-    "District 2022-23 Grade 12 Students Percent"
-]
-
-# Special Populations
+# Special Populations (Homeless, Immigrant/Migrant, Military, Foster Care)
 special_populations_percent = [
     "District 2022-23 Homeless Students Percent",
     "District 2022-23 Immigrant Students Percent",
@@ -117,18 +49,12 @@ special_populations_percent = [
     "District 2022-23 Foster Care Students Percent"
 ]
 
-# Gifted & Title I Programs
-gifted_title1_percent = [
-    "District 2022-23 Gifted & Talented Education Students Percent",
-    "District 2022-23 Title I Students percent"
+# Gifted Students
+gifted_students = [
+    "District 2022-23 Gifted & Talented Education Students Percent"
 ]
 
-# Total Student Distribution
-total_students_percent = [
-    "District 2022-23 Total Students Percent"
-]
-
-
+#District Identifiers 
 district_identifiers = [
     "DISTRICT_id",
     "TEA District Type",
@@ -145,6 +71,5 @@ district_identifiers = [
     "DFLALTED",
     "ASVAB_STATUS"
 ]
-
 
 
