@@ -14,195 +14,6 @@ from matplotlib.patches import ConnectionPatch
 from scipy.spatial import Voronoi
 
 
-def calculate_missing_percentage(df):
-    """
-    Function to calculate the percentage of missing values in each column of a given dataset.
-    
-    Parameters:
-        df (pd.DataFrame): The dataset as a pandas DataFrame.
-    
-    Returns:
-        pd.Series: A Series with column names as index and percentage of missing values as values.
-    """
-    missing_percentage = (df.isna().sum() / len(df)) * 100
-    missing_percentage = missing_percentage[missing_percentage > 0]  # Only keep columns with missing values
-    
-    return missing_percentage.sort_values(ascending=False)  # Sort in descending order
-
-
-def drop_columns(df, threshold=50):
-    """
-    Function to drop columns with missing values exceeding a specified threshold
-    and columns containing 'numerator' or 'denominator' in their names. These columsn are going to be fairly useless for analysis 
-    
-    Parameters:
-        df (pd.DataFrame): The dataset as a pandas DataFrame.
-        threshold (float): The percentage threshold for dropping columns.
-    
-    Returns:
-        pd.DataFrame: The dataframe with columns dropped.
-    """
-    print(f"Original Dataset Shape: {df.shape}")
-    missing_percentage = calculate_missing_percentage(df)
-    cols_to_drop = set(missing_percentage[missing_percentage >= threshold].index)
-    
-    # Drop columns containing 'numerator' or 'denominator' (case-insensitive)
-    cols_to_drop.update([col for col in df.columns if 'numerator' in col.lower() or 'denominator' in col.lower()])
-    
-    resulting_df = df.drop(columns=cols_to_drop)
-
-    print(f"Dropped Dataset Shape: {resulting_df.shape}")
-    return resulting_df
-
-def preprocess_data(df, feature_columns, impute_strategy="median", standardize=True):
-    """
-    Handles missing values and optionally standardizes selected feature columns.
-
-    Parameters:
-        df (pd.DataFrame): The input dataset.
-        feature_columns (list): List of columns to be used for KNN.
-        impute_strategy (str): Strategy to fill missing values ('mean', 'median', etc.).
-        standardize (bool): Whether to scale the features using StandardScaler.
-
-    Returns:
-        pd.DataFrame: Preprocessed DataFrame containing 'DISTRICT_id' and transformed feature columns.
-    """
-    df_copy = df[["DISTRICT_id", "DISTNAME"] + feature_columns].copy()
-
-    # Impute missing values
-    imputer = SimpleImputer(strategy=impute_strategy)
-    df_copy[feature_columns] = imputer.fit_transform(df_copy[feature_columns])
-
-    # Standardize features if required
-    if standardize:
-        scaler = StandardScaler()
-        df_copy[feature_columns] = scaler.fit_transform(df_copy[feature_columns])
-
-    return df_copy
-
-def knn_distance(df, district_id, feature_columns, n_neighbors=5, metric="euclidean", impute_strategy="median"):
-    """
-    Finds nearest neighbors using Euclidean, Manhattan, or Mahalanobis distance.
-
-    Parameters:
-        df (pd.DataFrame): Dataset containing school district data.
-        district_id (int or str): District ID to find neighbors for.
-        feature_columns (list): Features to use for similarity.
-        n_neighbors (int): Number of neighbors to return.
-        metric (str): 'euclidean', 'manhattan', or 'mahalanobis'.
-        impute_strategy (str): Strategy to impute missing values.
-
-    Returns:
-        list: List of DISTRICT_id values of nearest neighbors.
-    """
-    knn_df = preprocess_data(df, feature_columns, impute_strategy, standardize=True)
-
-    if metric == "mahalanobis":
-        # Compute inverse covariance matrix for Mahalanobis distance
-        cov_matrix = np.cov(knn_df[feature_columns].values, rowvar=False)
-        try:
-            inv_cov = np.linalg.inv(cov_matrix)
-        except np.linalg.LinAlgError:
-            raise ValueError("Covariance matrix is singular; Mahalanobis distance cannot be used.")
-        knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric="mahalanobis", metric_params={"VI": inv_cov})
-    else:
-        knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric=metric)
-
-    # Fit the model and get nearest neighbors
-    knn_model.fit(knn_df[feature_columns])
-    query_point = knn_df[knn_df["DISTRICT_id"] == district_id][feature_columns]
-
-    if query_point.empty:
-        raise ValueError(f"District ID {district_id} not found in dataset.")
-
-    distances, indices = knn_model.kneighbors(query_point)
-    #return indices
-    return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
-
-
-
-def knn_cosine(df, district_id, feature_columns, n_neighbors=5, impute_strategy="median"):
-    """
-    Finds nearest neighbors using Cosine similarity (does not standardize).
-
-    Parameters:
-        df (pd.DataFrame): Dataset containing school district data.
-        district_id (int or str): District ID to find neighbors for.
-        feature_columns (list): Features to use for similarity.
-        n_neighbors (int): Number of neighbors to return.
-        impute_strategy (str): Strategy to impute missing values.
-
-    Returns:
-        list: List of DISTRICT_id values of nearest neighbors.
-    """
-    knn_df = preprocess_data(df, feature_columns, impute_strategy, standardize=False)
-    knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric="cosine")
-    knn_model.fit(knn_df[feature_columns])
-    query_point = knn_df[knn_df["DISTRICT_id"] == district_id][feature_columns]
-
-    if query_point.empty:
-        raise ValueError(f"District ID {district_id} not found in dataset.")
-
-    distances, indices = knn_model.kneighbors(query_point)
-    return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
-
-def knn_canberra(df, district_id, feature_columns, n_neighbors=5, impute_strategy="median"):
-    """
-    Finds nearest neighbors using Canberra distance (requires non-negative raw values).
-
-    Parameters:
-        df (pd.DataFrame): Dataset containing school district data.
-        district_id (int or str): District ID to find neighbors for.
-        feature_columns (list): Features to use for similarity.
-        n_neighbors (int): Number of neighbors to return.
-        impute_strategy (str): Strategy to impute missing values.
-
-    Returns:
-        list: List of DISTRICT_id values of nearest neighbors.
-    """
-    knn_df = preprocess_data(df, feature_columns, impute_strategy, standardize=False)
-
-    # Check for non-negativity
-    if (knn_df[feature_columns] < 0).any().any():
-        raise ValueError("Canberra distance cannot be used with negative values.")
-
-    knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric="canberra")
-    knn_model.fit(knn_df[feature_columns])
-    query_point = knn_df[knn_df["DISTRICT_id"] == district_id][feature_columns]
-
-    if query_point.empty:
-        raise ValueError(f"District ID {district_id} not found in dataset.")
-
-    distances, indices = knn_model.kneighbors(query_point)
-    return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
-
-def find_nearest_districts(df, district_id, feature_columns, n_neighbors=5, distance_metric="euclidean", impute_strategy="median"):
-    """
-    Wrapper function that selects the appropriate distance metric for finding nearest neighbors.
-
-    Parameters:
-        df (pd.DataFrame): Dataset containing school district data.
-        district_id (int or str): District ID to find neighbors for.
-        feature_columns (list): Features to use for similarity.
-        n_neighbors (int): Number of neighbors to return.
-        distance_metric (str): Distance metric to use ('euclidean', 'manhattan', 'mahalanobis', 'cosine', 'canberra').
-        impute_strategy (str): Strategy to impute missing values.
-
-    Returns:
-        list: List of DISTRICT_id values of nearest neighbors.
-    """
-    metric = distance_metric.lower()
-
-    if metric in ["euclidean", "manhattan", "mahalanobis"]:
-        return knn_distance(df, district_id, feature_columns, n_neighbors, metric, impute_strategy)
-    elif metric == "cosine":
-        return knn_cosine(df, district_id, feature_columns, n_neighbors, impute_strategy)
-    elif metric == "canberra":
-        return knn_canberra(df, district_id, feature_columns, n_neighbors, impute_strategy)
-    else:
-        raise ValueError(f"Unsupported distance metric: {distance_metric}")
-
-
 def plot_texas_districts(neighbors, df):
     """
     Plots selected school districts on a Texas map based on district IDs, with intelligent
@@ -554,4 +365,71 @@ def plot_class_size_k6_bar(neighbors, df):
     plt.tight_layout()
     plt.show()
 
+
+def plot_special_ed_504_bar(neighbors, df):
+    """
+    Visualizes the percentage of Special Education and Section 504 students across selected districts using a grouped bar chart.
+    Highlights the target (first) district.
+
+    Parameters:
+    - neighbors (df): DF of neighbors DISTRICT_ID and DISTNAME
+    - df (pd.DataFrame): DataFrame containing district demographic data.
+
+    Returns:
+    - A grouped bar chart comparing Special Education and Section 504 student percentages across selected districts.
+    """
+
+    # Define columns to plot
+    special_ed_504_cols = [
+        "District 2022-23 Special Education Students Percent",
+        "District 2022-23 Section 504 Students Percent"
+    ]
+    
+    district_ids = list(neighbors['DISTRICT_id'])
+    target_id = district_ids[0]
+
+    # Step 0: Locate the Inputed District 
+    input_dist = df[df["DISTRICT_id"] == target_id]['DISTNAME'].iloc[0]
+    print(f"Input District: {input_dist}")
+
+    # Step 1: Filter the DataFrame to include only selected districts
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + special_ed_504_cols]
+
+    if selected_districts.empty:
+        print("No matching districts found. Check the district IDs.")
+        return
+
+    # Add a 'Highlight' column to flag the target district
+    selected_districts['Highlight'] = selected_districts['DISTRICT_id'].apply(lambda x: 'Target District' if x == target_id else 'Neighbor District')
+
+    # Melt the dataframe for easier plotting
+    melted_df = selected_districts.melt(id_vars=["DISTNAME", "Highlight"],
+                                        value_vars=special_ed_504_cols,
+                                        var_name="Category",
+                                        value_name="Percent")
+
+    # Clean up category labels
+    melted_df["Category"] = melted_df["Category"].str.replace("District 2022-23 ", "").str.replace(" Students Percent", "")
+
+    # Plot
+    plt.figure(figsize=(10, 6))
+    ax = sns.barplot(data=melted_df, x="Category", y="Percent", hue="DISTNAME", palette="Set2")
+
+    # Highlight target district label
+    handles, labels = ax.get_legend_handles_labels()
+    bold_labels = []
+    for label in labels:
+        if label == input_dist:
+            bold_labels.append(f"$\\bf{{{label}}}$")  # Bold with LaTeX
+        else:
+            bold_labels.append(label)
+    ax.legend(handles=handles, labels=bold_labels, title="District", bbox_to_anchor=(1.02, 1), loc='upper left')
+
+    # Formatting
+    plt.title(f"Special Education and 504 Student Percentages\n(Target District: {input_dist})", fontsize=14)
+    plt.xlabel("Student Category", fontsize=12)
+    plt.ylabel("Percent of Students", fontsize=12)
+    plt.xticks(rotation=30, ha='right')
+    plt.tight_layout()
+    plt.show()
 
