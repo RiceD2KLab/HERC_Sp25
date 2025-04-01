@@ -189,7 +189,7 @@ def find_nearest_districts(df, district_id, feature_columns, n_neighbors=5, dist
         impute_strategy (str): Strategy to impute missing values.
 
     Returns:
-        list: List of DISTRICT_id values of nearest neighbors.
+        pd.DataFrame: Dataframe containing the neighbors DISTRICT_id and DISTNAME. The first term in the df is the target district 
     """
     metric = distance_metric.lower()
 
