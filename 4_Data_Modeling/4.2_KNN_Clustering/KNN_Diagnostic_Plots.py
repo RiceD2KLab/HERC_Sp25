@@ -696,3 +696,75 @@ def plot_special_populations_bar(neighbors, df):
 
     plt.tight_layout()
     plt.show()
+
+def plot_special_populations_bar(neighbors, df):
+    """
+    Visualizes the percentage of Special Education and Section 504 students across selected districts using a grouped bar chart.
+    Highlights the target (first) district.
+
+    Parameters:
+    - neighbors (df): DF of neighbors DISTRICT_ID and DISTNAME
+    - df (pd.DataFrame): DataFrame containing district demographic data.
+
+    Returns:
+    - A grouped bar chart comparing Special Education and Section 504 student percentages across selected districts.
+    """
+
+    # Get the data set up
+    district_ids = list(neighbors['DISTRICT_id'])
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + special_populations_percent].reset_index(drop=True).dropna()
+
+    valid_cols = special_populations_percent
+    for column in selected_districts.select_dtypes(include='number'):
+        if selected_districts[column].sum() == 0:
+            selected_districts = selected_districts.drop(column, axis=1)
+            valid_cols.remove(column)
+            
+    if selected_districts.empty:
+        print("No matching districts found. Check the district IDs.")
+        return
+
+    # Reorder the data frame so that the input district is index = 0
+    # This will ensure it is the leftmost column, which helps make the visual more clear
+    neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
+    input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
+
+    ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
+    
+    # Melt the dataframe for easier plotting
+    melted_df = ordered_districts.melt(id_vars=["DISTNAME"],
+                                        value_vars=valid_cols,
+                                        var_name="Category",
+                                        value_name="Percent")
+
+    # Clean up category labels
+    melted_df["Category"] = melted_df["Category"].str.replace("District 2022-23 ", "").str.replace(" Students Percent", "")
+
+    # Plot
+    plt.figure(figsize=(10, 6))
+    ax = sns.barplot(data=melted_df, x="Category", y="Percent", hue="DISTNAME", palette="Set2")
+
+    # Highlight target district label
+    handles, labels = ax.get_legend_handles_labels()
+
+    # Modify labels in the legend
+    for i, label in enumerate(labels):
+        if input_dist.lower() in label.lower():  # Match the target district
+            # Update the fontweight to bold for the target district
+            handles[i].set_label(title_case_with_spaces(label))  # Keep the label unchanged
+            labels = [title_case_with_spaces(label) for label in labels]
+            ax.legend(handles=handles, labels=labels, title="District", bbox_to_anchor=(1.02, 1), loc='upper left', fontsize=12)
+
+            # Apply bold to target district in the legend
+            label_obj = ax.legend_.get_texts()[i]
+            label_obj.set_fontweight('bold')  # Make the label bold
+
+    # Formatting
+    plt.title(f"Student Special Population Percentages for Districts Similar to {title_case_with_spaces(input_dist)})", fontsize=14)
+    plt.xlabel("Student Category", fontsize=12)
+    plt.ylabel("Percent of Students", fontsize=12)
+    plt.xticks(rotation=30, ha='right')
+    plt.tight_layout()
+    plt.show()
