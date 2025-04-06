@@ -768,3 +768,62 @@ def plot_special_populations_bar(neighbors, df):
     plt.xticks(rotation=30, ha='right')
     plt.tight_layout()
     plt.show()
+
+def plot_gifted_talented_bars(neighbors, df):
+    """
+    Plots a bar chart showing student-teacher ratio by district using a list of neighbors and a dataframe with the necessary columns.
+
+    Inputs:
+    - neighbors: a Pandas dataframe that has the column DISTRICT_id of the neighbors of a given input district. The given input district 
+    is assumed to be the 0th row of the dataframe.
+    - df: a Pandas dataframe that has the columns DISTRICT_id, DISTNAME, and student-teacher ratio. 
+
+    Outputs: 
+    - a matplotlib bar chart
+    """
+    # Get the data set up
+    district_ids = list(neighbors['DISTRICT_id'])
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + gifted_students].reset_index(drop=True).dropna()
+    if selected_districts.empty:
+        print("No matching districts found. Check the district IDs.")
+        return
+
+    # Reorder the data frame so that the input district is index = 0
+    # This will ensure it is the leftmost column, which helps make the visual more clear
+    neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
+    input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
+
+    ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
+    ordered_districts.set_index("DISTNAME", inplace=True)
+
+    # Plotting
+    fig, ax = plt.subplots(figsize=(12, 6))
+    col = gifted_students[0]
+    values = ordered_districts[col].round(2)
+    bars = ax.bar(ordered_districts.index, values, color='#1f77b4', width=0.6)
+
+    # adding number labels to the bars
+    for bar, value in zip(bars, values):
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width() / 2, height + 0.2, f'{height:.1f}%',
+                ha='center', va='bottom', fontsize=9)
+
+    # X-ticks and labels
+    ax.set_xticks(np.arange(len(ordered_districts.index)))
+    ax.set_xticklabels([title_case_with_spaces(name) for name in ordered_districts.index],
+                       rotation=35, ha='right', fontsize=10)
+
+    # Bold input district label for readability
+    for label in ax.get_xticklabels():
+        if input_dist.lower() in label.get_text().lower():
+            label.set_fontweight('bold')
+
+    # Title and axis labels
+    ax.set_title(f"Percent Students in Gifted and Talented Programs for Districts Similar to {title_case_with_spaces(input_dist)}")
+    ax.set_xlabel("School District", fontsize=13, labelpad=10)
+    ax.set_ylabel("Percent Students", fontsize=13, labelpad=10)
+
+    plt.tight_layout()
+    plt.show()
