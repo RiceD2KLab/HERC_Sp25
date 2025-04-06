@@ -1,18 +1,53 @@
-import os 
-import pandas as pd 
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
-from sklearn.neighbors import NearestNeighbors
-import seaborn as sns
-from sklearn.manifold import MDS
-from scipy.cluster.hierarchy import linkage, dendrogram
-import geopandas as gpd
-import textwrap
-from matplotlib.patches import ConnectionPatch
-from scipy.spatial import Voronoi
+from Demographic_Buckets import (
+    student_teacher_ratio,
+    student_count,
+    staff_count,
+    race_ethnicity_percent,
+    economically_disadvantaged,
+    special_ed_504,
+    language_education_percent,
+    special_populations_percent,
+    gifted_students,
+    district_identifiers
+)
 
+import os
+import re
+import textwrap
+
+import pandas as pd
+import numpy as np
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+from matplotlib.patches import ConnectionPatch
+
+from scipy.spatial import Voronoi
+import geopandas as gpd
+
+def format_legend_labels(list_of_cols):
+    # Rename legend labels to reflect percentages instead of counts
+    formatted_legend_labels = [
+        re.sub("(District 2022-23 |District 2023 )", "", label) for label in list_of_cols
+    ]
+    # Format legend with wrapped text to prevent it from being too large
+    wrapped_labels = [textwrap.fill(label, width=15) for label in formatted_legend_labels]
+    return wrapped_labels
+
+def title_case_with_spaces(text):
+    if 'CISD' in text:
+        words = text.split()
+        words = [word.title() if word != 'CISD' else word for word in words]
+        return ' '.join(words)
+    if 'ISD' in text:
+        words = text.split()
+        words = [word.title() if word != 'ISD' else word for word in words]
+        return ' '.join(words)
+    if 'MSD' in text:
+        words = text.split()
+        words = [word.title() if word != 'MSD' else word for word in words]
+        return ' '.join(words)
+    return re.sub(r'([a-z])([A-Z])', r'\1 \2', text).title()
 
 def plot_texas_districts(neighbors, df):
     """
@@ -239,11 +274,6 @@ def plot_texas_districts(neighbors, df):
     plt.tight_layout()
     plt.show()
 
-
-
-   
-
-from Demographic_Buckets import race_ethnicity_percent
 def plot_race_ethnicity_stacked_bar(neighbors, df):
     """
     Visualizes race/ethnicity distribution as percentages using a stacked bar chart.
@@ -256,30 +286,33 @@ def plot_race_ethnicity_stacked_bar(neighbors, df):
     - A stacked bar chart comparing race/ethnicity distributions as percentages.
     """
     district_ids = list(neighbors['DISTRICT_id'])
-    # Step0: Locate the Inputed District 
     input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
-    print((input_dist))
-    
-    # Step 1: Filter the DataFrame to include only selected districts
-    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + race_ethnicity_percent]
 
-    # Step 2: Check if any districts were found
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + race_ethnicity_percent].reset_index(drop=True).dropna()
     if selected_districts.empty:
         print("No matching districts found. Check the district IDs.")
         return
 
+    neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
+    input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
+
+    neighbors['group'] = 'Neighboring District'
+    input_district['group'] = 'Input District'
+
+    ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
+
     # Step 3: Calculate total student count per district
-    selected_districts["Total Students"] = selected_districts[race_ethnicity_percent].sum(axis=1)
+    ordered_districts["Total Students"] = ordered_districts[race_ethnicity_percent].sum(axis=1)
 
     # Step 4: Convert race/ethnicity counts to percentages
     for col in race_ethnicity_percent:
-        selected_districts[col] = (selected_districts[col] / selected_districts["Total Students"]) * 100
+        ordered_districts[col] = (ordered_districts[col] / ordered_districts["Total Students"]) * 100
 
     # Step 5: Set the district names as index for plotting
-    selected_districts.set_index("DISTNAME", inplace=True)
+    ordered_districts.set_index("DISTNAME", inplace=True)
 
     # Step 6: Plot the stacked bar chart
-    ax = selected_districts[race_ethnicity_percent].plot(
+    ax = ordered_districts[race_ethnicity_percent].plot(
         kind='bar', 
         figsize=(12, 7), 
         stacked=True, 
@@ -288,18 +321,23 @@ def plot_race_ethnicity_stacked_bar(neighbors, df):
     )
 
     # Step 7: Formatting
-    plt.title(f"Race/Ethnicity Percentage Distribution for Schools Similar to {input_dist}", fontsize=14)
+    plt.title(f"Race/Ethnicity Percentage Distribution for Schools Similar to {title_case_with_spaces(input_dist)}", fontsize=14)
     plt.xlabel("School Districts", fontsize=12)
     plt.ylabel("Percentage (%)", fontsize=12)
     plt.xticks(rotation=45, ha='right')
+    # X-ticks and labels
+    ax.set_xticks(np.arange(len(ordered_districts.index)))
+    ax.set_xticklabels([title_case_with_spaces(name) for name in ordered_districts.index],
+                       rotation=35, ha='right', fontsize=10)
     plt.ylim(0, 100)  # Ensure the y-axis represents 0% to 100%
 
-    # Rename legend labels to reflect percentages instead of counts
-    formatted_legend_labels = [
-        label.replace("District 2022-23", "") for label in race_ethnicity_percent
-    ]
+    # Bold input district label
+    for label in ax.get_xticklabels():
+        if input_dist.lower() in label.get_text().lower():
+            label.set_fontweight('bold')
+
     # Format legend with wrapped text to prevent it from being too large
-    wrapped_labels = [textwrap.fill(label, width=15) for label in formatted_legend_labels]
+    wrapped_labels = format_legend_labels(race_ethnicity_percent)
     
     # Move legend to the right and wrap text for better readability
     ax.legend(wrapped_labels, title= f"Race/Ethnicity (Percentage)", loc="center left", bbox_to_anchor=(1, 0.5), fontsize=10, title_fontsize=12)
@@ -433,3 +471,143 @@ def plot_special_ed_504_bar(neighbors, df):
     plt.tight_layout()
     plt.show()
 
+def plot_student_teacher_ratio_bars(neighbors, df):
+    """
+    Plots a bar chart showing student-teacher ratio by district using a list of neighbors and a dataframe with the necessary columns.
+
+    Inputs:
+    - neighbors: a Pandas dataframe that has the column DISTRICT_id of the neighbors of a given input district. The given input district 
+    is assumed to be the 0th row of the dataframe.
+    - df: a Pandas dataframe that has the columns DISTRICT_id, DISTNAME, and student-teacher ratio. 
+
+    Outputs: 
+    - a matplotlib bar chart
+    """
+    # Get the data set up
+    district_ids = list(neighbors['DISTRICT_id'])
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + student_teacher_ratio].reset_index(drop=True).dropna()
+    if selected_districts.empty:
+        print("No matching districts found. Check the district IDs.")
+        return
+
+    # Reorder the data frame so that the input district is index = 0
+    # This will ensure it is the leftmost column, which helps make the visual more clear
+    neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
+    input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
+
+    ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
+    ordered_districts.set_index("DISTNAME", inplace=True)
+
+    # Plotting
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ratio_col = student_teacher_ratio[0]
+    values = ordered_districts[ratio_col].round(2)
+    bars = ax.bar(ordered_districts.index, values, color='#1f77b4', width=0.6)
+
+    # adding number labels to the bars
+    for bar, value in zip(bars, values):
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width() / 2, height + 0.2, f"{value:.2f}",
+                ha='center', va='bottom', fontsize=9)
+
+    # X-ticks and labels
+    ax.set_xticks(np.arange(len(ordered_districts.index)))
+    ax.set_xticklabels([title_case_with_spaces(name) for name in ordered_districts.index],
+                       rotation=35, ha='right', fontsize=10)
+
+    # Bold input district label for readability
+    for label in ax.get_xticklabels():
+        if input_dist.lower() in label.get_text().lower():
+            label.set_fontweight('bold')
+
+    # Title and axis labels
+    ax.set_title(f"Student-Teacher Ratios for Districts Similar to {title_case_with_spaces(input_dist)}")
+    ax.set_xlabel("School District", fontsize=13, labelpad=10)
+    ax.set_ylabel("Student-Teacher Ratio", fontsize=13, labelpad=10)
+
+    plt.tight_layout()
+    plt.show()
+
+def plot_student_staff_counts(neighbors, df):
+    """
+    Plots a grouped bar chart with different color bars for student and staff counts by district 
+    using a list of neighbors and a dataframe with the necessary columns.
+
+    Inputs:
+    - neighbors: a Pandas dataframe that has the column DISTRICT_id of the neighbors of a given input district. The given input district 
+    is assumed to be the 0th row of the dataframe.
+    - df: a Pandas dataframe that has the columns DISTRICT_id, DISTNAME, and student and staff count as denoted in the Demographic_Buckets file.
+
+    Outputs: 
+    - a matplotlib bar chart
+    """
+    # get the data set up
+    district_ids = list(neighbors['DISTRICT_id'])
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + student_count + staff_count].reset_index(drop=True).dropna()
+    
+    # verify it's not empty
+    if selected_districts.empty:
+        print("No matching districts found. Check the district IDs.")
+        return
+    
+    # reorder so that the input district is first
+    neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
+    input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
+
+
+    ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
+    ordered_districts.set_index("DISTNAME", inplace=True)
+
+    labels = ordered_districts.index
+    x = np.arange(len(labels))  # label locations
+
+    # getting the columns
+    student_col = student_count[0]
+    staff_col = staff_count[0]
+
+    student_vals = ordered_districts[student_col]
+    staff_vals = ordered_districts[staff_col]
+
+    bar_width = 0.3
+    spacing = 0.05  # space between student and staff bars
+
+    # creating the bars and the plot
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    bars1 = ax.bar(x - bar_width/2 - spacing/2, student_vals, bar_width, label='Student', color='#1f77b4')
+    bars2 = ax.bar(x + bar_width/2 + spacing/2, staff_vals, bar_width, label='Staff', color='#ff7f0e')
+
+    # adding numeric labels to the bars
+    for bars in [bars1, bars2]:
+        for bar in bars:
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width()/2, height + 0.5, f'{int(height)}',
+                    ha='center', va='bottom', fontsize=8)
+
+    # change the district labels
+    ax.set_xticks(x)
+    ax.set_xticklabels([title_case_with_spaces(name) for name in labels],
+                       rotation=35, ha='right', fontsize=10)
+
+    for label in ax.get_xticklabels():
+        if input_dist.lower() in label.get_text().lower():
+            label.set_fontweight('bold')
+
+    # axis and title labels
+    ax.set_title(f"Staff and Student Populations for Districts Similar to {title_case_with_spaces(input_dist)}")
+    ax.set_xlabel("School District", fontsize=13, labelpad=10)
+    ax.set_ylabel("Staff/Student Count", fontsize=13, labelpad=10)
+
+    # create a legend and reformat the Staff column name because it's not clean
+    labels = format_legend_labels(student_count + staff_count)
+    labels_nicer = [re.sub('Staff: All\nStaff Total\nFull Time Equiv\nCount', "Total Full Time\nEquivalent Staff\nCount", label) for label in labels]
+    ax.legend(labels_nicer, title="Population", loc="center left", bbox_to_anchor=(1, 0.5),
+              fontsize=10, title_fontsize=12)
+
+    # show the plot
+    plt.tight_layout()
+    plt.show()
