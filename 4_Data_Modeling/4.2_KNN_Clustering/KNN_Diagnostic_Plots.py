@@ -615,91 +615,7 @@ def plot_student_staff_counts(neighbors, df):
 
 def plot_special_populations_bar(neighbors, df):
     """
-    Visualizes special populations as a grouped bar chart
-
-    Parameters:
-    - neighbors (df): DF of neighbors DISTRICT_ID and DISTNAME
-    - df (pd.DataFrame): DataFrame containing district special populations
-
-    Returns:
-    - A stacked bar chart comparing special populalations distributions as percentages.
-    """
-    # Step 0: Locate the Inputed District 
-    district_ids = list(neighbors['DISTRICT_id'])
-    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
-
-    # Step 1: Filter the dataframe and verify it isn't empty
-    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + special_populations_percent].reset_index(drop=True).dropna()
-    if selected_districts.empty:
-        print("No matching districts found. Check the district IDs.")
-        return
-
-    # Step 2: reorder the dataframe to ensure that the input district is the 0th index
-    neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
-    input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
-
-    neighbors['group'] = 'Neighboring District'
-    input_district['group'] = 'Input District'
-
-    ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
-
-    ordered_districts.set_index("DISTNAME", inplace=True)
-
-    # create the series for the bars
-    homeless = ordered_districts[special_populations_percent[0]]
-    immigrant = ordered_districts[special_populations_percent[1]]
-    migrant = ordered_districts[special_populations_percent[2]]
-    military = ordered_districts[special_populations_percent[3]]
-    foster = ordered_districts[special_populations_percent[4]]
-
-    tab10_colors = plt.cm.tab10.colors
-
-    labels = list(ordered_districts.index)
-    x = np.arange(len(labels))
-
-    bar_width = 0.125
-    spacing = 0.04
-
-    # Create plot
-    fig, ax = plt.subplots(figsize=(16, 7))
-
-    bars1 = ax.bar(x - 2*bar_width - spacing*2, homeless, bar_width, label='Homeless', color=tab10_colors[0])
-    bars2 = ax.bar(x - bar_width - spacing, immigrant, bar_width, label='Immigrant', color=tab10_colors[1])
-    bars3 = ax.bar(x, migrant, bar_width, label='Migrant', color=tab10_colors[2])
-    bars4 = ax.bar(x + bar_width + spacing, military, bar_width, label='Military-Connected', color=tab10_colors[3])
-    bars5 = ax.bar(x + 2*bar_width + spacing*2, foster, bar_width, label='Foster Care', color=tab10_colors[4])
-
-    # Add value labels
-    for bars in [bars1, bars2, bars3, bars4, bars5]:
-        for bar in bars:
-            height = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width()/2, height + 0.1, f'{height:.1f}%', 
-                    ha='center', va='bottom', fontsize=8)
-
-    # X-axis labels
-    ax.set_xticks(x)
-    ax.set_xticklabels([title_case_with_spaces(name) for name in labels], 
-                    rotation=35, ha='right', fontsize=10)
-
-    # Highlight input district
-    for label in ax.get_xticklabels():
-        if input_dist.lower() in label.get_text().lower():
-            label.set_fontweight('bold')
-
-    # Titles and axis labels
-    ax.set_title(f"Special Population Percentages for Districts Similar to {title_case_with_spaces(input_dist)}", fontsize=14)
-    ax.set_xlabel("School District", fontsize=13, labelpad=10)
-    ax.set_ylabel("Percent of Students", fontsize=13, labelpad=10)
-
-    # Legend
-    ax.legend(title="Special Population (Percent)", fontsize=10, title_fontsize=12, loc="center left", bbox_to_anchor=(1, 0.5))
-
-    plt.tight_layout()
-    plt.show()
-
-def plot_special_populations_bar(neighbors, df):
-    """
-    Visualizes the percentage of Special Education and Section 504 students across selected districts using a grouped bar chart.
+    Visualizes the percentage of students in different special populations across selected districts using a grouped bar chart.
     Highlights the target (first) district.
 
     Parameters:
@@ -707,7 +623,7 @@ def plot_special_populations_bar(neighbors, df):
     - df (pd.DataFrame): DataFrame containing district demographic data.
 
     Returns:
-    - A grouped bar chart comparing Special Education and Section 504 student percentages across selected districts.
+    - A grouped bar chart comparing special population student percentages across selected districts.
     """
 
     # Get the data set up
@@ -771,12 +687,13 @@ def plot_special_populations_bar(neighbors, df):
 
 def plot_gifted_talented_bars(neighbors, df):
     """
-    Plots a bar chart showing student-teacher ratio by district using a list of neighbors and a dataframe with the necessary columns.
+    Plots a bar chart showing percent of students in gifted and talented programs by district 
+    using a list of neighbors and a dataframe with the necessary columns.
 
     Inputs:
     - neighbors: a Pandas dataframe that has the column DISTRICT_id of the neighbors of a given input district. The given input district 
     is assumed to be the 0th row of the dataframe.
-    - df: a Pandas dataframe that has the columns DISTRICT_id, DISTNAME, and student-teacher ratio. 
+    - df: a Pandas dataframe that has the columns DISTRICT_id, DISTNAME, and gifted and talented percent.
 
     Outputs: 
     - a matplotlib bar chart
