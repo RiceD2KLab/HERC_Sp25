@@ -420,32 +420,25 @@ def plot_special_ed_504_bar(neighbors, df):
     - A grouped bar chart comparing Special Education and Section 504 student percentages across selected districts.
     """
 
-    # Define columns to plot
-    special_ed_504_cols = [
-        "District 2022-23 Special Education Students Percent",
-        "District 2022-23 Section 504 Students Percent"
-    ]
-    
+    # Get the data set up
     district_ids = list(neighbors['DISTRICT_id'])
-    target_id = district_ids[0]
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
 
-    # Step 0: Locate the Inputed District 
-    input_dist = df[df["DISTRICT_id"] == target_id]['DISTNAME'].iloc[0]
-    print(f"Input District: {input_dist}")
-
-    # Step 1: Filter the DataFrame to include only selected districts
-    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + special_ed_504_cols]
-
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + special_ed_504].reset_index(drop=True).dropna()
     if selected_districts.empty:
         print("No matching districts found. Check the district IDs.")
         return
 
-    # Add a 'Highlight' column to flag the target district
-    selected_districts['Highlight'] = selected_districts['DISTRICT_id'].apply(lambda x: 'Target District' if x == target_id else 'Neighbor District')
+    # Reorder the data frame so that the input district is index = 0
+    # This will ensure it is the leftmost column, which helps make the visual more clear
+    neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
+    input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
 
+    ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
+    
     # Melt the dataframe for easier plotting
-    melted_df = selected_districts.melt(id_vars=["DISTNAME", "Highlight"],
-                                        value_vars=special_ed_504_cols,
+    melted_df = ordered_districts.melt(id_vars=["DISTNAME"],
+                                        value_vars=special_ed_504,
                                         var_name="Category",
                                         value_name="Percent")
 
@@ -458,16 +451,21 @@ def plot_special_ed_504_bar(neighbors, df):
 
     # Highlight target district label
     handles, labels = ax.get_legend_handles_labels()
-    bold_labels = []
-    for label in labels:
-        if label == input_dist:
-            bold_labels.append(f"$\\bf{{{label}}}$")  # Bold with LaTeX
-        else:
-            bold_labels.append(label)
-    ax.legend(handles=handles, labels=bold_labels, title="District", bbox_to_anchor=(1.02, 1), loc='upper left')
+
+    # Modify labels in the legend
+    for i, label in enumerate(labels):
+        if input_dist.lower() in label.lower():  # Match the target district
+            # Update the fontweight to bold for the target district
+            handles[i].set_label(title_case_with_spaces(label))
+            labels = [title_case_with_spaces(label) for label in labels]
+            ax.legend(handles=handles, labels=labels, title="District", bbox_to_anchor=(1.02, 1), loc='upper left', fontsize=12)
+
+            # Apply bold to target district in the legend
+            label_obj = ax.legend_.get_texts()[i]
+            label_obj.set_fontweight('bold')  # Make the label bold
 
     # Formatting
-    plt.title(f"Special Education and 504 Student Percentages\n(Target District: {input_dist})", fontsize=14)
+    plt.title(f"Special Education and 504 Student Percentages\n(Target District: {title_case_with_spaces(input_dist)})", fontsize=14)
     plt.xlabel("Student Category", fontsize=12)
     plt.ylabel("Percent of Students", fontsize=12)
     plt.xticks(rotation=30, ha='right')
