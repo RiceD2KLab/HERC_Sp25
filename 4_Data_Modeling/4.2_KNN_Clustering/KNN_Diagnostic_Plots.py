@@ -25,6 +25,8 @@ from matplotlib.patches import ConnectionPatch
 from scipy.spatial import Voronoi
 import geopandas as gpd
 
+plt.rcParams['axes.grid'] = False
+
 def format_legend_labels(list_of_cols):
     # Rename legend labels to reflect percentages instead of counts
     formatted_legend_labels = [
@@ -470,6 +472,7 @@ def plot_special_ed_504_bar(neighbors, df):
     plt.ylabel("Percent of Students", fontsize=12)
     plt.xticks(rotation=30, ha='right')
     plt.tight_layout()
+
     plt.show()
 
 def plot_student_teacher_ratio_bars(neighbors, df):
