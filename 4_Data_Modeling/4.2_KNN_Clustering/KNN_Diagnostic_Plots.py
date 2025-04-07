@@ -544,72 +544,56 @@ def plot_student_staff_counts(neighbors, df):
     Outputs: 
     - a matplotlib bar chart
     """
-    # get the data set up
+    # Get the data set up
     district_ids = list(neighbors['DISTRICT_id'])
     input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
 
-    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + student_count + staff_count].reset_index(drop=True).dropna()
-    
-    # verify it's not empty
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + staff_count + student_count].reset_index(drop=True).dropna()
+            
     if selected_districts.empty:
         print("No matching districts found. Check the district IDs.")
         return
-    
-    # reorder so that the input district is first
+
+    # Reorder the data frame so that the input district is index = 0
+    # This will ensure it is the leftmost column, which helps make the visual more clear
     neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
     input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
 
-
     ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
-    ordered_districts.set_index("DISTNAME", inplace=True)
+    
+    # Melt the dataframe for easier plotting
+    melted_df = ordered_districts.melt(id_vars=["DISTNAME"],
+                                        value_vars=staff_count + student_count,
+                                        var_name="Category",
+                                        value_name="Percent")
 
-    labels = ordered_districts.index
-    x = np.arange(len(labels))  # label locations
+    # Clean up category labels
+    melted_df["Category"] = melted_df["Category"].str.replace("District 2022-23 ", "").str.replace("District 2023 Staff: All Staff Total Full Time Equiv Count", "Full Time\nEquivalent Staff").str.replace(" Count", "")
 
-    # getting the columns
-    student_col = student_count[0]
-    staff_col = staff_count[0]
+    # Plot
+    plt.figure(figsize=(10, 6))
+    ax = sns.barplot(data=melted_df, x="Category", y="Percent", hue="DISTNAME", palette="Set2")
 
-    student_vals = ordered_districts[student_col]
-    staff_vals = ordered_districts[staff_col]
+    # Highlight target district label
+    handles, labels = ax.get_legend_handles_labels()
 
-    bar_width = 0.3
-    spacing = 0.05  # space between student and staff bars
+    # Modify labels in the legend
+    for i, label in enumerate(labels):
+        if input_dist.lower() in label.lower():  # Match the target district
+            # Update the fontweight to bold for the target district
+            handles[i].set_label(title_case_with_spaces(label))  # Keep the label unchanged
+            labels = [title_case_with_spaces(label) for label in labels]
+            ax.legend(handles=handles, labels=labels, title="District", bbox_to_anchor=(1.02, 1), loc='upper left', fontsize=12)
 
-    # creating the bars and the plot
-    fig, ax = plt.subplots(figsize=(12, 6))
+            # Apply bold to target district in the legend
+            label_obj = ax.legend_.get_texts()[i]
+            label_obj.set_fontweight('bold')  # Make the label bold
 
-    bars1 = ax.bar(x - bar_width/2 - spacing/2, student_vals, bar_width, label='Student', color='#1f77b4')
-    bars2 = ax.bar(x + bar_width/2 + spacing/2, staff_vals, bar_width, label='Staff', color='#ff7f0e')
-
-    # adding numeric labels to the bars
-    for bars in [bars1, bars2]:
-        for bar in bars:
-            height = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width()/2, height + 0.5, f'{int(height)}',
-                    ha='center', va='bottom', fontsize=8)
-
-    # change the district labels
-    ax.set_xticks(x)
-    ax.set_xticklabels([title_case_with_spaces(name) for name in labels],
-                       rotation=35, ha='right', fontsize=10)
-
-    for label in ax.get_xticklabels():
-        if input_dist.lower() in label.get_text().lower():
-            label.set_fontweight('bold')
-
-    # axis and title labels
-    ax.set_title(f"Staff and Student Populations for Districts Similar to {title_case_with_spaces(input_dist)}")
-    ax.set_xlabel("School District", fontsize=13, labelpad=10)
-    ax.set_ylabel("Staff/Student Count", fontsize=13, labelpad=10)
-
-    # create a legend and reformat the Staff column name because it's not clean
-    labels = format_legend_labels(student_count + staff_count)
-    labels_nicer = [re.sub('Staff: All\nStaff Total\nFull Time Equiv\nCount', "Total Full Time\nEquivalent Staff\nCount", label) for label in labels]
-    ax.legend(labels_nicer, title="Population", loc="center left", bbox_to_anchor=(1, 0.5),
-              fontsize=10, title_fontsize=12)
-
-    # show the plot
+    # Formatting
+    plt.title(f"Staff and Student Counts for Districts Similar to {title_case_with_spaces(input_dist)}", fontsize=14)
+    plt.xlabel("Population", fontsize=12)
+    plt.ylabel("Count", fontsize=12)
+    plt.xticks(rotation=30, ha='right')
     plt.tight_layout()
     plt.show()
 
@@ -678,7 +662,7 @@ def plot_special_populations_bar(neighbors, df):
             label_obj.set_fontweight('bold')  # Make the label bold
 
     # Formatting
-    plt.title(f"Student Special Population Percentages for Districts Similar to {title_case_with_spaces(input_dist)})", fontsize=14)
+    plt.title(f"Student Special Population Percentages for Districts Similar to {title_case_with_spaces(input_dist)}", fontsize=14)
     plt.xlabel("Student Category", fontsize=12)
     plt.ylabel("Percent of Students", fontsize=12)
     plt.xticks(rotation=30, ha='right')
@@ -745,7 +729,6 @@ def plot_gifted_talented_bars(neighbors, df):
     plt.tight_layout()
     plt.show()
 
-
 def plot_economically_disadvantaged_side_by_side(neighbors, df):
     """
     Visualizes economically disadvantaged distribution as percentages using side-by-side bar charts.
@@ -758,30 +741,34 @@ def plot_economically_disadvantaged_side_by_side(neighbors, df):
     - A side-by-side bar chart comparing economically disadvantaged distributions.
     """
     district_ids = list(neighbors['DISTRICT_id'])
-    # Step0: Locate the Inputed District
     input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
-    print((input_dist))
-    
-    # Step 1: Filter the DataFrame to include only selected districts
-    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + economically_disadvantaged]
 
-    # Step 2: Check if any districts were found
+    # Step 1: Filter the dataframe and verify it isn't empty
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + economically_disadvantaged].reset_index(drop=True).dropna()
     if selected_districts.empty:
         print("No matching districts found. Check the district IDs.")
         return
 
+    # Step 2: reorder the dataframe to ensure that the input district is the 0th index
+    neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
+    input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
+
+    neighbors['group'] = 'Neighboring District'
+    input_district['group'] = 'Input District'
+
+    ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
     # Step 3: Calculate total student count per district
-    selected_districts["Total Students"] = selected_districts[economically_disadvantaged].sum(axis=1)
+    ordered_districts["Total Students"] = ordered_districts[economically_disadvantaged].sum(axis=1)
 
     # Step 4: Convert economically disadvantaged counts to percentages
     for col in economically_disadvantaged:
-        selected_districts[col] = (selected_districts[col] / selected_districts["Total Students"]) * 100
+        ordered_districts[col] = (ordered_districts[col] / ordered_districts["Total Students"]) * 100
 
     # Step 5: Set the district names as index for plotting
-    selected_districts.set_index("DISTNAME", inplace=True)
+    ordered_districts.set_index("DISTNAME", inplace=True)
 
     # Step 6: Plot the side-by-side bar chart
-    ax = selected_districts[economically_disadvantaged].plot(
+    ax = ordered_districts[economically_disadvantaged].plot(
         kind='bar', 
         figsize=(12, 7), 
         width=0.8, 
@@ -790,18 +777,22 @@ def plot_economically_disadvantaged_side_by_side(neighbors, df):
     )
 
     # Step 7: Formatting
-    plt.title(f"Economically Disadvantaged Percentage Distribution for Schools Similar to {input_dist}", fontsize=14)
+    plt.title(f"Economically Disadvantaged Percentage Distribution for Schools Similar to {title_case_with_spaces(input_dist)}", fontsize=14)
     plt.xlabel("School Districts", fontsize=12)
     plt.ylabel("Percentage (%)", fontsize=12)
     plt.xticks(rotation=45, ha='right')
+    # X-ticks and labels
+    ax.set_xticks(np.arange(len(ordered_districts.index)))
+    ax.set_xticklabels([title_case_with_spaces(name) for name in ordered_districts.index],
+                       rotation=35, ha='right', fontsize=10)
+
+    # Bold input district label for readability
+    for label in ax.get_xticklabels():
+        if input_dist.lower() in label.get_text().lower():
+            label.set_fontweight('bold')
     plt.ylim(0, 100)  # Ensure the y-axis represents 0% to 100%
 
-    # Rename legend labels to reflect percentages instead of counts
-    formatted_legend_labels = [
-        label.replace("District 2022-23", "") for label in economically_disadvantaged
-    ]
-    # Format legend with wrapped text to prevent it from being too large
-    wrapped_labels = [textwrap.fill(label, width=15) for label in formatted_legend_labels]
+    wrapped_labels = format_legend_labels(economically_disadvantaged)
     
     # Move legend to the right and wrap text for better readability
     ax.legend(wrapped_labels, title= f"Economically Disadvantaged (Percentage)", loc="center left", bbox_to_anchor=(1, 0.5), fontsize=10, title_fontsize=12)
@@ -889,5 +880,74 @@ def plot_dropout_rates(neighbors, df, year):
     ax.legend(wrapped_labels, title="Dropout Rates (%)", loc="center left", bbox_to_anchor=(1, 0.5), fontsize=10, title_fontsize=12)
 
     # Improve layout
+    plt.tight_layout()
+    plt.show()
+
+def plot_language_education_bars(neighbors, df):
+    """
+    Plots a grouped bar chart with different color bars for student and staff counts by district 
+    using a list of neighbors and a dataframe with the necessary columns.
+
+    Inputs:
+    - neighbors: a Pandas dataframe that has the column DISTRICT_id of the neighbors of a given input district. The given input district 
+    is assumed to be the 0th row of the dataframe.
+    - df: a Pandas dataframe that has the columns DISTRICT_id, DISTNAME, and student and staff count as denoted in the Demographic_Buckets file.
+
+    Outputs: 
+    - a matplotlib bar chart
+    """
+    # Get the data set up
+    district_ids = list(neighbors['DISTRICT_id'])
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + language_education_percent].reset_index(drop=True).dropna()
+            
+    if selected_districts.empty:
+        print("No matching districts found. Check the district IDs.")
+        return
+
+    # Reorder the data frame so that the input district is index = 0
+    # This will ensure it is the leftmost column, which helps make the visual more clear
+    neighbors = selected_districts[selected_districts['DISTNAME'] != input_dist].reset_index(drop=True)
+    input_district = selected_districts[selected_districts['DISTNAME'] == input_dist].reset_index(drop=True)
+
+    ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
+    
+    # Melt the dataframe for easier plotting
+    melted_df = ordered_districts.melt(id_vars=["DISTNAME"],
+                                        value_vars=language_education_percent,
+                                        var_name="Category",
+                                        value_name="Percent")
+
+    # Clean up category labels
+    melted_df["Category"] = melted_df["Category"].str.replace("District 2022-23 ", "").str.replace(" Students Percent", "")
+
+    # Plot
+    plt.figure(figsize=(10, 6))
+    ax = sns.barplot(data=melted_df, x="Category", y="Percent", hue="DISTNAME", palette="Set2")
+
+    # Highlight target district label
+    handles, labels = ax.get_legend_handles_labels()
+
+    # Modify labels in the legend
+    for i, label in enumerate(labels):
+        if input_dist.lower() in label.lower():  # Match the target district
+            # Update the fontweight to bold for the target district
+            handles[i].set_label(title_case_with_spaces(label))  # Keep the label unchanged
+            labels = [title_case_with_spaces(label) for label in labels]
+            ax.legend(handles=handles, labels=labels, title="District", bbox_to_anchor=(1.02, 1), loc='upper left', fontsize=12)
+
+            # Apply bold to target district in the legend
+            label_obj = ax.legend_.get_texts()[i]
+            label_obj.set_fontweight('bold')  # Make the label bold
+
+    # Formatting
+    plt.title(f"Language Education Student Percentages for Districts Similar to {title_case_with_spaces(input_dist)}", fontsize=14)
+    plt.xlabel("Population", fontsize=12)
+    plt.ylabel("Percent Students", fontsize=12)
+    plt.xticks(rotation=30, ha='right')
+    ax.set_xticks(np.arange(2))
+    ax.set_xticklabels(['Bilingual/ESL\nEducation', 'Emergent Bilingual/\nEnglish Learner'],
+                       rotation=35, ha='right', fontsize=10)
     plt.tight_layout()
     plt.show()
