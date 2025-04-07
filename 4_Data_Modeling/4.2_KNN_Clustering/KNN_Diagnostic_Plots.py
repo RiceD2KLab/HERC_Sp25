@@ -951,3 +951,137 @@ def plot_language_education_bars(neighbors, df):
                        rotation=35, ha='right', fontsize=10)
     plt.tight_layout()
     plt.show()
+
+def plot_graduation_rate_bar(neighbors, df, groups=None):
+    """
+    Diagnostic bar plot comparing graduation rates across demographic subgroups.
+
+    Parameters:
+    - neighbors (DataFrame): DataFrame with DISTRICT_id and DISTNAME of neighbors
+    - df (DataFrame): Full dataset containing graduation rate breakdowns
+    - groups (list, optional): A list of demographic group names to include in the plot. Default is to include all available groups.
+
+    Output:  
+        - Displays a grouped bar chart comparing rates across selected districts for the specified demographic groups.
+    """
+
+    # only includes race/ethnic groups, does not include EB/EL, Econ Disadv, At Risk, etc
+    grad_cols = {
+            'African American': 'District 2022 4-Year Longitudinal: [FHSP-DLA Graduates] for African American Rate',
+            'American Indian':  'District 2022 4-Year Longitudinal: [FHSP-DLA Graduates] for American Indian Rate',
+            'Asian':            'District 2022 4-Year Longitudinal: [FHSP-DLA Graduates] for Asian Rate',
+            'Hispanic':         'District 2022 4-Year Longitudinal: [FHSP-DLA Graduates] for Hispanic Rate',
+            'Pacific Islander': 'District 2022 4-Year Longitudinal: [FHSP-DLA Graduates] for Pacific Islander Rate',
+            'White':            'District 2022 4-Year Longitudinal: [FHSP-DLA Graduates] for White Rate',
+            'Two or More':      'District 2022 4-Year Longitudinal: [FHSP-DLA Graduates] for Two or More Races Rate',
+    }
+
+    if groups is None:
+        groups = list(grad_cols.keys())
+
+    selected_cols = [grad_cols[group] for group in groups if group in grad_cols]
+
+    district_ids = list(neighbors["DISTRICT_id"])
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+
+    selected = df[df["DISTRICT_id"].isin(district_ids)][["DISTNAME"] + selected_cols]
+    melted = selected.melt(id_vars="DISTNAME", var_name="Group", value_name="Grad Rate (%)")
+    melted["Group"] = melted["Group"].str.replace("District 2022-23 Graduation Rate - ", "")
+
+    plt.figure(figsize=(12, 6))
+    sns.barplot(data=melted, x="DISTNAME", y="Grad Rate (%)", hue="Group")
+    plt.title(f"Graduation Rate by Group for Districts Similar to {input_dist}")
+    plt.xlabel("School Districts")
+    plt.ylabel("Graduation Rate (%)")
+    plt.xticks(rotation=45, ha="right")
+    plt.legend(title="Group", bbox_to_anchor=(1.02, 1), loc="upper left")
+    plt.tight_layout()
+    plt.show()
+
+def plot_attendance_rate_bar(neighbors, df, groups=None):
+    """
+    Diagnostic bar plot comparing attendance rates across demographic subgroups.
+
+    Parameters:
+        - neighbors (DataFrame): DataFrame with DISTRICT_id and DISTNAME of neighbors
+        - df (DataFrame): Full dataset containing graduation rate breakdowns
+        - groups (list, optional): A list of demographic group names to include in the plot. Default is to include all available groups.
+
+    Output:  
+        - Displays a grouped bar chart comparing rates across selected districts for the specified demographic groups.
+    """
+    attendance_cols = {
+        'African American':  'District 2022 Attendance: African American Rate',
+        'American Indian':   'District 2022 Attendance: American Indian Rate',
+        'Asian':             'District 2022 Attendance: Asian Rate',
+        'Hispanic':          'District 2022 Attendance: Hispanic Rate',
+        'Pacific Islander':  'District 2022 Attendance: Pacific Islander Rate',
+        'White':             'District 2022 Attendance: White Rate',
+        'Two or More':       'District 2022 Attendance: Two or More Races Rate',
+    }
+
+    if groups is None:
+        groups = list(attendance_cols.keys())
+
+    selected_cols = [attendance_cols[group] for group in groups if group in attendance_cols]
+
+    district_ids = list(neighbors["DISTRICT_id"])
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+
+    selected = df[df["DISTRICT_id"].isin(district_ids)][["DISTNAME"] + selected_cols]
+    melted = selected.melt(id_vars="DISTNAME", var_name="Group", value_name="Attendance Rate (%)")
+    melted["Group"] = melted["Group"].str.replace("District 2022-23 Attendance Rate - ", "")
+
+    plt.figure(figsize=(12, 6))
+    sns.barplot(data=melted, x="DISTNAME", y="Attendance Rate (%)", hue="Group")
+    plt.title(f"Attendance Rate by Group for Districts Similar to {input_dist}")
+    plt.xlabel("School Districts")
+    plt.ylabel("Attendance Rate (%)")
+    plt.xticks(rotation=45, ha="right")
+    plt.legend(title="Group", bbox_to_anchor=(1.02, 1), loc="upper left")
+    plt.tight_layout()
+    plt.show()
+
+def plot_chronic_absenteeism_bar(neighbors, df, groups=None):
+    """
+    Diagnostic bar plot comparing chronic absenteeism rates across demographic subgroups.
+
+    Parameters:
+        - neighbors (DataFrame): DataFrame with DISTRICT_id and DISTNAME of neighbors
+        - df (DataFrame): Full dataset containing graduation rate breakdowns
+        - groups (list, optional): A list of demographic group names to include in the plot. Default is to include all available groups.
+
+    Output:  
+        - Displays a grouped bar chart comparing rates across selected districts for the specified demographic groups.
+    """
+    absentee_cols = {
+        'African American':    '2022 district Chronic Absenteeism African American Group: Rate',
+        'Hispanic':            '2022 district Chronic Absenteeism Hispanic Group: Rate',
+        'White':               '2022 district Chronic Absenteeism White Group: Rate',
+        'American Indian':     '2022 district Chronic Absenteeism American Indian Group: Rate',
+        'Asian':               '2022 district Chronic Absenteeism Asian Group: Rate',
+        'Pacific Islander':    '2022 district Chronic Absenteeism Pacific Islander Group: Rate',
+        'Two or More':         '2022 district Chronic Absenteeism Two or More Races Group: Rate',
+    }
+
+    if groups is None:
+        groups = list(absentee_cols.keys())
+
+    selected_cols = [absentee_cols[group] for group in groups if group in absentee_cols]
+
+    district_ids = list(neighbors["DISTRICT_id"])
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+
+    selected = df[df["DISTRICT_id"].isin(district_ids)][["DISTNAME"] + selected_cols]
+    melted = selected.melt(id_vars="DISTNAME", var_name="Group", value_name="Absenteeism Rate (%)")
+    melted["Group"] = melted["Group"].str.replace("District 2022-23 Chronic Absenteeism Rate - ", "")
+
+    plt.figure(figsize=(12, 6))
+    sns.barplot(data=melted, x="DISTNAME", y="Absenteeism Rate (%)", hue="Group")
+    plt.title(f"Chronic Absenteeism Rate by Group for Districts Similar to {input_dist}")
+    plt.xlabel("School Districts")
+    plt.ylabel("Absenteeism Rate (%)")
+    plt.xticks(rotation=45, ha="right")
+    plt.legend(title="Group", bbox_to_anchor=(1.02, 1), loc="upper left")
+    plt.tight_layout()
+    plt.show()
