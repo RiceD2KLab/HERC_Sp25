@@ -770,7 +770,7 @@ def plot_economically_disadvantaged_side_by_side(neighbors, df):
     # Step 6: Plot the side-by-side bar chart
     ax = ordered_districts[economically_disadvantaged].plot(
         kind='bar', 
-        figsize=(12, 7), 
+        figsize=(12, 6), 
         width=0.8, 
         position=1,  # This parameter makes bars display side-by-side
         colormap="tab10"
@@ -790,7 +790,6 @@ def plot_economically_disadvantaged_side_by_side(neighbors, df):
     for label in ax.get_xticklabels():
         if input_dist.lower() in label.get_text().lower():
             label.set_fontweight('bold')
-    plt.ylim(0, 100)  # Ensure the y-axis represents 0% to 100%
 
     wrapped_labels = format_legend_labels(economically_disadvantaged)
     
