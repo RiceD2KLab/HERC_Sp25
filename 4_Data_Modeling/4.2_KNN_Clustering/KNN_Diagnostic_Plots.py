@@ -334,6 +334,7 @@ def plot_race_ethnicity_stacked_bar(neighbors, df):
     ax.set_xticks(np.arange(len(ordered_districts.index)))
     ax.set_xticklabels([title_case_with_spaces(name) for name in ordered_districts.index],
                        rotation=35, ha='right', fontsize=10)
+    ax.grid(False)
     plt.ylim(0, 100)  # Ensure the y-axis represents 0% to 100%
 
     # Bold input district label
@@ -467,6 +468,7 @@ def plot_special_ed_504_bar(neighbors, df):
             label_obj.set_fontweight('bold')  # Make the label bold
 
     # Formatting
+    ax.grid(False)
     plt.title(f"Special Education and 504 Student Percentages\n(Target District: {title_case_with_spaces(input_dist)})", fontsize=14)
     plt.xlabel("Student Category", fontsize=12)
     plt.ylabel("Percent of Students", fontsize=12)
