@@ -827,3 +827,150 @@ def plot_gifted_talented_bars(neighbors, df):
 
     plt.tight_layout()
     plt.show()
+
+
+def plot_economically_disadvantaged_side_by_side(neighbors, df):
+    """
+    Visualizes economically disadvantaged distribution as percentages using side-by-side bar charts.
+
+    Parameters:
+    - neighbors (df): DF of neighbors DISTRICT_ID and DISTNAME
+    - df (pd.DataFrame): DataFrame containing district economically disadvantaged data.
+
+    Returns:
+    - A side-by-side bar chart comparing economically disadvantaged distributions.
+    """
+    district_ids = list(neighbors['DISTRICT_id'])
+    # Step0: Locate the Inputed District
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+    print((input_dist))
+    
+    # Step 1: Filter the DataFrame to include only selected districts
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + economically_disadvantaged]
+
+    # Step 2: Check if any districts were found
+    if selected_districts.empty:
+        print("No matching districts found. Check the district IDs.")
+        return
+
+    # Step 3: Calculate total student count per district
+    selected_districts["Total Students"] = selected_districts[economically_disadvantaged].sum(axis=1)
+
+    # Step 4: Convert economically disadvantaged counts to percentages
+    for col in economically_disadvantaged:
+        selected_districts[col] = (selected_districts[col] / selected_districts["Total Students"]) * 100
+
+    # Step 5: Set the district names as index for plotting
+    selected_districts.set_index("DISTNAME", inplace=True)
+
+    # Step 6: Plot the side-by-side bar chart
+    ax = selected_districts[economically_disadvantaged].plot(
+        kind='bar', 
+        figsize=(12, 7), 
+        width=0.8, 
+        position=1,  # This parameter makes bars display side-by-side
+        colormap="tab10"
+    )
+
+    # Step 7: Formatting
+    plt.title(f"Economically Disadvantaged Percentage Distribution for Schools Similar to {input_dist}", fontsize=14)
+    plt.xlabel("School Districts", fontsize=12)
+    plt.ylabel("Percentage (%)", fontsize=12)
+    plt.xticks(rotation=45, ha='right')
+    plt.ylim(0, 100)  # Ensure the y-axis represents 0% to 100%
+
+    # Rename legend labels to reflect percentages instead of counts
+    formatted_legend_labels = [
+        label.replace("District 2022-23", "") for label in economically_disadvantaged
+    ]
+    # Format legend with wrapped text to prevent it from being too large
+    wrapped_labels = [textwrap.fill(label, width=15) for label in formatted_legend_labels]
+    
+    # Move legend to the right and wrap text for better readability
+    ax.legend(wrapped_labels, title= f"Economically Disadvantaged (Percentage)", loc="center left", bbox_to_anchor=(1, 0.5), fontsize=10, title_fontsize=12)
+
+    # Improve layout
+    plt.tight_layout()
+    plt.show()
+
+dropout_rates = ['District 2022 Annual Dropout for Grades 09-12: All Students Rate',
+ 'District 2022 Annual Dropout for Grades 09-12: Male Rate', 'District 2022 Annual Dropout for Grades 09-12: Female Rate',
+  'District 2022 Annual Dropout for Grades 09-12: Asian Rate', 'District 2022 Annual Dropout for Grades 09-12: African American Rate', 
+  'District 2022 Annual Dropout for Grades 09-12: Hispanic Rate', 'District 2022 Annual Dropout for Grades 09-12: American Indian Rate', 
+  'District 2022 Annual Dropout for Grades 09-12: Pacific Islander Rate', 'District 2022 Annual Dropout for Grades 09-12: Two or More Races Rate',
+   'District 2022 Annual Dropout for Grades 09-12: White Rate', 'District 2022 Annual Dropout for Grades 09-12: Econ Disadv Rate',
+    'District 2022 Annual Dropout for Grades 09-12: Special Ed Rate', 'District 2022 Annual Dropout for Grades 09-12: At Risk Rate', 
+    'District 2022 Annual Dropout for Grades 09-12: EB/EL Rate', 'District 2021 Annual Dropout for Grades 09-12: All Students Rate',
+     'District 2021 Annual Dropout for Grades 09-12: Male Rate', 'District 2021 Annual Dropout for Grades 09-12: Female Rate',
+      'District 2021 Annual Dropout for Grades 09-12: Asian Rate', 'District 2021 Annual Dropout for Grades 09-12: African American Rate', 
+      'District 2021 Annual Dropout for Grades 09-12: Hispanic Rate', 'District 2021 Annual Dropout for Grades 09-12: American Indian Rate', 
+      'District 2021 Annual Dropout for Grades 09-12: Pacific Islander Rate', 'District 2021 Annual Dropout for Grades 09-12: Two or More Races Rate', 
+      'District 2021 Annual Dropout for Grades 09-12: White Rate', 'District 2021 Annual Dropout for Grades 09-12: Econ Disadv Rate',
+       'District 2021 Annual Dropout for Grades 09-12: Special Ed Rate',
+ 'District 2021 Annual Dropout for Grades 09-12: At Risk Rate', 'District 2021 Annual Dropout for Grades 09-12: EL Rate']
+
+def plot_dropout_rates(neighbors, df, year):
+    """
+    Visualizes dropout rates for the year 2022 as percentages using side-by-side bar charts.
+
+    Parameters:
+    - neighbors (pd.DataFrame): DataFrame containing DISTRICT_ID and DISTNAME of neighboring districts.
+    - df (pd.DataFrame): DataFrame containing district dropout rate data.
+
+    Returns:
+    - A side-by-side bar chart comparing dropout rate distributions for 2022.
+    """
+    district_ids = list(neighbors['DISTRICT_id'])
+
+    # Step 0: Locate the Inputed District
+    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+    print(input_dist)
+    
+    # Step 1: Filter dropout rate columns for 2022
+    dropout_rates_filt = [col for col in dropout_rates if year in col]
+
+    # Step 2: Filter the DataFrame to include only selected districts and 2022 dropout rate columns
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTNAME'] + dropout_rates_filt]
+
+    # Step 3: Check if any districts were found
+    if selected_districts.empty:
+        print("No matching districts found. Check the district IDs.")
+        return
+
+    # Step 4: Set the district names as index for plotting
+    selected_districts.set_index("DISTNAME", inplace=True)
+
+    # Step 5: Determine max dropout rate dynamically
+    max_value = selected_districts[dropout_rates_filt].max().max()  # Max across all categories and districts
+    buffer = max_value * 0.1  # Add 10% buffer for readability
+
+    # Step 6: Assign more diverse colors (tab20 colormap for more variety)
+    num_categories = len(dropout_rates_filt)
+    color_map = plt.cm.get_cmap("tab20", num_categories)  # Use "tab20" for more diverse colors
+    colors = [color_map(i) for i in range(num_categories)]
+
+    # Step 7: Plot the side-by-side bar chart
+    ax = selected_districts[dropout_rates_filt].plot(
+        kind='bar', 
+        figsize=(14, 8), 
+        width=0.8, 
+        color=colors  # Apply diverse colors
+    )
+
+    # Step 8: Formatting
+    plt.title(f"Annual Dropout Rate Distribution for Grades 09-12 in {year} for Districts Similar to {input_dist}", fontsize=14)
+    plt.xlabel("School Districts", fontsize=12)
+    plt.ylabel("Dropout Rate (%)", fontsize=12)
+    plt.xticks(rotation=45, ha='right')
+    plt.ylim(0, min(100, max_value + buffer))  # Scale dynamically but cap at 100%
+
+    # Rename legend labels for clarity
+    formatted_legend_labels = [label.replace(f"District {year} Annual Dropout for Grades 09-12: ", "") for label in  dropout_rates_filt]
+    wrapped_labels = [textwrap.fill(label, width=15) for label in formatted_legend_labels]
+
+    # Move legend to the right and wrap text for better readability
+    ax.legend(wrapped_labels, title="Dropout Rates (%)", loc="center left", bbox_to_anchor=(1, 0.5), fontsize=10, title_fontsize=12)
+
+    # Improve layout
+    plt.tight_layout()
+    plt.show()
