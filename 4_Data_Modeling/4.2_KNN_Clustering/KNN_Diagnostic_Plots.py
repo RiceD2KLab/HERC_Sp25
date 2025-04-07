@@ -757,12 +757,6 @@ def plot_economically_disadvantaged_side_by_side(neighbors, df):
     input_district['group'] = 'Input District'
 
     ordered_districts = pd.concat([input_district, neighbors]).reset_index(drop=True)
-    # Step 3: Calculate total student count per district
-    ordered_districts["Total Students"] = ordered_districts[economically_disadvantaged].sum(axis=1)
-
-    # Step 4: Convert economically disadvantaged counts to percentages
-    for col in economically_disadvantaged:
-        ordered_districts[col] = (ordered_districts[col] / ordered_districts["Total Students"]) * 100
 
     # Step 5: Set the district names as index for plotting
     ordered_districts.set_index("DISTNAME", inplace=True)
