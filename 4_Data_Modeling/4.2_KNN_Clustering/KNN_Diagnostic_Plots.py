@@ -25,6 +25,7 @@ from matplotlib.patches import ConnectionPatch
 from scipy.spatial import Voronoi
 import geopandas as gpd
 
+
 plt.rcParams['axes.grid'] = False
 
 def format_legend_labels(list_of_cols):
@@ -62,219 +63,85 @@ def plot_texas_districts(neighbors, df):
     
     Returns:
     - A map plot of Texas highlighting the selected school districts with smart non-overlapping labels.
-    """
+    """    
+    # Get selected district IDs from the neighbors DataFrame
     district_ids = list(neighbors["DISTRICT_id"])
-
     if not district_ids:
         print("No district IDs provided.")
         return
 
-    # Step 1: Filter the DataFrame to get district info
-    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][["DISTRICT_id", "DISTNAME", "CNTYNAME"]]
-    
+    # Filter the DataFrame for the selected districts
+    selected_districts = df[df["DISTRICT_id"].isin(district_ids)]
     if selected_districts.empty:
         print("No matching districts found. Check the district IDs.")
         return
-        
-    # Get the main district name (first in the list)
-    main_district_info = df[df['DISTRICT_id'] == district_ids[0]]
-    if main_district_info.empty:
-        main_district_name = "Unknown District"
-    else:
-        main_district_name = main_district_info.iloc[0]["DISTNAME"]
 
-    # Step 2: Load Texas counties shapefile
-    shapefile_url = "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_county_20m.zip"
-    texas_counties = gpd.read_file(shapefile_url)
+    # Group selected districts by county and create a comma-separated string
+    county_to_districts = (selected_districts
+                          .groupby("CNTYNAME")["DISTNAME"]
+                          .apply(list)
+                          .to_dict())
+    # Convert keys to uppercase for matching with shapefile data
+    county_to_districts = {k.upper(): ", ".join(v) for k, v in county_to_districts.items()}
 
-    # Step 3: Filter for Texas counties only (STATEFP = '48' for Texas)
-    texas_counties = texas_counties[texas_counties["STATEFP"] == "48"]
+    # Look for the Texas counties file in a relative "data" directory
+    import os
+    data_dir = "data"
+    texas_counties_path = os.path.join(data_dir, "texas_counties.geojson")
+    
+    # Load the Texas counties from the bundled file
+    try:
+        texas_counties = gpd.read_file(texas_counties_path)
+    except Exception as e:
+        print(f"Error loading Texas counties: {e}")
+        print("Please ensure the texas_counties.geojson file is present in the 'data' folder.")
+        return None
 
-    # Step 4: Extract county names from selected districts
-    county_to_districts = selected_districts.groupby("CNTYNAME")["DISTNAME"].apply(list).to_dict()
+    # Create a new column for uppercase county names and map district info
+    texas_counties["NAME_UPPER"] = texas_counties["NAME"].str.upper()
+    texas_counties["districts"] = texas_counties["NAME_UPPER"].map(county_to_districts)
 
-    # Step 5: Select only the target counties from the full Texas dataset
-    selected_counties = texas_counties[texas_counties["NAME"].str.upper().isin(county_to_districts.keys())]
+    # Define the Texas bounding box (SW and NE corners)
+    texas_bounds = [[25.84, -106.65], [36.5, -93.51]]
 
-    # Step 6: Plot the Texas map
-    fig, ax = plt.subplots(figsize=(12, 10))
-    texas_counties.plot(ax=ax, color="lightgray", edgecolor="black", linewidth=0.5)  # All counties
+    # Create the Folium map, centered on Texas.
+    m = folium.Map(location=[31.0, -99.0], zoom_start=6, tiles="cartodbpositron", max_bounds=True)
+    
+    # Force the map view to the Texas bounds.
+    m.fit_bounds(texas_bounds)
+    m.options['maxBounds'] = texas_bounds
 
-    # Highlight the counties - main district's county in blue, others in red
-    main_county = df[df['DISTRICT_id'] == district_ids[0]]["CNTYNAME"].iloc[0]
-    
-    for county_name, district_list in county_to_districts.items():
-        county = selected_counties[selected_counties["NAME"].str.upper() == county_name]
-        if not county.empty:
-            color = "blue" if county_name == main_county else "red"
-            county.plot(ax=ax, color=color, edgecolor="black", linewidth=1, alpha=0.7)
+    # Define a style function for the GeoJSON layer.
+    def style_function(feature):
+        if feature["properties"].get("districts"):
+            return {
+                'fillColor': 'blue',
+                'color': 'black',
+                'weight': 1,
+                'fillOpacity': 0.7,
+            }
+        else:
+            return {
+                'fillColor': 'lightgray',
+                'color': 'black',
+                'weight': 0.5,
+                'fillOpacity': 0.5,
+            }
 
-    # Step 7: Smart label placement system
-    county_centroids = {}  # Store county centroids
-    all_district_data = []  # Store all district data for processing
-    
-    # First, collect all county centroids and district information
-    for row in selected_counties.itertuples():
-        county_name = row.NAME.upper()
-        if county_name in county_to_districts:
-            centroid = row.geometry.centroid
-            county_centroids[county_name] = (centroid.x, centroid.y)
-            
-            districts = county_to_districts[county_name]
-            for district_name in districts:
-                is_main = district_name == main_district_name
-                all_district_data.append({
-                    'county': county_name,
-                    'district': district_name,
-                    'centroid_x': centroid.x,
-                    'centroid_y': centroid.y,
-                    'is_main': is_main
-                })
-    
-    # Convert to DataFrame for easier manipulation
-    district_df = pd.DataFrame(all_district_data)
-    
-    # Analyze spatial density of county centroids
-    if len(county_centroids) >= 3:  # Need at least 3 points for Voronoi
-        points = np.array(list(county_centroids.values()))
-        
-        # Try to use Voronoi to analyze spatial relationships
-        try:
-            vor = Voronoi(points)
-            # Calculate the average distance between neighboring points
-            distances = []
-            for i in range(len(points)):
-                for j in range(i+1, len(points)):
-                    dist = np.sqrt(np.sum((points[i] - points[j])**2))
-                    distances.append(dist)
-            
-            if distances:
-                avg_distance = np.mean(distances)
-                density_factor = 1.0 / (avg_distance + 1e-10)  # Avoid division by zero
-            else:
-                density_factor = 1.0
-        except:
-            # Fallback if Voronoi fails
-            density_factor = 1.0
-    else:
-        density_factor = 1.0
-    
-    # Adaptive spacing based on point density
-    base_spacing = 2.0
-    county_districts_count = district_df.groupby('county').size()
-    
-    # Calculate the number of districts per county and identify crowded counties
-    crowded_counties = county_districts_count[county_districts_count > 1].index.tolist()
-    
-    # Function to intelligently place labels with adaptive spacing
-    def get_label_position(row, all_positions, attempt=0, max_attempts=10):
-        """Intelligently determine label position using adaptive spacing based on spatial density."""
-        x, y = row['centroid_x'], row['centroid_y']
-        county = row['county']
-        
-        # Adjust spacing based on:
-        # 1. If county is crowded (has multiple districts)
-        # 2. General spatial density of all counties
-        # 3. Number of placement attempts so far
-        
-        is_crowded = county in crowded_counties
-        crowd_factor = 1.5 if is_crowded else 1.0
-        attempt_factor = 1.0 + (attempt * 0.2)  # Increase radius with each attempt
-        
-        # Adaptive radius calculation
-        radius = base_spacing * density_factor * crowd_factor * attempt_factor
-        
-        # Strategic angle calculation - spread points apart
-        angle_base = (hash(row['district']) % 36) * 10  # Pseudorandom starting angle based on district name
-        angle_offset = attempt * 30  # Rotate by 30 degrees with each attempt
-        angle = (angle_base + angle_offset) % 360
-        angle_rad = np.radians(angle)
-        
-        # Calculate position
-        label_x = x + radius * np.cos(angle_rad)
-        label_y = y + radius * np.sin(angle_rad)
-        
-        # Check for conflicts with existing positions
-        min_distance = 0.8  # Minimum allowed distance between labels
-        conflict = False
-        
-        for pos in all_positions:
-            dist = np.sqrt((label_x - pos[0])**2 + (label_y - pos[1])**2)
-            if dist < min_distance:
-                conflict = True
-                break
-        
-        if conflict and attempt < max_attempts:
-            # Try again with different parameters
-            return get_label_position(row, all_positions, attempt + 1, max_attempts)
-        
-        return (label_x, label_y)
-    
-    # Sort by importance (main district first) and then by county name
-    district_df = district_df.sort_values(by=['is_main', 'county'], ascending=[False, True])
-    
-    # Place labels one by one, avoiding conflicts
-    label_positions = {}
-    used_positions = []
-    
-    for _, row in district_df.iterrows():
-        district_name = row['district']
-        label_pos = get_label_position(row, used_positions)
-        label_positions[district_name] = label_pos
-        used_positions.append(label_pos)
-        
-        # Draw connection line
-        centroid_x, centroid_y = row['centroid_x'], row['centroid_y']
-        label_x, label_y = label_pos
-        
-        # Use curved lines for cleaner appearance
-        conn_style = '-' if row['is_main'] else ':'
-        conn_width = 1.0 if row['is_main'] else 0.7
-        
-        # Draw the line - use ConnectionPatch for better appearance
-        conn = ConnectionPatch(
-            (centroid_x, centroid_y), (label_x, label_y),
-            "data", "data", 
-            arrowstyle="-", 
-            linestyle=conn_style,
-            linewidth=conn_width,
-            color="black"
+    # Add the GeoJSON layer with tooltips to the map.
+    folium.GeoJson(
+        texas_counties.to_json(),
+        style_function=style_function,
+        tooltip=folium.GeoJsonTooltip(
+            fields=["NAME", "districts"],
+            aliases=["County:", "Districts:"],
+            localize=True
         )
-        ax.add_artist(conn)
-        
-        # Draw the label with appropriate styling
-        is_main = row['is_main']
-        text_color = "blue" if is_main else "black"
-        
-        plt.text(
-            label_x, label_y, district_name, 
-            fontsize=9, 
-            ha='center', va='center',
-            color=text_color, 
-            weight='bold' if is_main else 'normal',
-            bbox=dict(
-                facecolor='white', 
-                alpha=0.9, 
-                edgecolor='black', 
-                boxstyle='round,pad=0.3',
-                linewidth=1.5 if is_main else 0.8
-            )
-        )
-    
-    # Step 8: Formatting and display
-    ax.set_title(f"Nearest Neighbors for {main_district_name}", fontsize=14)
-    
-    # Add legend
-    from matplotlib.lines import Line2D
-    legend_elements = [
-        Line2D([0], [0], marker='o', color='white', markerfacecolor='blue', markersize=10, label='Main District County'),
-        Line2D([0], [0], marker='o', color='white', markerfacecolor='red', markersize=10, label='Neighbor District County')
-    ]
-    ax.legend(handles=legend_elements, loc='lower right')
-    
-    ax.axis("off")  # Hide axes
-    plt.tight_layout()
-    plt.show()
+    ).add_to(m)
+
+    return m
+
+
 
 def plot_race_ethnicity_stacked_bar(neighbors, df):
     """
