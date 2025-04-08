@@ -25,6 +25,8 @@ from matplotlib.patches import ConnectionPatch
 from scipy.spatial import Voronoi
 import geopandas as gpd
 
+from adjustText import adjust_text
+
 
 plt.rcParams['axes.grid'] = False
 
@@ -948,5 +950,94 @@ def plot_chronic_absenteeism_bar(neighbors, df, groups=None):
     plt.ylabel("Absenteeism Rate (%)")
     plt.xticks(rotation=45, ha="right")
     plt.legend(title="Group", bbox_to_anchor=(1.02, 1), loc="upper left")
+    plt.tight_layout()
+    plt.show()
+
+def district_map(df, neighbors, root_directory, metric = None):
+    # Load shapefile
+    gdf = gpd.read_file(f"{root_directory}/HERC_Sp25/0_Datasets/2.1Geometry/Texas_SchoolDistricts_2024.geojson")
+
+    # Ensure consistent types
+    df['DISTRICT_id'] = df['DISTRICT_id'].astype(str)
+    neighbors = neighbors.copy().reset_index(drop=True)
+    neighbors['DISTRICT_id'] = neighbors['DISTRICT_id'].astype(str)
+    gdf['DISTRICT_N'] = gdf['DISTRICT_N'].astype(str)
+
+    # Extract district IDs
+    district_ids = list(neighbors['DISTRICT_id'].dropna().unique())
+    if not district_ids:
+        print("No district IDs found in neighbors.")
+        return
+
+    # Get input district name
+    input_rows = df[df["DISTRICT_id"] == district_ids[0]]
+    if input_rows.empty:
+        print(f"No matching DISTNAME found for DISTRICT_id: {district_ids[0]}")
+        return
+    input_dist = input_rows['DISTNAME'].iloc[0]
+
+    # Select and categorize districts
+    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME']].dropna().reset_index(drop=True)
+    neighbors_df = selected_districts[selected_districts['DISTNAME'] != input_dist].copy()
+    input_district_df = selected_districts[selected_districts['DISTNAME'] == input_dist].copy()
+    neighbors_df['group'] = 'Neighboring District'
+    input_district_df['group'] = 'Input District'
+    ordered_districts = pd.concat([input_district_df, neighbors_df]).reset_index(drop=True)
+
+    # Assign color
+    def get_color(cat):
+        return {"Input District": "blue", "Neighboring District": "red"}.get(cat, "lightgrey")
+
+    district_group_map = ordered_districts.set_index('DISTRICT_id')['group']
+    gdf['group'] = gdf['DISTRICT_N'].map(district_group_map)
+    gdf['color'] = gdf['group'].apply(get_color)
+
+    # Reproject and calculate centroids
+    gdf_proj = gdf.to_crs(epsg=3857)
+    label_gdf = gdf_proj[gdf_proj['DISTRICT_N'].isin(ordered_districts['DISTRICT_id'])].copy()
+    label_gdf['centroid'] = label_gdf.geometry.centroid
+
+    # Extract positions
+    x = label_gdf.centroid.x
+    y = label_gdf.centroid.y
+    l = label_gdf['NAME']
+
+    # Plot
+    fig, ax = plt.subplots(figsize=(12, 12))
+    gdf_proj.plot(ax=ax, color=gdf_proj["color"], edgecolor="w", linewidth=0.25)
+    texts = [
+    ax.text(
+        x.iloc[i],
+        y.iloc[i],
+        l.iloc[i],
+        ha='center',
+        va='center',
+        zorder = 10,
+        bbox=dict(facecolor='white', edgecolor='none', boxstyle='round,pad=0.3', alpha=0.9)
+    )
+    for i in range(len(l))
+]
+
+    for text in texts:
+        if input_dist.lower() in text.get_text().lower():
+            text.set_fontweight('bold')
+
+    adjust_text(
+        texts,
+        expand=(1.2, 2),
+        arrowprops=dict(arrowstyle="-|>", color='black'),
+        only_move={'points': 'y', 'text': 'y'},
+        force_text=0.5,
+        force_points=0.5,
+        lim=100,
+        zorder = 2
+    )
+
+    title = f"School Districts Most Similar to {title_case_with_spaces(input_dist)}"
+    if metric is not None:
+        title += f" with {metric}"
+
+    ax.set_title(title, fontsize=14)
+    ax.axis("off")
     plt.tight_layout()
     plt.show()
