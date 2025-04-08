@@ -25,6 +25,8 @@ from matplotlib.patches import ConnectionPatch
 from scipy.spatial import Voronoi
 import geopandas as gpd
 
+import folium
+
 
 plt.rcParams['axes.grid'] = False
 
