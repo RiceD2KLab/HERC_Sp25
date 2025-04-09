@@ -25,13 +25,6 @@ from matplotlib.patches import ConnectionPatch
 from scipy.spatial import Voronoi
 import geopandas as gpd
 
-<<<<<<< HEAD
-import folium
-=======
-from adjustText import adjust_text
->>>>>>> bc1ef5af0433fe774e7d0d02f04002d5a459df9e
-
-
 plt.rcParams['axes.grid'] = False
 
 def format_legend_labels(list_of_cols):
