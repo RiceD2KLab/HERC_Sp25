@@ -1,0 +1,10 @@
+shiny
+shinywidgets
+plotly
+pandas
+geopandas
+numpy
+matplotlib
+scikit-learn
+seaborn
+scipy
