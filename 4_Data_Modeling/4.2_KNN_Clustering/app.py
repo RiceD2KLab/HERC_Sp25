@@ -1,5 +1,5 @@
 # app.py
-from shiny import App, ui, render, reactive, Outputs
+from shiny import App, ui, render, reactive
 import pandas as pd
 from KNN_Model import find_nearest_districts
 from Demographic_Buckets import (
@@ -33,44 +33,59 @@ feature_groups = list(feature_mapping.keys())
 # Load the dataset (should have columns "DISTNAME" and "DISTRICT_id")
 from getData import get_data
 df = get_data(r"C:\Users\mmath\OneDrive\Desktop\Capstone", 2023)
-#df = pd.read_csv('https://raw.githubusercontent.com/RiceD2KLab/HERC_Sp25/refs/heads/main/0_Datasets/1.7Master_Files/Individual%20Year%20Files_Take2/merged_2023.csv?token=GHSAT0AAAAAAC6VGBY2QPHG7WEAYBSIUVWKZ7UQ45Q')
 district_choices = sorted(df["DISTNAME"].unique())
 
-# Define the UI components.
+# Define the UI with a three-column layout.
+# - Left: Inputs
+# - Middle: Placeholder for visualizations
+# - Right: Outputs the DataFrame from find_nearest_districts
 app_ui = ui.page_fluid(
-    ui.h2("Nearest Districts Finder"),
-    # Select the district by its name.
-    ui.input_select("district_name", "Select District Name:", choices=district_choices, multiple=False),
-    # Checkboxes for selecting feature groups by name.
-    ui.input_checkbox_group("feature_groups", "Select Feature Groups:", choices=feature_groups),
-    ui.input_numeric("n_neighbors", "Number of Neighbors", value=5, min=1),
-    ui.input_action_button("run", "Run Model"),
-    # Output table for displaying results.
-    ui.output_table("results")
+    ui.h2("Nearest Districts Finder Dashboard"),
+    ui.row(
+        ui.column(3,
+            ui.h3("Inputs"),
+            ui.input_select(
+                "district_name", "Select District Name:",
+                choices=district_choices, multiple=False
+            ),
+            ui.input_checkbox_group(
+                "feature_groups", "Select Feature Groups:",
+                choices=feature_groups
+            ),
+            ui.input_numeric("n_neighbors", "Number of Neighbors", value=5, min=1),
+            ui.input_action_button("run", "Run Model")
+        ),
+        ui.column(6,
+            ui.h3("Visualizations"),
+            ui.tags.div("Placeholder for visualizations")
+        ),
+        ui.column(3,
+            ui.h3("Nearest Districts"),
+            ui.output_table("results")
+        )
+    )
 )
 
 def server(input, output, session):
-    # Create a reactive event that only updates when the "Run Model" button is pressed.
     @reactive.event(input.run)
     def get_result():
         # Get the selected district name.
         selected_district_name = input.district_name()
-        # Look up the corresponding DISTRICT_id
+        # Lookup the corresponding DISTRICT_id.
         district_id_lookup = df.loc[df["DISTNAME"] == selected_district_name, "DISTRICT_id"]
         if district_id_lookup.empty:
             print(f"DEBUG: District '{selected_district_name}' not found!")
             return pd.DataFrame({"Error": ["District not found!"]})
         district_id = district_id_lookup.iloc[0]
 
-        # Get the selected feature group names.
+        # Get the selected feature groups and aggregate feature columns.
         selected_feature_groups = input.feature_groups()
-        # Aggregate feature columns from the selected groups.
         selected_features = []
         for group in selected_feature_groups:
             selected_features.extend(feature_mapping[group])
 
         n_neighbors = input.n_neighbors()
-        
+
         # Debug print to output the parameters that will be passed to the model.
         print("DEBUG: Calling find_nearest_districts with:")
         print(f"  df: DataFrame with shape {df.shape}")
@@ -78,7 +93,7 @@ def server(input, output, session):
         print(f"  feature_columns: {selected_features}")
         print(f"  n_neighbors: {n_neighbors}")
 
-        # Run the model and return the resulting DataFrame (or table-like object).
+        # Run the model and return the resulting DataFrame.
         result = find_nearest_districts(
             df=df,
             district_id=district_id,
@@ -87,16 +102,15 @@ def server(input, output, session):
         )
         return result
 
-    # Define the output "results" using the render.table decorator.
     @output
     @render.table
     def results():
-        # Only show a result when the button has been pressed at least once.
+        # Only show a result once the button has been pressed.
         if input.run() == 0:
-            return pd.DataFrame()  # or return None to show nothing.
+            return pd.DataFrame()
         return get_result()
 
-# Create the Shiny app.
+# Create and run the Shiny app.
 app = App(app_ui, server)
 
 if __name__ == '__main__':
