@@ -1,10 +1,10 @@
-from shiny import App, ui, reactive
+from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 from shinywidgets import output_widget, render_widget
 import plotly.express as px
 import pandas as pd
 from shared import demographics, performance
 from KNN_Model import find_nearest_districts
-from dashboardVisuals import dash_map
+from KNN_Diagnostic_Plots import plot_texas_districts
 
 from Demographic_Buckets import (
     student_teacher_ratio,
@@ -52,7 +52,7 @@ outcome_groups = list(outcome_mapping.keys())
 district_choices = sorted(demographics["DISTNAME"].unique())
 
 app_ui = ui.page_navbar(
-        ui.nav_panel("View my matches", output_widget("distmap")),
+        ui.nav_panel("View my matches", ui.output_ui("distmap")),
         ui.nav_panel("Why these districts?", "insert content here"),
         ui.nav_panel("Understand outcomes", "insert content here"),
         title="DistrictMatch",  
@@ -111,11 +111,9 @@ def server(input, output, session):
             n_neighbors=n_neighbors
         )
         return result
-    @render_widget()  
+    @render.ui
     def distmap(): 
-        fig = dash_map(demographics, get_result()) 
-        print("ran fig func")
-        return fig
+        return plot_texas_districts(get_result(), demographics)
 
 app = App(app_ui, server)
 
