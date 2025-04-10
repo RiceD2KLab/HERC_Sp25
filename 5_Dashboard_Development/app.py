@@ -1,12 +1,13 @@
+from pathlib import Path
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 from shinywidgets import output_widget, render_widget
 import plotly.express as px
 import pandas as pd
-from shared import demographics, performance
-from KNN_Model import find_nearest_districts
-from KNN_Diagnostic_Plots import plot_texas_districts
+from utils.shared import demographics, performance
+from utils.KNN_Model import find_nearest_districts
+from utils.dashboardVisuals import plot_texas_districts
 
-from Demographic_Buckets import (
+from utils.Demographic_Buckets import (
     student_teacher_ratio,
     student_count,
     staff_count,
@@ -18,7 +19,7 @@ from Demographic_Buckets import (
     gifted_students
 )
 
-from Performance_Buckets import sat_act, ap_ib, longitudinal_graduation_rates, chronic_absenteeism, attendance_rates, ccmr_rates, dropout_rates, staar_results, district_identifiers
+from utils.Performance_Buckets import sat_act, ap_ib, longitudinal_graduation_rates, chronic_absenteeism, attendance_rates, ccmr_rates, dropout_rates, staar_results, district_identifiers
 
 feature_mapping = {
     "Student Teacher Ratio": student_teacher_ratio,
@@ -40,8 +41,7 @@ outcome_mapping = {
     "Attendance Rates": attendance_rates,
     "CCMR Rates": ccmr_rates,
     "Dropout Rates": dropout_rates,
-    "STAAR Results": staar_results,
-    "District Identifiers": district_identifiers
+    "STAAR Results": staar_results
 }
 
 # List of group names for checkboxes.
@@ -51,11 +51,26 @@ outcome_groups = list(outcome_mapping.keys())
 
 district_choices = sorted(demographics["DISTNAME"].unique())
 
+app_deps = ui.head_content(ui.tags.link(rel="icon", type="image/png", sizes="32x32", href="HERC_Logo_No_Text.png"))
+
 app_ui = ui.page_navbar(
-        ui.nav_panel("View my matches", ui.output_ui("distmap")),
+        app_deps,
+        ui.nav_panel("View my matches", ui.input_radio_buttons(  
+        "level",  
+        "View Results By:",  
+        {"district": "District", "county": "County"}, inline = True  
+    ),
+                     ui.output_ui("distmap")),
         ui.nav_panel("Why these districts?", "insert content here"),
         ui.nav_panel("Understand outcomes", "insert content here"),
-        title="DistrictMatch",  
+        ui.nav_spacer(),
+        ui.nav_control(ui.input_dark_mode(id="mode", mode = 'light')),
+        title=ui.TagList(
+            # Logo (image)
+            ui.img(src="HERC_Logo_No_Text.png", height="30px"),
+            # Title text next to the logo
+            " DistrictMatch"
+        ),  
         id="page",  
         sidebar = ui.sidebar(
             ui.input_select(
@@ -71,12 +86,25 @@ app_ui = ui.page_navbar(
             ui.input_select(
                 "outcomes", "View Outcome:",
                 choices=outcome_groups, multiple=False
-            ),
-            bg="#ffffff"),
-        navbar_options=ui.navbar_options(bg = "#4D9AD4")
+            )),
+        navbar_options=ui.navbar_options(bg = "#E0E2E6")
     )  
 
 def server(input, output, session):
+    @render.image  
+    def image():
+        img = {"src": "www/Dist_Match_Logo.png" / "shiny.png", "width": "100px"} 
+        return img
+    @reactive.effect
+    @reactive.event(input.make_light)
+    def _():
+        ui.update_dark_mode("light")
+
+    @reactive.effect
+    @reactive.event(input.make_dark)
+    def _():
+        ui.update_dark_mode("dark")
+
     @reactive.event(input.run)
     def get_result():
         # Get the selected district name.
@@ -113,9 +141,11 @@ def server(input, output, session):
         return result
     @render.ui
     def distmap(): 
-        return plot_texas_districts(get_result(), demographics)
+        print("DEBUG, reached map", input.level())
+        return plot_texas_districts(get_result(), demographics, input.level())
 
-app = App(app_ui, server)
+static_dir = Path(__file__).parent / "static"
+app = App(app_ui, server, static_assets=static_dir)
 
 if __name__ == '__main__':
     app.run()
