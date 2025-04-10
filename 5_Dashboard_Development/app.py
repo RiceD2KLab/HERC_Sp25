@@ -6,6 +6,7 @@ import pandas as pd
 from utils.shared import demographics, performance
 from utils.KNN_Model import find_nearest_districts
 from utils.dashboardVisuals import plot_texas_districts
+from shinyswatch import theme
 
 from utils.Demographic_Buckets import (
     student_teacher_ratio,
@@ -83,7 +84,7 @@ app_ui = ui.page_navbar(
             ),
             ui.input_numeric("n_neighbors", "Number of Neighbors", value=5, min=1),
             ui.input_action_button("run", "Run Model")),
-        navbar_options=ui.navbar_options(bg = "#E0E2E6")
+        theme=theme.flatly # can be any of these: https://bootswatch.com/
     )  
 
 def server(input, output, session):
