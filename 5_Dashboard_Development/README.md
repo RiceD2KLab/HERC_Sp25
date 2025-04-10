@@ -38,3 +38,4 @@ This directory contains files relating to developing a Shiny for Python dashboar
 6. **Run the app in terminal using**
 ```bash
 shiny run app.py
+```
