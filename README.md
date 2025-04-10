@@ -9,9 +9,10 @@
 5. [Data Exploration](#data-exploration)
 6. [Feature_Engineering](#feature-engineering)
 8. [Data Modeling](#data-modeling)
-9. [Team Members & Contact Information](#team-members--contact-information)
-10. [License](#license)
-11. [Acknowledgments](#acknowledgments)
+9. [Dashboard Development]
+10. [Team Members & Contact Information](#team-members--contact-information)
+11. [License](#license)
+12. [Acknowledgments](#acknowledgments)
 
 
 ## Overview
