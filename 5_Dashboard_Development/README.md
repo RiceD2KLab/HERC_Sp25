@@ -36,6 +36,6 @@ This directory contains files relating to developing a Shiny for Python dashboar
    pip install -r requirements.txt
 
 6. **Run the app in terminal using**
-```bash
-shiny run app.py
-```
+   ```bash
+   shiny run app.py
+   ```
