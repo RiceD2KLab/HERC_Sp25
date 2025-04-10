@@ -82,11 +82,7 @@ app_ui = ui.page_navbar(
                 choices=feature_groups
             ),
             ui.input_numeric("n_neighbors", "Number of Neighbors", value=5, min=1),
-            ui.input_action_button("run", "Run Model"), 
-            ui.input_select(
-                "outcomes", "View Outcome:",
-                choices=outcome_groups, multiple=False
-            )),
+            ui.input_action_button("run", "Run Model")),
         navbar_options=ui.navbar_options(bg = "#E0E2E6")
     )  
 
