@@ -12,7 +12,7 @@ This directory contains files relating to developing a Shiny for Python dashboar
 ## How To Run The App
 
 1. **Clone the repository:**
-```bash
+   ```bash
    git clone https://github.com/RiceD2KLab/HERC_Sp25.git
 2. **Navigate to the project directory:** 
    ```bash
