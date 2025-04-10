@@ -73,3 +73,14 @@ district_identifiers = [
 ]
 
 
+feature_mapping = {
+    "Student Teacher Ratio": student_teacher_ratio,
+    "Student Count": student_count,
+    "Staff Count": staff_count,
+    "Race/Ethnicity Student %": race_ethnicity_percent,
+    "Economically Disadvantaged Student %": economically_disadvantaged,
+    "Special Education / 504 Student %": special_ed_504,
+    "Language Education Student %": language_education_percent,
+    "Special Populations Student %": special_populations_percent,
+    "Gifted Student %": gifted_students
+}

@@ -1,48 +1,17 @@
-from shiny import App, ui, reactive
+from pathlib import Path
+from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 from shinywidgets import output_widget, render_widget
 import plotly.express as px
 import pandas as pd
-from shared import demographics, performance
-from KNN_Model import find_nearest_districts
-from dashboardVisuals import dash_map
+from utils.shared import demographics, performance, ids
+from utils.KNN_Model import find_nearest_districts
+from utils.dashboardVisuals import plot_texas_districts
+from shinyswatch import theme
+from modules import matches
 
-from Demographic_Buckets import (
-    student_teacher_ratio,
-    student_count,
-    staff_count,
-    race_ethnicity_percent,
-    economically_disadvantaged,
-    special_ed_504,
-    language_education_percent,
-    special_populations_percent,
-    gifted_students
-)
+from utils.Demographic_Buckets import feature_mapping
 
-from Performance_Buckets import sat_act, ap_ib, longitudinal_graduation_rates, chronic_absenteeism, attendance_rates, ccmr_rates, dropout_rates, staar_results, district_identifiers
-
-feature_mapping = {
-    "Student Teacher Ratio": student_teacher_ratio,
-    "Student Count": student_count,
-    "Staff Count": staff_count,
-    "Race/Ethnicity Student %": race_ethnicity_percent,
-    "Economically Disadvantaged Student %": economically_disadvantaged,
-    "Special Education / 504 Student %": special_ed_504,
-    "Language Education Student %": language_education_percent,
-    "Special Populations Student %": special_populations_percent,
-    "Gifted Student %": gifted_students
-}
-
-outcome_mapping = {
-    "SAT/ACT": sat_act,
-    "AP/IB": ap_ib,
-    "Longitudinal Graduation Rates": longitudinal_graduation_rates,
-    "Chronic Absenteeism": chronic_absenteeism,
-    "Attendance Rates": attendance_rates,
-    "CCMR Rates": ccmr_rates,
-    "Dropout Rates": dropout_rates,
-    "STAAR Results": staar_results,
-    "District Identifiers": district_identifiers
-}
+from utils.Performance_Buckets import outcome_mapping
 
 # List of group names for checkboxes.
 feature_groups = list(feature_mapping.keys())
@@ -51,11 +20,21 @@ outcome_groups = list(outcome_mapping.keys())
 
 district_choices = sorted(demographics["DISTNAME"].unique())
 
+app_deps = ui.head_content(ui.tags.link(rel="icon", type="image/png", sizes="32x32", href="HERC_Logo_No_Text.png"))
+
 app_ui = ui.page_navbar(
-        ui.nav_panel("View my matches", output_widget("distmap")),
-        ui.nav_panel("Why these districts?", "insert content here"),
-        ui.nav_panel("Understand outcomes", "insert content here"),
-        title="DistrictMatch",  
+        app_deps,
+        matches.matches_ui('matchpage'),
+        ui.nav_panel("Why these districts?", "insert content here", value = "panel2"),
+        ui.nav_panel("Understand outcomes", "insert content here", value = "panel3"),
+        ui.nav_spacer(),
+        ui.nav_control(ui.input_dark_mode(id="mode", mode = 'light')),
+        title=ui.TagList(
+            # Logo (image)
+            ui.img(src="HERC_Logo_No_Text.png", height="30px"),
+            # Title text next to the logo
+            " DistrictMatch"
+        ),  
         id="page",  
         sidebar = ui.sidebar(
             ui.input_select(
@@ -67,16 +46,26 @@ app_ui = ui.page_navbar(
                 choices=feature_groups
             ),
             ui.input_numeric("n_neighbors", "Number of Neighbors", value=5, min=1),
-            ui.input_action_button("run", "Run Model"), 
-            ui.input_select(
-                "outcomes", "View Outcome:",
-                choices=outcome_groups, multiple=False
-            ),
-            bg="#ffffff"),
-        navbar_options=ui.navbar_options(bg = "#4D9AD4")
+            ui.input_action_button("run", "Run Model")),
+        theme=theme.flatly # can be any of these: https://bootswatch.com/
     )  
 
 def server(input, output, session):
+    @reactive.effect
+    @reactive.event(input.make_light)
+    def _():
+        ui.update_dark_mode("light")
+
+    @reactive.effect
+    @reactive.event(input.make_dark)
+    def _():
+        ui.update_dark_mode("dark")
+
+    @reactive.event(input.run)
+    def get_inputs():
+        user_selected = {'DISTNAME':input.district_name(), 'buckets':input.feature_groups(), 'n': input.n_neighbors()}
+        return user_selected
+
     @reactive.event(input.run)
     def get_result():
         # Get the selected district name.
@@ -111,13 +100,12 @@ def server(input, output, session):
             n_neighbors=n_neighbors
         )
         return result
-    @render_widget()  
-    def distmap(): 
-        fig = dash_map(demographics, get_result()) 
-        print("ran fig func")
-        return fig
+        
+    matches.match_server("matchpage", get_result, get_inputs, demographics, ids)
 
-app = App(app_ui, server)
+
+static_dir = Path(__file__).parent / "static"
+app = App(app_ui, server, static_assets=static_dir)
 
 if __name__ == '__main__':
     app.run()

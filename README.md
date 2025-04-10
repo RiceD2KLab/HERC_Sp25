@@ -9,9 +9,10 @@
 5. [Data Exploration](#data-exploration)
 6. [Feature_Engineering](#feature-engineering)
 8. [Data Modeling](#data-modeling)
-9. [Team Members & Contact Information](#team-members--contact-information)
-10. [License](#license)
-11. [Acknowledgments](#acknowledgments)
+9. [Dashboard Development]
+10. [Team Members & Contact Information](#team-members--contact-information)
+11. [License](#license)
+12. [Acknowledgments](#acknowledgments)
 
 
 ## Overview
@@ -87,6 +88,7 @@ Make sure you have Python 3.12.4 installed on your system. If not, download it f
    Please see [3_Feature_Engineering/README.md](3_Feature_Engineering/README.md) for details on feature engineering
 ## Data Modeling
    Please see [4_Data_Modeling/README.md](4_Data_Modeling/README.md) for details on modeling approaches, training, and validation.
+## Dashboard Development
 
 ## Team Members & Contact Information
 Bianca Schutz: mbs5@rice.edu \
