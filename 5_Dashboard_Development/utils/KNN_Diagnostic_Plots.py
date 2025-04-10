@@ -1,4 +1,4 @@
-from Demographic_Buckets import (
+from utils.Demographic_Buckets import (
     student_teacher_ratio,
     student_count,
     staff_count,

@@ -190,3 +190,14 @@ district_identifiers = [
     "DFLALTED",
     "ASVAB_STATUS"
 ]
+
+outcome_mapping = {
+    "SAT/ACT": sat_act,
+    "AP/IB": ap_ib,
+    "Longitudinal Graduation Rates": longitudinal_graduation_rates,
+    "Chronic Absenteeism": chronic_absenteeism,
+    "Attendance Rates": attendance_rates,
+    "CCMR Rates": ccmr_rates,
+    "Dropout Rates": dropout_rates,
+    "STAAR Results": staar_results
+}
