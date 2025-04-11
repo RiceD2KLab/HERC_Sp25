@@ -6,7 +6,7 @@ import pandas as pd
 from utils.shared import demographics, ids
 from utils.KNN_Model import find_nearest_districts
 from shinyswatch import theme
-from modules import matches
+from modules import matches, outcomes
 
 from utils.Demographic_Buckets import bucket_options
 
@@ -25,7 +25,7 @@ app_ui = ui.page_navbar(
         app_deps,
         matches.matches_ui('matchpage'),
         ui.nav_panel("Why these districts?", "insert content here", value = "panel2"),
-        ui.nav_panel("Understand outcomes", "insert content here", value = "panel3"),
+        outcomes.outcome_ui('outcomepage'),
         ui.nav_spacer(),
         ui.nav_control(ui.input_dark_mode(id="mode", mode = 'light')),
         title=ui.TagList(
@@ -63,7 +63,7 @@ def server(input, output, session):
 
     @reactive.event(input.run)
     def get_inputs():
-        user_selected = {'DISTNAME':input.district_name(), 'buckets':input.feature_groups(), 'n': input.n_neighbors()}
+        user_selected = {'DISTNAME':input.district_name(), 'buckets':input.feature_groups(), 'n': input.n_neighbors(), 'year': input.year()}
         return user_selected
 
     @reactive.event(input.run)
@@ -98,6 +98,8 @@ def server(input, output, session):
         return result
         
     matches.match_server("matchpage", get_result, get_inputs)
+
+    outcomes.outcome_server("outcomepage", get_inputs)
 
 
 static_dir = Path(__file__).parent / "static"
