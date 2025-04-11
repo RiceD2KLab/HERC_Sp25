@@ -4,6 +4,9 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl.worksheet.header_footer")
 
 
+import pandas as pd
+import urllib.error
+
 def load_data_from_github(year):
     """
     Loads district-level education data and corresponding column key from the HERC GitHub repository.
@@ -30,30 +33,24 @@ def load_data_from_github(year):
       'merged_<year>.csv' and 'TAPR_district_adv_<year>.xlsx' located at:
       https://github.com/mm175rice/HERC-DISTRICT-MATCH-FILES/tree/main/data/<year>
     """
-    # Base raw GitHub URL
     base_url = f"https://raw.githubusercontent.com/mm175rice/HERC-DISTRICT-MATCH-FILES/main/data/{year}"
+    csv_url = f"{base_url}/merged_{year}.csv"
+    xlsx_url = f"{base_url}/TAPR_district_adv_{year}.xlsx"
 
-    # Build expected filenames
-    csv_filename = f"merged_{year}.csv"
-    xlsx_filename = f"TAPR_district_adv_{year}.xlsx"
+    try:
+        df = pd.read_csv(csv_url)
+        column_key = pd.read_excel(xlsx_url, sheet_name='distprof')
+    except (urllib.error.URLError, urllib.error.HTTPError, FileNotFoundError):
+        raise ValueError("This year of data does not exist yet. Check the year or the GitHub repository.")
 
-    # Build full URLs
-    csv_url = f"{base_url}/{csv_filename}"
-    xlsx_url = f"{base_url}/{xlsx_filename}"
-
-    # Load CSV
-    df = pd.read_csv(csv_url)
-    column_key = pd.read_excel(xlsx_url, sheet_name='distprof')
-
-    # Filter out charter schools if applicable
     if 'Charter School (Y/N)' in df.columns:
         df = df[df['Charter School (Y/N)'] == 'N']
 
-    # Replace negative values with NaN in numeric columns
     numeric_cols = df.select_dtypes(include='number').columns
-    df[numeric_cols] = df[numeric_cols].mask(df[numeric_cols] < 0, np.nan)
+    df[numeric_cols] = df[numeric_cols].mask(df[numeric_cols] < 0, pd.NA)
 
     return df, column_key
+
 
 
 
