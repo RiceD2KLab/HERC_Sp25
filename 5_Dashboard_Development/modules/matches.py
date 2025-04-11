@@ -19,7 +19,7 @@ def matches_ui():
     )
 
 @module.server
-def match_server(input, output, session, get_result, get_inputs, demographics, ids):
+def match_server(input, output, session, get_result, get_inputs):
     @output
     @render.ui
     def link_to_why():

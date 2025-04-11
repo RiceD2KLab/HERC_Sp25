@@ -97,7 +97,7 @@ def server(input, output, session):
         )
         return result
         
-    matches.match_server("matchpage", get_result, get_inputs, demographics, ids)
+    matches.match_server("matchpage", get_result, get_inputs)
 
 
 static_dir = Path(__file__).parent / "static"
