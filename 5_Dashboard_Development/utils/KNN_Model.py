@@ -12,9 +12,9 @@ import geopandas as gpd
 import textwrap
 from matplotlib.patches import ConnectionPatch
 from scipy.spatial import Voronoi
-from utils.demographic_buckets import demographic_buckets
-from utils.demographic_buckets import get_labels_from_variable_name_dict
-from utils.demographic_buckets import get_combined_values
+from utils.Demographic_Buckets import demographic_buckets
+from utils.Demographic_Buckets import get_labels_from_variable_name_dict
+from utils.Demographic_Buckets import get_combined_values
 #from getData import load_data_from_year_folder
 
 
@@ -183,9 +183,9 @@ def knn_canberra(df, district_id, feature_columns, n_neighbors=5, impute_strateg
 
 
 from utils.getData import load_data_from_github
-from utils.demographic_buckets import demographic_buckets
-from utils.demographic_buckets import get_labels_from_variable_name_dict
-from utils.demographic_buckets import get_combined_values
+from utils.Demographic_Buckets import demographic_buckets
+from utils.Demographic_Buckets import get_labels_from_variable_name_dict
+from utils.Demographic_Buckets import get_combined_values
 
 
 def find_nearest_districts(year, district_id, feature_columns, n_neighbors=5, distance_metric="euclidean", impute_strategy="median"):

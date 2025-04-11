@@ -8,7 +8,7 @@ from utils.KNN_Model import find_nearest_districts
 from shinyswatch import theme
 from modules import matches
 
-from utils.demographic_buckets import demographic_buckets, bucket_options
+from utils.Demographic_Buckets import demographic_buckets, bucket_options
 
 from utils.Performance_Buckets import outcome_mapping
 
