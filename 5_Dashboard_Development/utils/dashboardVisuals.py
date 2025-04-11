@@ -1,4 +1,4 @@
-from utils.Demographic_Buckets import (
+from utils.DemographicBuckets import (
     student_teacher_ratio,
     student_count,
     staff_count,
@@ -33,6 +33,7 @@ def plot_texas_districts(neighbors, df, level):
     
     # Get selected district IDs from the neighbors DataFrame
     district_ids = list(neighbors["DISTRICT_id"])
+    print(district_ids)
     if not district_ids:
         print("No district IDs provided.")
         return

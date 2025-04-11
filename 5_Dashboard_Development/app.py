@@ -3,22 +3,25 @@ from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 from shinywidgets import output_widget, render_widget
 import plotly.express as px
 import pandas as pd
-from utils.shared import demographics, performance, ids
+from utils.shared import demographics, ids
 from utils.KNN_Model import find_nearest_districts
-from utils.dashboardVisuals import plot_texas_districts
 from shinyswatch import theme
 from modules import matches
 
-from utils.Demographic_Buckets import feature_mapping
+from utils.demographic_buckets import demographic_buckets, bucket_options
 
 from utils.Performance_Buckets import outcome_mapping
 
 # List of group names for checkboxes.
-feature_groups = list(feature_mapping.keys())
+feature_options = list(bucket_options.keys())
+
+print(feature_options)
 
 outcome_groups = list(outcome_mapping.keys())
 
 district_choices = sorted(demographics["DISTNAME"].unique())
+
+print(len(district_choices))
 
 app_deps = ui.head_content(ui.tags.link(rel="icon", type="image/png", sizes="32x32", href="HERC_Logo_No_Text.png"))
 
@@ -43,9 +46,10 @@ app_ui = ui.page_navbar(
             ),
             ui.input_checkbox_group(
                 "feature_groups", "Select Feature Groups:",
-                choices=feature_groups
+                choices=feature_options
             ),
             ui.input_numeric("n_neighbors", "Number of Neighbors", value=5, min=1),
+            ui.input_numeric("year", "View Outcomes For", value=2023, min=2020),
             ui.input_action_button("run", "Run Model")),
         theme=theme.flatly # can be any of these: https://bootswatch.com/
     )  
@@ -68,35 +72,31 @@ def server(input, output, session):
 
     @reactive.event(input.run)
     def get_result():
+        if input.year() > 2023:
+            return f"Unable to retrieve outcome data from {input.year()}"
         # Get the selected district name.
         selected_district_name = input.district_name()
         # Lookup the corresponding DISTRICT_id.
         district_id_lookup = demographics.loc[demographics["DISTNAME"] == selected_district_name, "DISTRICT_id"]
+
         if district_id_lookup.empty:
             print(f"DEBUG: District '{selected_district_name}' not found!")
             return pd.DataFrame({"Error": ["District not found!"]})
         district_id = district_id_lookup.iloc[0]
 
-        # Get the selected feature groups and aggregate feature columns.
-        selected_feature_groups = input.feature_groups()
-        selected_features = []
-        for group in selected_feature_groups:
-            selected_features.extend(feature_mapping[group])
-
         n_neighbors = input.n_neighbors()
 
+        buckets_selected = input.feature_groups()
+        buckets = [bucket_options[key] for key in buckets_selected]
         # Debug print to output the parameters that will be passed to the model.
         print("DEBUG: Calling find_nearest_districts with:")
-        print(f"  df: DataFrame with shape {demographics.shape}")
-        print(f"  district_id: {district_id}")
-        print(f"  feature_columns: {selected_features}")
-        print(f"  n_neighbors: {n_neighbors}")
+        print(f"  district_id: {type(district_id)}")
 
         # Run the model and return the resulting DataFrame.
         result = find_nearest_districts(
-            df=demographics,
+            year=input.year(),
             district_id=district_id,
-            feature_columns=selected_features,
+            feature_columns=buckets,
             n_neighbors=n_neighbors
         )
         return result

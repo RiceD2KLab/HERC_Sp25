@@ -1,8 +1,6 @@
 from shiny import ui, render, module
 from utils.dashboardVisuals import plot_texas_districts
-from utils.KNN_Diagnostic_Plots import title_case_with_spaces
-from utils.KNN_Model import get_neighbor_data
-import pandas as pd
+from utils.helper import title_case_with_spaces
 
 @module.ui
 def matches_ui():
@@ -32,18 +30,13 @@ def match_server(input, output, session, get_result, get_inputs, demographics, i
     @output()
     @render.data_frame
     def results_df():
-        result = get_result()
-        distname = get_inputs()['DISTNAME']
-        result = result[result['DISTNAME']!=distname]['DISTNAME']
-        for_table = ids[ids['DISTNAME'].isin(result)][['DISTNAME', 'CNTYNAME', 'TEA Description']]
-        for_table.columns = ['District', 'County', 'TEA District Type']
-        for_table['County'] = [title_case_with_spaces(val) for val in for_table['County']]
-        for_table['District'] = [title_case_with_spaces(val) for val in for_table['District']]
-        return render.DataGrid(for_table)
+        result = get_result()[2]
+        print(result)
 
     @output()
     @render.ui
     def distmap():
         result = get_result()
+        print(result[2]['DISTRICT_id'])
         level = input.level()
-        return plot_texas_districts(result, demographics, level)
+        return plot_texas_districts(result[2], result[0], level)

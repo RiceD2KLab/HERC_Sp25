@@ -1,86 +1,67 @@
-# Student to teacher ratio 
-student_teacher_ratio = [
-    "District 2023 Staff: Teacher Student Ratio"
-]
+bucket_options = {'Student-Teacher Ratio': 'student_teacher_ratio',
+                      'Total Staff Count': 'staff_count',
+                      'Economically Disadvantaged': 'economically_disadvantaged',
+                      'Special Education and 504': 'special_ed_504',
+                      'Special Populations': 'special_populations_percent',
+                      'Gifted and Talented': 'gifted_students',
+                      'Total Student Count': 'student_count'}
 
-# District Student Count
-student_count = ["District 2022-23 Total Students Count"]
-
-# District Staff Count
-staff_count = [
-    "District 2023 Staff: All Staff Total Full Time Equiv Count"
-]
-
-# School District Race/Ethnicity Makeup
-race_ethnicity_percent = [
-    "District 2022-23 African American Students Percent",
-    "District 2022-23 American Indian Students Percent",
-    "District 2022-23 Asian Students Percent",
-    "District 2022-23 Hispanic Students Percent",
-    "District 2022-23 Pacific Islander Students Percent",
-    "District 2022-23 White Students Percent",
-    "District 2022-23 Two or More Races Students Percent"
-]
-
-# Economically Disadvantaged Students
-economically_disadvantaged = [
-    "District 2022-23 Economically Disadvantaged Students Percent",
-    "District 2022-23 Title I Students percent"
-]
-
-# Special Education and 504 Disability Student Populations
-special_ed_504 = [
-    "District 2022-23 Special Education Students Percent",
-    "District 2022-23 Section 504 Students Percent"
-]
-
-# Language & Bilingual Education
-language_education_percent = [
-    "District 2022-23 Bilingual/ESL Education Students Percent",
-    "District 2022-23 Emergent Bilingual/English Learner Students Percent"
-]
-
-# Special Populations (Homeless, Immigrant/Migrant, Military, Foster Care)
-special_populations_percent = [
-    "District 2022-23 Homeless Students Percent",
-    "District 2022-23 Immigrant Students Percent",
-    "District 2022-23 Migrant Students Percent",
-    "District 2022-23 Military Connected Students Percent",
-    "District 2022-23 Foster Care Students Percent"
-]
-
-# Gifted Students
-gifted_students = [
-    "District 2022-23 Gifted & Talented Education Students Percent"
-]
-
-#District Identifiers 
-district_identifiers = [
-    "DISTRICT_id",
-    "TEA District Type",
-    "TEA Description",
-    "NCES District Type",
-    "NCES Description",
-    "Charter School (Y/N)", 
-    "COUNTY",
-    "REGION",
-    "DISTRICT",
-    "DISTNAME",
-    "CNTYNAME",
-    "DFLCHART",
-    "DFLALTED",
-    "ASVAB_STATUS"
-]
+demographic_buckets = {'student_teacher_ratio': ['DPSTKIDR'],
+ 'student_count': ['DPNTALLC'],
+ 'staff_count': ['DPSATOFC'],
+ 'race_ethnicity_percent': ['DPNTBLAP',
+  'DPNTINDP',
+  'DPNTASIP',
+  'DPNTHISP',
+  'DPNTPCIP',
+  'DPNTTWOP',
+  'DPNTWHIP'],
+ 'economically_disadvantaged': ['DPNTECOP', 'DPNTTT1P'],
+ 'special_ed_504': ['DPNT504P', 'DPNTSPEP'],
+ 'language_education_percent': ['DPNTBILP', 'DPNTLEPP'],
+ 'special_populations_percent': ['DPNTFOSP',
+  'DPNTHOMP',
+  'DPNTIMMP',
+  'DPNTMIGP',
+  'DPNTMLCP'],
+ 'gifted_students': ['DPNTGIFP'],
+ 'district_identifiers': ['DISTRICT_id',
+  'TEA District Type',
+  'TEA Description',
+  'NCES District Type',
+  'NCES Description',
+  'Charter School (Y/N)',
+  'COUNTY',
+  'REGION',
+  'DISTRICT',
+  'DISTNAME',
+  'CNTYNAME',
+  'DFLCHART',
+  'DFLALTED',
+  'ASVAB_STATUS']}
 
 
-feature_mapping = {
-    "Student Teacher Ratio": student_teacher_ratio,
-    "Student Count": student_count,
-    "Staff Count": staff_count,
-    "Race/Ethnicity Student %": race_ethnicity_percent,
-    "Economically Disadvantaged Student %": economically_disadvantaged,
-    "Special Education / 504 Student %": special_ed_504,
-    "Language Education Student %": language_education_percent,
-    "Special Populations Student %": special_populations_percent,
-    "Gifted Student %": gifted_students
-}
+def get_labels_from_variable_name_dict(name_dict, key_df):
+    """
+    Given a dictionary of COLUMN ID values, return a dictionary mapping each key to a list of COLUMN LABEL Values
+    from the key DataFrame. For the 'district_identifiers' key, include its values without modification.
+
+    Args:
+        name_dict (dict): Dictionary with string keys and list of COLUMN IDs as values.
+        key_df (pd.DataFrame): DataFrame with 'NAME' and 'LABEL' columns. The NAME LABEL mapping file
+
+    Returns:
+        dict: Dictionary with the same keys and list of corresponding LABELs as values.
+    """
+    result = {}
+    for key, name_list in name_dict.items():
+        if key == "district_identifiers":
+            # Leave district identifiers untouched
+            result[key] = name_list
+        else:
+            # Map NAMEs to LABELs using the key DataFrame
+            result[key] = key_df[key_df['NAME'].isin(name_list)]['LABEL'].tolist()
+    return result
+
+def get_combined_values(data_dict, columns_wanted):
+    return [item for col in columns_wanted for item in data_dict.get(col, [])]
