@@ -8,20 +8,16 @@ from utils.KNN_Model import find_nearest_districts
 from shinyswatch import theme
 from modules import matches
 
-from utils.Demographic_Buckets import demographic_buckets, bucket_options
+from utils.Demographic_Buckets import bucket_options
 
 from utils.Performance_Buckets import outcome_mapping
 
 # List of group names for checkboxes.
 feature_options = list(bucket_options.keys())
 
-print(feature_options)
-
 outcome_groups = list(outcome_mapping.keys())
 
-district_choices = sorted(demographics["DISTNAME"].unique())
-
-print(len(district_choices))
+district_choices = sorted(ids[ids['Charter School (Y/N)'] == 'N']["DISTNAME"].unique())
 
 app_deps = ui.head_content(ui.tags.link(rel="icon", type="image/png", sizes="32x32", href="HERC_Logo_No_Text.png"))
 
@@ -77,7 +73,7 @@ def server(input, output, session):
         # Get the selected district name.
         selected_district_name = input.district_name()
         # Lookup the corresponding DISTRICT_id.
-        district_id_lookup = demographics.loc[demographics["DISTNAME"] == selected_district_name, "DISTRICT_id"]
+        district_id_lookup = ids.loc[ids["DISTNAME"] == selected_district_name, "DISTRICT_id"]
 
         if district_id_lookup.empty:
             print(f"DEBUG: District '{selected_district_name}' not found!")

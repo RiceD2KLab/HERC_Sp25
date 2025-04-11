@@ -30,13 +30,17 @@ def match_server(input, output, session, get_result, get_inputs, demographics, i
     @output()
     @render.data_frame
     def results_df():
-        result = get_result()[2]
-        print(result)
+        neighbor_names = get_result()[2]['DISTNAME']
+        df = get_result()[0][['DISTNAME', 'TEA Description', 'CNTYNAME']]
+        df.columns = ['District', 'TEA District Type', 'County']
+        for_table = df[df['District'].isin(neighbor_names)].copy()
+        for_table['District'] = [title_case_with_spaces(distname) for distname in for_table['District']]
+        for_table['County'] = [title_case_with_spaces(cty) for cty in for_table['County']]
+        return render.DataGrid(for_table)
 
     @output()
     @render.ui
     def distmap():
         result = get_result()
-        print(result[2]['DISTRICT_id'])
         level = input.level()
         return plot_texas_districts(result[2], result[0], level)

@@ -111,7 +111,6 @@ def knn_distance(df, district_id, feature_columns, n_neighbors=5, metric="euclid
         knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric="mahalanobis", metric_params={"VI": inv_cov})
     else:
         knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric=metric)
-    print(knn_df["DISTRICT_id"])
     # Fit the model and get nearest neighbors
     knn_model.fit(knn_df[feature_columns])
     query_point = knn_df[knn_df["DISTRICT_id"] == int(district_id)][feature_columns]
