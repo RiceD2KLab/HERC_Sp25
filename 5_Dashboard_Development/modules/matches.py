@@ -24,7 +24,7 @@ def match_server(input, output, session, get_result, get_inputs):
     @render.ui
     def link_to_why():
         if get_inputs():
-            return ui.p("The model identified the following districts as being the most similar to yours based on the inputs you selected."), ui.a("Understand why these districts are similar", href="#panel2")
+            return ui.p("The model identified the following districts as being the most similar to yours based on the inputs you selected."), ui.a("(This link will work when app is deployed) Understand why these districts are similar", href="#panel2")
         else:
             return ui.NULL  # Do not show the link if the condition is not met
     @output()

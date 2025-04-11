@@ -1,10 +1,12 @@
-bucket_options = {'Student-Teacher Ratio': 'student_teacher_ratio',
-                      'Total Staff Count': 'staff_count',
-                      'Economically Disadvantaged': 'economically_disadvantaged',
-                      'Special Education and 504': 'special_ed_504',
-                      'Special Populations': 'special_populations_percent',
-                      'Gifted and Talented': 'gifted_students',
-                      'Total Student Count': 'student_count'}
+bucket_options = {"Student Teacher Ratio": 'student_teacher_ratio',
+    "Student Count": 'student_count',
+    "Staff Count": 'staff_count',
+    "Race/Ethnicity Student %": 'race_ethnicity_percent',
+    "Economically Disadvantaged Student %": 'economically_disadvantaged',
+    "Special Education / 504 Student %": 'special_ed_504',
+    "Language Education Student %": 'language_education_percent',
+    "Special Populations Student %": 'special_populations_percent',
+    "Gifted Student %": 'gifted_students'}
 
 demographic_buckets = {'student_teacher_ratio': ['DPSTKIDR'],
  'student_count': ['DPNTALLC'],
