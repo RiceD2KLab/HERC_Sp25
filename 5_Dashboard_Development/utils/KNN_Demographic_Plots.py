@@ -9,14 +9,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.patches import ConnectionPatch
 
-from scipy.spatial import Voronoi
 import geopandas as gpd
 
 #New plotly graphs packages 
 import plotly.express as px
 import plotly.graph_objects as go
-
-
 
 
 plt.rcParams['axes.grid'] = False
@@ -44,95 +41,6 @@ def title_case_with_spaces(text):
         words = [word.title() if word != 'MSD' else word for word in words]
         return ' '.join(words)
     return re.sub(r'([a-z])([A-Z])', r'\1 \2', text).title()
-
-def plot_texas_districts(neighbors, df):
-    """
-    Plots selected school districts on a Texas map based on district IDs, with intelligent
-    label placement to prevent overlap regardless of location density.
-    
-    Parameters:
-    - neighbors (df): DF containing neighbors district id and distname 
-    - df (pd.DataFrame): DataFrame containing 'DISTRICT_id', 'DISTNAME', and 'CNTYNAME' columns.
-    
-    Returns:
-    - A map plot of Texas highlighting the selected school districts with smart non-overlapping labels.
-    """    
-    # Get selected district IDs from the neighbors DataFrame
-    district_ids = list(neighbors["DISTRICT_id"])
-    if not district_ids:
-        print("No district IDs provided.")
-        return
-
-    # Filter the DataFrame for the selected districts
-    selected_districts = df[df["DISTRICT_id"].isin(district_ids)]
-    if selected_districts.empty:
-        print("No matching districts found. Check the district IDs.")
-        return
-
-    # Group selected districts by county and create a comma-separated string
-    county_to_districts = (selected_districts
-                          .groupby("CNTYNAME")["DISTNAME"]
-                          .apply(list)
-                          .to_dict())
-    # Convert keys to uppercase for matching with shapefile data
-    county_to_districts = {k.upper(): ", ".join(v) for k, v in county_to_districts.items()}
-
-    # Look for the Texas counties file in a relative "data" directory
-    import os
-    data_dir = "data"
-    texas_counties_path = os.path.join(data_dir, "texas_counties.geojson")
-    
-    # Load the Texas counties from the bundled file
-    try:
-        texas_counties = gpd.read_file(texas_counties_path)
-    except Exception as e:
-        print(f"Error loading Texas counties: {e}")
-        print("Please ensure the texas_counties.geojson file is present in the 'data' folder.")
-        return None
-
-    # Create a new column for uppercase county names and map district info
-    texas_counties["NAME_UPPER"] = texas_counties["NAME"].str.upper()
-    texas_counties["districts"] = texas_counties["NAME_UPPER"].map(county_to_districts)
-
-    # Define the Texas bounding box (SW and NE corners)
-    texas_bounds = [[25.84, -106.65], [36.5, -93.51]]
-
-    # Create the Folium map, centered on Texas.
-    m = folium.Map(location=[31.0, -99.0], zoom_start=6, tiles="cartodbpositron", max_bounds=True)
-    
-    # Force the map view to the Texas bounds.
-    m.fit_bounds(texas_bounds)
-    m.options['maxBounds'] = texas_bounds
-
-    # Define a style function for the GeoJSON layer.
-    def style_function(feature):
-        if feature["properties"].get("districts"):
-            return {
-                'fillColor': 'blue',
-                'color': 'black',
-                'weight': 1,
-                'fillOpacity': 0.7,
-            }
-        else:
-            return {
-                'fillColor': 'lightgray',
-                'color': 'black',
-                'weight': 0.5,
-                'fillOpacity': 0.5,
-            }
-
-    # Add the GeoJSON layer with tooltips to the map.
-    folium.GeoJson(
-        texas_counties.to_json(),
-        style_function=style_function,
-        tooltip=folium.GeoJsonTooltip(
-            fields=["NAME", "districts"],
-            aliases=["County:", "Districts:"],
-            localize=True
-        )
-    ).add_to(m)
-
-    return m
 
 
 # Note the docstrings will be the same excited for the description moving forward. 
@@ -212,7 +120,7 @@ def plot_race_ethnicity_stacked_bar(df, buckets, neighbors):
         margin=dict(r=180, t=60)
     )
 
-    fig.show()
+    return fig
 
 
 def plot_special_ed_504_bar(df, buckets, neighbors):
@@ -285,7 +193,7 @@ def plot_special_ed_504_bar(df, buckets, neighbors):
         margin=dict(r=160, t=80)
     )
 
-    fig.show()
+    return fig
 
 
 def plot_dot_stack(df, buckets, neighbors, unit_label="Student-Teacher Ratio"):
@@ -355,7 +263,7 @@ def plot_dot_stack(df, buckets, neighbors, unit_label="Student-Teacher Ratio"):
         plot_bgcolor="white"
     )
 
-    fig.show()
+    return fig
 
 
 
@@ -429,7 +337,7 @@ def plot_staff_student_dumbbell(df, buckets, neighbors):
         legend=dict(title="", orientation="h", x=0.35, y=-0.15)
     )
 
-    fig.show()
+    return fig
 
 
 
@@ -447,7 +355,6 @@ def plot_special_populations_dropdown(df, buckets, neighbors):
     input_id = district_ids[0]
     input_dist = df[df['DISTRICT_id'] == input_id]['DISTNAME'].iloc[0]
 
-    # Filter and drop all-zero columns
     selected = df[df['DISTRICT_id'].isin(district_ids)][['DISTNAME'] + special_cols].dropna().copy()
     for col in special_cols:
         if selected[col].sum() == 0:
@@ -461,7 +368,6 @@ def plot_special_populations_dropdown(df, buckets, neighbors):
     selected["Group"] = selected["DISTNAME"].apply(lambda x: "Input District" if x == input_dist else "Neighbor")
     selected["DISTNAME"] = selected["DISTNAME"].apply(title_case_with_spaces)
 
-    # Melt data
     melted_df = selected.melt(id_vars=["DISTNAME", "Group"], value_vars=valid_cols,
                               var_name="Category", value_name="Percent")
     melted_df["Category"] = (
@@ -470,7 +376,6 @@ def plot_special_populations_dropdown(df, buckets, neighbors):
         .str.replace(" Students Percent", "", regex=False)
     )
 
-    # Prepare initial view
     categories = melted_df["Category"].unique()
     base_category = categories[0]
     base_df = melted_df[melted_df["Category"] == base_category]
@@ -489,7 +394,7 @@ def plot_special_populations_dropdown(df, buckets, neighbors):
     fig.update_traces(marker=dict(size=11))
     fig.update_layout(showlegend=False)
 
-    # Dropdown buttons
+    # FIXED: Use "title.text" instead of "title"
     buttons = []
     for cat in categories:
         df_cat = melted_df[melted_df["Category"] == cat]
@@ -502,12 +407,11 @@ def plot_special_populations_dropdown(df, buckets, neighbors):
                     "y": [df_cat["DISTNAME"]],
                 },
                 {
-                    "title": f"{cat} Percentage for Districts Similar to {title_case_with_spaces(input_dist)}",
+                    "title.text": f"{cat} Percentage for Districts Similar to {title_case_with_spaces(input_dist)}"
                 }
             ]
         ))
 
-    # Final layout adjustments
     fig.update_layout(
         updatemenus=[dict(
             buttons=buttons,
@@ -525,7 +429,7 @@ def plot_special_populations_dropdown(df, buckets, neighbors):
         plot_bgcolor="white"
     )
 
-    fig.show()
+    return fig
 
 def plot_gifted_talented_horizontal_bar(df, buckets, neighbors):
     """
@@ -574,7 +478,7 @@ def plot_gifted_talented_horizontal_bar(df, buckets, neighbors):
         showlegend=False  # Optional: turn on if you want color legend
     )
 
-    fig.show()
+    return fig
 
 
 def plot_economically_disadvantaged_horizontal(df, buckets, neighbors):
@@ -634,7 +538,7 @@ def plot_economically_disadvantaged_horizontal(df, buckets, neighbors):
         legend_title="",
     )
 
-    fig.show()
+    return fig
 
 
 
@@ -679,7 +583,7 @@ def plot_language_education_filterable_bar(df, buckets, neighbors):
     for i, cat in enumerate(categories):
         df_cat = melted_df[melted_df["Category"] == cat]
 
-        visible = True if i == 0 else False  # Only show first one initially
+        visible = True if i == 0 else False
 
         fig.add_trace(go.Bar(
             x=df_cat["DISTNAME"],
@@ -695,16 +599,16 @@ def plot_language_education_filterable_bar(df, buckets, neighbors):
             visible=visible
         ))
 
-    # Create dropdown to toggle visibility
+    # ✅ FIX: Replace "title" with "title.text" in update args
     buttons = []
     for i, cat in enumerate(categories):
-        visible = [j == i for j in range(len(categories))]  # Only one visible at a time
+        visible = [j == i for j in range(len(categories))]
         buttons.append(dict(
             label=cat,
             method="update",
             args=[
                 {"visible": visible},
-                {"title": f"{cat} Percentage for Districts Similar to {title_case_with_spaces(input_dist)}"}
+                {"title.text": f"{cat} Percentage for Districts Similar to {title_case_with_spaces(input_dist)}"}
             ]
         ))
 
@@ -718,7 +622,7 @@ def plot_language_education_filterable_bar(df, buckets, neighbors):
             yanchor="top",
             showactive=True
         )],
-        title=f"{categories[0]} Percentage for Districts Similar to {title_case_with_spaces(input_dist)}",
+        title_text=f"{categories[0]} Percentage for Districts Similar to {title_case_with_spaces(input_dist)}",  # ✅ Use title_text instead of title
         yaxis_title="Percent of Students",
         xaxis_title="District",
         xaxis_tickangle=35,
@@ -728,94 +632,6 @@ def plot_language_education_filterable_bar(df, buckets, neighbors):
         showlegend=False
     )
 
-    fig.show()
+    return fig
 
 
-def district_map(df, neighbors, root_directory, metric = None):
-    # Load shapefile
-    gdf = gpd.read_file(f"{root_directory}/HERC_Sp25/0_Datasets/2.1Geometry/Texas_SchoolDistricts_2024.geojson")
-
-    # Ensure consistent types
-    df['DISTRICT_id'] = df['DISTRICT_id'].astype(str)
-    neighbors = neighbors.copy().reset_index(drop=True)
-    neighbors['DISTRICT_id'] = neighbors['DISTRICT_id'].astype(str)
-    gdf['DISTRICT_N'] = gdf['DISTRICT_N'].astype(str)
-
-    # Extract district IDs
-    district_ids = list(neighbors['DISTRICT_id'].dropna().unique())
-    if not district_ids:
-        print("No district IDs found in neighbors.")
-        return
-
-    # Get input district name
-    input_rows = df[df["DISTRICT_id"] == district_ids[0]]
-    if input_rows.empty:
-        print(f"No matching DISTNAME found for DISTRICT_id: {district_ids[0]}")
-        return
-    input_dist = input_rows['DISTNAME'].iloc[0]
-
-    # Select and categorize districts
-    selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME']].dropna().reset_index(drop=True)
-    neighbors_df = selected_districts[selected_districts['DISTNAME'] != input_dist].copy()
-    input_district_df = selected_districts[selected_districts['DISTNAME'] == input_dist].copy()
-    neighbors_df['group'] = 'Neighboring District'
-    input_district_df['group'] = 'Input District'
-    ordered_districts = pd.concat([input_district_df, neighbors_df]).reset_index(drop=True)
-
-    # Assign color
-    def get_color(cat):
-        return {"Input District": "blue", "Neighboring District": "red"}.get(cat, "lightgrey")
-
-    district_group_map = ordered_districts.set_index('DISTRICT_id')['group']
-    gdf['group'] = gdf['DISTRICT_N'].map(district_group_map)
-    gdf['color'] = gdf['group'].apply(get_color)
-
-    # Reproject and calculate centroids
-    gdf_proj = gdf.to_crs(epsg=3857)
-    label_gdf = gdf_proj[gdf_proj['DISTRICT_N'].isin(ordered_districts['DISTRICT_id'])].copy()
-    label_gdf['centroid'] = label_gdf.geometry.centroid
-
-    # Extract positions
-    x = label_gdf.centroid.x
-    y = label_gdf.centroid.y
-    l = label_gdf['NAME']
-
-    # Plot
-    fig, ax = plt.subplots(figsize=(12, 12))
-    gdf_proj.plot(ax=ax, color=gdf_proj["color"], edgecolor="w", linewidth=0.25)
-    texts = [
-    ax.text(
-        x.iloc[i],
-        y.iloc[i],
-        l.iloc[i],
-        ha='center',
-        va='center',
-        zorder = 10,
-        bbox=dict(facecolor='white', edgecolor='none', boxstyle='round,pad=0.3', alpha=0.9)
-    )
-    for i in range(len(l))
-]
-
-    for text in texts:
-        if input_dist.lower() in text.get_text().lower():
-            text.set_fontweight('bold')
-
-    adjust_text(
-        texts,
-        expand=(1.2, 2),
-        arrowprops=dict(arrowstyle="-|>", color='black'),
-        only_move={'points': 'y', 'text': 'y'},
-        force_text=0.5,
-        force_points=0.5,
-        lim=100,
-        zorder = 2
-    )
-
-    title = f"School Districts Most Similar to {title_case_with_spaces(input_dist)}"
-    if metric is not None:
-        title += f" with {metric}"
-
-    ax.set_title(title, fontsize=14)
-    ax.axis("off")
-    plt.tight_layout()
-    plt.show()

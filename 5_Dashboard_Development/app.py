@@ -6,7 +6,7 @@ import pandas as pd
 from utils.shared import demographics, ids
 from utils.KNN_Model import find_nearest_districts
 from shinyswatch import theme
-from modules import matches, outcomes
+from modules import matches, why_districts, outcomes
 
 from utils.Demographic_Buckets import bucket_options
 
@@ -24,7 +24,8 @@ app_deps = ui.head_content(ui.tags.link(rel="icon", type="image/png", sizes="32x
 app_ui = ui.page_navbar(
         app_deps,
         matches.matches_ui('matchpage'),
-        ui.nav_panel("Why these districts?", "insert content here", value = "panel2"),
+        why_districts.why_districts_ui('demographicpage'),
+        #ui.nav_panel("Why these districts?", "insert content here", value = "panel2"),
         outcomes.outcome_ui('outcomepage'),
         ui.nav_spacer(),
         ui.nav_control(ui.input_dark_mode(id="mode", mode = 'light')),
@@ -98,7 +99,7 @@ def server(input, output, session):
         return result
         
     matches.match_server("matchpage", get_result, get_inputs)
-
+    why_districts.why_districts_server("demographicpage", get_result, get_inputs)
     outcomes.outcome_server("outcomepage", get_inputs)
 
 
