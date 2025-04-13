@@ -228,7 +228,7 @@ def plot_dropout_rates(neighbors, df, year):
 
 import plotly.express as px
 from utils.getData import engineer_performance
-from utils.mapOutcomes import suboptions
+from utils.mapOutcomes import suboptions, options
 import re
 from utils.helper import title_case_with_spaces
 
@@ -263,6 +263,30 @@ def plot_staar(neighbors, year, subject):
         category_orders={'Category': category_order})
     return(fig)
 
+from utils.mapOutcomes import demographic_string_patterns, demographics
+
+def plot_ccmr_rates(neighbors, year, subcategory):
+    district_ids = list(neighbors['DISTRICT_id'])
+    df = engineer_performance(year)
+    df_selected_outcome = df.filter(regex=f"(College, Career, & Military Ready Graduates|DISTNAME|DISTRICT_id)")
+    df_filtered = df_selected_outcome[df_selected_outcome['DISTRICT_id'].isin(district_ids)].copy()
+    df_renamed = df_filtered.rename(columns={
+    col: re.search(demographic_string_patterns['College, Career, & Military Ready Graduates'], col).group(1)
+    for col in df_filtered.columns if re.search(demographic_string_patterns['College, Career, & Military Ready Graduates'], col)
+})
+    columns_to_keep = [value for value in demographics.values() if value in df_renamed.columns]
+    columns_to_keep += ['DISTNAME', 'DISTRICT_id']
+
+    filtered_df = df_renamed[columns_to_keep]
+
+    df_long = filtered_df.melt(id_vars=["DISTNAME", "DISTRICT_id"], value_vars=columns_to_keep, var_name="Demographic", value_name="Rate")
+    fig = px.bar(df_long, 
+                 x='DISTNAME', y='Rate', color = 'Demographic',
+                 color_discrete_sequence=px.colors.qualitative.G10,
+                 title="College, Career, & Military Ready Graduate Rates By Demographic Group",
+        labels= {"DISTNAME": "District"},
+        barmode = 'group')
+    return(fig)
 
 def plot_selections(plot_func, neighbors, year, subcategory = None):
     return plot_func(neighbors, year, subcategory)

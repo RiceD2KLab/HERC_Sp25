@@ -3,13 +3,13 @@
 from shiny import ui, render, module
 from utils.mapOutcomes import options, suboptions
 from shinywidgets import render_widget, output_widget
-from utils.KNN_Outcome_Plots import plot_staar, plot_selections
+from utils.KNN_Outcome_Plots import plot_staar, plot_selections, plot_ccmr_rates
 
 map_outcome_plot_functions = {'STAAR Testing': plot_staar,
     'Dropout Rate': None,
     'Attendance': None,
     'Chronic Absenteeism': None,
-    'College, Career, & Military Ready Graduates': None,
+    'College, Career, & Military Ready Graduates': plot_ccmr_rates,
     '4-Year Longitudinal Graduation Rate': None,
     'AP/IB': None,
     'SAT/ACT': None}
