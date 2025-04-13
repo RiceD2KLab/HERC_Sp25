@@ -31,6 +31,8 @@ def match_server(input, output, session, get_result, get_inputs):
     @render.data_frame
     def results_df():
         neighbor_names = get_result()[2]['DISTNAME']
+        print("Rendering matches table...")
+
         df = get_result()[0][['DISTNAME', 'TEA Description', 'CNTYNAME']]
         df.columns = ['District', 'TEA District Type', 'County']
         for_table = df[df['District'].isin(neighbor_names)].copy()
@@ -43,4 +45,5 @@ def match_server(input, output, session, get_result, get_inputs):
     def distmap():
         result = get_result()
         level = input.level()
+        print("Rendering map...")
         return plot_texas_districts(result[2], result[0], level)

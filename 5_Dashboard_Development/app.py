@@ -88,7 +88,6 @@ def server(input, output, session):
         # Debug print to output the parameters that will be passed to the model.
         print("DEBUG: Calling find_nearest_districts with:")
         print(f"  district_id: {type(district_id)}")
-
         # Run the model and return the resulting DataFrame.
         result = find_nearest_districts(
             year=input.year(),
@@ -100,7 +99,7 @@ def server(input, output, session):
         
     matches.match_server("matchpage", get_result, get_inputs)
     why_districts.why_districts_server("demographicpage", get_result, get_inputs)
-    outcomes.outcome_server("outcomepage", get_inputs)
+    outcomes.outcome_server("outcomepage", get_inputs, get_result)
 
 
 static_dir = Path(__file__).parent / "static"

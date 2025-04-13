@@ -18,7 +18,7 @@ plot_labels = {
     "race_ethnicity": "Race and Ethnicity Distribution",
     "special_ed_504": "Special Education & 504 Percentages",
     "dot_stack": "Student Teacher Ratio",
-    "staff_student": "Staff & Student Cpunt",
+    "staff_student": "Staff & Student Count",
     "special_populations": "Special Populations",
     "gifted_talented": "Gifted & Talented",
     "econ_disadv": "Economically Disadvantaged",

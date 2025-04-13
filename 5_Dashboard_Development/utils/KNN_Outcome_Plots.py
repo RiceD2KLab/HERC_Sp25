@@ -225,3 +225,44 @@ def plot_dropout_rates(neighbors, df, year):
     # Improve layout
     plt.tight_layout()
     plt.show()
+
+import plotly.express as px
+from utils.getData import engineer_performance
+from utils.mapOutcomes import suboptions
+import re
+from utils.helper import title_case_with_spaces
+
+def plot_staar(neighbors, year, subject):
+    
+    district_ids = list(neighbors['DISTRICT_id'])
+    df = engineer_performance(year)
+    string_pattern = next((x for x in suboptions['STAAR Testing'] if x == subject), None)
+    # First select relevant columns
+    df_selected_outcome = df.filter(regex=f"({string_pattern}|DISTNAME|DISTRICT_id)")
+
+    # get only neighbors
+    df_filtered = df_selected_outcome[df_selected_outcome['DISTRICT_id'].isin(district_ids)].copy()
+    df_filtered.columns = [
+    re.sub(r'^.*\((Masters|Approaches|Meets) Grade Level\)$', r'\1 Grade Level', col)
+    for col in df_filtered.columns
+    ]   
+    df_filtered = df_filtered.copy()
+    df_filtered['DISTNAME'] = [title_case_with_spaces(distname) for distname in df_filtered['DISTNAME']]
+    other_cols = ['Masters Grade Level', 'Meets Grade Level', 'Approaches Grade Level']
+    df_long = df_filtered.melt(id_vars=["DISTNAME", "DISTRICT_id"], value_vars=other_cols, var_name="Category", value_name="Percent")
+    df_long = df_long.copy()
+    df_long['District'] = df_long['DISTNAME']
+    print(df_long)
+    category_order = ['Approaches Grade Level', 'Meets Grade Level', 'Masters Grade Level']
+
+    fig = px.bar(df_long, 
+                 x='District', y='Percent', color = 'Category',
+                 color_discrete_sequence=px.colors.qualitative.Set1,
+                 title=f"{subject} STAAR Performance for All Grade Levels",
+        labels= {"Percent": "Percent of Students"},
+        category_orders={'Category': category_order})
+    return(fig)
+
+
+def plot_selections(plot_func, neighbors, year, subcategory = None):
+    return plot_func(neighbors, year, subcategory)
