@@ -258,7 +258,7 @@ def plot_staar(neighbors, year, subject):
     category_order = ['Approaches Grade Level', 'Meets Grade Level', 'Masters Grade Level']
 
     fig = px.bar(df_long, 
-                 x='District', y='Percent', color = 'Category',
+                 x='District', y='Rate', color = 'Category',
                  color_discrete_sequence=px.colors.qualitative.Set1,
                  title=f"{subject} STAAR Performance for All Grade Levels",
         category_orders={'Category': category_order})
