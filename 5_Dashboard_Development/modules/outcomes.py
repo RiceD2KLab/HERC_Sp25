@@ -4,6 +4,7 @@ from shiny import ui, render, module
 from utils.mapOutcomes import options, suboptions
 from shinywidgets import render_widget, output_widget
 from utils.KNN_Outcome_Plots import plot_staar, plot_selections, plot_ccmr_rates
+import plotly.graph_objs as go
 
 map_outcome_plot_functions = {'STAAR Testing': plot_staar,
     'Dropout Rate': None,
@@ -26,7 +27,7 @@ def outcome_ui():
     )
 
 @module.server
-def outcome_server(input, output, session, get_inputs, get_result):
+def outcome_server(input, output, session, get_inputs, run_result):
     @output
     @render.ui
     def suboption_ui():
@@ -39,8 +40,11 @@ def outcome_server(input, output, session, get_inputs, get_result):
     @output
     @render_widget
     def outcome_plot():
+        result = run_result.get()
+        if result is None or len(result) != 3:
+            return go.Figure().update_layout(title="Run a model to view outcomes.")
         selections = [input.main_option(), input.suboption()]
         plot_function = map_outcome_plot_functions[selections[0]]
-        return plot_selections(plot_func = plot_function, neighbors=get_result()[2], year = get_inputs()['year'], subcategory= selections[1])
+        return plot_selections(plot_func = plot_function, neighbors=result[2], year = get_inputs()['year'], subcategory= selections[1])
 
         
