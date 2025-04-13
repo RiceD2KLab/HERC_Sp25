@@ -69,8 +69,8 @@ def server(input, output, session):
 
     @reactive.event(input.run)
     def get_result():
-        if input.year() > 2023:
-            return f"Unable to retrieve outcome data from {input.year()}"
+        #if input.year() > 2023:
+        #    return f"Unable to retrieve outcome data from {input.year()}"
         # Get the selected district name.
         selected_district_name = input.district_name()
         # Lookup the corresponding DISTRICT_id.
