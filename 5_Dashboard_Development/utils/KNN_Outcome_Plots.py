@@ -226,6 +226,8 @@ def plot_dropout_rates(neighbors, df, year):
     plt.tight_layout()
     plt.show()
 
+# BEGIN INTERACTIVE PLOTTING 
+
 import plotly.express as px
 from utils.getData import engineer_performance
 from utils.mapOutcomes import suboptions, options
@@ -249,7 +251,7 @@ def plot_staar(neighbors, year, subject):
     df_filtered = df_filtered.copy()
     df_filtered['DISTNAME'] = [title_case_with_spaces(distname) for distname in df_filtered['DISTNAME']]
     other_cols = ['Masters Grade Level', 'Meets Grade Level', 'Approaches Grade Level']
-    df_long = df_filtered.melt(id_vars=["DISTNAME", "DISTRICT_id"], value_vars=other_cols, var_name="Category", value_name="Percent")
+    df_long = df_filtered.melt(id_vars=["DISTNAME", "DISTRICT_id"], value_vars=other_cols, var_name="Category", value_name="Rate")
     df_long = df_long.copy()
     df_long['District'] = df_long['DISTNAME']
     print(df_long)
@@ -259,7 +261,6 @@ def plot_staar(neighbors, year, subject):
                  x='District', y='Percent', color = 'Category',
                  color_discrete_sequence=px.colors.qualitative.Set1,
                  title=f"{subject} STAAR Performance for All Grade Levels",
-        labels= {"Percent": "Percent of Students"},
         category_orders={'Category': category_order})
     return(fig)
 
