@@ -60,8 +60,8 @@ def plot_race_ethnicity_stacked_bar(df, buckets, neighbors):
     race_ethnicity_percent = buckets['race_ethnicity_percent']
 
     # Step 0: Locate the input district
-    district_ids = list(neighbors['DISTRICT_id'])
-    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+    district_ids = list(neighbors['DISTRICT_id'].astype(str))
+    input_dist = df[df["DISTRICT_id"] == str(district_ids[0])]['DISTNAME'].iloc[0]
 
     # Step 1: Filter and prepare data
     selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + race_ethnicity_percent].dropna().reset_index(drop=True)
@@ -69,10 +69,10 @@ def plot_race_ethnicity_stacked_bar(df, buckets, neighbors):
         print("No matching districts found. Check the district IDs.")
         return
 
-    neighbors_df = selected_districts[selected_districts['DISTNAME'] != input_dist].copy()
+    neighbors_df = selected_districts[selected_districts['DISTNAME'] != str(input_dist)].copy()
     neighbors_df['group'] = 'Neighboring District'
 
-    input_df = selected_districts[selected_districts['DISTNAME'] == input_dist].copy()
+    input_df = selected_districts[selected_districts['DISTNAME'] == str(input_dist)].copy()
     input_df['group'] = 'Input District'
 
     combined_df = pd.concat([input_df, neighbors_df]).reset_index(drop=True)
@@ -136,10 +136,9 @@ def plot_special_ed_504_bar(df, buckets, neighbors):
     - Interactive Plotly figure
     """
     special_ed_504 = buckets['special_ed_504']
-
     # Step 0: Locate input district
-    district_ids = list(neighbors['DISTRICT_id'])
-    input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
+    district_ids = list(neighbors['DISTRICT_id'].astype(str))
+    input_dist = df[df["DISTRICT_id"] == str(district_ids[0])]['DISTNAME'].iloc[0]
 
     # Step 1: Filter and structure data
     selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME'] + special_ed_504].dropna().reset_index(drop=True)
@@ -212,9 +211,9 @@ def plot_dot_stack(df, buckets, neighbors, unit_label="Student-Teacher Ratio"):
     metric_col = buckets['student_teacher_ratio'][0]
 
     # Identify input district
-    district_ids = list(neighbors['DISTRICT_id'])
+    district_ids = list(neighbors['DISTRICT_id'].astype(str))
     input_id = district_ids[0]
-    input_dist = df[df["DISTRICT_id"] == input_id]['DISTNAME'].iloc[0]
+    input_dist = df[df["DISTRICT_id"] == str(input_id)]['DISTNAME'].iloc[0]
 
     # Filter and prep data
     selected = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME', metric_col]].dropna().copy()
@@ -282,9 +281,9 @@ def plot_staff_student_dumbbell(df, buckets, neighbors):
     staff_col = buckets['staff_count'][0]
     student_col = buckets['student_count'][0]
 
-    district_ids = list(neighbors['DISTRICT_id'])
+    district_ids = list(neighbors['DISTRICT_id'].astype(str))
     input_id = district_ids[0]
-    input_dist = df[df['DISTRICT_id'] == input_id]['DISTNAME'].iloc[0]
+    input_dist = df[df['DISTRICT_id'] == str(input_id)]['DISTNAME'].iloc[0]
 
     # Filter and sort data
     selected = df[df['DISTRICT_id'].isin(district_ids)][['DISTNAME', staff_col, student_col]].dropna().copy()
@@ -351,9 +350,9 @@ def plot_special_populations_dropdown(df, buckets, neighbors):
     - neighbors: DF with DISTRICT_ID and DISTNAME
     """
     special_cols = buckets['special_populations_percent']
-    district_ids = list(neighbors['DISTRICT_id'])
+    district_ids = list(neighbors['DISTRICT_id'].astype(str))
     input_id = district_ids[0]
-    input_dist = df[df['DISTRICT_id'] == input_id]['DISTNAME'].iloc[0]
+    input_dist = df[df['DISTRICT_id'] == str(input_id)]['DISTNAME'].iloc[0]
 
     selected = df[df['DISTRICT_id'].isin(district_ids)][['DISTNAME'] + special_cols].dropna().copy()
     for col in special_cols:
@@ -439,9 +438,9 @@ def plot_gifted_talented_horizontal_bar(df, buckets, neighbors):
     col = buckets['gifted_students'][0]
 
     # Identify input district
-    district_ids = list(neighbors['DISTRICT_id'])
+    district_ids = list(neighbors['DISTRICT_id'].astype(str))
     input_id = district_ids[0]
-    input_dist = df[df['DISTRICT_id'] == input_id]['DISTNAME'].iloc[0]
+    input_dist = df[df['DISTRICT_id'] == str(input_id)]['DISTNAME'].iloc[0]
 
     # Filter and prep
     selected = df[df['DISTRICT_id'].isin(district_ids)][['DISTNAME', col]].dropna().copy()
@@ -486,9 +485,9 @@ def plot_economically_disadvantaged_horizontal(df, buckets, neighbors):
     Interactive horizontal grouped bar chart showing economically disadvantaged percentages.
     """
     econ_cols = buckets['economically_disadvantaged']
-    district_ids = list(neighbors['DISTRICT_id'])
+    district_ids = list(neighbors['DISTRICT_id'].astype(str))
     input_id = district_ids[0]
-    input_dist = df[df['DISTRICT_id'] == input_id]['DISTNAME'].iloc[0]
+    input_dist = df[df['DISTRICT_id'] == str(input_id)]['DISTNAME'].iloc[0]
 
     # Filter data
     selected = df[df['DISTRICT_id'].isin(district_ids)][['DISTNAME'] + econ_cols].dropna().copy()
@@ -546,10 +545,12 @@ def plot_language_education_filterable_bar(df, buckets, neighbors):
     """
     Vertical bar chart with a dropdown filter to toggle between language education categories.
     """
+    
     lang_cols = buckets['language_education_percent']
-    district_ids = list(neighbors['DISTRICT_id'])
+    district_ids = list(neighbors['DISTRICT_id'].astype(str))
     input_id = district_ids[0]
-    input_dist = df[df['DISTRICT_id'] == input_id]['DISTNAME'].iloc[0]
+
+    input_dist = df[df['DISTRICT_id'] == str(input_id)]['DISTNAME'].iloc[0]
 
     # Prep and clean
     selected = df[df['DISTRICT_id'].isin(district_ids)][['DISTNAME'] + lang_cols].dropna().copy()

@@ -1,6 +1,7 @@
 from shiny import ui, render, module
 from utils.dashboardVisuals import plot_texas_districts
 from utils.helper import title_case_with_spaces
+import pandas as pd
 
 @module.ui
 def matches_ui():
@@ -19,7 +20,7 @@ def matches_ui():
     )
 
 @module.server
-def match_server(input, output, session, get_result, get_inputs):
+def match_server(input, output, session, run_result, get_inputs):
     @output
     @render.ui
     def link_to_why():
@@ -30,10 +31,13 @@ def match_server(input, output, session, get_result, get_inputs):
     @output()
     @render.data_frame
     def results_df():
-        neighbor_names = get_result()[2]['DISTNAME']
+        result = run_result.get()
+        if result is None or len(result) != 3:
+            return render.DataGrid(pd.DataFrame({"District": ['Waiting for model results. Run a model to view neighbors.']}))
+        neighbor_names = result[2]['DISTNAME']
         print("Rendering matches table...")
 
-        df = get_result()[0][['DISTNAME', 'TEA Description', 'CNTYNAME']]
+        df = result[0][['DISTNAME', 'TEA Description', 'CNTYNAME']]
         df.columns = ['District', 'TEA District Type', 'County']
         for_table = df[df['District'].isin(neighbor_names)].copy()
         for_table['District'] = [title_case_with_spaces(distname) for distname in for_table['District']]
@@ -43,7 +47,9 @@ def match_server(input, output, session, get_result, get_inputs):
     @output()
     @render.ui
     def distmap():
-        result = get_result()
+        result = run_result.get()
+        if result is None or len(result) != 3:
+            return ui.p("Run a model to view the map.")
         level = input.level()
         print("Rendering map...")
         return plot_texas_districts(result[2], result[0], level)

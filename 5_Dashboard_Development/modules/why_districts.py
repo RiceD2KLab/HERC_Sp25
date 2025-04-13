@@ -1,5 +1,6 @@
 from shiny import ui, render, module, reactive
 from shinywidgets import output_widget, render_widget
+import plotly.graph_objs as go
 
 # --- Plot Mappings ---
 bucket_to_plot_ids = {
@@ -44,7 +45,7 @@ def why_districts_ui():
 
 
 @module.server
-def why_districts_server(input, output, session, get_result, get_inputs):
+def why_districts_server(input, output, session, run_result, get_inputs):
     from utils.KNN_Demographic_Plots import (
         plot_race_ethnicity_stacked_bar,
         plot_special_ed_504_bar, 
@@ -100,5 +101,9 @@ def why_districts_server(input, output, session, get_result, get_inputs):
         @output(id=plot_id)
         @render_widget
         def _render(plot_id=plot_id, plot_func=plot_func):  # default args to freeze late binding
-            df, label_dict, neighbors = get_result()
+            result = run_result.get()
+            if result is None or len(result) != 3:
+                return go.Figure().update_layout(title="Run a model to view outcomes.")
+            print(result)
+            df, label_dict, neighbors = result[0], result[1], result[2]
             return plot_func(df, label_dict, neighbors)

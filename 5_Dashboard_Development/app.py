@@ -52,6 +52,7 @@ app_ui = ui.page_navbar(
     )  
 
 def server(input, output, session):
+    result_data = reactive.value(None)
     @reactive.effect
     @reactive.event(input.make_light)
     def _():
@@ -66,11 +67,14 @@ def server(input, output, session):
     def get_inputs():
         user_selected = {'DISTNAME':input.district_name(), 'buckets':input.feature_groups(), 'n': input.n_neighbors(), 'year': input.year()}
         return user_selected
+    
+    @reactive.event(input.run)
+    def test_button_click():
+        print("DEBUG: Button clicked!")
 
+    @reactive.effect
     @reactive.event(input.run)
     def get_result():
-        #if input.year() > 2023:
-        #    return f"Unable to retrieve outcome data from {input.year()}"
         # Get the selected district name.
         selected_district_name = input.district_name()
         # Lookup the corresponding DISTRICT_id.
@@ -87,7 +91,7 @@ def server(input, output, session):
         buckets = [bucket_options[key] for key in buckets_selected]
         # Debug print to output the parameters that will be passed to the model.
         print("DEBUG: Calling find_nearest_districts with:")
-        print(f"  district_id: {type(district_id)}")
+        print(f"  district_id: {district_id}")
         # Run the model and return the resulting DataFrame.
         result = find_nearest_districts(
             year=input.year(),
@@ -95,11 +99,18 @@ def server(input, output, session):
             feature_columns=buckets,
             n_neighbors=n_neighbors
         )
-        return result
+        df, features_used, neighbors_list = result
+        # Store all 3 in one dictionary
+        result_data.set({
+            0: df,
+            1: features_used,
+            2: neighbors_list
+        })
+        return "Model run complete"
         
-    matches.match_server("matchpage", get_result, get_inputs)
-    why_districts.why_districts_server("demographicpage", get_result, get_inputs)
-    outcomes.outcome_server("outcomepage", get_inputs, get_result)
+    matches.match_server("matchpage", result_data, get_inputs)
+    why_districts.why_districts_server("demographicpage", result_data, get_inputs)
+    outcomes.outcome_server("outcomepage", get_inputs, result_data)
 
 
 static_dir = Path(__file__).parent / "static"
