@@ -35,7 +35,7 @@ app_ui = ui.page_navbar(
     ui.TagList(
         ui.HTML("""
             <h3><strong>About DistrictMatch</strong></h3>
-            <p>The District Match App is the creation of Team Kinder HERC from Rice University's Data to Knowledge Lab. The purpose of the app is to assist school districts in finding similar districts (neighbors) based upon their chosen demographic metrics. The tabs which will assist in district matching are “View My Matches”, “Why These Districts”, and “Understand Outcomes”. Furthermore, there is the 
+            <p>The DistrictMatch App is the creation of Team Kinder HERC from Rice University's Data to Knowledge Lab. The purpose of the app is to assist school districts in finding similar districts (neighbors) based upon their chosen demographic metrics. The tabs which will assist in district matching are “View My Matches”, “Why These Districts”, and “Understand Outcomes”. Furthermore, there is the 
              "How To Use" page which will directly explain how to navigate each of the DistrictMatch pages. </p>
             <h4><strong>View My Matches</strong></h4>
             <p>The "View My Matches" tab allows you to find districts similar to your selected district. You can view a specified number of matched districts. </p>                        
