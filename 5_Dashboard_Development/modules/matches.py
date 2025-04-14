@@ -25,7 +25,7 @@ def match_server(input, output, session, run_result, get_inputs):
     @render.ui
     def link_to_why():
         if get_inputs():
-            return ui.p("The model identified the following districts as being the most similar to yours based on the inputs you selected."), ui.a("Understand why these districts are similar", href="#panel2")
+            return ui.p("The model identified the following districts as being the most similar to yours based on the inputs you selected.")
         else:
             return ui.NULL  # Do not show the link if the condition is not met
     @output()
@@ -50,6 +50,8 @@ def match_server(input, output, session, run_result, get_inputs):
         result = run_result.get()
         if result is None or len(result) != 3:
             return ui.p("Run a model to view the map.")
+        result[0]['DISTRICT_id'] = result[0]['DISTRICT_id'].astype(str)
+        result[2]['DISTRICT_id'] = result[2]['DISTRICT_id'].astype(str)
         level = input.level()
         print("Rendering map...")
         return plot_texas_districts(result[2], result[0], level)

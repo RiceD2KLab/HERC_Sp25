@@ -41,10 +41,14 @@ def outcome_server(input, output, session, get_inputs, run_result):
     @render_widget
     def outcome_plot():
         result = run_result.get()
+        print("Plotting outcomes...")
         if result is None or len(result) != 3:
             return go.Figure().update_layout(title="Run a model to view outcomes.")
+        result[0]['DISTRICT_id'] = result[0]['DISTRICT_id'].astype(str)
+        result[2]['DISTRICT_id'] = result[2]['DISTRICT_id'].astype(str)
+        print("these are the neighbors")
+        print(result[2])
         selections = [input.main_option(), input.suboption()]
+        print(selections)
         plot_function = map_outcome_plot_functions[selections[0]]
         return plot_selections(plot_func = plot_function, neighbors=result[2], year = get_inputs()['year'], subcategory= selections[1])
-
-        

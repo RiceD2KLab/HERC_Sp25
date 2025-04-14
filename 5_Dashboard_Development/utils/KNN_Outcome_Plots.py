@@ -175,8 +175,7 @@ def plot_dropout_rates(neighbors, df, year):
 
     # Step 0: Locate the Inputed District
     input_dist = df[df["DISTRICT_id"] == district_ids[0]]['DISTNAME'].iloc[0]
-    print(input_dist)
-    
+
     # Step 1: Filter dropout rate columns for 2022
     dropout_rates_filt = [col for col in dropout_rates if year in col]
 
@@ -238,23 +237,27 @@ def plot_staar(neighbors, year, subject):
     
     district_ids = list(neighbors['DISTRICT_id'])
     df = engineer_performance(year)
+    print("Engineer performance shape",df.shape)
     string_pattern = next((x for x in suboptions['STAAR Testing'] if x == subject), None)
     # First select relevant columns
     df_selected_outcome = df.filter(regex=f"({string_pattern}|DISTNAME|DISTRICT_id)")
-
+    df_selected_outcome['DISTRICT_id'] = df_selected_outcome['DISTRICT_id'].astype(str)
+    print("Selected relevant columns shape", df_selected_outcome.shape)
     # get only neighbors
     df_filtered = df_selected_outcome[df_selected_outcome['DISTRICT_id'].isin(district_ids)].copy()
+    print("Only neighbors shape", df_filtered.shape)
     df_filtered.columns = [
     re.sub(r'^.*\((Masters|Approaches|Meets) Grade Level\)$', r'\1 Grade Level', col)
     for col in df_filtered.columns
     ]   
     df_filtered = df_filtered.copy()
     df_filtered['DISTNAME'] = [title_case_with_spaces(distname) for distname in df_filtered['DISTNAME']]
+    print("Pre-long shape", df_filtered.shape)
     other_cols = ['Masters Grade Level', 'Meets Grade Level', 'Approaches Grade Level']
     df_long = df_filtered.melt(id_vars=["DISTNAME", "DISTRICT_id"], value_vars=other_cols, var_name="Category", value_name="Rate")
     df_long = df_long.copy()
     df_long['District'] = df_long['DISTNAME']
-    print(df_long)
+    print("post-transformations data", df_long.shape)
     category_order = ['Approaches Grade Level', 'Meets Grade Level', 'Masters Grade Level']
 
     fig = px.bar(df_long, 
@@ -269,8 +272,12 @@ from utils.mapOutcomes import demographic_string_patterns, demographics
 def plot_ccmr_rates(neighbors, year, subcategory):
     district_ids = list(neighbors['DISTRICT_id'])
     df = engineer_performance(year)
+    print("Engineer performance shape",df.shape)
     df_selected_outcome = df.filter(regex=f"(College, Career, & Military Ready Graduates|DISTNAME|DISTRICT_id)")
+    df_selected_outcome['DISTRICT_id'] = df_selected_outcome['DISTRICT_id'].astype(str)
     df_filtered = df_selected_outcome[df_selected_outcome['DISTRICT_id'].isin(district_ids)].copy()
+    
+    print(df_filtered)
     df_renamed = df_filtered.rename(columns={
     col: re.search(demographic_string_patterns['College, Career, & Military Ready Graduates'], col).group(1)
     for col in df_filtered.columns if re.search(demographic_string_patterns['College, Career, & Military Ready Graduates'], col)
@@ -279,8 +286,9 @@ def plot_ccmr_rates(neighbors, year, subcategory):
     columns_to_keep += ['DISTNAME', 'DISTRICT_id']
 
     filtered_df = df_renamed[columns_to_keep]
-
+    columns_to_keep = [column for column in columns_to_keep if filtered_df[column].sum() != 0]
     df_long = filtered_df.melt(id_vars=["DISTNAME", "DISTRICT_id"], value_vars=columns_to_keep, var_name="Demographic", value_name="Rate")
+    print("post-transformations data", df_long.shape)
     fig = px.bar(df_long, 
                  x='DISTNAME', y='Rate', color = 'Demographic',
                  color_discrete_sequence=px.colors.qualitative.G10,
