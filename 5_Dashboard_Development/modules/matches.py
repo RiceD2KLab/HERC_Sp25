@@ -25,7 +25,7 @@ def match_server(input, output, session, run_result, get_inputs):
     @render.ui
     def link_to_why():
         if get_inputs():
-            return ui.p("The model identified the following districts as being the most similar to yours based on the inputs you selected."), ui.a("(This link will work when app is deployed) Understand why these districts are similar", href="#panel2")
+            return ui.p("The model identified the following districts as being the most similar to yours based on the inputs you selected."), ui.a("Understand why these districts are similar", href="#panel2")
         else:
             return ui.NULL  # Do not show the link if the condition is not met
     @output()
@@ -42,7 +42,7 @@ def match_server(input, output, session, run_result, get_inputs):
         for_table = df[df['District'].isin(neighbor_names)].copy()
         for_table['District'] = [title_case_with_spaces(distname) for distname in for_table['District']]
         for_table['County'] = [title_case_with_spaces(cty) for cty in for_table['County']]
-        return render.DataGrid(for_table)
+        return render.DataGrid(for_table, width = '100%')
 
     @output()
     @render.ui
