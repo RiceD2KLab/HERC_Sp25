@@ -104,6 +104,7 @@ def why_districts_server(input, output, session, run_result, get_inputs):
             result = run_result.get()
             if result is None or len(result) != 3:
                 return go.Figure().update_layout(title="Run a model to view outcomes.")
-            print(result)
             df, label_dict, neighbors = result[0], result[1], result[2]
+            df['DISTRICT_id'] = df['DISTRICT_id'].astype(str)
+            neighbors['DISTRICT_id'] = neighbors['DISTRICT_id'].astype(str)
             return plot_func(df, label_dict, neighbors)
