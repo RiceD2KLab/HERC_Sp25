@@ -20,7 +20,7 @@ This directory contains files relating to developing a Shiny for Python dashboar
 3. **Create a virtual environment:**
 - **On Windows:**
   ```bash
-   py -3.12 -m venv .venv
+  py -3.12 -m venv .venv
 - **On macOS/Linux:**
   ```bash
   python3.12 -m venv .venv
