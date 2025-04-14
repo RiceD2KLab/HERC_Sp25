@@ -12,6 +12,10 @@ import geopandas as gpd
 import textwrap
 from matplotlib.patches import ConnectionPatch
 from scipy.spatial import Voronoi
+from utils.Demographic_Buckets import demographic_buckets
+from utils.Demographic_Buckets import get_labels_from_variable_name_dict
+from utils.Demographic_Buckets import get_combined_values
+#from getData import load_data_from_year_folder
 
 
 def calculate_missing_percentage(df):
@@ -107,10 +111,9 @@ def knn_distance(df, district_id, feature_columns, n_neighbors=5, metric="euclid
         knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric="mahalanobis", metric_params={"VI": inv_cov})
     else:
         knn_model = NearestNeighbors(n_neighbors=n_neighbors, metric=metric)
-
     # Fit the model and get nearest neighbors
     knn_model.fit(knn_df[feature_columns])
-    query_point = knn_df[knn_df["DISTRICT_id"] == district_id][feature_columns]
+    query_point = knn_df[knn_df["DISTRICT_id"] == int(district_id)][feature_columns]
 
     if query_point.empty:
         raise ValueError(f"District ID {district_id} not found in dataset.")
@@ -176,14 +179,22 @@ def knn_canberra(df, district_id, feature_columns, n_neighbors=5, impute_strateg
     distances, indices = knn_model.kneighbors(query_point)
     return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
 
-def find_nearest_districts(df, district_id, feature_columns, n_neighbors=5, distance_metric="euclidean", impute_strategy="median"):
+
+
+from utils.getData import load_data_from_github
+from utils.Demographic_Buckets import demographic_buckets
+from utils.Demographic_Buckets import get_labels_from_variable_name_dict
+from utils.Demographic_Buckets import get_combined_values
+
+
+def find_nearest_districts(year, district_id, feature_columns, n_neighbors=5, distance_metric="euclidean", impute_strategy="median"):
     """
     Wrapper function that selects the appropriate distance metric for finding nearest neighbors.
 
     Parameters:
-        df (pd.DataFrame): Dataset containing school district data.
+        year int: Int representing the year you want for data
         district_id (int or str): District ID to find neighbors for.
-        feature_columns (list): Features to use for similarity.
+        feature_columns (list): Feature Buckets user would like to use for similarity.
         n_neighbors (int): Number of neighbors to return.
         distance_metric (str): Distance metric to use ('euclidean', 'manhattan', 'mahalanobis', 'cosine', 'canberra').
         impute_strategy (str): Strategy to impute missing values.
@@ -193,12 +204,17 @@ def find_nearest_districts(df, district_id, feature_columns, n_neighbors=5, dist
     """
     metric = distance_metric.lower()
 
+    df, key = load_data_from_github(year)
+    demographic_buckets_year = get_labels_from_variable_name_dict(demographic_buckets, key)
+    all_selected_features = get_combined_values(demographic_buckets_year, feature_columns)
+
+
     if metric in ["euclidean", "manhattan", "mahalanobis"]:
-        return knn_distance(df, district_id, feature_columns, n_neighbors, metric, impute_strategy)
+        return df, demographic_buckets_year, knn_distance(df, district_id, all_selected_features, n_neighbors, metric, impute_strategy)
     elif metric == "cosine":
-        return knn_cosine(df, district_id, feature_columns, n_neighbors, impute_strategy)
+        return df, demographic_buckets_year, knn_cosine(df, district_id, all_selected_features, n_neighbors, impute_strategy)
     elif metric == "canberra":
-        return knn_canberra(df, district_id, feature_columns, n_neighbors, impute_strategy)
+        return df, demographic_buckets_year, knn_canberra(df, district_id, all_selected_features, n_neighbors, impute_strategy)
     else:
         raise ValueError(f"Unsupported distance metric: {distance_metric}")
 

@@ -211,11 +211,11 @@ def find_nearest_districts(year, district_id, feature_columns, n_neighbors=5, di
 
 
     if metric in ["euclidean", "manhattan", "mahalanobis"]:
-        return demographic_buckets_year, knn_distance(df, district_id, all_selected_features, n_neighbors, metric, impute_strategy)
+        return df, demographic_buckets_year, knn_distance(df, district_id, all_selected_features, n_neighbors, metric, impute_strategy)
     elif metric == "cosine":
-        return demographic_buckets_year, knn_cosine(df, district_id, all_selected_features, n_neighbors, impute_strategy)
+        return df, demographic_buckets_year, knn_cosine(df, district_id, all_selected_features, n_neighbors, impute_strategy)
     elif metric == "canberra":
-        return demographic_buckets_year, knn_canberra(df, district_id, all_selected_features, n_neighbors, impute_strategy)
+        return df, demographic_buckets_year, knn_canberra(df, district_id, all_selected_features, n_neighbors, impute_strategy)
     else:
         raise ValueError(f"Unsupported distance metric: {distance_metric}")
 

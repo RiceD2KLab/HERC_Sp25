@@ -1,4 +1,4 @@
-from utils.Demographic_Buckets import (
+from utils.DemographicBuckets import (
     student_teacher_ratio,
     student_count,
     staff_count,
@@ -11,10 +11,14 @@ from utils.Demographic_Buckets import (
     district_identifiers
 )
 
-
 import geopandas as gpd
 
 import pandas as pd
+
+from urllib.request import urlopen
+countygeo = gpd.read_file('https://raw.githubusercontent.com/mm175rice/HERC-DISTRICT-MATCH-FILES/refs/heads/main/data/geo/texas_counties.json')
+
+districtgeo = gpd.read_file('https://github.com/mm175rice/HERC-DISTRICT-MATCH-FILES/raw/refs/heads/main/data/geo/Texas_SchoolDistricts_2024.json')
 
 import folium
 
@@ -33,6 +37,7 @@ def plot_texas_districts(neighbors, df, level):
     
     # Get selected district IDs from the neighbors DataFrame
     district_ids = list(neighbors["DISTRICT_id"])
+    print(district_ids)
     if not district_ids:
         print("No district IDs provided.")
         return
@@ -52,13 +57,10 @@ def plot_texas_districts(neighbors, df, level):
         county_to_districts = {k.upper(): ", ".join(v) for k, v in county_to_districts.items()}
 
         # Look for the Texas counties file in a relative "data" directory
-        import os
-        data_dir = "data"
-        geojson_path = os.path.join(data_dir, "texas_counties.geojson")
         
         # Load the Texas counties from the bundled file
         try:
-            texas_counties = gpd.read_file(geojson_path)
+            texas_counties = countygeo
         except Exception as e:
             print(f"Error loading Texas counties: {e}")
             print("Please ensure the texas_counties.geojson file is present in the 'data' folder.")
@@ -110,13 +112,9 @@ def plot_texas_districts(neighbors, df, level):
 
         return m
     if level == 'district': 
-        import os
-        data_dir = "data"
-        geojson_path = os.path.join(data_dir, "Texas_SchoolDistricts_2024.geojson")
-        
         # Load the Texas counties from the bundled file
         try:
-            geojson = gpd.read_file(geojson_path)
+            geojson = districtgeo
         except Exception as e:
             print(f"Error loading Texas counties: {e}")
             print("Please ensure the texas_counties.geojson file is present in the 'data' folder.")

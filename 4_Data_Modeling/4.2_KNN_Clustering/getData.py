@@ -32,21 +32,21 @@ def engineer_performance(parent_dir, year):
         'Approaches Grade Level': {
             'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Approaches Grade Level' in col],
             'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Approaches Grade Level' in col],
-            'Writing': [col for col in df.columns if 'Writing' in col and 'Approaches Grade Level' in col],
+            #'Writing': [col for col in df.columns if 'Writing' in col and 'Approaches Grade Level' in col],
             'Science': [col for col in df.columns if 'Science' in col and 'Approaches Grade Level' in col],
             'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Approaches Grade Level' in col],
         },
         'Meets Grade Level': {
             'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Meets Grade Level' in col],
             'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Meets Grade Level' in col],
-            'Writing': [col for col in df.columns if 'Writing' in col and 'Meets Grade Level' in col],
+            #'Writing': [col for col in df.columns if 'Writing' in col and 'Meets Grade Level' in col],
             'Science': [col for col in df.columns if 'Science' in col and 'Meets Grade Level' in col],
             'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Meets Grade Level' in col],
         },
         'Masters Grade Level': {
             'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Masters Grade Level' in col],
             'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Masters Grade Level' in col],
-            'Writing': [col for col in df.columns if 'Writing' in col and 'Masters Grade Level' in col],
+            #'Writing': [col for col in df.columns if 'Writing' in col and 'Masters Grade Level' in col],
             'Science': [col for col in df.columns if 'Science' in col and 'Masters Grade Level' in col],
             'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Masters Grade Level' in col],
         }
@@ -64,8 +64,8 @@ def engineer_performance(parent_dir, year):
             df_agg_levels_subject[f'{subject} ({level})'] = df[columns].mean(axis=1)
 
     dropout_columns = [
-    f'District {year - 1} Annual Dropout for Grades 07-08: All Students Rate',
-    f'District {year - 1} Annual Dropout for Grades 07-08: Male Rate',
+   f'District {year - 1} Annual Dropout for Grades 07-08: All Students Rate',
+   f'District {year - 1} Annual Dropout for Grades 07-08: Male Rate',
    f'District {year - 1} Annual Dropout for Grades 07-08: Female Rate',
    f'District {year - 1} Annual Dropout for Grades 07-08: African American Rate',
    f'District {year - 1} Annual Dropout for Grades 07-08: American Indian Rate',

@@ -3,32 +3,37 @@ from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 from shinywidgets import output_widget, render_widget
 import plotly.express as px
 import pandas as pd
-from utils.shared import demographics, performance, ids
+from utils.shared import demographics, ids
 from utils.KNN_Model import find_nearest_districts
-from utils.dashboardVisuals import plot_texas_districts
 from shinyswatch import theme
-from modules import matches
+from modules import matches, why_districts, outcomes
 
-from utils.Demographic_Buckets import feature_mapping
+from utils.Demographic_Buckets import bucket_options
 
 from utils.Performance_Buckets import outcome_mapping
 
 # List of group names for checkboxes.
-feature_groups = list(feature_mapping.keys())
+feature_options = list(bucket_options.keys())
 
 outcome_groups = list(outcome_mapping.keys())
 
-district_choices = sorted(demographics["DISTNAME"].unique())
+district_choices = sorted(ids[ids['Charter School (Y/N)'] == 'N']["DISTNAME"].unique())
 
-app_deps = ui.head_content(ui.tags.link(rel="icon", type="image/png", sizes="32x32", href="HERC_Logo_No_Text.png"))
+app_deps = ui.head_content(
+    ui.tags.link(rel="icon", type="image/png", sizes="32x32", href="HERC_Logo_No_Text.png"),
+    ui.tags.link(href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap", rel="stylesheet")  # Google Font link
+)
 
 app_ui = ui.page_navbar(
-        app_deps,
+    app_deps,
+    ui.head_content(
+        ui.include_css("static/ricetheme.css")
+    ),
         matches.matches_ui('matchpage'),
-        ui.nav_panel("Why these districts?", "insert content here", value = "panel2"),
-        ui.nav_panel("Understand outcomes", "insert content here", value = "panel3"),
+        why_districts.why_districts_ui('demographicpage'),
+        #ui.nav_panel("Why these districts?", "insert content here", value = "panel2"),
+        outcomes.outcome_ui('outcomepage'),
         ui.nav_spacer(),
-        ui.nav_control(ui.input_dark_mode(id="mode", mode = 'light')),
         title=ui.TagList(
             # Logo (image)
             ui.img(src="HERC_Logo_No_Text.png", height="30px"),
@@ -43,65 +48,65 @@ app_ui = ui.page_navbar(
             ),
             ui.input_checkbox_group(
                 "feature_groups", "Select Feature Groups:",
-                choices=feature_groups
+                choices=feature_options
             ),
             ui.input_numeric("n_neighbors", "Number of Neighbors", value=5, min=1),
+            ui.input_numeric("year", "View Outcomes For", value=2023, min=2020),
             ui.input_action_button("run", "Run Model")),
-        theme=theme.flatly # can be any of these: https://bootswatch.com/
+            theme = theme.flatly
     )  
 
 def server(input, output, session):
-    @reactive.effect
-    @reactive.event(input.make_light)
-    def _():
-        ui.update_dark_mode("light")
-
-    @reactive.effect
-    @reactive.event(input.make_dark)
-    def _():
-        ui.update_dark_mode("dark")
+    result_data = reactive.value(None)
 
     @reactive.event(input.run)
     def get_inputs():
-        user_selected = {'DISTNAME':input.district_name(), 'buckets':input.feature_groups(), 'n': input.n_neighbors()}
+        user_selected = {'DISTNAME':input.district_name(), 'buckets':input.feature_groups(), 'n': input.n_neighbors(), 'year': input.year()}
         return user_selected
+    
+    @reactive.event(input.run)
+    def test_button_click():
+        print("DEBUG: Button clicked!")
 
+    @reactive.effect
     @reactive.event(input.run)
     def get_result():
         # Get the selected district name.
         selected_district_name = input.district_name()
         # Lookup the corresponding DISTRICT_id.
-        district_id_lookup = demographics.loc[demographics["DISTNAME"] == selected_district_name, "DISTRICT_id"]
+        district_id_lookup = ids.loc[ids["DISTNAME"] == selected_district_name, "DISTRICT_id"]
+
         if district_id_lookup.empty:
             print(f"DEBUG: District '{selected_district_name}' not found!")
             return pd.DataFrame({"Error": ["District not found!"]})
         district_id = district_id_lookup.iloc[0]
 
-        # Get the selected feature groups and aggregate feature columns.
-        selected_feature_groups = input.feature_groups()
-        selected_features = []
-        for group in selected_feature_groups:
-            selected_features.extend(feature_mapping[group])
-
         n_neighbors = input.n_neighbors()
 
+        buckets_selected = input.feature_groups()
+        buckets = [bucket_options[key] for key in buckets_selected]
         # Debug print to output the parameters that will be passed to the model.
         print("DEBUG: Calling find_nearest_districts with:")
-        print(f"  df: DataFrame with shape {demographics.shape}")
         print(f"  district_id: {district_id}")
-        print(f"  feature_columns: {selected_features}")
-        print(f"  n_neighbors: {n_neighbors}")
-
         # Run the model and return the resulting DataFrame.
         result = find_nearest_districts(
-            df=demographics,
+            year=input.year(),
             district_id=district_id,
-            feature_columns=selected_features,
+            feature_columns=buckets,
             n_neighbors=n_neighbors
         )
-        return result
+        df, features_used, neighbors_list = result
+        # Store all 3 in one dictionary
+        result_data.set({
+            0: df,
+            1: features_used,
+            2: neighbors_list
+        })
+        return "Model run complete"
         
-    matches.match_server("matchpage", get_result, get_inputs, demographics, ids)
+    matches.match_server("matchpage", result_data, get_inputs)
+    why_districts.why_districts_server("demographicpage", result_data, get_inputs)
+    outcomes.outcome_server("outcomepage", get_inputs, result_data)
 
 
 static_dir = Path(__file__).parent / "static"
