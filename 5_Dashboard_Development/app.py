@@ -26,8 +26,58 @@ app_deps = ui.head_content(
 
 app_ui = ui.page_navbar(
     app_deps,
+ ui.nav_panel(
+    "About District Match", 
+      ui.div(
+            ui.img(src=str("Logo300x300.png"), height="300px"),  # Logo image
+            style="text-align: center; margin-bottom: 20px;"  # Center-align the logo
+        ),
+    ui.TagList(
+        ui.HTML("""
+            <h3><strong>About DistrictMatch</strong></h3>
+            <p>The District Match App is the creation of Team Kinder HERC from Rice University. The purpose of the app is to assist school districts in finding similar districts based upon their chosen metrics. The tabs which will assist in district matching are “View My Matches”, “Why These Districts”, and “Understand Outcomes”. Furthremore there is the 
+             "How To Use" page which will directly expplain how to navigate each of the DistrictMatch pages. </p>
+            <h4><strong>View My Matches</strong></h4>
+            <p>The View My Matches tab is to directly find a match to your district of choice based upon selected buckets of measurement categories such as Student Teacher Ratio, Staff Count Student Demographics, and more. Which will then allow you to select and see a selected number of similar districts based on a certain set of outcomes. </p>                        
+            <h4><strong>Why These Districts?</strong></h4>
+            <p>The tab for Why These Districts will give an explanation as to why you received the matching neighboring districts. On the page there are the options to select specific visuals for feature groups for more direct distrcit comparisons. </p>
+            <h4><strong>Understand Outcomes</strong></h4> 
+            <p>The Understand Outcomes page serves as  way to view specifc comparisons between your selected distrcit and its closest neighbors based on certain outcomes such as STARR testing, attendance, dropout rate and more.  </p>
+        """)
+    )
+), ui.nav_panel(
+    "How To Use DistrictMatch", 
+    ui.TagList(
+        ui.HTML("""    
+            <h3><strong>Using View my matches</strong></h3>
+            <ul>
+                <li>On the left-hand side panel first choose a distrcit under "Select District Name". </li>
+                <li>Choose the feature group for distrcitcomparison under "Select Feature Group". </li>
+                <li>Pick a number of neighbors (districts) you want to see under "Number of Neighbors". </li>
+                <li>Under "View Outcomes For" choose a specific year of outcomes of which districts will be. </li>
+                <li>Click the Run Model Button. </li>
+                <li>Once the modeling is done you will be able to view a map of the resulting neighboring distrcts by district or county level. </li>
+                <li>Additionally on the far right will be a table listing the districts that are most similar to your selection based on the parameters. </li>
+            </ul>  
+            <h3><strong>Using Why These Districts? </strong></h3>
+            <ul>
+                <li>Press Run Model once again on the left hand tab panel with the selection process as for the "View my matches" page. </li>
+                <li>In the middle of the page there will be checkboxes to select specific feature groups to visualize. </li>
+                <li>Once the features are selected multiple graphs will pop up showing a comparison between your distrcit and other similar districts for the feature groups. </li>
+                <li>Under "View Outcomes For" choose a specific year of outcomes of which districts will be. </li>
+            </ul>    
+            <h3><strong>Using Understand outcomes</strong></h3>
+            <ul>
+                <li>Follow the first five steps of "View my matches". </li>
+                <li> Navigate to the middle of the page under "View An Outcome" and pic one of seven outcomes of visually compare. </li>
+                <li>Once a metric is selected look below to see if there are further options to to specify. In the case of STAAR Testing there will be four testing subjects which you can select to see. </li>
+                <li>Wait for the model to run and graphed visuals of the your selected district and similar districts will show up with their respective results for your chosen outcome. </li>
+            </ul>   
+        """) #note to add pictures here
+    )
+), 
     ui.head_content(
-        ui.include_css("static/ricetheme.css")
+        ui.include_css(Path(__file__).parent / "static" / "ricetheme.css")
     ),
         matches.matches_ui('matchpage'),
         why_districts.why_districts_ui('demographicpage'),
