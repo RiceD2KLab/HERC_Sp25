@@ -299,3 +299,89 @@ def plot_ccmr_rates(neighbors, year, subcategory):
 
 def plot_selections(plot_func, neighbors, year, subcategory = None):
     return plot_func(neighbors, year, subcategory)
+
+
+import plotly.graph_objs as go
+from plotly.subplots import make_subplots
+import pandas as pd
+from utils.getData import get_subject_level_averages
+
+def plot_staar2(df, neighbors):
+    """
+    Generates an interactive Plotly bar chart showing STAAR performance levels 
+    (Approaches, Meets, Masters Grade Level) for selected districts across 
+    different subjects. Users can filter by subject using a dropdown.
+
+    Parameters:
+    -----------
+    df : pandas.DataFrame
+        The full dataset containing subject-level STAAR performance columns and district identifiers.
+        Must include columns like 'Mathematics (Approaches Grade Level)', etc.
+
+    neighbors : pandas.DataFrame
+        A DataFrame containing a column 'DISTRICT_id' which lists district IDs to include in the plot.
+
+    Returns:
+    --------
+    plotly.graph_objs.Figure
+        An interactive grouped bar chart with a dropdown filter to toggle between STAAR subjects.
+    """
+
+    staar_df = get_subject_level_averages(df)
+    neighbor_ids = list(neighbors['DISTRICT_id'])
+
+    # Filter to only include selected districts
+    staar_df = staar_df[staar_df['DISTRICT_id'].isin(neighbor_ids)]
+
+    # Define subjects and performance levels
+    subjects = ['Mathematics', 'Reading/ELA', 'Writing', 'Science', 'Social Studies']
+    levels = ['Approaches Grade Level', 'Meets Grade Level', 'Masters Grade Level']
+
+    # Predefine traces and buttons
+    data = []
+    buttons = []
+
+    for i, subject in enumerate(subjects):
+        traces = []
+        for level in levels:
+            col = f"{subject} ({level})"
+            trace = go.Bar(
+                x=staar_df['DISTNAME'],
+                y=staar_df[col],
+                name=level,
+                visible=(i == 0)  # Only show the first subject initially
+            )
+            traces.append(trace)
+            data.append(trace)
+
+        # Create visibility mask for this subject
+        visibility = [False] * len(subjects) * len(levels)
+        for j in range(len(levels)):
+            visibility[i * len(levels) + j] = True
+
+        button = dict(
+            label=subject,
+            method="update",
+            args=[{"visible": visibility},
+                  {"title": f"STAAR Performance for {subject}"}]
+        )
+        buttons.append(button)
+
+    layout = go.Layout(
+        title="STAAR Performance for Mathematics",
+        barmode='group',
+        xaxis_title="District Name",
+        yaxis_title="Percent of Students",
+        updatemenus=[dict(
+            active=0,
+            buttons=buttons,
+            x=1.1,
+            xanchor="left",
+            y=1.15,
+            yanchor="top"
+        )]
+    )
+
+    fig = go.Figure(data=data, layout=layout)
+    fig.update_layout(legend_title_text="Performance Level", height=600)
+    return fig
