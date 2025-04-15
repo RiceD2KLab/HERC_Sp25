@@ -15,15 +15,16 @@ bucket_to_plot_ids = {
     "language_education_percent": "language_education",
 }
 
+# Updated plot_labels with the new order
 plot_labels = {
-    "race_ethnicity": "Race and Ethnicity Distribution",
-    "special_ed_504": "Special Education & 504 Percentages",
     "dot_stack": "Student Teacher Ratio",
     "staff_student": "Staff & Student Count",
+    "race_ethnicity": "Race and Ethnicity Distribution",
+    "econ_disadv": "Economically Disadvantaged",
+    "special_ed_504": "Special Education & 504 Percentages",
+    "language_education": "Language Education",
     "special_populations": "Special Populations",
     "gifted_talented": "Gifted & Talented",
-    "econ_disadv": "Economically Disadvantaged",
-    "language_education": "Language Education",
 }
 
 
@@ -73,13 +74,25 @@ def why_districts_server(input, output, session, run_result, get_inputs):
     @reactive.effect
     @reactive.event(input.run)
     def _auto_check_visible_plots():
+        print("=== DEBUG: _auto_check_visible_plots triggered ===")  # Debug 1: Confirm function is called
+        
         inputs = get_inputs()
+        print(f"DEBUG: Raw inputs from get_inputs(): {inputs}")  # Debug 2: Check raw inputs
+        
         selected_plots = set()
         if inputs and "buckets" in inputs:
             buckets = inputs["buckets"]
+            print(f"DEBUG: Buckets found: {buckets}")  # Debug 3: Check buckets value
+            
             for bucket in buckets:
                 if bucket in bucket_to_plot_ids:
-                    selected_plots.add(plot_labels[bucket_to_plot_ids[bucket]])
+                    plot_id = bucket_to_plot_ids[bucket]
+                    selected_plots.add(plot_labels[plot_id])
+                    print(f"DEBUG: Mapped bucket '{bucket}' -> plot ID '{plot_id}' -> label '{plot_labels[plot_id]}'")  # Debug 4: Trace mapping
+                else:
+                    print(f"DEBUG: Bucket '{bucket}' not found in bucket_to_plot_ids")  # Debug 5: Unmapped buckets
+        
+        print(f"DEBUG: Final selected plots to check: {selected_plots}")  # Debug 6: Final selection
         ui.update_checkbox_group("visible_plots", selected=list(selected_plots))
 
     # --- 2. Dynamically generate cards for the selected plots.

@@ -40,6 +40,7 @@ def match_server(input, output, session, run_result, get_inputs):
         df = result[0][['DISTNAME', 'TEA Description', 'CNTYNAME']]
         df.columns = ['District', 'TEA District Type', 'County']
         for_table = df[df['District'].isin(neighbor_names)].copy()
+
         for_table['District'] = [title_case_with_spaces(distname) for distname in for_table['District']]
         for_table['County'] = [title_case_with_spaces(cty) for cty in for_table['County']]
         return render.DataGrid(for_table, width = '100%')
