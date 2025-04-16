@@ -35,7 +35,7 @@ def why_districts_ui():
             # The toggle section is now part of the static UI
             ui.card(
                 ui.card_header("Select Visuals"),
-                ui.input_checkbox_group("visible_plots", None, choices=list(plot_labels.values())),
+                ui.input_checkbox_group("visible_plots", None, choices= list(plot_labels.values()), selected = list(plot_labels.values())),
                 class_="mb-4"
             ),
             ui.output_ui("dynamic_plot_cards"),
@@ -69,33 +69,9 @@ def why_districts_server(input, output, session, run_result, get_inputs):
         "language_education": plot_language_education_filterable_bar,
     }
 
-    # --- 1. Auto-check visible_plots based on get_inputs()
-    # Tie this effect to the Run Model button so it fires when the model is run.
-    @reactive.effect
-    @reactive.event(input.run)
-    def _auto_check_visible_plots():
-        print("=== DEBUG: _auto_check_visible_plots triggered ===")  # Debug 1: Confirm function is called
-        
-        inputs = get_inputs()
-        print(f"DEBUG: Raw inputs from get_inputs(): {inputs}")  # Debug 2: Check raw inputs
-        
-        selected_plots = set()
-        if inputs and "buckets" in inputs:
-            buckets = inputs["buckets"]
-            print(f"DEBUG: Buckets found: {buckets}")  # Debug 3: Check buckets value
-            
-            for bucket in buckets:
-                if bucket in bucket_to_plot_ids:
-                    plot_id = bucket_to_plot_ids[bucket]
-                    selected_plots.add(plot_labels[plot_id])
-                    print(f"DEBUG: Mapped bucket '{bucket}' -> plot ID '{plot_id}' -> label '{plot_labels[plot_id]}'")  # Debug 4: Trace mapping
-                else:
-                    print(f"DEBUG: Bucket '{bucket}' not found in bucket_to_plot_ids")  # Debug 5: Unmapped buckets
-        
-        print(f"DEBUG: Final selected plots to check: {selected_plots}")  # Debug 6: Final selection
-        ui.update_checkbox_group("visible_plots", selected=list(selected_plots))
 
-    # --- 2. Dynamically generate cards for the selected plots.
+
+    # --- 1. Dynamically generate cards for the selected plots.
     @output
     @render.ui
     def dynamic_plot_cards():
@@ -109,7 +85,7 @@ def why_districts_server(input, output, session, run_result, get_inputs):
         # Force full width by setting the style on the containing div
         return ui.div(*cards, style="width: 100%;")
 
-    # --- 3. Generate the actual plot outputs
+    # --- 2. Generate the actual plot outputs
     for plot_id, plot_func in plot_funcs.items():
         @output(id=plot_id)
         @render_widget
