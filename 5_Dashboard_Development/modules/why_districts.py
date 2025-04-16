@@ -77,13 +77,23 @@ def why_districts_server(input, output, session, run_result, get_inputs):
     def dynamic_plot_cards():
         cards = []
         selected_labels = input.visible_plots()  # list of human-readable names
-        # Create a reverse mapping: human-readable label -> plot id
         label_to_id = {v: k for k, v in plot_labels.items()}
+
         for label in selected_labels:
             plot_id = label_to_id[label]
-            cards.append(ui.card(ui.card_header(label), output_widget(plot_id)))
-        # Force full width by setting the style on the containing div
-        return ui.div(*cards, style="width: 100%;")
+
+            cards.append(
+                ui.layout_columns(
+                    ui.card(
+                        ui.card_header(label),
+                        output_widget(plot_id)
+                    ),
+                    col_widths=(12,)  # Full width per card; change to (3,9) if you want side-by-side
+                )
+            )
+
+        return ui.div(*cards, style="width: 100%; padding-bottom: 2rem;")
+
 
     # --- 2. Generate the actual plot outputs
     for plot_id, plot_func in plot_funcs.items():

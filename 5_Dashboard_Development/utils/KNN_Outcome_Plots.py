@@ -270,3 +270,169 @@ def plot_staar2(df, neighbors):
     fig = go.Figure(data=data, layout=layout)
     fig.update_layout(legend_title_text="Performance Level", height=600)
     return fig
+
+def get_subject_level_exclusive_scores(df, subject):
+    """
+    Returns mutually exclusive STAAR scores (Approaches only, Meets only, Masters, Did Not Meet) by grade level
+    for a given subject.
+
+    Args:
+        df (pd.DataFrame): Raw district-level STAAR dataset.
+        subject (str): One of ['Mathematics', 'Reading/ELA', 'Writing', 'Science', 'Social Studies'].
+
+    Returns:
+        pd.DataFrame: Long-format dataframe with DISTNAME, DISTRICT_id, Grade, and exclusive performance levels.
+    """
+    # Step 1: Build level mapping dynamically
+    level_mapping = {
+        'Approaches': [col for col in df.columns if subject in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
+        'Meets': [col for col in df.columns if subject in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
+        'Masters': [col for col in df.columns if subject in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
+    }
+
+    if not any(level_mapping.values()):
+        print(f"Warning: No data available for subject '{subject}'.")
+        return None
+
+    # Step 2: Create long DataFrames per level
+    def melt_level(level):
+        cols = level_mapping[level]
+        df_level = df[['DISTNAME', 'DISTRICT_id'] + cols].copy()
+        df_long = df_level.melt(id_vars=['DISTNAME', 'DISTRICT_id'], value_vars=cols,
+                                var_name='raw_column', value_name=level)
+        df_long['Grade'] = df_long['raw_column'].str.extract(r'Grade (\d+)')
+        return df_long.drop(columns='raw_column')
+
+    df_approaches = melt_level('Approaches')
+    df_meets = melt_level('Meets')
+    df_masters = melt_level('Masters')
+
+    # Step 3: Merge the levels on DISTRICT, DISTNAME, and Grade
+    merged = df_approaches.merge(df_meets, on=['DISTNAME', 'DISTRICT_id', 'Grade'], how='inner')
+    merged = merged.merge(df_masters, on=['DISTNAME', 'DISTRICT_id', 'Grade'], how='inner')
+
+    # Step 4: Compute mutually exclusive performance levels
+    merged['Masters Grade Level'] = merged['Masters']
+    merged['Meets Grade Level'] = merged['Meets'] - merged['Masters']
+    merged['Approaches Grade Level'] = merged['Approaches'] - merged['Meets']
+    merged['Did Not Meet Grade Level'] = 100 - merged['Approaches']
+
+    # Optional: Round values and reorder
+    result = merged[['DISTNAME', 'DISTRICT_id', 'Grade', 'Approaches Grade Level', 'Meets Grade Level', 'Masters Grade Level', 'Did Not Meet Grade Level']]
+    return result.round(2)
+
+
+def plot_exclusive_staar_with_filters(df, neighbors, subject):
+    """
+    Creates an interactive stacked bar chart of mutually exclusive STAAR scores,
+    filtered by neighbor districts and a given subject, with an internal grade dropdown.
+
+    Args:
+        df (pd.DataFrame): Full raw STAAR dataset.
+        neighbors (pd.DataFrame): DataFrame with a 'DISTRICT_id' column.
+        subject (str): Subject to show ['Mathematics', 'Reading/ELA', 'Writing', 'Science', 'Social Studies'].
+
+    Returns:
+        plotly.graph_objects.Figure: Interactive Plotly figure with grade-level filtering.
+    """
+    import plotly.graph_objects as go
+
+    neighbor_ids = list(neighbors['DISTRICT_id'])
+
+    # Step 1: Get exclusive scores for the given subject
+    staar_df = get_subject_level_exclusive_scores(df, subject)
+
+    if staar_df is None or staar_df.empty:
+        return go.Figure().add_annotation(
+            text=f"No STAAR data available for subject: {subject}",
+            showarrow=False,
+            font=dict(size=18),
+            xref="paper", yref="paper", x=0.5, y=0.5
+        )
+
+    staar_df = staar_df[staar_df['DISTRICT_id'].isin(neighbor_ids)].copy()
+    staar_df['Subject'] = subject
+
+    # Step 2: Grade options
+    grade_options = sorted(staar_df['Grade'].dropna().unique(), key=lambda x: int(x))
+
+    # Step 3: Set up trace categories
+    categories = ['Did Not Meet Grade Level', 'Approaches Grade Level', 'Meets Grade Level', 'Masters Grade Level']
+    colors = ['#d62728', '#ff7f0e', '#1f77b4', '#2ca02c']
+    fig = go.Figure()
+    trace_map = {}
+    trace_count = 0
+
+    for grade in grade_options:
+        key = f"Grade {grade}"
+        subset = staar_df[staar_df['Grade'] == grade]
+        trace_map[key] = []
+
+        for cat, color in zip(categories, colors):
+            fig.add_trace(go.Bar(
+                x=subset['DISTNAME'],
+                y=subset[cat],
+                name=cat,
+                visible=False,
+                marker_color=color
+            ))
+            trace_map[key].append(trace_count)
+            trace_count += 1
+
+    # Step 4: Dropdown menu for Grade
+    dropdown_buttons = []
+    for grade in grade_options:
+        key = f"Grade {grade}"
+        vis = [False] * trace_count
+        for i in trace_map[key]:
+            vis[i] = True
+        dropdown_buttons.append(dict(
+            label=key,
+            method="update",
+            args=[
+                {"visible": vis},
+                {
+                    "layout": {
+                        "title": {
+                            "text": f"{subject} STAAR Performance – Grade {grade}"
+                        }
+                    }
+                }
+            ]
+        ))
+
+    # Step 5: Final layout adjustments
+    fig.update_layout(
+        title={"text": f"{subject} STAAR Performance – Grade {grade_options[0]}"},
+        legend=dict(
+            title="Performance Level",
+            orientation="v",
+            x=1.02,
+            xanchor="left",
+            y=1,
+            yanchor="top"
+        ),
+        updatemenus=[{
+            "buttons": dropdown_buttons,
+            "direction": "down",
+            "showactive": True,
+            "x": 0.98,
+            "xanchor": "right",
+            "y": 1.12,
+            "yanchor": "top"
+        }],
+        barmode='stack',
+        xaxis_title="District",
+        yaxis_title="Percentage of Students",
+        xaxis_tickangle=0,
+        height=600,
+        margin=dict(l=40, r=100, t=40, b=150)
+    )
+
+    # Step 6: Show default trace (first grade)
+    first_key = f"Grade {grade_options[0]}"
+    for i in trace_map[first_key]:
+        fig.data[i].visible = True
+
+    return fig
+
