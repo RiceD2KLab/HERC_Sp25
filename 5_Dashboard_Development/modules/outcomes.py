@@ -3,15 +3,15 @@
 from shiny import ui, render, module
 from utils.mapOutcomes import options, suboptions
 from shinywidgets import render_widget, output_widget
-from utils.KNN_Outcome_Plots import plot_staar, plot_selections, plot_ccmr_rates
+from utils.KNN_Outcome_Plots import plot_staar, plot_selections, plot_ccmr_rates, plot_graduation_rate_bar, plot_attendance_rate_bar, plot_chronic_absenteeism_bar, plot_dropout_rates
 import plotly.graph_objs as go
 
 map_outcome_plot_functions = {'STAAR Testing': plot_staar,
-    'Dropout Rate': None,
-    'Attendance': None,
-    'Chronic Absenteeism': None,
+    'Dropout Rate': plot_dropout_rates,
+    'Attendance': plot_attendance_rate_bar,
+    'Chronic Absenteeism': plot_chronic_absenteeism_bar,
     'College, Career, & Military Ready Graduates': plot_ccmr_rates,
-    '4-Year Longitudinal Graduation Rate': None,
+    '4-Year Longitudinal Graduation Rate': plot_graduation_rate_bar,
     'AP/IB': None,
     'SAT/ACT': None}
 
@@ -48,7 +48,9 @@ def outcome_server(input, output, session, get_inputs, run_result):
         result[2]['DISTRICT_id'] = result[2]['DISTRICT_id'].astype(str)
         print("these are the neighbors")
         print(result[2])
-        selections = [input.main_option(), input.suboption()]
-        print(selections)
-        plot_function = map_outcome_plot_functions[selections[0]]
-        return plot_selections(plot_func = plot_function, neighbors=result[2], year = get_inputs()['year'], subcategory= selections[1])
+        main_option = input.main_option()
+        sub_option = input.suboption() if main_option in suboptions else None
+        # print(selections)
+        print(main_option, sub_option)
+        plot_function = map_outcome_plot_functions[main_option]
+        return plot_selections(plot_func = plot_function, neighbors=result[2], year = get_inputs()['year'], subcategory= sub_option)
