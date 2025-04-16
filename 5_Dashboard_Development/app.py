@@ -27,7 +27,7 @@ app_deps = ui.head_content(
 app_ui = ui.page_navbar(
     app_deps,
  ui.nav_panel(
-    "About District Match", 
+    "About DistrictMatch", 
       ui.div(
             ui.img(src=str("Logo300x300.png"), height="300px"),  # Logo image
             style="text-align: center; margin-bottom: 20px;"  # Center-align the logo

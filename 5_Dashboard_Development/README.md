@@ -20,17 +20,17 @@ This directory contains files relating to developing a Shiny for Python dashboar
 3. **Create a virtual environment:**
 - **On Windows:**
   ```bash
-   py -3.12 -m venv .venv
+  py -3.12 -m venv .venv
 - **On macOS/Linux:**
   ```bash
-   python3.12 -m venv .venv
+  python3.12 -m venv .venv
 4. **Activate the Virtual Environment**
 - **On Windows:**
   ```bash
   .venv\Scripts\activate
 - **On macOS/Linux:**
   ```bash
-   source .venv/bin/activate
+  source .venv/bin/activate
 5. **Install the required libraries:**
    ```bash
    pip install -r requirements.txt

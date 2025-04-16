@@ -15,15 +15,16 @@ bucket_to_plot_ids = {
     "language_education_percent": "language_education",
 }
 
+# Updated plot_labels with the new order
 plot_labels = {
-    "race_ethnicity": "Race and Ethnicity Distribution",
-    "special_ed_504": "Special Education & 504 Percentages",
     "dot_stack": "Student Teacher Ratio",
     "staff_student": "Staff & Student Count",
+    "race_ethnicity": "Race and Ethnicity Distribution",
+    "econ_disadv": "Economically Disadvantaged",
+    "special_ed_504": "Special Education & 504 Percentages",
+    "language_education": "Language Education",
     "special_populations": "Special Populations",
     "gifted_talented": "Gifted & Talented",
-    "econ_disadv": "Economically Disadvantaged",
-    "language_education": "Language Education",
 }
 
 
@@ -34,7 +35,7 @@ def why_districts_ui():
             # The toggle section is now part of the static UI
             ui.card(
                 ui.card_header("Select Visuals"),
-                ui.input_checkbox_group("visible_plots", None, choices=list(plot_labels.values())),
+                ui.input_checkbox_group("visible_plots", None, choices= list(plot_labels.values()), selected = list(plot_labels.values())),
                 class_="mb-4"
             ),
             ui.output_ui("dynamic_plot_cards"),
@@ -68,21 +69,9 @@ def why_districts_server(input, output, session, run_result, get_inputs):
         "language_education": plot_language_education_filterable_bar,
     }
 
-    # --- 1. Auto-check visible_plots based on get_inputs()
-    # Tie this effect to the Run Model button so it fires when the model is run.
-    @reactive.effect
-    @reactive.event(input.run)
-    def _auto_check_visible_plots():
-        inputs = get_inputs()
-        selected_plots = set()
-        if inputs and "buckets" in inputs:
-            buckets = inputs["buckets"]
-            for bucket in buckets:
-                if bucket in bucket_to_plot_ids:
-                    selected_plots.add(plot_labels[bucket_to_plot_ids[bucket]])
-        ui.update_checkbox_group("visible_plots", selected=list(selected_plots))
 
-    # --- 2. Dynamically generate cards for the selected plots.
+
+    # --- 1. Dynamically generate cards for the selected plots.
     @output
     @render.ui
     def dynamic_plot_cards():
@@ -96,7 +85,7 @@ def why_districts_server(input, output, session, run_result, get_inputs):
         # Force full width by setting the style on the containing div
         return ui.div(*cards, style="width: 100%;")
 
-    # --- 3. Generate the actual plot outputs
+    # --- 2. Generate the actual plot outputs
     for plot_id, plot_func in plot_funcs.items():
         @output(id=plot_id)
         @render_widget

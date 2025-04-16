@@ -70,25 +70,25 @@ def get_subject_level_averages(df):
     """
     level_mapping = {
         'Approaches Grade Level': {
-            'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Approaches Grade Level' in col],
-            'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Approaches Grade Level' in col],
-            'Writing': [col for col in df.columns if 'Writing' in col and 'Approaches Grade Level' in col],
-            'Science': [col for col in df.columns if 'Science' in col and 'Approaches Grade Level' in col],
-            'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Approaches Grade Level' in col],
+            'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Writing': [col for col in df.columns if 'Writing' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Science': [col for col in df.columns if 'Science' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col] ,
         },
         'Meets Grade Level': {
-            'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Meets Grade Level' in col],
-            'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Meets Grade Level' in col],
-            'Writing': [col for col in df.columns if 'Writing' in col and 'Meets Grade Level' in col],
-            'Science': [col for col in df.columns if 'Science' in col and 'Meets Grade Level' in col],
-            'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Meets Grade Level' in col],
+            'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Writing': [col for col in df.columns if 'Writing' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Science': [col for col in df.columns if 'Science' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
         },
         'Masters Grade Level': {
-            'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Masters Grade Level' in col],
-            'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Masters Grade Level' in col],
-            'Writing': [col for col in df.columns if 'Writing' in col and 'Masters Grade Level' in col],
-            'Science': [col for col in df.columns if 'Science' in col and 'Masters Grade Level' in col],
-            'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Masters Grade Level' in col],
+            'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Writing': [col for col in df.columns if 'Writing' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Science': [col for col in df.columns if 'Science' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
+            'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
         }
     }
 
