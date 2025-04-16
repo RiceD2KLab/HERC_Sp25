@@ -379,7 +379,7 @@ def plot_exclusive_staar_with_filters(df, neighbors, subject):
             trace_map[key].append(trace_count)
             trace_count += 1
 
-    # Step 4: Dropdown menu for Grade
+    # Step 4: Dropdown menu for Grade with proper title update
     dropdown_buttons = []
     for grade in grade_options:
         key = f"Grade {grade}"
@@ -391,13 +391,7 @@ def plot_exclusive_staar_with_filters(df, neighbors, subject):
             method="update",
             args=[
                 {"visible": vis},
-                {
-                    "layout": {
-                        "title": {
-                            "text": f"{subject} STAAR Performance – Grade {grade}"
-                        }
-                    }
-                }
+                {"title.text": f"{subject} STAAR Performance – Grade {grade}"}
             ]
         ))
 
