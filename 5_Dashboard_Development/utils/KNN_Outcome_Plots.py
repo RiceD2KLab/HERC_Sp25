@@ -32,7 +32,7 @@ def plot_graduation_rate_bar(neighbors, year, subcategory):
     print(df[["DISTNAME"] + list(rename_dict.values())])
     return px.bar(melted, x="DISTNAME", y="Rate", color="Group", barmode="group",
                   title="4-Year Longitudinal Graduation Rate by Group", labels={"DISTNAME": "District"},
-                  color_discrete_sequence=px.colors.qualitative.G10)
+                  color_discrete_sequence=px.colors.qualitative.Safe)
 
 
 def plot_attendance_rate_bar(neighbors, year, subcategory=None):
@@ -57,7 +57,7 @@ def plot_attendance_rate_bar(neighbors, year, subcategory=None):
     print(df[["DISTNAME"] + list(rename_dict.values())])
     return px.bar(melted, x="DISTNAME", y="Rate", color="Group", barmode="group",
                   title="Attendance Rate by Group", labels={"DISTNAME": "District"},
-                  color_discrete_sequence=px.colors.qualitative.G10)
+                  color_discrete_sequence=px.colors.qualitative.Safe)
 
 
 def plot_chronic_absenteeism_bar(neighbors, year, subcategory=None):
@@ -81,7 +81,7 @@ def plot_chronic_absenteeism_bar(neighbors, year, subcategory=None):
     print(df[["DISTNAME"] + list(rename_dict.values())])
     return px.bar(melted, x="DISTNAME", y="Rate", color="Group", barmode="group",
                   title="Chronic Absenteeism by Group", labels={"DISTNAME": "District"},
-                  color_discrete_sequence=px.colors.qualitative.G10)
+                  color_discrete_sequence=px.colors.qualitative.Safe)
 
 
 def plot_dropout_rates(neighbors, year, subcategory=None):
@@ -106,7 +106,7 @@ def plot_dropout_rates(neighbors, year, subcategory=None):
     print(df[["DISTNAME"] + list(rename_dict.values())])
     return px.bar(melted, x="DISTNAME", y="Rate", color="Group", barmode="group",
                   title="Dropout Rate by Group", labels={"DISTNAME": "District"},
-                  color_discrete_sequence=px.colors.qualitative.G10)
+                  color_discrete_sequence=px.colors.qualitative.Safe)
 
 
 # BEGIN INTERACTIVE PLOTTING 
@@ -146,7 +146,7 @@ def plot_staar(neighbors, year, subject):
 
     fig = px.bar(df_long, 
                  x='District', y='Rate', color = 'Category',
-                 color_discrete_sequence=px.colors.qualitative.Set1,
+                 color_discrete_sequence=px.colors.qualitative.Safe,
                  title=f"{subject} STAAR Performance for All Grade Levels",
         category_orders={'Category': category_order},
         barmode = "group")
@@ -176,7 +176,7 @@ def plot_ccmr_rates(neighbors, year, subcategory):
     print("post-transformations data", df_long.shape)
     fig = px.bar(df_long, 
                  x='DISTNAME', y='Rate', color = 'Demographic',
-                 color_discrete_sequence=px.colors.qualitative.G10,
+                 color_discrete_sequence=px.colors.qualitative.Safe,
                  title="College, Career, & Military Ready Graduate Rates By Demographic Group",
         labels= {"DISTNAME": "District"},
         barmode = 'group')
