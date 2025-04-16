@@ -22,10 +22,17 @@ def plot_graduation_rate_bar(neighbors, year, subcategory):
     rename_dict = {col: re.search(pattern, col).group(1) for col in cols}
     df.rename(columns=rename_dict, inplace=True)
 
-    melted = df.drop(columns=["DISTRICT_id"]).melt(id_vars=["DISTNAME"], var_name="Group", value_name="Rate")
+    columns_to_keep = [value for value in demographics.values() if value in df.columns]
+    columns_to_keep += ['DISTNAME']
+
+    columns_to_keep = [column for column in columns_to_keep if df[column].sum() != 0]
+    print(columns_to_keep)
+
+    melted = df.drop(columns=["DISTRICT_id"]).melt(id_vars=["DISTNAME"], var_name="Group", value_name="Rate", value_vars = columns_to_keep)
     print(df[["DISTNAME"] + list(rename_dict.values())])
     return px.bar(melted, x="DISTNAME", y="Rate", color="Group", barmode="group",
-                  title="4-Year Longitudinal Graduation Rate by Group", labels={"DISTNAME": "District"})
+                  title="4-Year Longitudinal Graduation Rate by Group", labels={"DISTNAME": "District"},
+                  color_discrete_sequence=px.colors.qualitative.G10)
 
 
 def plot_attendance_rate_bar(neighbors, year, subcategory=None):
@@ -41,10 +48,16 @@ def plot_attendance_rate_bar(neighbors, year, subcategory=None):
     rename_dict = {col: re.search(pattern, col).group(1) for col in cols if re.search(pattern, col)}
     df.rename(columns=rename_dict, inplace=True)
 
-    melted = df.drop(columns=["DISTRICT_id"]).melt(id_vars=["DISTNAME"], var_name="Group", value_name="Rate")
+    columns_to_keep = [value for value in demographics.values() if value in df.columns]
+    columns_to_keep += ['DISTNAME']
+
+    columns_to_keep = [column for column in columns_to_keep if df[column].sum() != 0]
+    print(columns_to_keep)
+    melted = df.drop(columns=["DISTRICT_id"]).melt(id_vars=["DISTNAME"], var_name="Group", value_name="Rate", value_vars = columns_to_keep)
     print(df[["DISTNAME"] + list(rename_dict.values())])
     return px.bar(melted, x="DISTNAME", y="Rate", color="Group", barmode="group",
-                  title="Attendance Rate by Group", labels={"DISTNAME": "District"})
+                  title="Attendance Rate by Group", labels={"DISTNAME": "District"},
+                  color_discrete_sequence=px.colors.qualitative.G10)
 
 
 def plot_chronic_absenteeism_bar(neighbors, year, subcategory=None):
@@ -59,11 +72,16 @@ def plot_chronic_absenteeism_bar(neighbors, year, subcategory=None):
 
     rename_dict = {col: re.search(pattern, col).group(1) for col in cols if re.search(pattern, col)}
     df.rename(columns=rename_dict, inplace=True)
+    columns_to_keep = [value for value in demographics.values() if value in df.columns]
+    columns_to_keep += ['DISTNAME']
 
-    melted = df.drop(columns=["DISTRICT_id"]).melt(id_vars=["DISTNAME"], var_name="Group", value_name="Rate")
+    columns_to_keep = [column for column in columns_to_keep if df[column].sum() != 0]
+    print(columns_to_keep)
+    melted = df.drop(columns=["DISTRICT_id"]).melt(id_vars=["DISTNAME"], var_name="Group", value_name="Rate", value_vars = columns_to_keep)
     print(df[["DISTNAME"] + list(rename_dict.values())])
     return px.bar(melted, x="DISTNAME", y="Rate", color="Group", barmode="group",
-                  title="Chronic Absenteeism by Group", labels={"DISTNAME": "District"})
+                  title="Chronic Absenteeism by Group", labels={"DISTNAME": "District"},
+                  color_discrete_sequence=px.colors.qualitative.G10)
 
 
 def plot_dropout_rates(neighbors, year, subcategory=None):
@@ -79,10 +97,16 @@ def plot_dropout_rates(neighbors, year, subcategory=None):
     rename_dict = {col: re.search(pattern, col).group(1) for col in cols if re.search(pattern, col)}
     df.rename(columns=rename_dict, inplace=True)
 
-    melted = df.drop(columns=["DISTRICT_id"]).melt(id_vars=["DISTNAME"], var_name="Group", value_name="Rate")
+    columns_to_keep = [value for value in demographics.values() if value in df.columns]
+    columns_to_keep += ['DISTNAME']
+
+    columns_to_keep = [column for column in columns_to_keep if df[column].sum() != 0]
+    print(columns_to_keep)
+    melted = df.drop(columns=["DISTRICT_id"]).melt(id_vars=["DISTNAME"], var_name="Group", value_name="Rate", value_vars = columns_to_keep)
     print(df[["DISTNAME"] + list(rename_dict.values())])
     return px.bar(melted, x="DISTNAME", y="Rate", color="Group", barmode="group",
-                  title="Dropout Rate by Group", labels={"DISTNAME": "District"})
+                  title="Dropout Rate by Group", labels={"DISTNAME": "District"},
+                  color_discrete_sequence=px.colors.qualitative.G10)
 
 
 # BEGIN INTERACTIVE PLOTTING 
@@ -124,7 +148,8 @@ def plot_staar(neighbors, year, subject):
                  x='District', y='Rate', color = 'Category',
                  color_discrete_sequence=px.colors.qualitative.Set1,
                  title=f"{subject} STAAR Performance for All Grade Levels",
-        category_orders={'Category': category_order})
+        category_orders={'Category': category_order},
+        barmode = "group")
     return(fig)
 
 from utils.mapOutcomes import demographic_string_patterns, demographics
