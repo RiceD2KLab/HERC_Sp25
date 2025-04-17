@@ -4,10 +4,10 @@ This directory contains files relating to developing a Shiny for Python dashboar
 
 ## Subdirectories
 
-1. modules: this houses the UI and server components of each navigation panel. 
-2. utils: stores the functions necessary to generate plots and run the nearest neighbors model.
-3. static: stores images such as logos.
-4. data: stores data frames while we work on integration with Box.
+1. **modules:** this houses the UI and server components of each navigation panel. 
+2. **utils:** stores the functions necessary to generate plots and run the nearest neighbors model. See the directory README for more information on what is in each file.
+3. **static:** stores images such as logos and the CSS stylesheet.
+4. **data:** stores data frames while we work on integration with Box.
 
 ## How To Run The App
 
