@@ -1,5 +1,5 @@
 
-### OUTCOME PAGE DEPENDENCIES ###
+### DATA DEPENDENCIES ###
 
 # =============================================================================
 # 1. Imports and Settings
@@ -12,6 +12,7 @@ import urllib.error
 
 # Set Warning Settings
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl.worksheet.header_footer")
+
 
 # =============================================================================
 # 2. Load GitHub Data Function
@@ -63,51 +64,59 @@ def load_data_from_github(year):
 # =============================================================================
 # 3. Outcome Data Functions
 # =============================================================================
-# --- Clean STAAR Data ---
-
-def get_subject_level_averages(df):
+# --- Clean STAAR Data To Be Mutually Exclusive By Grade Level and Subject ---
+def get_subject_level_exclusive_scores(df, subject):
     """
-    Calculate average performance level scores by subject for each district.
+    Returns mutually exclusive STAAR scores (Approaches only, Meets only, Masters, Did Not Meet) by grade level
+    for a given subject.
 
     Args:
-        df (pd.DataFrame): Raw district-level dataframe with subject-level performance columns.
+        df (pd.DataFrame): Raw district-level STAAR dataset.
+        subject (str): One of ['Mathematics', 'Reading/ELA', 'Writing', 'Science', 'Social Studies'].
 
     Returns:
-        pd.DataFrame: DataFrame containing DISTNAME, DISTRICT_id, and mean performance scores for each subject-level combination.
+        pd.DataFrame: Long-format dataframe with DISTNAME, DISTRICT_id, Grade, and exclusive performance levels.
     """
+    # Step 1: Build level mapping dynamically
     level_mapping = {
-        'Approaches Grade Level': {
-            'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Writing': [col for col in df.columns if 'Writing' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Science': [col for col in df.columns if 'Science' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col] ,
-        },
-        'Meets Grade Level': {
-            'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Writing': [col for col in df.columns if 'Writing' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Science': [col for col in df.columns if 'Science' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
-        },
-        'Masters Grade Level': {
-            'Mathematics': [col for col in df.columns if 'Mathematics' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Reading/ELA': [col for col in df.columns if 'Reading/ELA' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Writing': [col for col in df.columns if 'Writing' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Science': [col for col in df.columns if 'Science' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
-            'Social Studies': [col for col in df.columns if 'Social Studies' in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
-        }
+        'Approaches': [col for col in df.columns if subject in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
+        'Meets': [col for col in df.columns if subject in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
+        'Masters': [col for col in df.columns if subject in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
     }
 
-    df_result = df[['DISTNAME', 'DISTRICT_id']].copy()
+    if not any(level_mapping.values()):
+        print(f"Warning: No data available for subject '{subject}'.")
+        return None
 
-    for level, subjects in level_mapping.items():
-        for subject, columns in subjects.items():
-            df_result[f'{subject} ({level})'] = df[columns].mean(axis=1)
+    # Step 2: Create long DataFrames per level
+    def melt_level(level):
+        cols = level_mapping[level]
+        df_level = df[['DISTNAME', 'DISTRICT_id'] + cols].copy()
+        df_long = df_level.melt(id_vars=['DISTNAME', 'DISTRICT_id'], value_vars=cols,
+                                var_name='raw_column', value_name=level)
+        df_long['Grade'] = df_long['raw_column'].str.extract(r'Grade (\d+)')
+        return df_long.drop(columns='raw_column')
 
-    return df_result
+    df_approaches = melt_level('Approaches')
+    df_meets = melt_level('Meets')
+    df_masters = melt_level('Masters')
 
-#Helper function 2: Calculating dropout rates for grades. 
+    # Step 3: Merge the levels on DISTRICT, DISTNAME, and Grade
+    merged = df_approaches.merge(df_meets, on=['DISTNAME', 'DISTRICT_id', 'Grade'], how='inner')
+    merged = merged.merge(df_masters, on=['DISTNAME', 'DISTRICT_id', 'Grade'], how='inner')
+
+    # Step 4: Compute mutually exclusive performance levels
+    merged['Masters Grade Level'] = merged['Masters']
+    merged['Meets Grade Level'] = merged['Meets'] - merged['Masters']
+    merged['Approaches Grade Level'] = merged['Approaches'] - merged['Meets']
+    merged['Did Not Meet Grade Level'] = 100 - merged['Approaches']
+
+    # Round values and reorder
+    result = merged[['DISTNAME', 'DISTRICT_id', 'Grade', 'Approaches Grade Level', 'Meets Grade Level', 'Masters Grade Level', 'Did Not Meet Grade Level']]
+    return result.round(2)
+
+
+# --- Calculate Average Dropout Rates ---
 def compute_dropout_rates(df, year):
     """
     Calculate average dropout rates for grade 07-08 and 09-12 by student group.
@@ -145,7 +154,8 @@ def compute_dropout_rates(df, year):
     df_dropout.drop(columns=dropout_columns, inplace=True, errors='ignore')
     return df_dropout
 
-#Helper function 3: Gather the other outcome oriented columns 
+
+# --- Gather the Remaining Outcomes Data ---
 def get_existing_columns(df, year):
     """
     Selects columns from a master DataFrame that exist and are relevant to performance indicators.
@@ -360,7 +370,7 @@ def get_existing_columns(df, year):
     return df[existing_cols].copy()
 
 
-## MASTER FUNCTION 
+# --- Master Function for Outcome Data ---
 def engineer_performance(year):
     """
     Engineer a comprehensive district-level performance DataFrame by aggregating academic performance,
@@ -390,53 +400,3 @@ def engineer_performance(year):
     df_extra = get_existing_columns(df, year)
 
     return dropout_df.merge(df_extra, on=['DISTNAME', 'DISTRICT_id'], how='inner')
-
-def get_subject_level_exclusive_scores(df, subject):
-    """
-    Returns mutually exclusive STAAR scores (Approaches only, Meets only, Masters, Did Not Meet) by grade level
-    for a given subject.
-
-    Args:
-        df (pd.DataFrame): Raw district-level STAAR dataset.
-        subject (str): One of ['Mathematics', 'Reading/ELA', 'Writing', 'Science', 'Social Studies'].
-
-    Returns:
-        pd.DataFrame: Long-format dataframe with DISTNAME, DISTRICT_id, Grade, and exclusive performance levels.
-    """
-    # Step 1: Build level mapping dynamically
-    level_mapping = {
-        'Approaches': [col for col in df.columns if subject in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
-        'Meets': [col for col in df.columns if subject in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
-        'Masters': [col for col in df.columns if subject in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
-    }
-
-    if not any(level_mapping.values()):
-        print(f"Warning: No data available for subject '{subject}'.")
-        return None
-
-    # Step 2: Create long DataFrames per level
-    def melt_level(level):
-        cols = level_mapping[level]
-        df_level = df[['DISTNAME', 'DISTRICT_id'] + cols].copy()
-        df_long = df_level.melt(id_vars=['DISTNAME', 'DISTRICT_id'], value_vars=cols,
-                                var_name='raw_column', value_name=level)
-        df_long['Grade'] = df_long['raw_column'].str.extract(r'Grade (\d+)')
-        return df_long.drop(columns='raw_column')
-
-    df_approaches = melt_level('Approaches')
-    df_meets = melt_level('Meets')
-    df_masters = melt_level('Masters')
-
-    # Step 3: Merge the levels on DISTRICT, DISTNAME, and Grade
-    merged = df_approaches.merge(df_meets, on=['DISTNAME', 'DISTRICT_id', 'Grade'], how='inner')
-    merged = merged.merge(df_masters, on=['DISTNAME', 'DISTRICT_id', 'Grade'], how='inner')
-
-    # Step 4: Compute mutually exclusive performance levels
-    merged['Masters Grade Level'] = merged['Masters']
-    merged['Meets Grade Level'] = merged['Meets'] - merged['Masters']
-    merged['Approaches Grade Level'] = merged['Approaches'] - merged['Meets']
-    merged['Did Not Meet Grade Level'] = 100 - merged['Approaches']
-
-    # Optional: Round values and reorder
-    result = merged[['DISTNAME', 'DISTRICT_id', 'Grade', 'Approaches Grade Level', 'Meets Grade Level', 'Masters Grade Level', 'Did Not Meet Grade Level']]
-    return result.round(2)
