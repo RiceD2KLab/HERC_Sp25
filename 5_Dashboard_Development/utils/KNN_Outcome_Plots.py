@@ -1,13 +1,6 @@
-import os
 import re
-import textwrap
-
 import pandas as pd
 import numpy as np
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-from matplotlib.patches import ConnectionPatch
 
 def plot_graduation_rate_bar(neighbors, year, subcategory):
     df = engineer_performance(year)

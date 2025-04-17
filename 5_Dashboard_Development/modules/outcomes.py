@@ -10,7 +10,7 @@ from shinywidgets import render_widget, output_widget
 # Plotly
 import plotly.graph_objs as go
 
-# Utils
+# Local Imports
 from utils.OutcomeUtils import (
     options, 
     suboptions,

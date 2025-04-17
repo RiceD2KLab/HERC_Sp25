@@ -1,7 +1,18 @@
+### MATCHES PAGE ###
+
+# =============================================================================
+# 1. Imports
+# =============================================================================
+# Standard Imports
 from shiny import ui, render, module
-from utils.matchUtils import plot_texas_districts, generate_table
 import pandas as pd
 
+# Local Imports
+from utils.matchUtils import plot_texas_districts, generate_table
+
+# =============================================================================
+# 2. Matches UI
+# =============================================================================
 @module.ui
 def matches_ui():
     return ui.nav_panel("View my matches", 
@@ -18,6 +29,9 @@ def matches_ui():
             value = "panel1"
     )
 
+# =============================================================================
+# 3. Matches Server
+# =============================================================================
 @module.server
 def match_server(input, output, session, run_result, get_inputs):
     @output

@@ -10,7 +10,7 @@ from urllib.request import urlopen
 import folium
 
 # Dashboard Imports
-from utils.getData import title_case_with_spaces
+from utils.AppUtils import title_case_with_spaces
 
 
 # =============================================================================

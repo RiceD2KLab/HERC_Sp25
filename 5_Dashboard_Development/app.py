@@ -1,21 +1,27 @@
-from pathlib import Path
+### DISTRICTMATCH APP ###
+
+# =============================================================================
+# 1. Imports
+# =============================================================================
+# Shiny
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
-from shinywidgets import output_widget, render_widget
-import plotly.express as px
-import pandas as pd
-from utils.shared import demographics, ids
-from utils.KNN_Model import find_nearest_districts
 from shinyswatch import theme
+
+# Other Imports
+from pathlib import Path
+import pandas as pd
+
+# Local Imports
+from utils.KNN_Model import find_nearest_districts
+from utils.AppUtils import bucket_options, ids
 from modules import matches, why_districts, outcomes, about, howto
 
-from utils.Demographic_Buckets import bucket_options
 
-from utils.Performance_Buckets import outcome_mapping
-
+# =============================================================================
+# 2. Constants and Settings
+# =============================================================================
 # List of group names for checkboxes.
 feature_options = list(bucket_options.keys())
-
-outcome_groups = list(outcome_mapping.keys())
 
 district_choices = sorted(ids[ids['Charter School (Y/N)'] == 'N']["DISTNAME"].unique())
 
@@ -24,6 +30,9 @@ app_deps = ui.head_content(
     ui.tags.link(href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap", rel="stylesheet")  # Google Font link
 )
 
+# =============================================================================
+# 3. App UI
+# =============================================================================
 app_ui = ui.page_navbar(
     app_deps,
     ui.head_content(
@@ -57,18 +66,28 @@ app_ui = ui.page_navbar(
     theme = theme.flatly,
     )  
 
+# =============================================================================
+# 4. App Server
+# =============================================================================
 def server(input, output, session):
+    # Creating a reactive value to save all of the nearest neighbor results
     result_data = reactive.value(None)
 
+    # Saving user's inputs for use in the module servers
     @reactive.event(input.run)
     def get_inputs():
-        user_selected = {'DISTNAME':input.district_name(), 'buckets':input.feature_groups(), 'n': input.n_neighbors(), 'year': input.year()}
+        user_selected = {'DISTNAME':input.district_name(), 
+                         'buckets':input.feature_groups(), 
+                         'n': input.n_neighbors(), 
+                         'year': input.year()}
         return user_selected
     
+    # Test
     @reactive.event(input.run)
     def test_button_click():
         print("DEBUG: Button clicked!")
 
+    # When user clicks run model button, this runs the nearest neighbors model
     @reactive.effect
     @reactive.event(input.run)
     def get_result():
@@ -103,13 +122,20 @@ def server(input, output, session):
             1: features_used,
             2: neighbors_list
         })
+
         return "Model run complete"
-        
+    
+    # Server for the matches page
     matches.match_server("matchpage", result_data, get_inputs)
+
+    # Server for the why districts page
     why_districts.why_districts_server("demographicpage", result_data, get_inputs)
+
+    # Server for the outcomes page
     outcomes.outcome_server("outcomepage", get_inputs, result_data)
 
 
+# Setting the directory to locate images, stylesheet, etc.
 static_dir = Path(__file__).parent / "static"
 app = App(app_ui, server, static_assets=static_dir)
 

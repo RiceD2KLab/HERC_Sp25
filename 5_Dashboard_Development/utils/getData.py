@@ -8,43 +8,12 @@ import pandas as pd
 import numpy as np
 import warnings
 import urllib.error
-from pathlib import Path
-import re
 
 # Set Warning Settings
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl.worksheet.header_footer")
 
 # =============================================================================
-# 2. Dashboard Helper Functions and Data Loading
-# =============================================================================
-# --- Get District ID Key ---
-current_dir = Path(__file__).resolve().parent
-data_dir = current_dir.parent / "data"
-ids_path = data_dir / "ids.csv"
-ids = pd.read_csv(ids_path)
-
-# --- Title Case for School Districts ---
-def title_case_with_spaces(text):
-    """
-    Function that converts all text in a string to title case except if it's one
-    of the common school district acronyms, CISD, ISD, or MSD. 
-    """
-    if 'CISD' in text:
-        words = text.split()
-        words = [word.title() if word != 'CISD' else word for word in words]
-        return ' '.join(words)
-    if 'ISD' in text:
-        words = text.split()
-        words = [word.title() if word != 'ISD' else word for word in words]
-        return ' '.join(words)
-    if 'MSD' in text:
-        words = text.split()
-        words = [word.title() if word != 'MSD' else word for word in words]
-        return ' '.join(words)
-    return re.sub(r'([a-z])([A-Z])', r'\1 \2', text).title()
-
-# =============================================================================
-# 3. Load GitHub Data Function
+# 2. Load GitHub Data Function
 # =============================================================================
 def load_data_from_github(year):
     """

@@ -1,23 +1,24 @@
-import os 
-import pandas as pd 
-import matplotlib.pyplot as plt
+### NEAREST NEIGHBORS MODEL ###
+
+# =============================================================================
+# 1. Imports
+# =============================================================================
+# Standard Imports
+import pandas as pd
 import numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
-import seaborn as sns
-from sklearn.manifold import MDS
-from scipy.cluster.hierarchy import linkage, dendrogram
-import geopandas as gpd
-import textwrap
-from matplotlib.patches import ConnectionPatch
-from scipy.spatial import Voronoi
-from utils.Demographic_Buckets import demographic_buckets
-from utils.Demographic_Buckets import get_labels_from_variable_name_dict
-from utils.Demographic_Buckets import get_combined_values
-#from getData import load_data_from_year_folder
 
+# Local Imports
+from utils.AppUtils import demographic_buckets
+from utils.AppUtils import get_labels_from_variable_name_dict
+from utils.AppUtils import get_combined_values
+from utils.getData import load_data_from_github
 
+# =============================================================================
+# 2. Helper Functions
+# =============================================================================
 def calculate_missing_percentage(df):
     """
     Function to calculate the percentage of missing values in each column of a given dataset.
@@ -58,6 +59,7 @@ def drop_columns(df, threshold=50):
     print(f"Dropped Dataset Shape: {resulting_df.shape}")
     return resulting_df
 
+
 def preprocess_data(df, feature_columns, impute_strategy="median", standardize=True):
     """
     Handles missing values and optionally standardizes selected feature columns.
@@ -84,6 +86,9 @@ def preprocess_data(df, feature_columns, impute_strategy="median", standardize=T
 
     return df_copy
 
+# =============================================================================
+# 3. Different Distance Metric Model Functions
+# =============================================================================
 def knn_distance(df, district_id, feature_columns, n_neighbors=5, metric="euclidean", impute_strategy="median"):
     """
     Finds nearest neighbors using Euclidean, Manhattan, or Mahalanobis distance.
@@ -123,7 +128,6 @@ def knn_distance(df, district_id, feature_columns, n_neighbors=5, metric="euclid
     return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
 
 
-
 def knn_cosine(df, district_id, feature_columns, n_neighbors=5, impute_strategy="median"):
     """
     Finds nearest neighbors using Cosine similarity (does not standardize).
@@ -148,6 +152,7 @@ def knn_cosine(df, district_id, feature_columns, n_neighbors=5, impute_strategy=
 
     distances, indices = knn_model.kneighbors(query_point)
     return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
+
 
 def knn_canberra(df, district_id, feature_columns, n_neighbors=5, impute_strategy="median"):
     """
@@ -179,14 +184,9 @@ def knn_canberra(df, district_id, feature_columns, n_neighbors=5, impute_strateg
     distances, indices = knn_model.kneighbors(query_point)
     return knn_df.iloc[indices[0]][["DISTRICT_id", "DISTNAME"]]
 
-
-
-from utils.getData import load_data_from_github
-from utils.Demographic_Buckets import demographic_buckets
-from utils.Demographic_Buckets import get_labels_from_variable_name_dict
-from utils.Demographic_Buckets import get_combined_values
-
-
+# =============================================================================
+# 4. Master Find Nearest Districts Function to Run Model
+# =============================================================================
 def find_nearest_districts(year, district_id, feature_columns, n_neighbors=5, distance_metric="euclidean", impute_strategy="median"):
     """
     Wrapper function that selects the appropriate distance metric for finding nearest neighbors.
@@ -218,7 +218,9 @@ def find_nearest_districts(year, district_id, feature_columns, n_neighbors=5, di
     else:
         raise ValueError(f"Unsupported distance metric: {distance_metric}")
 
-
+# =============================================================================
+# 5. Get Data For Neighbors
+# =============================================================================
 district_identifiers = [
     "DISTRICT_id",
     "TEA District Type",

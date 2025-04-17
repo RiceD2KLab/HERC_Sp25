@@ -1,33 +1,44 @@
+### WHY DISTRICTS PAGE ###
+
+# =============================================================================
+# 1. Imports
+# =============================================================================
+# Standard Imports
 from shiny import ui, render, module, reactive
 from shinywidgets import output_widget, render_widget
 import plotly.graph_objs as go
 
-# --- Plot Mappings ---
-bucket_to_plot_ids = {
-    "race_ethnicity_percent": "race_ethnicity",
-    "special_ed_504": "special_ed_504",
-    "student_teacher_ratio": "dot_stack",
-    "student_count": "staff_student",
-    "staff_count": "staff_student",
-    "special_populations_percent": "special_populations",
-    "gifted_students": "gifted_talented",
-    "economically_disadvantaged": "econ_disadv",
-    "language_education_percent": "language_education",
-}
+# Local Imports
+from utils.DemographicUtils import (
+        #bucket_to_plot_ids,
+        plot_labels, 
+        plot_race_ethnicity_stacked_bar,
+        plot_special_ed_504_bar, 
+        plot_dot_stack,
+        plot_staff_student_dumbbell,
+        plot_special_populations_dropdown,
+        plot_gifted_talented_horizontal_bar,
+        plot_economically_disadvantaged_horizontal,
+        plot_language_education_filterable_bar
+    )
 
-# Updated plot_labels with the new order
-plot_labels = {
-    "dot_stack": "Student Teacher Ratio",
-    "staff_student": "Staff & Student Count",
-    "race_ethnicity": "Race and Ethnicity Distribution",
-    "econ_disadv": "Economically Disadvantaged",
-    "special_ed_504": "Special Education & 504 Percentages",
-    "language_education": "Language Education",
-    "special_populations": "Special Populations",
-    "gifted_talented": "Gifted & Talented",
-}
+# =============================================================================
+# 2. Constants
+# =============================================================================
+plot_funcs = {
+        "race_ethnicity": plot_race_ethnicity_stacked_bar,
+        "special_ed_504": plot_special_ed_504_bar,
+        "dot_stack": plot_dot_stack,
+        "staff_student": plot_staff_student_dumbbell,
+        "special_populations": plot_special_populations_dropdown,
+        "gifted_talented": plot_gifted_talented_horizontal_bar,
+        "econ_disadv": plot_economically_disadvantaged_horizontal,
+        "language_education": plot_language_education_filterable_bar,
+    }
 
-
+# =============================================================================
+# 3. Why Districts UI
+# =============================================================================
 @module.ui
 def why_districts_ui():
     return ui.nav_panel("Why these districts?",
@@ -44,32 +55,11 @@ def why_districts_ui():
         value="panel2"
     )
 
-
+# =============================================================================
+# 4. Why Districts Server
+# =============================================================================
 @module.server
 def why_districts_server(input, output, session, run_result, get_inputs):
-    from utils.KNN_Demographic_Plots import (
-        plot_race_ethnicity_stacked_bar,
-        plot_special_ed_504_bar, 
-        plot_dot_stack,
-        plot_staff_student_dumbbell,
-        plot_special_populations_dropdown,
-        plot_gifted_talented_horizontal_bar,
-        plot_economically_disadvantaged_horizontal,
-        plot_language_education_filterable_bar
-    )
-
-    plot_funcs = {
-        "race_ethnicity": plot_race_ethnicity_stacked_bar,
-        "special_ed_504": plot_special_ed_504_bar,
-        "dot_stack": plot_dot_stack,
-        "staff_student": plot_staff_student_dumbbell,
-        "special_populations": plot_special_populations_dropdown,
-        "gifted_talented": plot_gifted_talented_horizontal_bar,
-        "econ_disadv": plot_economically_disadvantaged_horizontal,
-        "language_education": plot_language_education_filterable_bar,
-    }
-
-
 
     # --- 1. Dynamically generate cards for the selected plots.
     @output
