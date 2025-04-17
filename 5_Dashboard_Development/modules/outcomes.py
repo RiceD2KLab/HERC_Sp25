@@ -20,7 +20,9 @@ from utils.OutcomeUtils import (
     plot_attendance_rate_bar,
     plot_chronic_absenteeism_bar,
     plot_dropout_rates,
-    plot_exclusive_staar_with_filters)
+    plot_exclusive_staar_with_filters,
+    plot_sat_act,
+    plot_ap_ib)
 
 
 # =============================================================================
@@ -33,7 +35,9 @@ map_outcome_plot_functions = {
     'Attendance': plot_attendance_rate_bar,
     'Chronic Absenteeism': plot_chronic_absenteeism_bar,
     'College, Career, & Military Ready Graduates': plot_ccmr_rates,
-    '4-Year Longitudinal Graduation Rate': plot_graduation_rate_bar}
+    '4-Year Longitudinal Graduation Rate': plot_graduation_rate_bar,
+    'SAT/ACT': plot_sat_act,
+    'IB/AP': plot_ap_ib}
 
 # temporarily excluding IB/AP and SAT/ACT
 options = [
@@ -42,8 +46,9 @@ options = [
     'Attendance',
     'Chronic Absenteeism',
     'College, Career, & Military Ready Graduates',
-    '4-Year Longitudinal Graduation Rate']
-
+    '4-Year Longitudinal Graduation Rate',
+    'SAT/ACT',
+    'IB/AP']
 # =============================================================================
 # 3. Shiny UI
 # =============================================================================

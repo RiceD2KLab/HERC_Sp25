@@ -36,8 +36,8 @@ suboptions = {
     '4-Year Longitudinal Graduation Rate': ['RHSP/DAP or FHSP-E/DLA', 
                                             'FHSP-DLA Graduates'],
     'AP/IB': ['Course Completion Graduates', 
-              'Test Taking', 
-              'Students Above Criterion'],
+              'Test Taking',],
+            #   'Students Above Criterion'],
     'SAT/ACT': ['Graduates Above Criterion', 
                 'Students Above Criterion', 
                 'Test Taking']
@@ -55,8 +55,8 @@ demographics = {
 
 demographic_string_patterns = {
     'AP/IB': {'Course Completion Graduates': r"AP/IB Course Completion Graduates: (.*) Rate",
-              'Test Taking':  r'AP/IB: (.*) \((All Subjects)\) % Taking', 
-              'Students Above Criterion': r"AP/IB: (.*) \((All Subjects)\) % Students Above Criterion"},
+              'Test Taking':  r'AP/IB: (.*) \((All Subjects)\) % Taking'}, 
+            #   'Students Above Criterion': r"AP/IB: (.*) \((All Subjects)\) % Above Criterion"},
     'SAT/ACT': {'Test Taking':r'SAT/ACT: (.*), % Test-Taking', 
                 'Graduates Above Criterion':r'SAT/ACT: (.*), % Graduates Above Criterion', 
                 'Students Above Criterion':r"SAT/ACT: (.*?), % Above Criterion"},
@@ -437,3 +437,68 @@ def plot_exclusive_staar_with_filters(df, neighbors, subject):
     
     return fig
 
+# --- SAT/ACT Rates ---
+def plot_sat_act(neighbors, year, subcategory="Graduates Above Criterion"):
+    """
+    DistrictMatch plot function for SAT/ACT metrics.
+
+    Inputs:
+        neighbors (pd.DataFrame): DataFrame with a 'DISTRICT_id' column.
+        year (int): a 4-digit year (YYYY) from 2020-2024.
+        subcategory (str): must be one of ['Graduates Above Criterion', 'Students Above Criterion', 'Test Taking']
+
+    Returns: 
+        A 'plotly.graph_objs._figure.Figure' object that shows SAT/ACT outcome by demographic.
+    """
+    df = engineer_performance(year)
+    district_ids = list(neighbors["DISTRICT_id"])
+    df = df[df["DISTRICT_id"].astype(str).isin(district_ids)]
+    
+    # Determine correct match substring instead of just using subcategory
+    match_substring = {
+        "Graduates Above Criterion": "% Graduates Above Criterion",
+        "Students Above Criterion": "% Above Criterion",
+        "Test Taking": "% Test-Taking"
+    }[subcategory]
+
+    # Only pull columns for the selected year and metric
+    cols = [col for col in df.columns if f"District {year - 1}" in col and "SAT/ACT" in col and match_substring in col]
+    print("SAT/ACT matched columns:", cols)
+
+    if not cols:
+        print(f"No SAT/ACT columns matched for subcategory: {subcategory}. Try checking the actual column names in the dataset.")
+
+    # Keep DISTNAME, DISTRICT_id, and the SAT/ACT columns
+    df = df[["DISTNAME", "DISTRICT_id"] + cols].copy()
+    df["DISTNAME"] = df["DISTNAME"].apply(title_case_with_spaces)
+
+    # Rename columns using the regex match
+    pattern = demographic_string_patterns['SAT/ACT'][subcategory]
+    rename_dict = {col: re.search(pattern, col).group(1) for col in cols if re.search(pattern, col)}
+    print("SAT/ACT rename_dict:", rename_dict)
+    df.rename(columns=rename_dict, inplace=True)
+
+    # Match renamed columns to demographics using fuzzy containment
+    demographic_values = [v.lower() for v in demographics.values()]
+    columns_to_keep = [col for col in df.columns if any(demo in col.lower() for demo in demographic_values)]
+    columns_to_keep += ['DISTNAME']
+
+    # Drop groups with no data
+    print("Column sums before filtering:", df[columns_to_keep].sum(skipna=True))
+    columns_to_keep = [column for column in columns_to_keep if df[column].sum(skipna=True) != 0]
+    print("SAT/ACT columns_to_keep:", columns_to_keep)
+
+    # Debug: show raw values for selected columns
+    print(df[["DISTNAME"] + columns_to_keep])
+    print("SAT/ACT NaN counts:\n", df[columns_to_keep].isna().sum())
+
+    # Melt for plotly
+    melted = df.drop(columns=["DISTRICT_id"]).melt(id_vars=["DISTNAME"], value_vars=columns_to_keep,
+                                                    var_name="Group", value_name="Rate")
+
+    return px.bar(melted, x="DISTNAME", y="Rate", color="Group", barmode="group",
+                  title=f"SAT/ACT – {subcategory} by Group", labels={"DISTNAME": "District"},
+                  color_discrete_sequence=px.colors.qualitative.Safe)
+
+def plot_ap_ib(neighbors, year, subcategory="Course Completion Graduates"):
+    return None
