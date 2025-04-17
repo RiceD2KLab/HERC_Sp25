@@ -36,20 +36,21 @@ def load_data_from_github(year):
 
     Notes:
     ------
-    - The data is sourced from the mm175rice/HERC-DISTRICT-MATCH-FILES GitHub repository.
+    - The data is sourced from the RiceD2KLab/HERC_Sp25/ GitHub repository.
     - Assumes the structure of files follows the naming convention: 
       'merged_<year>.csv' and 'TAPR_district_adv_<year>.xlsx' located at:
-      https://github.com/mm175rice/HERC-DISTRICT-MATCH-FILES/tree/main/data/<year>
+      https://github.com/RiceD2KLab/HERC_Sp25/tree/main/5_Dashboard_Development/data /<year>
     """
-    base_url = f"https://raw.githubusercontent.com/mm175rice/HERC-DISTRICT-MATCH-FILES/main/data/{year}"
+    base_url = f"https://raw.githubusercontent.com/RiceD2KLab/HERC_Sp25/refs/heads/main/5_Dashboard_Development/data/{year}"
     csv_url = f"{base_url}/merged_{year}.csv"
     xlsx_url = f"{base_url}/TAPR_district_adv_{year}.xlsx"
 
     try:
         df = pd.read_csv(csv_url)
         column_key = pd.read_excel(xlsx_url, sheet_name='distprof')
-    except (urllib.error.URLError, urllib.error.HTTPError, FileNotFoundError):
-        raise ValueError("This year of data does not exist yet. Check the year or the GitHub repository.")
+    except Exception as e:
+        print(f"Data for the year {year} does not exist or cannot be accessed")
+        return None, None
 
     if 'Charter School (Y/N)' in df.columns:
         df = df[df['Charter School (Y/N)'] == 'N']
@@ -60,7 +61,7 @@ def load_data_from_github(year):
     return df, column_key
 
 # =============================================================================
-# 4. Data Helper Functions
+# 3. Data Helper Functions
 # =============================================================================
 # --- Clean STAAR Data To Be Mutually Exclusive By Grade Level and Subject ---
 def get_subject_level_exclusive_scores(df, subject):
@@ -377,26 +378,23 @@ def engineer_performance(year):
     dropout rates, demographics, college readiness, SAT/ACT, and more.
 
     Args:
-        parent_dir (str): Path to the base data directory.
         year (int): Target reporting year.
-        additional_columns (list): List of additional column names to include in the final output.
 
     Returns:
-        pd.DataFrame: Cleaned and combined DataFrame of engineered performance features by district.
+        pd.DataFrame: Cleaned and combined DataFrame of engineered performance features by district,
+                      or None if the data for the year does not exist.
     """
-    # Base raw GitHub URL
-    base_url = f"https://raw.githubusercontent.com/mm175rice/HERC-DISTRICT-MATCH-FILES/main/data/{year}"
-    #Get CSV exact filename
+    base_url = f"https://raw.githubusercontent.com/RiceD2KLab/HERC_Sp25/refs/heads/main/5_Dashboard_Development/data/{year}"
     csv_filename = f"merged_{year}.csv"
-
-    #Build csv url 
     csv_url = f"{base_url}/{csv_filename}"
 
-    #Load CSV 
-    df = pd.read_csv(csv_url)
+    try:
+        df = pd.read_csv(csv_url)
+    except Exception as e:
+        print(f"Data for the year {year} does not exist or cannot be accessed.")
+        return None
 
     dropout_df = compute_dropout_rates(df, year)
-
     df_extra = get_existing_columns(df, year)
 
     return dropout_df.merge(df_extra, on=['DISTNAME', 'DISTRICT_id'], how='inner')
