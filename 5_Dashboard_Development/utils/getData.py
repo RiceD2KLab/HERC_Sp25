@@ -385,3 +385,53 @@ def engineer_performance(year):
     df_extra = get_existing_columns(df, year)
 
     return df_combined.merge(df_extra, on=['DISTNAME', 'DISTRICT_id'], how='inner')
+
+def get_subject_level_exclusive_scores(df, subject):
+    """
+    Returns mutually exclusive STAAR scores (Approaches only, Meets only, Masters, Did Not Meet) by grade level
+    for a given subject.
+
+    Args:
+        df (pd.DataFrame): Raw district-level STAAR dataset.
+        subject (str): One of ['Mathematics', 'Reading/ELA', 'Writing', 'Science', 'Social Studies'].
+
+    Returns:
+        pd.DataFrame: Long-format dataframe with DISTNAME, DISTRICT_id, Grade, and exclusive performance levels.
+    """
+    # Step 1: Build level mapping dynamically
+    level_mapping = {
+        'Approaches': [col for col in df.columns if subject in col and 'Approaches Grade Level' in col and "Rate" in col and "All Students" in col],
+        'Meets': [col for col in df.columns if subject in col and 'Meets Grade Level' in col and "Rate" in col and "All Students" in col],
+        'Masters': [col for col in df.columns if subject in col and 'Masters Grade Level' in col and "Rate" in col and "All Students" in col],
+    }
+
+    if not any(level_mapping.values()):
+        print(f"Warning: No data available for subject '{subject}'.")
+        return None
+
+    # Step 2: Create long DataFrames per level
+    def melt_level(level):
+        cols = level_mapping[level]
+        df_level = df[['DISTNAME', 'DISTRICT_id'] + cols].copy()
+        df_long = df_level.melt(id_vars=['DISTNAME', 'DISTRICT_id'], value_vars=cols,
+                                var_name='raw_column', value_name=level)
+        df_long['Grade'] = df_long['raw_column'].str.extract(r'Grade (\d+)')
+        return df_long.drop(columns='raw_column')
+
+    df_approaches = melt_level('Approaches')
+    df_meets = melt_level('Meets')
+    df_masters = melt_level('Masters')
+
+    # Step 3: Merge the levels on DISTRICT, DISTNAME, and Grade
+    merged = df_approaches.merge(df_meets, on=['DISTNAME', 'DISTRICT_id', 'Grade'], how='inner')
+    merged = merged.merge(df_masters, on=['DISTNAME', 'DISTRICT_id', 'Grade'], how='inner')
+
+    # Step 4: Compute mutually exclusive performance levels
+    merged['Masters Grade Level'] = merged['Masters']
+    merged['Meets Grade Level'] = merged['Meets'] - merged['Masters']
+    merged['Approaches Grade Level'] = merged['Approaches'] - merged['Meets']
+    merged['Did Not Meet Grade Level'] = 100 - merged['Approaches']
+
+    # Optional: Round values and reorder
+    result = merged[['DISTNAME', 'DISTRICT_id', 'Grade', 'Approaches Grade Level', 'Meets Grade Level', 'Masters Grade Level', 'Did Not Meet Grade Level']]
+    return result.round(2)
