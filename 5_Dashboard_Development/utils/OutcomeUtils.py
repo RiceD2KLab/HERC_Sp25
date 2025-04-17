@@ -9,8 +9,7 @@ import plotly.express as px
 import plotly.graph_objs as go
 
 # Other Imports
-from utils.getData import engineer_performance, get_subject_level_exclusive_scores
-from utils.helper import title_case_with_spaces
+from utils.getData import engineer_performance, get_subject_level_exclusive_scores, title_case_with_spaces
 
 # =============================================================================
 # 2. Constants / Configuration
