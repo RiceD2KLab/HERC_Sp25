@@ -17,8 +17,8 @@ from utils.AppUtils import title_case_with_spaces
 # 2. Constants / Configuration
 # =============================================================================
 # Loading county and district geometries
-countygeo = gpd.read_file('https://raw.githubusercontent.com/mm175rice/HERC-DISTRICT-MATCH-FILES/refs/heads/main/data/geo/texas_counties.json')
-districtgeo = gpd.read_file('https://github.com/mm175rice/HERC-DISTRICT-MATCH-FILES/raw/refs/heads/main/data/geo/Texas_SchoolDistricts_2024.json')
+countygeo = gpd.read_file('https://raw.githubusercontent.com/RiceD2KLab/HERC_Sp25/refs/heads/main/5_Dashboard_Development/data/geo/texas_counties.json')
+districtgeo = gpd.read_file('https://raw.githubusercontent.com/RiceD2KLab/HERC_Sp25/refs/heads/main/5_Dashboard_Development/data/geo/Texas_SchoolDistricts_2024.json')
 
 
 # =============================================================================
