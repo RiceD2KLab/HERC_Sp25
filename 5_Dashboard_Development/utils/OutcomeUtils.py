@@ -7,6 +7,7 @@
 import re
 import plotly.express as px
 import plotly.graph_objs as go
+import pandas as pd
 
 # Other Imports
 from utils.getData import load_data_from_github, engineer_performance, get_subject_level_exclusive_scores
@@ -518,10 +519,10 @@ def plot_ap_ib_performance(neighbors, year, subcategory=None):
     """
     data = load_data_from_github(year)
     df = data[0]
-
-    apib_df = df[df['DISTRICT_id'].isin(neighbors['DISTRICT_id'])]
+    df['DISTRICT_id'] = df['DISTRICT_id'].astype(str)
+    apib_df = df[df['DISTRICT_id'].isin(neighbors['DISTRICT_id'])].copy()
+    apib_df['DISTNAME'] = [title_case_with_spaces(dist) for dist in apib_df['DISTNAME']]
     districts = apib_df['DISTNAME']
-
     # --- Dynamically find all relevant AP/IB columns ---
     relevant_cols = [
         col for col in df.columns

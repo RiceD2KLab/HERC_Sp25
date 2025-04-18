@@ -123,7 +123,7 @@ def outcome_server(input, output, session, get_inputs, run_result):
         print("Plotting for", main_option, "with suboption", sub_option)
 
         # If sub_option is still None and required by the plot, show a fallback
-        if main_option in ['STAAR Testing', '4-Year Longitudinal Graduation Rate'] and sub_option is None:
+        if main_option in ['STAAR Testing', '4-Year Longitudinal Graduation Rate', 'SAT/ACT'] and sub_option is None:
             # Wait for the sub_option to be selected
             return go.Figure().update_layout(title="Loading your results...")
         
