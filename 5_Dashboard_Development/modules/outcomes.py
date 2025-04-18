@@ -22,7 +22,7 @@ from utils.OutcomeUtils import (
     plot_dropout_rates,
     plot_exclusive_staar_with_filters,
     plot_sat_act,
-    plot_ap_ib)
+    plot_ap_ib_performance)
 
 
 # =============================================================================
@@ -37,7 +37,7 @@ map_outcome_plot_functions = {
     'College, Career, & Military Ready Graduates': plot_ccmr_rates,
     '4-Year Longitudinal Graduation Rate': plot_graduation_rate_bar,
     'SAT/ACT': plot_sat_act,
-    'IB/AP': plot_ap_ib}
+    'AP/IB': plot_ap_ib_performance}
 
 # temporarily excluding IB/AP and SAT/ACT
 options = [
@@ -48,7 +48,7 @@ options = [
     'College, Career, & Military Ready Graduates',
     '4-Year Longitudinal Graduation Rate',
     'SAT/ACT',
-    'IB/AP']
+    'AP/IB']
 # =============================================================================
 # 3. Shiny UI
 # =============================================================================

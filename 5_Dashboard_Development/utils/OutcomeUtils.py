@@ -9,7 +9,7 @@ import plotly.express as px
 import plotly.graph_objs as go
 
 # Other Imports
-from utils.getData import engineer_performance, get_subject_level_exclusive_scores
+from utils.getData import load_data_from_github, engineer_performance, get_subject_level_exclusive_scores
 from utils.AppUtils import title_case_with_spaces
 
 # =============================================================================
@@ -35,9 +35,6 @@ suboptions = {
                       ],
     '4-Year Longitudinal Graduation Rate': ['RHSP/DAP or FHSP-E/DLA', 
                                             'FHSP-DLA Graduates'],
-    'AP/IB': ['Course Completion Graduates', 
-              'Test Taking',],
-            #   'Students Above Criterion'],
     'SAT/ACT': ['Graduates Above Criterion', 
                 'Students Above Criterion', 
                 'Test Taking']
@@ -500,5 +497,114 @@ def plot_sat_act(neighbors, year, subcategory="Graduates Above Criterion"):
                   title=f"SAT/ACT – {subcategory} by Group", labels={"DISTNAME": "District"},
                   color_discrete_sequence=px.colors.qualitative.Safe)
 
-def plot_ap_ib(neighbors, year, subcategory="Course Completion Graduates"):
-    return None
+# --- AP/IB Metrics  ---
+def plot_ap_ib_performance(neighbors, year, subcategory=None):
+    """
+    Interactive bar chart showing AP/IB % Above Criterion across districts,
+    with % Taking shown in hover. Subjects and years are dynamically inferred.
+    
+    Parameters:
+    -----------
+    df : pandas.DataFrame
+        Dataset containing AP/IB % Taking and % Above Criterion for each subject.
+
+    neighbors : pandas.DataFrame
+        DataFrame with 'DISTRICT_id' to filter districts.
+
+    Returns:
+    --------
+    plotly.graph_objs.Figure
+        Interactive Plotly chart for Shiny with subject filter and hover info.
+    """
+    data = load_data_from_github(year)
+    df = data[0]
+
+    apib_df = df[df['DISTRICT_id'].isin(neighbors['DISTRICT_id'])]
+    districts = apib_df['DISTNAME']
+
+    # --- Dynamically find all relevant AP/IB columns ---
+    relevant_cols = [
+        col for col in df.columns
+        if "AP/IB" in col and "All Students" in col and 
+        ("% Students Above Criterion" in col or "% Taking" in col)
+    ]
+
+    # --- Extract subjects and years from column names ---
+    subjects = set()
+    years = set()
+
+    for col in relevant_cols:
+        match = re.search(r"District (\d{4}) AP/IB: All Students \((.*?)\)", col)
+        if match:
+            year, subject = match.groups()
+            subjects.add(subject)
+            years.add(year)
+
+    subjects = sorted(subjects)
+    year = max(years)  # Use most recent year
+
+    # --- Build column maps for the selected year ---
+    col_taking = {
+        subj: f'District {year} AP/IB: All Students ({subj}) % Taking' for subj in subjects
+    }
+    col_above = {
+        subj: f'District {year} AP/IB: All Students ({subj}) % Students Above Criterion' for subj in subjects
+    }
+
+    # --- Create plot ---
+    fig = go.Figure()
+
+    for i, subj in enumerate(subjects):
+        visible = (i == 0)
+
+        hover_text = (
+            "District: " + districts +
+            "<br>% Above Criterion: " + apib_df[col_above[subj]].round(1).astype(str) + "%" +
+            "<br>% Taking: " + apib_df[col_taking[subj]].round(1).astype(str) + "%"
+        )
+
+        fig.add_trace(go.Bar(
+            x=districts,
+            y=apib_df[col_above[subj]],
+            name=subj,
+            text=apib_df[col_above[subj]].round(1).astype(str) + '%',
+            textposition='auto',
+            marker_color='seagreen',
+            visible=visible,
+            hovertext=hover_text,
+            hoverinfo='text'
+        ))
+
+    # --- Dropdown buttons ---
+    buttons = []
+    for i, subj in enumerate(subjects):
+        visibility = [False] * len(subjects)
+        visibility[i] = True
+
+        buttons.append(dict(
+            label=subj,
+            method='update',
+            args=[{'visible': visibility}]
+        ))
+
+    # --- Final layout ---
+    fig.update_layout(
+        updatemenus=[dict(
+            buttons=buttons,
+            direction='down',
+            showactive=True,
+            x=0.98,
+            xanchor='right',
+            y=1.15,
+            yanchor='top'
+        )],
+        title=f"AP/IB Performance ({year}): % Above Criterion by District<br><sup>(Hover for % Taking)</sup>",
+        xaxis_title='District',
+        yaxis_title='% Students Above Criterion',
+        yaxis=dict(range=[0, 100]),
+        template='plotly_white',
+        showlegend=False
+    )
+
+    return fig
+
