@@ -1,0 +1,59 @@
+/* General background */
+body {
+    background-color: white;
+}
+
+body {
+  font-size: 16px;  /* Default font size */
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;  /* Slightly larger font on medium screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 20px;  /* Even larger font on large screens */
+  }
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #00205B !important;
+    border: none;
+}
+
+.navbar .navbar-nav > li > a {
+    color: white !important;
+    background-color: transparent !important;
+}
+
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li.active > a {
+    color: #4D9AD4 !important;
+}
+
+/* Sidebar styles */
+.sidebar {
+    background-color: #E0E2E6 !important;
+}
+
+/* Action buttons */
+.btn {
+    background-color: #00205B !important;
+    color: white !important;
+    border: none;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: #4D9AD4 !important;
+    color: white !important;
+}
+
+/* Title styling */
+.navbar .navbar-brand {
+    color: white !important;
+}

@@ -1,0 +1,419 @@
+,DATA,NAME,LABEL
+0,DISTPROF,DISTRICT,District Number
+1,DISTPROF,DPETDISC,District 2021 DAEP: Count
+2,DISTPROF,DPETDISD,District 2021 DAEP: Denominator
+3,DISTPROF,DPETDISP,District 2021 DAEP: Percent
+4,DISTPROF,DPFEIERP,District 2021 Finance: Instructional Expenditures Ratio
+5,DISTPROF,DB0GR21N,District 2021 Graduates: African American Count
+6,DISTPROF,DB0GR21R,District 2021 Graduates: African American Student Group %
+7,DISTPROF,DA0GR21N,District 2021 Graduates: All Students Count (including FHSP)
+8,DISTPROF,DA0GR21R,District 2021 Graduates: All Students Group %
+9,DISTPROF,DI0GR21N,District 2021 Graduates: American Indian Count
+10,DISTPROF,DI0GR21R,District 2021 Graduates: American Indian Student Group %
+11,DISTPROF,D30GR21N,District 2021 Graduates: Asian Count
+12,DISTPROF,D30GR21R,District 2021 Graduates: Asian Student Group %
+13,DISTPROF,DR0GR21N,District 2021 Graduates: At Risk Count
+14,DISTPROF,DR0GR21R,District 2021 Graduates: At Risk Student Group %
+15,DISTPROF,DL0GR21N,District 2021 Graduates: EB/EL Count
+16,DISTPROF,DL0GR21R,District 2021 Graduates: EB/EL Student Group %
+17,DISTPROF,DE0GR21N,District 2021 Graduates: Econ Disadv Count
+18,DISTPROF,DE0GR21R,District 2021 Graduates: Econ Disadv Student Group %
+19,DISTPROF,DA0GN21P,District 2021 Graduates: FHSP No Endorsement All Students % (Profile Only)
+20,DISTPROF,DA0GN21N,District 2021 Graduates: FHSP No Endorsement All Students Count
+21,DISTPROF,DA0GA21P,District 2021 Graduates: FHSP-DLA All Students % (Profile Only)
+22,DISTPROF,DA0GA21N,District 2021 Graduates: FHSP-DLA All Students Count
+23,DISTPROF,DA0GE21P,District 2021 Graduates: FHSP-E All Students % (Profile Only)
+24,DISTPROF,DA0GE21N,District 2021 Graduates: FHSP-E All Students Count
+25,DISTPROF,DH0GR21N,District 2021 Graduates: Hispanic Count
+26,DISTPROF,DH0GR21R,District 2021 Graduates: Hispanic Student Group %
+27,DISTPROF,DA0GM21P,District 2021 Graduates: Minimum HS PGM All Students % (Profile Only)
+28,DISTPROF,DA0GM21N,District 2021 Graduates: Minimum HS PGM All Students Count
+29,DISTPROF,D40GR21N,District 2021 Graduates: Pacific Islander Count
+30,DISTPROF,D40GR21R,District 2021 Graduates: Pacific Islander Student Group %
+31,DISTPROF,DA0GH21P,District 2021 Graduates: RHSP/DAP All Students % (Profile Only)
+32,DISTPROF,DA0GH21N,District 2021 Graduates: RHSP/DAP All Students Count
+33,DISTPROF,DS0GR21N,District 2021 Graduates: Special Ed Count
+34,DISTPROF,DS0GR21R,District 2021 Graduates: Special Ed Student Group %
+35,DISTPROF,D20GR21N,District 2021 Graduates: Two or More Races Count
+36,DISTPROF,D20GR21R,District 2021 Graduates: Two or More Races Student Group %
+37,DISTPROF,DW0GR21N,District 2021 Graduates: White Count
+38,DISTPROF,DW0GR21R,District 2021 Graduates: White Student Group %
+39,DISTPROF,DPERRA1R,District 2021 Retention: Regular Ed 01 Rate
+40,DISTPROF,DPERRA2R,District 2021 Retention: Regular Ed 02 Rate
+41,DISTPROF,DPERRA3R,District 2021 Retention: Regular Ed 03 Rate
+42,DISTPROF,DPERRA4R,District 2021 Retention: Regular Ed 04 Rate
+43,DISTPROF,DPERRA5R,District 2021 Retention: Regular Ed 05 Rate
+44,DISTPROF,DPERRA6R,District 2021 Retention: Regular Ed 06 Rate
+45,DISTPROF,DPERRA7R,District 2021 Retention: Regular Ed 07 Rate
+46,DISTPROF,DPERRA8R,District 2021 Retention: Regular Ed 08 Rate
+47,DISTPROF,DPERRA9R,District 2021 Retention: Regular Ed 09 Rate
+48,DISTPROF,DPERRAKR,District 2021 Retention: Regular Ed KG Rate
+49,DISTPROF,DPERSA1R,District 2021 Retention: Special Ed 01 Rate
+50,DISTPROF,DPERSA2R,District 2021 Retention: Special Ed 02 Rate
+51,DISTPROF,DPERSA3R,District 2021 Retention: Special Ed 03 Rate
+52,DISTPROF,DPERSA4R,District 2021 Retention: Special Ed 04 Rate
+53,DISTPROF,DPERSA5R,District 2021 Retention: Special Ed 05 Rate
+54,DISTPROF,DPERSA6R,District 2021 Retention: Special Ed 06 Rate
+55,DISTPROF,DPERSA7R,District 2021 Retention: Special Ed 07 Rate
+56,DISTPROF,DPERSA8R,District 2021 Retention: Special Ed 08 Rate
+57,DISTPROF,DPERSA9R,District 2021 Retention: Special Ed 09 Rate
+58,DISTPROF,DPERSAKR,District 2021 Retention: Special Ed KG Rate
+59,DISTPROF,DAUND21C,District 2021 Underreported Students: Count
+60,DISTPROF,DAUND21D,District 2021 Underreported Students: Gr. 7-12 Total
+61,DISTPROF,DAUND21R,District 2021 Underreported Students: Rate
+62,DISTPROF,DPCTG01C,District 2022 Class Size: Grade 1     - # Classes
+63,DISTPROF,DPCTG01S,District 2022 Class Size: Grade 1     - # Students
+64,DISTPROF,DPCTG01A,District 2022 Class Size: Grade 1     - Avg Size
+65,DISTPROF,DPCTG02C,District 2022 Class Size: Grade 2     - # Classes
+66,DISTPROF,DPCTG02S,District 2022 Class Size: Grade 2     - # Students
+67,DISTPROF,DPCTG02A,District 2022 Class Size: Grade 2     - Avg Size
+68,DISTPROF,DPCTG03C,District 2022 Class Size: Grade 3     - # Classes
+69,DISTPROF,DPCTG03S,District 2022 Class Size: Grade 3     - # Students
+70,DISTPROF,DPCTG03A,District 2022 Class Size: Grade 3     - Avg Size
+71,DISTPROF,DPCTG04C,District 2022 Class Size: Grade 4     - # Classes
+72,DISTPROF,DPCTG04S,District 2022 Class Size: Grade 4     - # Students
+73,DISTPROF,DPCTG04A,District 2022 Class Size: Grade 4     - Avg Size
+74,DISTPROF,DPCTG05C,District 2022 Class Size: Grade 5     - # Classes
+75,DISTPROF,DPCTG05S,District 2022 Class Size: Grade 5     - # Students
+76,DISTPROF,DPCTG05A,District 2022 Class Size: Grade 5     - Avg Size
+77,DISTPROF,DPCTG06C,District 2022 Class Size: Grade 6     - # Classes
+78,DISTPROF,DPCTG06S,District 2022 Class Size: Grade 6     - # Students
+79,DISTPROF,DPCTG06A,District 2022 Class Size: Grade 6     - Avg Size
+80,DISTPROF,DPCTGKGC,District 2022 Class Size: Kindergarten- # Classes
+81,DISTPROF,DPCTGKGS,District 2022 Class Size: Kindergarten- # Students
+82,DISTPROF,DPCTGKGA,District 2022 Class Size: Kindergarten- Avg Size
+83,DISTPROF,DPCTGMEC,District 2022 Class Size: Mixed Elem. - # Classes
+84,DISTPROF,DPCTGMES,District 2022 Class Size: Mixed Elem. - # Students
+85,DISTPROF,DPCTGMEA,District 2022 Class Size: Mixed Elem. - Avg Size
+86,DISTPROF,DPCTENGC,District 2022 Class Size: Sec English - # Classes
+87,DISTPROF,DPCTENGS,District 2022 Class Size: Sec English - # Students
+88,DISTPROF,DPCTENGA,District 2022 Class Size: Sec English - Avg Size
+89,DISTPROF,DPCTFLAC,District 2022 Class Size: Sec For Lng - # Classes
+90,DISTPROF,DPCTFLAS,District 2022 Class Size: Sec For Lng - # Students
+91,DISTPROF,DPCTFLAA,District 2022 Class Size: Sec For Lng - Avg Size
+92,DISTPROF,DPCTMATC,District 2022 Class Size: Sec Math    - # Classes
+93,DISTPROF,DPCTMATS,District 2022 Class Size: Sec Math    - # Students
+94,DISTPROF,DPCTMATA,District 2022 Class Size: Sec Math    - Avg Size
+95,DISTPROF,DPCTSCIC,District 2022 Class Size: Sec Sci     - # Classes
+96,DISTPROF,DPCTSCIS,District 2022 Class Size: Sec Sci     - # Students
+97,DISTPROF,DPCTSCIA,District 2022 Class Size: Sec Sci     - Avg Size
+98,DISTPROF,DPCTSOCC,District 2022 Class Size: Sec Soc Stud- # Classes
+99,DISTPROF,DPCTSOCS,District 2022 Class Size: Sec Soc Stud- # Students
+100,DISTPROF,DPCTSOCA,District 2022 Class Size: Sec Soc Stud- Avg Size
+101,DISTPROF,DPSAMIFC,District 2022 Staff: All Staff Minority Full Time Equiv Count
+102,DISTPROF,DPSAMIFP,District 2022 Staff: All Staff Minority Full Time Equiv Percent
+103,DISTPROF,DPSATOFC,District 2022 Staff: All Staff Total Full Time Equiv Count
+104,DISTPROF,DPSLFTEC,District 2022 Staff: Assistant Principal Count
+105,DISTPROF,DPSLEXPA,District 2022 Staff: Assistant Principal Experience Average
+106,DISTPROF,DPSLEXPT,District 2022 Staff: Assistant Principal Experience Total
+107,DISTPROF,DPSLTENA,District 2022 Staff: Assistant Principal Tenure Average
+108,DISTPROF,DPSLTENT,District 2022 Staff: Assistant Principal Tenure Total
+109,DISTPROF,DPSXTOFC,District 2022 Staff: Auxiliary Total Full Time Equiv Count
+110,DISTPROF,DPSXTOFP,District 2022 Staff: Auxiliary Total Full Time Equiv Percent
+111,DISTPROF,DPSCTOSA,District 2022 Staff: Central Admin Total Base Salary Average
+112,DISTPROF,DPSCTOST,District 2022 Staff: Central Admin Total Base Salary Total
+113,DISTPROF,DPSCTOFC,District 2022 Staff: Central Admin Total Full Time Equiv Count
+114,DISTPROF,DPSCTOFP,District 2022 Staff: Central Admin Total Full Time Equiv Percent
+115,DISTPROF,DPSOTOFC,District 2022 Staff: Contract Serv Total Full Time Equiv Count
+116,DISTPROF,DPSRTOFC,District 2022 Staff: Counselor Total Full Time Equiv Count
+117,DISTPROF,DPSRTOPC,District 2022 Staff: Counselor Total Part Time Equiv Count
+118,DISTPROF,DPSETOFC,District 2022 Staff: Educ Aide Total Full Time Equiv Count
+119,DISTPROF,DPSETOFP,District 2022 Staff: Educ Aide Total Full Time Equiv Percent
+120,DISTPROF,DPSBTOFC,District 2022 Staff: Librarian Total Full Time Equiv Count
+121,DISTPROF,DPSBTOPC,District 2022 Staff: Librarian Total Part Time Equiv Count
+122,DISTPROF,DPSAINHP,District 2022 Staff: Percent Of Instructional Hours
+123,DISTPROF,DPSHFTEC,District 2022 Staff: Principal Count
+124,DISTPROF,DPSHEXPA,District 2022 Staff: Principal Experience Average
+125,DISTPROF,DPSHEXPT,District 2022 Staff: Principal Experience Total
+126,DISTPROF,DPSHTENA,District 2022 Staff: Principal Tenure Average
+127,DISTPROF,DPSHTENT,District 2022 Staff: Principal Tenure Total
+128,DISTPROF,DPSPTOFC,District 2022 Staff: Professional Total Full Time Equiv Count
+129,DISTPROF,DPSPTOFP,District 2022 Staff: Professional Total Full Time Equiv Percent
+130,DISTPROF,DPSXCOFC,District 2022 Staff: SSA Auxiliary Staff Full Time Equiv Count
+131,DISTPROF,DPSECOFC,District 2022 Staff: SSA Educational Aides Full Time Equiv Count
+132,DISTPROF,DPSPCOFC,District 2022 Staff: SSA Professional Staff Full Time Equiv Count
+133,DISTPROF,DPSSTOSA,District 2022 Staff: School Admin Total Base Salary Average
+134,DISTPROF,DPSSTOST,District 2022 Staff: School Admin Total Base Salary Total
+135,DISTPROF,DPSSTOFC,District 2022 Staff: School Admin Total Full Time Equiv Count
+136,DISTPROF,DPSSTOFP,District 2022 Staff: School Admin Total Full Time Equiv Percent
+137,DISTPROF,DPSUTOSA,District 2022 Staff: Support Total Base Salary Average
+138,DISTPROF,DPSUTOST,District 2022 Staff: Support Total Base Salary Total
+139,DISTPROF,DPSUTOFC,District 2022 Staff: Support Total Full Time Equiv Count
+140,DISTPROF,DPSUTOFP,District 2022 Staff: Support Total Full Time Equiv Percent
+141,DISTPROF,DPST01SA,District 2022 Staff: Teacher 1-5 Years Base Salary Average
+142,DISTPROF,DPST01ST,District 2022 Staff: Teacher 1-5 Years Base Salary Total
+143,DISTPROF,DPST01FC,District 2022 Staff: Teacher 1-5 Years Full Time Equiv Count
+144,DISTPROF,DPST01FP,District 2022 Staff: Teacher 1-5 Years Full Time Equiv Percent
+145,DISTPROF,DPST11SA,District 2022 Staff: Teacher 11-20 Years Base Salary Average
+146,DISTPROF,DPST11ST,District 2022 Staff: Teacher 11-20 Years Base Salary Total
+147,DISTPROF,DPST11FC,District 2022 Staff: Teacher 11-20 Years Full Time Equiv Count
+148,DISTPROF,DPST11FP,District 2022 Staff: Teacher 11-20 Years Full Time Equiv Percent
+149,DISTPROF,DPST21SA,District 2022 Staff: Teacher 21-30 Years Base Salary Average
+150,DISTPROF,DPST21ST,District 2022 Staff: Teacher 21-30 Years Base Salary Total
+151,DISTPROF,DPST21FC,District 2022 Staff: Teacher 21-30 Years Full Time Equiv Count
+152,DISTPROF,DPST21FP,District 2022 Staff: Teacher 21-30 Years Full Time Equiv Percent
+153,DISTPROF,DPST06SA,District 2022 Staff: Teacher 6-10 Years Base Salary Average
+154,DISTPROF,DPST06ST,District 2022 Staff: Teacher 6-10 Years Base Salary Total
+155,DISTPROF,DPST06FC,District 2022 Staff: Teacher 6-10 Years Full Time Equiv Count
+156,DISTPROF,DPST06FP,District 2022 Staff: Teacher 6-10 Years Full Time Equiv Percent
+157,DISTPROF,DPST30SA,District 2022 Staff: Teacher > 30 Years Base Salary Average
+158,DISTPROF,DPST30ST,District 2022 Staff: Teacher > 30 Years Base Salary Total
+159,DISTPROF,DPST30FC,District 2022 Staff: Teacher > 30 Years Full Time Equiv Count
+160,DISTPROF,DPST30FP,District 2022 Staff: Teacher > 30 Years Full Time Equiv Percent
+161,DISTPROF,DPSTBLFC,District 2022 Staff: Teacher African American Full Time Equiv Count
+162,DISTPROF,DPSTBLFP,District 2022 Staff: Teacher African American Full Time Equiv Percent
+163,DISTPROF,DPSTINFC,District 2022 Staff: Teacher American Indian Full Time Equiv Count
+164,DISTPROF,DPSTINFP,District 2022 Staff: Teacher American Indian Full Time Equiv Percent
+165,DISTPROF,DPSTASFC,District 2022 Staff: Teacher Asian Full Time Equiv Count
+166,DISTPROF,DPSTASFP,District 2022 Staff: Teacher Asian Full Time Equiv Percent
+167,DISTPROF,DPSTBAFC,District 2022 Staff: Teacher BA Degree Full Time Equiv Count
+168,DISTPROF,DPSTBAFP,District 2022 Staff: Teacher BA Degree Full Time Equiv Percent
+169,DISTPROF,DPST00SA,District 2022 Staff: Teacher Beginning Base Salary Average
+170,DISTPROF,DPST00ST,District 2022 Staff: Teacher Beginning Base Salary Total
+171,DISTPROF,DPST00FC,District 2022 Staff: Teacher Beginning Full Time Equiv Count
+172,DISTPROF,DPST00FP,District 2022 Staff: Teacher Beginning Full Time Equiv Percent
+173,DISTPROF,DPSTBIFC,District 2022 Staff: Teacher Bilingual Program Full Time Equiv Count
+174,DISTPROF,DPSTBIFP,District 2022 Staff: Teacher Bilingual Program Full Time Equiv Percent
+175,DISTPROF,DPSTVOFC,District 2022 Staff: Teacher Career & Technical Prgms Full Time Equiv Count
+176,DISTPROF,DPSTVOFP,District 2022 Staff: Teacher Career & Technical Prgms Full Time Equiv Percent
+177,DISTPROF,DPSTCOFC,District 2022 Staff: Teacher Compensatory Program Full Time Equiv Count
+178,DISTPROF,DPSTCOFP,District 2022 Staff: Teacher Compensatory Program Full Time Equiv Percent
+179,DISTPROF,DPSTEXPA,District 2022 Staff: Teacher Experience Average
+180,DISTPROF,DPSTEXPT,District 2022 Staff: Teacher Experience Total
+181,DISTPROF,DPSTFEFC,District 2022 Staff: Teacher Female Full Time Equiv Count
+182,DISTPROF,DPSTFEFP,District 2022 Staff: Teacher Female Full Time Equiv Percent
+183,DISTPROF,DPSTGIFC,District 2022 Staff: Teacher Gifted & Talented Program Full Time Equiv Count
+184,DISTPROF,DPSTGIFP,District 2022 Staff: Teacher Gifted & Talented Program Full Time Equiv Percent
+185,DISTPROF,DPSTHIFC,District 2022 Staff: Teacher Hispanic Full Time Equiv Count
+186,DISTPROF,DPSTHIFP,District 2022 Staff: Teacher Hispanic Full Time Equiv Percent
+187,DISTPROF,DPSTMSFC,District 2022 Staff: Teacher MS Degree Full Time Equiv Count
+188,DISTPROF,DPSTMSFP,District 2022 Staff: Teacher MS Degree Full Time Equiv Percent
+189,DISTPROF,DPSTMAFC,District 2022 Staff: Teacher Male Full Time Equiv Count
+190,DISTPROF,DPSTMAFP,District 2022 Staff: Teacher Male Full Time Equiv Percent
+191,DISTPROF,DPSTNOFC,District 2022 Staff: Teacher No Degree Full Time Equiv Count
+192,DISTPROF,DPSTNOFP,District 2022 Staff: Teacher No Degree Full Time Equiv Percent
+193,DISTPROF,DPSTOPFC,District 2022 Staff: Teacher Other Full Time Equiv Count
+194,DISTPROF,DPSTOPFP,District 2022 Staff: Teacher Other Full Time Equiv Percent
+195,DISTPROF,DPSTPHFC,District 2022 Staff: Teacher PH Degree Full Time Equiv Count
+196,DISTPROF,DPSTPHFP,District 2022 Staff: Teacher PH Degree Full Time Equiv Percent
+197,DISTPROF,DPSTPIFC,District 2022 Staff: Teacher Pacific Islander Full Time Equiv Count
+198,DISTPROF,DPSTPIFP,District 2022 Staff: Teacher Pacific Islander Full Time Equiv Percent
+199,DISTPROF,DPSTREFC,District 2022 Staff: Teacher Regular Program Full Time Equiv Count
+200,DISTPROF,DPSTREFP,District 2022 Staff: Teacher Regular Program Full Time Equiv Percent
+201,DISTPROF,DPSTSPFC,District 2022 Staff: Teacher Special Education Full Time Equiv Count
+202,DISTPROF,DPSTSPFP,District 2022 Staff: Teacher Special Education Full Time Equiv Percent
+203,DISTPROF,DPSTKIDR,District 2022 Staff: Teacher Student Ratio
+204,DISTPROF,DPSTTENA,District 2022 Staff: Teacher Tenure Average
+205,DISTPROF,DPSTTENT,District 2022 Staff: Teacher Tenure Total
+206,DISTPROF,DPSTTOSA,District 2022 Staff: Teacher Total Base Salary Average
+207,DISTPROF,DPSTTOST,District 2022 Staff: Teacher Total Base Salary Total
+208,DISTPROF,DPSTFTEC,District 2022 Staff: Teacher Total Full Time Equiv - Experience Calculation
+209,DISTPROF,DPSTTOFC,District 2022 Staff: Teacher Total Full Time Equiv Count
+210,DISTPROF,DPSTTOFP,District 2022 Staff: Teacher Total Full Time Equiv Percent
+211,DISTPROF,DPSTURND,District 2022 Staff: Teacher Turnover Denominator
+212,DISTPROF,DPSTURNN,District 2022 Staff: Teacher Turnover Numerator
+213,DISTPROF,DPSTURNR,District 2022 Staff: Teacher Turnover Ratio
+214,DISTPROF,DPSTTWFC,District 2022 Staff: Teacher Two or more races Full Time Equiv Count
+215,DISTPROF,DPSTTWFP,District 2022 Staff: Teacher Two or more races Full Time Equiv Percent
+216,DISTPROF,DPSTWHFC,District 2022 Staff: Teacher White Full Time Equiv Count
+217,DISTPROF,DPSTWHFP,District 2022 Staff: Teacher White Full Time Equiv Percent
+218,DISTPROF,DPNTG01C,District 2022 Student Enrollment: 01 Count
+219,DISTPROF,DPNTG01P,District 2022 Student Enrollment: 01 Percent
+220,DISTPROF,DPNTG02C,District 2022 Student Enrollment: 02 Count
+221,DISTPROF,DPNTG02P,District 2022 Student Enrollment: 02 Percent
+222,DISTPROF,DPNTG03C,District 2022 Student Enrollment: 03 Count
+223,DISTPROF,DPNTG03P,District 2022 Student Enrollment: 03 Percent
+224,DISTPROF,DPNTG04C,District 2022 Student Enrollment: 04 Count
+225,DISTPROF,DPNTG04P,District 2022 Student Enrollment: 04 Percent
+226,DISTPROF,DPNTG05C,District 2022 Student Enrollment: 05 Count
+227,DISTPROF,DPNTG05P,District 2022 Student Enrollment: 05 Percent
+228,DISTPROF,DPNTG06C,District 2022 Student Enrollment: 06 Count
+229,DISTPROF,DPNTG06P,District 2022 Student Enrollment: 06 Percent
+230,DISTPROF,DPNTG07C,District 2022 Student Enrollment: 07 Count
+231,DISTPROF,DPNTG07P,District 2022 Student Enrollment: 07 Percent
+232,DISTPROF,DPNTG08C,District 2022 Student Enrollment: 08 Count
+233,DISTPROF,DPNTG08P,District 2022 Student Enrollment: 08 Percent
+234,DISTPROF,DPNTG09C,District 2022 Student Enrollment: 09 Count
+235,DISTPROF,DPNTG09P,District 2022 Student Enrollment: 09 Percent
+236,DISTPROF,DPNTG10C,District 2022 Student Enrollment: 10 Count
+237,DISTPROF,DPNTG10P,District 2022 Student Enrollment: 10 Percent
+238,DISTPROF,DPNTG11C,District 2022 Student Enrollment: 11 Count
+239,DISTPROF,DPNTG11P,District 2022 Student Enrollment: 11 Percent
+240,DISTPROF,DPNTG12C,District 2022 Student Enrollment: 12 Count
+241,DISTPROF,DPNTG12P,District 2022 Student Enrollment: 12 Percent
+242,DISTPROF,DPNTBLAC,District 2022 Student Enrollment: African American Count
+243,DISTPROF,DPNTBLAP,District 2022 Student Enrollment: African American Percent
+244,DISTPROF,DPNTALLC,District 2022 Student Enrollment: All Students Count
+245,DISTPROF,DPNTALLP,District 2022 Student Enrollment: All Students Percent
+246,DISTPROF,DPNTINDC,District 2022 Student Enrollment: American Indian Count
+247,DISTPROF,DPNTINDP,District 2022 Student Enrollment: American Indian Percent
+248,DISTPROF,DPNTASIC,District 2022 Student Enrollment: Asian Count
+249,DISTPROF,DPNTASIP,District 2022 Student Enrollment: Asian Percent
+250,DISTPROF,DPNTRSKC,District 2022 Student Enrollment: At Risk Count
+251,DISTPROF,DPNTRSKP,District 2022 Student Enrollment: At Risk Percent
+252,DISTPROF,DPNTBILC,District 2022 Student Enrollment: Bilingual/ESL Count
+253,DISTPROF,DPNTBILP,District 2022 Student Enrollment: Bilingual/ESL Percent
+254,DISTPROF,DPNTDSLC,District 2022 Student Enrollment: Dyslexia Count
+255,DISTPROF,DPNTDSLP,District 2022 Student Enrollment: Dyslexia Percent
+256,DISTPROF,DPNTGEEC,District 2022 Student Enrollment: EE Count
+257,DISTPROF,DPNTGEEP,District 2022 Student Enrollment: EE Percent
+258,DISTPROF,DPNTLEPC,District 2022 Student Enrollment: EL Count
+259,DISTPROF,DPNTLEPP,District 2022 Student Enrollment: EL Percent
+260,DISTPROF,DPNTECOC,District 2022 Student Enrollment: Econ Disadv Count
+261,DISTPROF,DPNTECOP,District 2022 Student Enrollment: Econ Disadv Percent
+262,DISTPROF,DPNTFEMC,District 2022 Student Enrollment: Female Count
+263,DISTPROF,DPNTFEMP,District 2022 Student Enrollment: Female Percent
+264,DISTPROF,DPNTFOSC,District 2022 Student Enrollment: Foster Care Count
+265,DISTPROF,DPNTFOSP,District 2022 Student Enrollment: Foster Care Percent
+266,DISTPROF,DPNTGIFC,District 2022 Student Enrollment: Gifted & Talented Count
+267,DISTPROF,DPNTGIFP,District 2022 Student Enrollment: Gifted & Talented Percent
+268,DISTPROF,DPNTHISC,District 2022 Student Enrollment: Hispanic Count
+269,DISTPROF,DPNTHISP,District 2022 Student Enrollment: Hispanic Percent
+270,DISTPROF,DPNTHOMC,District 2022 Student Enrollment: Homeless Count
+271,DISTPROF,DPNTHOMP,District 2022 Student Enrollment: Homeless Percent
+272,DISTPROF,DPNTIMMC,District 2022 Student Enrollment: Immigrant Count
+273,DISTPROF,DPNTIMMP,District 2022 Student Enrollment: Immigrant Percent
+274,DISTPROF,DPNTGKNC,District 2022 Student Enrollment: KG Count
+275,DISTPROF,DPNTGKNP,District 2022 Student Enrollment: KG Percent
+276,DISTPROF,DPNTMALC,District 2022 Student Enrollment: Male Count
+277,DISTPROF,DPNTMALP,District 2022 Student Enrollment: Male Percent
+278,DISTPROF,DPNTMIGC,District 2022 Student Enrollment: Migrant Count
+279,DISTPROF,DPNTMIGP,District 2022 Student Enrollment: Migrant Percent
+280,DISTPROF,DPNTMLCC,District 2022 Student Enrollment: Military-Connected Count
+281,DISTPROF,DPNTMLCP,District 2022 Student Enrollment: Military-Connected Percent
+282,DISTPROF,DPNTNEDC,District 2022 Student Enrollment: Non-Educationally Disadv Count
+283,DISTPROF,DPNTNEDP,District 2022 Student Enrollment: Non-Educationally Disadv Percent
+284,DISTPROF,DPNTGPKC,District 2022 Student Enrollment: PK Count
+285,DISTPROF,DPNTGPKP,District 2022 Student Enrollment: PK Percent
+286,DISTPROF,DPNTPCIC,District 2022 Student Enrollment: Pacific Islander Count
+287,DISTPROF,DPNTPCIP,District 2022 Student Enrollment: Pacific Islander Percent
+288,DISTPROF,DPNT504C,District 2022 Student Enrollment: Section 504 Count
+289,DISTPROF,DPNT504P,District 2022 Student Enrollment: Section 504 Percent
+290,DISTPROF,DPNTSPEC,District 2022 Student Enrollment: Special Ed Count
+291,DISTPROF,DPNTSPEP,District 2022 Student Enrollment: Special Ed Percent
+292,DISTPROF,DPNTTT1C,District 2022 Student Enrollment: Title I Count
+293,DISTPROF,DPNTTT1P,District 2022 Student Enrollment: Title I Percent
+294,DISTPROF,DPNTTWOC,District 2022 Student Enrollment: Two or More Races Count
+295,DISTPROF,DPNTTWOP,District 2022 Student Enrollment: Two or More Races Percent
+296,DISTPROF,DPNTWHIC,District 2022 Student Enrollment: White Count
+297,DISTPROF,DPNTWHIP,District 2022 Student Enrollment: White Percent
+298,DISTPROF,DPETG01C,District 2022 Student Membership: 01 Count
+299,DISTPROF,DPETG01P,District 2022 Student Membership: 01 Percent
+300,DISTPROF,DPETG02C,District 2022 Student Membership: 02 Count
+301,DISTPROF,DPETG02P,District 2022 Student Membership: 02 Percent
+302,DISTPROF,DPETG03C,District 2022 Student Membership: 03 Count
+303,DISTPROF,DPETG03P,District 2022 Student Membership: 03 Percent
+304,DISTPROF,DPETG04C,District 2022 Student Membership: 04 Count
+305,DISTPROF,DPETG04P,District 2022 Student Membership: 04 Percent
+306,DISTPROF,DPETG05C,District 2022 Student Membership: 05 Count
+307,DISTPROF,DPETG05P,District 2022 Student Membership: 05 Percent
+308,DISTPROF,DPETG06C,District 2022 Student Membership: 06 Count
+309,DISTPROF,DPETG06P,District 2022 Student Membership: 06 Percent
+310,DISTPROF,DPETG07C,District 2022 Student Membership: 07 Count
+311,DISTPROF,DPETG07P,District 2022 Student Membership: 07 Percent
+312,DISTPROF,DPETG08C,District 2022 Student Membership: 08 Count
+313,DISTPROF,DPETG08P,District 2022 Student Membership: 08 Percent
+314,DISTPROF,DPETG09C,District 2022 Student Membership: 09 Count
+315,DISTPROF,DPETG09P,District 2022 Student Membership: 09 Percent
+316,DISTPROF,DPETG10C,District 2022 Student Membership: 10 Count
+317,DISTPROF,DPETG10P,District 2022 Student Membership: 10 Percent
+318,DISTPROF,DPETG11C,District 2022 Student Membership: 11 Count
+319,DISTPROF,DPETG11P,District 2022 Student Membership: 11 Percent
+320,DISTPROF,DPETG12C,District 2022 Student Membership: 12 Count
+321,DISTPROF,DPETG12P,District 2022 Student Membership: 12 Percent
+322,DISTPROF,DPETATTC,District 2022 Student Membership: 2020-21 Attrition All Students Count
+323,DISTPROF,DPETATTD,District 2022 Student Membership: 2020-21 Attrition All Students Denominator
+324,DISTPROF,DPETATTP,District 2022 Student Membership: 2020-21 Attrition All Students Percent
+325,DISTPROF,DPEMBLAC,District 2022 Student Membership: 2021 Mobility African American Count
+326,DISTPROF,DPEMBLAP,District 2022 Student Membership: 2021 Mobility African American Percent
+327,DISTPROF,DPEMALLC,District 2022 Student Membership: 2021 Mobility All Students Count
+328,DISTPROF,DPEMALLT,District 2022 Student Membership: 2021 Mobility All Students Denominator
+329,DISTPROF,DPEMALLP,District 2022 Student Membership: 2021 Mobility All Students Percent
+330,DISTPROF,DPEMINDC,District 2022 Student Membership: 2021 Mobility American Indian Count
+331,DISTPROF,DPEMINDP,District 2022 Student Membership: 2021 Mobility American Indian Percent
+332,DISTPROF,DPEMASIC,District 2022 Student Membership: 2021 Mobility Asian Count
+333,DISTPROF,DPEMASIP,District 2022 Student Membership: 2021 Mobility Asian Percent
+334,DISTPROF,DPEMLEPC,District 2022 Student Membership: 2021 Mobility EB/EL Count
+335,DISTPROF,DPEMLEPT,District 2022 Student Membership: 2021 Mobility EB/EL Denominator
+336,DISTPROF,DPEMLEPP,District 2022 Student Membership: 2021 Mobility EB/EL Percent
+337,DISTPROF,DPEMECOC,District 2022 Student Membership: 2021 Mobility Econ Disadv Count
+338,DISTPROF,DPEMECOT,District 2022 Student Membership: 2021 Mobility Econ Disadv Denominator
+339,DISTPROF,DPEMECOP,District 2022 Student Membership: 2021 Mobility Econ Disadv Percent
+340,DISTPROF,DPEMHISC,District 2022 Student Membership: 2021 Mobility Hispanic Count
+341,DISTPROF,DPEMHISP,District 2022 Student Membership: 2021 Mobility Hispanic Percent
+342,DISTPROF,DPEMPCIC,District 2022 Student Membership: 2021 Mobility Pacific Islander Count
+343,DISTPROF,DPEMPCIP,District 2022 Student Membership: 2021 Mobility Pacific Islander Percent
+344,DISTPROF,DPEMSPEC,District 2022 Student Membership: 2021 Mobility Special Ed Count
+345,DISTPROF,DPEMSPET,District 2022 Student Membership: 2021 Mobility Special Ed Denominator
+346,DISTPROF,DPEMSPEP,District 2022 Student Membership: 2021 Mobility Special Ed Percent
+347,DISTPROF,DPEMTWOC,District 2022 Student Membership: 2021 Mobility Two or More Races Count
+348,DISTPROF,DPEMTWOP,District 2022 Student Membership: 2021 Mobility Two or More Races Percent
+349,DISTPROF,DPEMWHIC,District 2022 Student Membership: 2021 Mobility White Count
+350,DISTPROF,DPEMWHIP,District 2022 Student Membership: 2021 Mobility White Percent
+351,DISTPROF,DPETBLAC,District 2022 Student Membership: African American Count
+352,DISTPROF,DPETBLAP,District 2022 Student Membership: African American Percent
+353,DISTPROF,DPETALLC,District 2022 Student Membership: All Students Count
+354,DISTPROF,DPETINDC,District 2022 Student Membership: American Indian Count
+355,DISTPROF,DPETINDP,District 2022 Student Membership: American Indian Percent
+356,DISTPROF,DPETASIC,District 2022 Student Membership: Asian Count
+357,DISTPROF,DPETASIP,District 2022 Student Membership: Asian Percent
+358,DISTPROF,DPETRSKC,District 2022 Student Membership: At Risk Count
+359,DISTPROF,DPETRSKP,District 2022 Student Membership: At Risk Percent
+360,DISTPROF,DPETSAUC,District 2022 Student Membership: Autism Count
+361,DISTPROF,DPETSAUP,District 2022 Student Membership: Autism Percent
+362,DISTPROF,DPETSBHC,District 2022 Student Membership: Behavioral Disabilities Count
+363,DISTPROF,DPETSBHP,District 2022 Student Membership: Behavioral Disabilities Percent
+364,DISTPROF,DPETBILC,District 2022 Student Membership: Bilingual/ESL Count
+365,DISTPROF,DPETBILP,District 2022 Student Membership: Bilingual/ESL Percent
+366,DISTPROF,DPETDSLC,District 2022 Student Membership: Dyslexia Count
+367,DISTPROF,DPETDSLP,District 2022 Student Membership: Dyslexia Percent
+368,DISTPROF,DPETLEPC,District 2022 Student Membership: EB/EL Count
+369,DISTPROF,DPETLEPP,District 2022 Student Membership: EB/EL Percent
+370,DISTPROF,DPETGEEC,District 2022 Student Membership: EE Count
+371,DISTPROF,DPETGEEP,District 2022 Student Membership: EE Percent
+372,DISTPROF,DPETECOC,District 2022 Student Membership: Econ Disadv Count
+373,DISTPROF,DPETECOP,District 2022 Student Membership: Econ Disadv Percent
+374,DISTPROF,DPETFEMC,District 2022 Student Membership: Female Count
+375,DISTPROF,DPETFEMP,District 2022 Student Membership: Female Percent
+376,DISTPROF,DPETFOSC,District 2022 Student Membership: Foster Care Count
+377,DISTPROF,DPETFOSP,District 2022 Student Membership: Foster Care Percent
+378,DISTPROF,DPETGIFC,District 2022 Student Membership: Gifted & Talented Count
+379,DISTPROF,DPETGIFP,District 2022 Student Membership: Gifted & Talented Percent
+380,DISTPROF,DPETHISC,District 2022 Student Membership: Hispanic Count
+381,DISTPROF,DPETHISP,District 2022 Student Membership: Hispanic Percent
+382,DISTPROF,DPETHOMC,District 2022 Student Membership: Homeless Count
+383,DISTPROF,DPETHOMP,District 2022 Student Membership: Homeless Percent
+384,DISTPROF,DPETIMMC,District 2022 Student Membership: Immigrant Count
+385,DISTPROF,DPETIMMP,District 2022 Student Membership: Immigrant Percent
+386,DISTPROF,DPETSINC,District 2022 Student Membership: Intellectual Disabilities Count
+387,DISTPROF,DPETSINP,District 2022 Student Membership: Intellectual Disabilities Percent
+388,DISTPROF,DPETGKNC,District 2022 Student Membership: KG Count
+389,DISTPROF,DPETGKNP,District 2022 Student Membership: KG Percent
+390,DISTPROF,DPETMALC,District 2022 Student Membership: Male Count
+391,DISTPROF,DPETMALP,District 2022 Student Membership: Male Percent
+392,DISTPROF,DPETMIGC,District 2022 Student Membership: Migrant Count
+393,DISTPROF,DPETMIGP,District 2022 Student Membership: Migrant Percent
+394,DISTPROF,DPETMLCC,District 2022 Student Membership: Military-Connected Count
+395,DISTPROF,DPETMLCP,District 2022 Student Membership: Military-Connected Percent
+396,DISTPROF,DPETSNOC,District 2022 Student Membership: Non-Categorical Early Childhood Count
+397,DISTPROF,DPETSNOP,District 2022 Student Membership: Non-Categorical Early Childhood Percent
+398,DISTPROF,DPETNEDC,District 2022 Student Membership: Non-Educationally Disadv Count
+399,DISTPROF,DPETNEDP,District 2022 Student Membership: Non-Educationally Disadv Percent
+400,DISTPROF,DPETGPKC,District 2022 Student Membership: PK Count
+401,DISTPROF,DPETGPKP,District 2022 Student Membership: PK Percent
+402,DISTPROF,DPETPCIC,District 2022 Student Membership: Pacific Islander Count
+403,DISTPROF,DPETPCIP,District 2022 Student Membership: Pacific Islander Percent
+404,DISTPROF,DPETSPHC,District 2022 Student Membership: Physical Disabilities Count
+405,DISTPROF,DPETSPHP,District 2022 Student Membership: Physical Disabilities Percent
+406,DISTPROF,DPET504C,District 2022 Student Membership: Section 504 Count
+407,DISTPROF,DPET504P,District 2022 Student Membership: Section 504 Percent
+408,DISTPROF,DPETSPEC,District 2022 Student Membership: Special Ed Count
+409,DISTPROF,DPETSPEP,District 2022 Student Membership: Special Ed Percent
+410,DISTPROF,DPETTT1C,District 2022 Student Membership: Title I Count
+411,DISTPROF,DPETTT1P,District 2022 Student Membership: Title I Percent
+412,DISTPROF,DPETSIMC,District 2022 Student Membership: Total Students with Disabilities Count
+413,DISTPROF,DPETTWOC,District 2022 Student Membership: Two or More Races Count
+414,DISTPROF,DPETTWOP,District 2022 Student Membership: Two or More Races Percent
+415,DISTPROF,DPETWHIC,District 2022 Student Membership: White Count
+416,DISTPROF,DPETWHIP,District 2022 Student Membership: White Percent
+417,DISTPROF,DISTNAME,District Name
