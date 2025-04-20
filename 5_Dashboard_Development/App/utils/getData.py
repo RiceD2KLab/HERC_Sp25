@@ -43,12 +43,12 @@ def load_data_from_github(year):
     """
     base_url = f"https://raw.githubusercontent.com/RiceD2KLab/HERC_Sp25/refs/heads/main/5_Dashboard_Development/data/{year}"
     csv_url = f"{base_url}/merged_{year}.csv"
-    xlsx_url = f"{base_url}/TAPR_district_adv_{year}.xlsx"
+    key_url = f"{base_url}/column_key_{year}.csv"
     print(csv_url)
     try:
         df = pd.read_csv(csv_url)
         print(df)
-        column_key = pd.read_excel(xlsx_url, sheet_name='distprof')
+        column_key = pd.read_csv(key_url)
     except Exception as e:
         print(f"Data for the year {year} does not exist or cannot be accessed")
         return None, None

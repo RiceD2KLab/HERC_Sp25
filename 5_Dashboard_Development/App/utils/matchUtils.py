@@ -138,18 +138,15 @@ def plot_texas_districts(neighbors, df, level):
         ).add_to(m)
 
         return m
-    if level == 'district': 
-        # Load the Texas counties from the bundled file
+    if level == 'district':
         try:
-            geojson = districtgeo
+            geojson = districtgeo.copy()
         except Exception as e:
-            print(f"Error loading Texas counties: {e}")
-            print("Please ensure the texas_counties.geojson file is present in the 'data' folder.")
+            print(f"Error loading district GeoJSON: {e}")
             return None
+
         texas_bounds = [[25.84, -106.65], [36.5, -93.51]]
 
-
-        # Ensure consistent types
         df['DISTRICT_id'] = df['DISTRICT_id'].astype(str)
         neighbors = neighbors.copy().reset_index(drop=True)
         neighbors['DISTRICT_id'] = neighbors['DISTRICT_id'].astype(str)
@@ -168,37 +165,39 @@ def plot_texas_districts(neighbors, df, level):
             return
         input_dist = input_rows['DISTNAME'].iloc[0]
 
-        # Select and categorize districts
+        # Set group labels
         selected_districts = df[df['DISTRICT_id'].isin(district_ids)][['DISTRICT_id', 'DISTNAME']].dropna().reset_index(drop=True)
-        neighbors_df = selected_districts[selected_districts['DISTNAME'] != input_dist].copy()
-        input_district_df = selected_districts[selected_districts['DISTNAME'] == input_dist].copy()
-        neighbors_df['group'] = 'Neighboring District'
-        input_district_df['group'] = 'Input District'
-        ordered_districts = pd.concat([input_district_df, neighbors_df]).reset_index(drop=True)
-                # Assign color
-        def get_color(cat):
-            return {"Input District": "blue", "Neighboring District": "red", "Other": "lightgrey"}.get(cat, "lightgrey")
+        selected_districts['group'] = selected_districts['DISTNAME'].apply(
+            lambda name: 'Input District' if name == input_dist else 'Neighboring District'
+        )
 
-        district_group_map = ordered_districts.set_index('DISTRICT_id')['group']
+        # Map group info to geojson
+        district_group_map = selected_districts.set_index('DISTRICT_id')['group']
         geojson['group'] = geojson['DISTRICT_N'].map(district_group_map)
         geojson['group'] = geojson['group'].fillna("Other")
-        geojson['color'] = geojson['group'].apply(get_color)
-        # Create the Folium map, centered on Texas.
+        geojson['color'] = geojson['group'].map({
+            "Input District": "blue",
+            "Neighboring District": "red",
+            "Other": "lightgrey"
+        })
+
+        # Filter geojson to include only input + neighbors
+        filtered_geojson = geojson[geojson['group'].isin(['Input District', 'Neighboring District'])].copy()
+
+        # Create the map
         m = folium.Map(location=[31.0, -99.0], zoom_start=6, tiles="cartodbpositron", max_bounds=True)
-        
-        # Force the map view to the Texas bounds.
         m.fit_bounds(texas_bounds)
         m.options['maxBounds'] = texas_bounds
 
-        # Add the GeoJSON layer with tooltips to the map.
+        # Add GeoJson layer
         folium.GeoJson(
-            geojson.to_json(),
+            filtered_geojson.to_json(),
             style_function=lambda feature: {
-        'fillColor': get_color(feature['properties']['group']),
-        'color': 'black',
-        'weight': .25,
-        'fillOpacity': 0.7
-    },
+                'fillColor': feature['properties']['color'],
+                'color': 'black',
+                'weight': 0.25,
+                'fillOpacity': 0.7
+            },
             tooltip=folium.GeoJsonTooltip(
                 fields=["NAME", "group"],
                 aliases=["District:", "Type:"],

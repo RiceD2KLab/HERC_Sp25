@@ -90,6 +90,7 @@ def why_districts_server(input, output, session, run_result, get_inputs):
         @output(id=plot_id)
         @render_widget
         def _render(plot_id=plot_id, plot_func=plot_func):  # default args to freeze late binding
+            print("Plotting why districts...")
             result = run_result.get()
             if result is None or len(result) != 3:
                 return go.Figure().update_layout(title="Run a model to view outcomes.")
