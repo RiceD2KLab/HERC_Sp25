@@ -35,14 +35,14 @@ def generate_table(neighbors, df):
         Returns: 
             a DataFrame with district names, TEA district types, and counties of the neighbors.
         """
-        neighbor_names = neighbors['DISTNAME']
-        selected_df = df[['DISTNAME', 'TEA Description', 'CNTYNAME']]
-        selected_df.columns = ['District', 'TEA District Type', 'County']
-        for_table = selected_df[selected_df['District'].isin(neighbor_names)].copy()
-
-        for_table['District'] = [title_case_with_spaces(distname) for distname in for_table['District']]
-        for_table['County'] = [title_case_with_spaces(cty) for cty in for_table['County']]
-        return for_table
+        neighbor_ids = neighbors['DISTRICT_id']
+        selected_df = df[['DISTRICT_id', 'DISTNAME', 'TEA Description', 'CNTYNAME']]
+        selected_df.columns = ['ID', 'District', 'TEA District Type', 'County']
+        for_table = selected_df[selected_df['ID'].isin(neighbor_ids)].copy()
+        for_table2 = for_table[['District', 'TEA District Type', 'County']]
+        for_table2['District'] = [title_case_with_spaces(distname) for distname in for_table2['District']]
+        for_table2['County'] = [title_case_with_spaces(cty) for cty in for_table2['County']]
+        return for_table2
 
 
 # =============================================================================
