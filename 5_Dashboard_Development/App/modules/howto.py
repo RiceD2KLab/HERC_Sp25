@@ -48,7 +48,7 @@ def howto_ui():
                 </figure>    
                 <h3><strong>Using Understand outcomes</strong></h3>
                 <ul>
-                    <li>This page displays visualizations taht show how your selected district compares to its neighbors in terms of key outcome features. </li>
+                    <li>This page displays visualizations that show how your selected district compares to its neighbors in terms of key outcome features. </li>
                     <li>Using the "View An Outcome" dropdown, select which outcome variable you want to explore among neighbors. Make sure to toggle additional information if requested. </li>
                 </ul>   
             """) #note to add pictures here
