@@ -1,0 +1,419 @@
+,DATA,NAME,LABEL
+0,DISTPROF,DISTRICT,District Number
+1,DISTPROF,DPETDISC,District 2020 DAEP: Count
+2,DISTPROF,DPETDISD,District 2020 DAEP: Denominator
+3,DISTPROF,DPETDISP,District 2020 DAEP: Percent
+4,DISTPROF,DPFEIERP,District 2020 Finance: Instructional Expenditures Ratio
+5,DISTPROF,DB0GR20N,District 2020 Graduates: African American Count
+6,DISTPROF,DB0GR20R,District 2020 Graduates: African American Student Group %
+7,DISTPROF,DA0GR20N,District 2020 Graduates: All Students Count (including FHSP)
+8,DISTPROF,DA0GR20R,District 2020 Graduates: All Students Group %
+9,DISTPROF,DI0GR20N,District 2020 Graduates: American Indian Count
+10,DISTPROF,DI0GR20R,District 2020 Graduates: American Indian Student Group %
+11,DISTPROF,D30GR20N,District 2020 Graduates: Asian Count
+12,DISTPROF,D30GR20R,District 2020 Graduates: Asian Student Group %
+13,DISTPROF,DR0GR20N,District 2020 Graduates: At Risk Count
+14,DISTPROF,DR0GR20R,District 2020 Graduates: At Risk Student Group %
+15,DISTPROF,DL0GR20N,District 2020 Graduates: EL Count
+16,DISTPROF,DL0GR20R,District 2020 Graduates: EL Student Group %
+17,DISTPROF,DE0GR20N,District 2020 Graduates: Econ Disadv Count
+18,DISTPROF,DE0GR20R,District 2020 Graduates: Econ Disadv Student Group %
+19,DISTPROF,DA0GN20P,District 2020 Graduates: FHSP No Endorsement All Students % (Profile Only)
+20,DISTPROF,DA0GN20N,District 2020 Graduates: FHSP No Endorsement All Students Count
+21,DISTPROF,DA0GA20P,District 2020 Graduates: FHSP-DLA All Students % (Profile Only)
+22,DISTPROF,DA0GA20N,District 2020 Graduates: FHSP-DLA All Students Count
+23,DISTPROF,DA0GE20P,District 2020 Graduates: FHSP-E All Students % (Profile Only)
+24,DISTPROF,DA0GE20N,District 2020 Graduates: FHSP-E All Students Count
+25,DISTPROF,DH0GR20N,District 2020 Graduates: Hispanic Count
+26,DISTPROF,DH0GR20R,District 2020 Graduates: Hispanic Student Group %
+27,DISTPROF,DA0GM20P,District 2020 Graduates: Minimum HS PGM All Students % (Profile Only)
+28,DISTPROF,DA0GM20N,District 2020 Graduates: Minimum HS PGM All Students Count
+29,DISTPROF,D40GR20N,District 2020 Graduates: Pacific Islander Count
+30,DISTPROF,D40GR20R,District 2020 Graduates: Pacific Islander Student Group %
+31,DISTPROF,DA0GH20P,District 2020 Graduates: RHSP/DAP All Students % (Profile Only)
+32,DISTPROF,DA0GH20N,District 2020 Graduates: RHSP/DAP All Students Count
+33,DISTPROF,DS0GR20N,District 2020 Graduates: Special Ed Count
+34,DISTPROF,DS0GR20R,District 2020 Graduates: Special Ed Student Group %
+35,DISTPROF,D20GR20N,District 2020 Graduates: Two or More Races Count
+36,DISTPROF,D20GR20R,District 2020 Graduates: Two or More Races Student Group %
+37,DISTPROF,DW0GR20N,District 2020 Graduates: White Count
+38,DISTPROF,DW0GR20R,District 2020 Graduates: White Student Group %
+39,DISTPROF,DPERRA1R,District 2020 Retention: Regular Ed 01 Rate
+40,DISTPROF,DPERRA2R,District 2020 Retention: Regular Ed 02 Rate
+41,DISTPROF,DPERRA3R,District 2020 Retention: Regular Ed 03 Rate
+42,DISTPROF,DPERRA4R,District 2020 Retention: Regular Ed 04 Rate
+43,DISTPROF,DPERRA5R,District 2020 Retention: Regular Ed 05 Rate
+44,DISTPROF,DPERRA6R,District 2020 Retention: Regular Ed 06 Rate
+45,DISTPROF,DPERRA7R,District 2020 Retention: Regular Ed 07 Rate
+46,DISTPROF,DPERRA8R,District 2020 Retention: Regular Ed 08 Rate
+47,DISTPROF,DPERRA9R,District 2020 Retention: Regular Ed 09 Rate
+48,DISTPROF,DPERRAKR,District 2020 Retention: Regular Ed KG Rate
+49,DISTPROF,DPERSA1R,District 2020 Retention: Special Ed 01 Rate
+50,DISTPROF,DPERSA2R,District 2020 Retention: Special Ed 02 Rate
+51,DISTPROF,DPERSA3R,District 2020 Retention: Special Ed 03 Rate
+52,DISTPROF,DPERSA4R,District 2020 Retention: Special Ed 04 Rate
+53,DISTPROF,DPERSA5R,District 2020 Retention: Special Ed 05 Rate
+54,DISTPROF,DPERSA6R,District 2020 Retention: Special Ed 06 Rate
+55,DISTPROF,DPERSA7R,District 2020 Retention: Special Ed 07 Rate
+56,DISTPROF,DPERSA8R,District 2020 Retention: Special Ed 08 Rate
+57,DISTPROF,DPERSA9R,District 2020 Retention: Special Ed 09 Rate
+58,DISTPROF,DPERSAKR,District 2020 Retention: Special Ed KG Rate
+59,DISTPROF,DAUND20C,District 2020 Underreported Students: Count
+60,DISTPROF,DAUND20D,District 2020 Underreported Students: Gr. 7-12 Total
+61,DISTPROF,DAUND20R,District 2020 Underreported Students: Rate
+62,DISTPROF,DPNTBLAC,District 2020-21 African American Students Count
+63,DISTPROF,DPNTBLAP,District 2020-21 African American Students Percent
+64,DISTPROF,DPNTINDC,District 2020-21 American Indian Students Count
+65,DISTPROF,DPNTINDP,District 2020-21 American Indian Students Percent
+66,DISTPROF,DPNTASIC,District 2020-21 Asian Students Count
+67,DISTPROF,DPNTASIP,District 2020-21 Asian Students Percent
+68,DISTPROF,DPNTRSKC,District 2020-21 At-Risk Students Count
+69,DISTPROF,DPNTRSKP,District 2020-21 At-Risk Students Percent
+70,DISTPROF,DPNTBILC,District 2020-21 Bilingual/ESL Education Students Count
+71,DISTPROF,DPNTBILP,District 2020-21 Bilingual/ESL Education Students Percent
+72,DISTPROF,DPNTGEEC,District 2020-21 Early Childhood Education Students Count
+73,DISTPROF,DPNTGEEP,District 2020-21 Early Childhood Education Students Percent
+74,DISTPROF,DPNTECOC,District 2020-21 Economically Disadvantaged Students Count
+75,DISTPROF,DPNTECOP,District 2020-21 Economically Disadvantaged Students Percent
+76,DISTPROF,DPNTLEPC,District 2020-21 English Learners Students Count
+77,DISTPROF,DPNTLEPP,District 2020-21 English Learners Students Percent
+78,DISTPROF,DPNTFEMC,District 2020-21 Female Students Count
+79,DISTPROF,DPNTFEMP,District 2020-21 Female Students Percent
+80,DISTPROF,DPNTFOSC,District 2020-21 Foster Care Students Count
+81,DISTPROF,DPNTFOSP,District 2020-21 Foster Care Students Percent
+82,DISTPROF,DPNTGIFC,District 2020-21 Gifted & Talented Education Students Count
+83,DISTPROF,DPNTGIFP,District 2020-21 Gifted & Talented Education Students Percent
+84,DISTPROF,DPNTG01C,District 2020-21 Grade 1 Students Count
+85,DISTPROF,DPNTG01P,District 2020-21 Grade 1 Students Percent
+86,DISTPROF,DPNTG10C,District 2020-21 Grade 10 Students Count
+87,DISTPROF,DPNTG10P,District 2020-21 Grade 10 Students Percent
+88,DISTPROF,DPNTG11C,District 2020-21 Grade 11 Students Count
+89,DISTPROF,DPNTG11P,District 2020-21 Grade 11 Students Percent
+90,DISTPROF,DPNTG12C,District 2020-21 Grade 12 Students Count
+91,DISTPROF,DPNTG12P,District 2020-21 Grade 12 Students Percent
+92,DISTPROF,DPNTG02C,District 2020-21 Grade 2 Students Count
+93,DISTPROF,DPNTG02P,District 2020-21 Grade 2 Students Percent
+94,DISTPROF,DPNTG03C,District 2020-21 Grade 3 Students Count
+95,DISTPROF,DPNTG03P,District 2020-21 Grade 3 Students Percent
+96,DISTPROF,DPNTG04C,District 2020-21 Grade 4 Students Count
+97,DISTPROF,DPNTG04P,District 2020-21 Grade 4 Students Percent
+98,DISTPROF,DPNTG05C,District 2020-21 Grade 5 Students Count
+99,DISTPROF,DPNTG05P,District 2020-21 Grade 5 Students Percent
+100,DISTPROF,DPNTG06C,District 2020-21 Grade 6 Students Count
+101,DISTPROF,DPNTG06P,District 2020-21 Grade 6 Students Percent
+102,DISTPROF,DPNTG07C,District 2020-21 Grade 7 Students Count
+103,DISTPROF,DPNTG07P,District 2020-21 Grade 7 Students Percent
+104,DISTPROF,DPNTG08C,District 2020-21 Grade 8 Students Count
+105,DISTPROF,DPNTG08P,District 2020-21 Grade 8 Students Percent
+106,DISTPROF,DPNTG09C,District 2020-21 Grade 9 Students Count
+107,DISTPROF,DPNTG09P,District 2020-21 Grade 9 Students Percent
+108,DISTPROF,DPNTHISC,District 2020-21 Hispanic Students Count
+109,DISTPROF,DPNTHISP,District 2020-21 Hispanic Students Percent
+110,DISTPROF,DPNTHOMC,District 2020-21 Homeless Students Count
+111,DISTPROF,DPNTHOMP,District 2020-21 Homeless Students Percent
+112,DISTPROF,DPNTIMMC,District 2020-21 Immigrant Students Count
+113,DISTPROF,DPNTIMMP,District 2020-21 Immigrant Students Percent
+114,DISTPROF,DPNTGKNC,District 2020-21 Kindergarten Students Count
+115,DISTPROF,DPNTGKNP,District 2020-21 Kindergarten Students Percent
+116,DISTPROF,DPNTMALC,District 2020-21 Male Students Count
+117,DISTPROF,DPNTMALP,District 2020-21 Male Students Percent
+118,DISTPROF,DPNTMIGC,District 2020-21 Migrant Students Count
+119,DISTPROF,DPNTMIGP,District 2020-21 Migrant Students Percent
+120,DISTPROF,DPNTMLCC,District 2020-21 Military Connected Students Count
+121,DISTPROF,DPNTMLCP,District 2020-21 Military Connected Students Percent
+122,DISTPROF,DPNTNEDC,District 2020-21 Non-Educationally Disadvantaged Students Count
+123,DISTPROF,DPNTNEDP,District 2020-21 Non-Educationally Disadvantaged Students Percent
+124,DISTPROF,DPNTPCIC,District 2020-21 Pacific Islander Students Count
+125,DISTPROF,DPNTPCIP,District 2020-21 Pacific Islander Students Percent
+126,DISTPROF,DPNTGPKC,District 2020-21 Pre-Kindergarten Students Count
+127,DISTPROF,DPNTGPKP,District 2020-21 Pre-Kindergarten Students Percent
+128,DISTPROF,DPNT504C,District 2020-21 Section 504 Students Count
+129,DISTPROF,DPNT504P,District 2020-21 Section 504 Students Percent
+130,DISTPROF,DPNTSPEC,District 2020-21 Special Education Students Count
+131,DISTPROF,DPNTSPEP,District 2020-21 Special Education Students Percent
+132,DISTPROF,DPNTDSLC,District 2020-21 Students with Dyslexia Count
+133,DISTPROF,DPNTDSLP,District 2020-21 Students with Dyslexia Percent
+134,DISTPROF,DPNTTT1C,District 2020-21 Title I Students Count
+135,DISTPROF,DPNTTT1P,District 2020-21 Title I Students percent
+136,DISTPROF,DPNTALLC,District 2020-21 Total Students Count
+137,DISTPROF,DPNTALLP,District 2020-21 Total Students Percent
+138,DISTPROF,DPNTTWOC,District 2020-21 Two or More Races Students Count
+139,DISTPROF,DPNTTWOP,District 2020-21 Two or More Races Students Percent
+140,DISTPROF,DPNTWHIC,District 2020-21 White Students Count
+141,DISTPROF,DPNTWHIP,District 2020-21 White Students Percent
+142,DISTPROF,DPCTG01C,District 2021 Class Size: Grade 1     - # Classes
+143,DISTPROF,DPCTG01S,District 2021 Class Size: Grade 1     - # Students
+144,DISTPROF,DPCTG01A,District 2021 Class Size: Grade 1     - Avg Size
+145,DISTPROF,DPCTG02C,District 2021 Class Size: Grade 2     - # Classes
+146,DISTPROF,DPCTG02S,District 2021 Class Size: Grade 2     - # Students
+147,DISTPROF,DPCTG02A,District 2021 Class Size: Grade 2     - Avg Size
+148,DISTPROF,DPCTG03C,District 2021 Class Size: Grade 3     - # Classes
+149,DISTPROF,DPCTG03S,District 2021 Class Size: Grade 3     - # Students
+150,DISTPROF,DPCTG03A,District 2021 Class Size: Grade 3     - Avg Size
+151,DISTPROF,DPCTG04C,District 2021 Class Size: Grade 4     - # Classes
+152,DISTPROF,DPCTG04S,District 2021 Class Size: Grade 4     - # Students
+153,DISTPROF,DPCTG04A,District 2021 Class Size: Grade 4     - Avg Size
+154,DISTPROF,DPCTG05C,District 2021 Class Size: Grade 5     - # Classes
+155,DISTPROF,DPCTG05S,District 2021 Class Size: Grade 5     - # Students
+156,DISTPROF,DPCTG05A,District 2021 Class Size: Grade 5     - Avg Size
+157,DISTPROF,DPCTG06C,District 2021 Class Size: Grade 6     - # Classes
+158,DISTPROF,DPCTG06S,District 2021 Class Size: Grade 6     - # Students
+159,DISTPROF,DPCTG06A,District 2021 Class Size: Grade 6     - Avg Size
+160,DISTPROF,DPCTGKGC,District 2021 Class Size: Kindergarten- # Classes
+161,DISTPROF,DPCTGKGS,District 2021 Class Size: Kindergarten- # Students
+162,DISTPROF,DPCTGKGA,District 2021 Class Size: Kindergarten- Avg Size
+163,DISTPROF,DPCTGMEC,District 2021 Class Size: Mixed Elem. - # Classes
+164,DISTPROF,DPCTGMES,District 2021 Class Size: Mixed Elem. - # Students
+165,DISTPROF,DPCTGMEA,District 2021 Class Size: Mixed Elem. - Avg Size
+166,DISTPROF,DPCTENGC,District 2021 Class Size: Sec English - # Classes
+167,DISTPROF,DPCTENGS,District 2021 Class Size: Sec English - # Students
+168,DISTPROF,DPCTENGA,District 2021 Class Size: Sec English - Avg Size
+169,DISTPROF,DPCTFLAC,District 2021 Class Size: Sec For Lng - # Classes
+170,DISTPROF,DPCTFLAS,District 2021 Class Size: Sec For Lng - # Students
+171,DISTPROF,DPCTFLAA,District 2021 Class Size: Sec For Lng - Avg Size
+172,DISTPROF,DPCTMATC,District 2021 Class Size: Sec Math    - # Classes
+173,DISTPROF,DPCTMATS,District 2021 Class Size: Sec Math    - # Students
+174,DISTPROF,DPCTMATA,District 2021 Class Size: Sec Math    - Avg Size
+175,DISTPROF,DPCTSCIC,District 2021 Class Size: Sec Sci     - # Classes
+176,DISTPROF,DPCTSCIS,District 2021 Class Size: Sec Sci     - # Students
+177,DISTPROF,DPCTSCIA,District 2021 Class Size: Sec Sci     - Avg Size
+178,DISTPROF,DPCTSOCC,District 2021 Class Size: Sec Soc Stud- # Classes
+179,DISTPROF,DPCTSOCS,District 2021 Class Size: Sec Soc Stud- # Students
+180,DISTPROF,DPCTSOCA,District 2021 Class Size: Sec Soc Stud- Avg Size
+181,DISTPROF,DPSAMIFC,District 2021 Staff: All Staff Minority Full Time Equiv Count
+182,DISTPROF,DPSAMIFP,District 2021 Staff: All Staff Minority Full Time Equiv Percent
+183,DISTPROF,DPSATOFC,District 2021 Staff: All Staff Total Full Time Equiv Count
+184,DISTPROF,DPSLFTEC,District 2021 Staff: Assistant Principal Count
+185,DISTPROF,DPSLEXPA,District 2021 Staff: Assistant Principal Experience Average
+186,DISTPROF,DPSLEXPT,District 2021 Staff: Assistant Principal Experience Total
+187,DISTPROF,DPSLTENA,District 2021 Staff: Assistant Principal Tenure Average
+188,DISTPROF,DPSLTENT,District 2021 Staff: Assistant Principal Tenure Total
+189,DISTPROF,DPSXTOFC,District 2021 Staff: Auxiliary Total Full Time Equiv Count
+190,DISTPROF,DPSXTOFP,District 2021 Staff: Auxiliary Total Full Time Equiv Percent
+191,DISTPROF,DPSCTOSA,District 2021 Staff: Central Admin Total Base Salary Average
+192,DISTPROF,DPSCTOST,District 2021 Staff: Central Admin Total Base Salary Total
+193,DISTPROF,DPSCTOFC,District 2021 Staff: Central Admin Total Full Time Equiv Count
+194,DISTPROF,DPSCTOFP,District 2021 Staff: Central Admin Total Full Time Equiv Percent
+195,DISTPROF,DPSOTOFC,District 2021 Staff: Contract Serv Total Full Time Equiv Count
+196,DISTPROF,DPSRTOFC,District 2021 Staff: Counselor Total Full Time Equiv Count
+197,DISTPROF,DPSRTOPC,District 2021 Staff: Counselor Total Part Time Equiv Count
+198,DISTPROF,DPSETOFC,District 2021 Staff: Educ Aide Total Full Time Equiv Count
+199,DISTPROF,DPSETOFP,District 2021 Staff: Educ Aide Total Full Time Equiv Percent
+200,DISTPROF,DPSBTOFC,District 2021 Staff: Librarian Total Full Time Equiv Count
+201,DISTPROF,DPSBTOPC,District 2021 Staff: Librarian Total Part Time Equiv Count
+202,DISTPROF,DPSAINHP,District 2021 Staff: Percent Of Instructional Hours
+203,DISTPROF,DPSHFTEC,District 2021 Staff: Principal Count
+204,DISTPROF,DPSHEXPA,District 2021 Staff: Principal Experience Average
+205,DISTPROF,DPSHEXPT,District 2021 Staff: Principal Experience Total
+206,DISTPROF,DPSHTENA,District 2021 Staff: Principal Tenure Average
+207,DISTPROF,DPSHTENT,District 2021 Staff: Principal Tenure Total
+208,DISTPROF,DPSPTOFC,District 2021 Staff: Professional Total Full Time Equiv Count
+209,DISTPROF,DPSPTOFP,District 2021 Staff: Professional Total Full Time Equiv Percent
+210,DISTPROF,DPSXCOFC,District 2021 Staff: SSA Auxiliary Staff Full Time Equiv Count
+211,DISTPROF,DPSECOFC,District 2021 Staff: SSA Educational Aides Full Time Equiv Count
+212,DISTPROF,DPSPCOFC,District 2021 Staff: SSA Professional Staff Full Time Equiv Count
+213,DISTPROF,DPSSTOSA,District 2021 Staff: School Admin Total Base Salary Average
+214,DISTPROF,DPSSTOST,District 2021 Staff: School Admin Total Base Salary Total
+215,DISTPROF,DPSSTOFC,District 2021 Staff: School Admin Total Full Time Equiv Count
+216,DISTPROF,DPSSTOFP,District 2021 Staff: School Admin Total Full Time Equiv Percent
+217,DISTPROF,DPSUTOSA,District 2021 Staff: Support Total Base Salary Average
+218,DISTPROF,DPSUTOST,District 2021 Staff: Support Total Base Salary Total
+219,DISTPROF,DPSUTOFC,District 2021 Staff: Support Total Full Time Equiv Count
+220,DISTPROF,DPSUTOFP,District 2021 Staff: Support Total Full Time Equiv Percent
+221,DISTPROF,DPST01SA,District 2021 Staff: Teacher 1-5 Years Base Salary Average
+222,DISTPROF,DPST01ST,District 2021 Staff: Teacher 1-5 Years Base Salary Total
+223,DISTPROF,DPST01FC,District 2021 Staff: Teacher 1-5 Years Full Time Equiv Count
+224,DISTPROF,DPST01FP,District 2021 Staff: Teacher 1-5 Years Full Time Equiv Percent
+225,DISTPROF,DPST11SA,District 2021 Staff: Teacher 11-20 Years Base Salary Average
+226,DISTPROF,DPST11ST,District 2021 Staff: Teacher 11-20 Years Base Salary Total
+227,DISTPROF,DPST11FC,District 2021 Staff: Teacher 11-20 Years Full Time Equiv Count
+228,DISTPROF,DPST11FP,District 2021 Staff: Teacher 11-20 Years Full Time Equiv Percent
+229,DISTPROF,DPST21SA,District 2021 Staff: Teacher 21-30 Years Base Salary Average
+230,DISTPROF,DPST21ST,District 2021 Staff: Teacher 21-30 Years Base Salary Total
+231,DISTPROF,DPST21FC,District 2021 Staff: Teacher 21-30 Years Full Time Equiv Count
+232,DISTPROF,DPST21FP,District 2021 Staff: Teacher 21-30 Years Full Time Equiv Percent
+233,DISTPROF,DPST06SA,District 2021 Staff: Teacher 6-10 Years Base Salary Average
+234,DISTPROF,DPST06ST,District 2021 Staff: Teacher 6-10 Years Base Salary Total
+235,DISTPROF,DPST06FC,District 2021 Staff: Teacher 6-10 Years Full Time Equiv Count
+236,DISTPROF,DPST06FP,District 2021 Staff: Teacher 6-10 Years Full Time Equiv Percent
+237,DISTPROF,DPST30SA,District 2021 Staff: Teacher > 30 Years Base Salary Average
+238,DISTPROF,DPST30ST,District 2021 Staff: Teacher > 30 Years Base Salary Total
+239,DISTPROF,DPST30FC,District 2021 Staff: Teacher > 30 Years Full Time Equiv Count
+240,DISTPROF,DPST30FP,District 2021 Staff: Teacher > 30 Years Full Time Equiv Percent
+241,DISTPROF,DPSTBLFC,District 2021 Staff: Teacher African American Full Time Equiv Count
+242,DISTPROF,DPSTBLFP,District 2021 Staff: Teacher African American Full Time Equiv Percent
+243,DISTPROF,DPSTINFC,District 2021 Staff: Teacher American Indian Full Time Equiv Count
+244,DISTPROF,DPSTINFP,District 2021 Staff: Teacher American Indian Full Time Equiv Percent
+245,DISTPROF,DPSTASFC,District 2021 Staff: Teacher Asian Full Time Equiv Count
+246,DISTPROF,DPSTASFP,District 2021 Staff: Teacher Asian Full Time Equiv Percent
+247,DISTPROF,DPSTBAFC,District 2021 Staff: Teacher BA Degree Full Time Equiv Count
+248,DISTPROF,DPSTBAFP,District 2021 Staff: Teacher BA Degree Full Time Equiv Percent
+249,DISTPROF,DPST00SA,District 2021 Staff: Teacher Beginning Base Salary Average
+250,DISTPROF,DPST00ST,District 2021 Staff: Teacher Beginning Base Salary Total
+251,DISTPROF,DPST00FC,District 2021 Staff: Teacher Beginning Full Time Equiv Count
+252,DISTPROF,DPST00FP,District 2021 Staff: Teacher Beginning Full Time Equiv Percent
+253,DISTPROF,DPSTBIFC,District 2021 Staff: Teacher Bilingual Program Full Time Equiv Count
+254,DISTPROF,DPSTBIFP,District 2021 Staff: Teacher Bilingual Program Full Time Equiv Percent
+255,DISTPROF,DPSTVOFC,District 2021 Staff: Teacher Career & Technical Prgms Full Time Equiv Count
+256,DISTPROF,DPSTVOFP,District 2021 Staff: Teacher Career & Technical Prgms Full Time Equiv Percent
+257,DISTPROF,DPSTCOFC,District 2021 Staff: Teacher Compensatory Program Full Time Equiv Count
+258,DISTPROF,DPSTCOFP,District 2021 Staff: Teacher Compensatory Program Full Time Equiv Percent
+259,DISTPROF,DPSTEXPA,District 2021 Staff: Teacher Experience Average
+260,DISTPROF,DPSTEXPT,District 2021 Staff: Teacher Experience Total
+261,DISTPROF,DPSTFEFC,District 2021 Staff: Teacher Female Full Time Equiv Count
+262,DISTPROF,DPSTFEFP,District 2021 Staff: Teacher Female Full Time Equiv Percent
+263,DISTPROF,DPSTGIFC,District 2021 Staff: Teacher Gifted & Talented Program Full Time Equiv Count
+264,DISTPROF,DPSTGIFP,District 2021 Staff: Teacher Gifted & Talented Program Full Time Equiv Percent
+265,DISTPROF,DPSTHIFC,District 2021 Staff: Teacher Hispanic Full Time Equiv Count
+266,DISTPROF,DPSTHIFP,District 2021 Staff: Teacher Hispanic Full Time Equiv Percent
+267,DISTPROF,DPSTMSFC,District 2021 Staff: Teacher MS Degree Full Time Equiv Count
+268,DISTPROF,DPSTMSFP,District 2021 Staff: Teacher MS Degree Full Time Equiv Percent
+269,DISTPROF,DPSTMAFC,District 2021 Staff: Teacher Male Full Time Equiv Count
+270,DISTPROF,DPSTMAFP,District 2021 Staff: Teacher Male Full Time Equiv Percent
+271,DISTPROF,DPSTNOFC,District 2021 Staff: Teacher No Degree Full Time Equiv Count
+272,DISTPROF,DPSTNOFP,District 2021 Staff: Teacher No Degree Full Time Equiv Percent
+273,DISTPROF,DPSTOPFC,District 2021 Staff: Teacher Other Full Time Equiv Count
+274,DISTPROF,DPSTOPFP,District 2021 Staff: Teacher Other Full Time Equiv Percent
+275,DISTPROF,DPSTPHFC,District 2021 Staff: Teacher PH Degree Full Time Equiv Count
+276,DISTPROF,DPSTPHFP,District 2021 Staff: Teacher PH Degree Full Time Equiv Percent
+277,DISTPROF,DPSTPIFC,District 2021 Staff: Teacher Pacific Islander Full Time Equiv Count
+278,DISTPROF,DPSTPIFP,District 2021 Staff: Teacher Pacific Islander Full Time Equiv Percent
+279,DISTPROF,DPSTREFC,District 2021 Staff: Teacher Regular Program Full Time Equiv Count
+280,DISTPROF,DPSTREFP,District 2021 Staff: Teacher Regular Program Full Time Equiv Percent
+281,DISTPROF,DPSTSPFC,District 2021 Staff: Teacher Special Education Full Time Equiv Count
+282,DISTPROF,DPSTSPFP,District 2021 Staff: Teacher Special Education Full Time Equiv Percent
+283,DISTPROF,DPSTKIDR,District 2021 Staff: Teacher Student Ratio
+284,DISTPROF,DPSTTENA,District 2021 Staff: Teacher Tenure Average
+285,DISTPROF,DPSTTENT,District 2021 Staff: Teacher Tenure Total
+286,DISTPROF,DPSTTOSA,District 2021 Staff: Teacher Total Base Salary Average
+287,DISTPROF,DPSTTOST,District 2021 Staff: Teacher Total Base Salary Total
+288,DISTPROF,DPSTFTEC,District 2021 Staff: Teacher Total Full Time Equiv - Experience Calculation
+289,DISTPROF,DPSTTOFC,District 2021 Staff: Teacher Total Full Time Equiv Count
+290,DISTPROF,DPSTTOFP,District 2021 Staff: Teacher Total Full Time Equiv Percent
+291,DISTPROF,DPSTURND,District 2021 Staff: Teacher Turnover Denominator
+292,DISTPROF,DPSTURNN,District 2021 Staff: Teacher Turnover Numerator
+293,DISTPROF,DPSTURNR,District 2021 Staff: Teacher Turnover Ratio
+294,DISTPROF,DPSTTWFC,District 2021 Staff: Teacher Two or more races Full Time Equiv Count
+295,DISTPROF,DPSTTWFP,District 2021 Staff: Teacher Two or more races Full Time Equiv Percent
+296,DISTPROF,DPSTWHFC,District 2021 Staff: Teacher White Full Time Equiv Count
+297,DISTPROF,DPSTWHFP,District 2021 Staff: Teacher White Full Time Equiv Percent
+298,DISTPROF,DPETG01C,District 2021 Student Membership: 01 Count
+299,DISTPROF,DPETG01P,District 2021 Student Membership: 01 Percent
+300,DISTPROF,DPETG02C,District 2021 Student Membership: 02 Count
+301,DISTPROF,DPETG02P,District 2021 Student Membership: 02 Percent
+302,DISTPROF,DPETG03C,District 2021 Student Membership: 03 Count
+303,DISTPROF,DPETG03P,District 2021 Student Membership: 03 Percent
+304,DISTPROF,DPETG04C,District 2021 Student Membership: 04 Count
+305,DISTPROF,DPETG04P,District 2021 Student Membership: 04 Percent
+306,DISTPROF,DPETG05C,District 2021 Student Membership: 05 Count
+307,DISTPROF,DPETG05P,District 2021 Student Membership: 05 Percent
+308,DISTPROF,DPETG06C,District 2021 Student Membership: 06 Count
+309,DISTPROF,DPETG06P,District 2021 Student Membership: 06 Percent
+310,DISTPROF,DPETG07C,District 2021 Student Membership: 07 Count
+311,DISTPROF,DPETG07P,District 2021 Student Membership: 07 Percent
+312,DISTPROF,DPETG08C,District 2021 Student Membership: 08 Count
+313,DISTPROF,DPETG08P,District 2021 Student Membership: 08 Percent
+314,DISTPROF,DPETG09C,District 2021 Student Membership: 09 Count
+315,DISTPROF,DPETG09P,District 2021 Student Membership: 09 Percent
+316,DISTPROF,DPETG10C,District 2021 Student Membership: 10 Count
+317,DISTPROF,DPETG10P,District 2021 Student Membership: 10 Percent
+318,DISTPROF,DPETG11C,District 2021 Student Membership: 11 Count
+319,DISTPROF,DPETG11P,District 2021 Student Membership: 11 Percent
+320,DISTPROF,DPETG12C,District 2021 Student Membership: 12 Count
+321,DISTPROF,DPETG12P,District 2021 Student Membership: 12 Percent
+322,DISTPROF,DPETATTC,District 2021 Student Membership: 2019-20 Attrition All Students Count
+323,DISTPROF,DPETATTD,District 2021 Student Membership: 2019-20 Attrition All Students Denominator
+324,DISTPROF,DPETATTP,District 2021 Student Membership: 2019-20 Attrition All Students Percent
+325,DISTPROF,DPEMBLAC,District 2021 Student Membership: 2020 Mobility African American Count
+326,DISTPROF,DPEMBLAP,District 2021 Student Membership: 2020 Mobility African American Percent
+327,DISTPROF,DPEMALLC,District 2021 Student Membership: 2020 Mobility All Students Count
+328,DISTPROF,DPEMALLT,District 2021 Student Membership: 2020 Mobility All Students Denominator
+329,DISTPROF,DPEMALLP,District 2021 Student Membership: 2020 Mobility All Students Percent
+330,DISTPROF,DPEMINDC,District 2021 Student Membership: 2020 Mobility American Indian Count
+331,DISTPROF,DPEMINDP,District 2021 Student Membership: 2020 Mobility American Indian Percent
+332,DISTPROF,DPEMASIC,District 2021 Student Membership: 2020 Mobility Asian Count
+333,DISTPROF,DPEMASIP,District 2021 Student Membership: 2020 Mobility Asian Percent
+334,DISTPROF,DPEMLEPC,District 2021 Student Membership: 2020 Mobility EL Count
+335,DISTPROF,DPEMLEPT,District 2021 Student Membership: 2020 Mobility EL Denominator
+336,DISTPROF,DPEMLEPP,District 2021 Student Membership: 2020 Mobility EL Percent
+337,DISTPROF,DPEMECOC,District 2021 Student Membership: 2020 Mobility Econ Disadv Count
+338,DISTPROF,DPEMECOT,District 2021 Student Membership: 2020 Mobility Econ Disadv Denominator
+339,DISTPROF,DPEMECOP,District 2021 Student Membership: 2020 Mobility Econ Disadv Percent
+340,DISTPROF,DPEMHISC,District 2021 Student Membership: 2020 Mobility Hispanic Count
+341,DISTPROF,DPEMHISP,District 2021 Student Membership: 2020 Mobility Hispanic Percent
+342,DISTPROF,DPEMPCIC,District 2021 Student Membership: 2020 Mobility Pacific Islander Count
+343,DISTPROF,DPEMPCIP,District 2021 Student Membership: 2020 Mobility Pacific Islander Percent
+344,DISTPROF,DPEMSPEC,District 2021 Student Membership: 2020 Mobility Special Ed Count
+345,DISTPROF,DPEMSPET,District 2021 Student Membership: 2020 Mobility Special Ed Denominator
+346,DISTPROF,DPEMSPEP,District 2021 Student Membership: 2020 Mobility Special Ed Percent
+347,DISTPROF,DPEMTWOC,District 2021 Student Membership: 2020 Mobility Two or More Races Count
+348,DISTPROF,DPEMTWOP,District 2021 Student Membership: 2020 Mobility Two or More Races Percent
+349,DISTPROF,DPEMWHIC,District 2021 Student Membership: 2020 Mobility White Count
+350,DISTPROF,DPEMWHIP,District 2021 Student Membership: 2020 Mobility White Percent
+351,DISTPROF,DPETBLAC,District 2021 Student Membership: African American Count
+352,DISTPROF,DPETBLAP,District 2021 Student Membership: African American Percent
+353,DISTPROF,DPETALLC,District 2021 Student Membership: All Students Count
+354,DISTPROF,DPETINDC,District 2021 Student Membership: American Indian Count
+355,DISTPROF,DPETINDP,District 2021 Student Membership: American Indian Percent
+356,DISTPROF,DPETASIC,District 2021 Student Membership: Asian Count
+357,DISTPROF,DPETASIP,District 2021 Student Membership: Asian Percent
+358,DISTPROF,DPETRSKC,District 2021 Student Membership: At Risk Count
+359,DISTPROF,DPETRSKP,District 2021 Student Membership: At Risk Percent
+360,DISTPROF,DPETSAUC,District 2021 Student Membership: Autism Count
+361,DISTPROF,DPETSAUP,District 2021 Student Membership: Autism Percent
+362,DISTPROF,DPETSBHC,District 2021 Student Membership: Behavioral Disabilities Count
+363,DISTPROF,DPETSBHP,District 2021 Student Membership: Behavioral Disabilities Percent
+364,DISTPROF,DPETBILC,District 2021 Student Membership: Bilingual/ESL Count
+365,DISTPROF,DPETBILP,District 2021 Student Membership: Bilingual/ESL Percent
+366,DISTPROF,DPETDSLC,District 2021 Student Membership: Dyslexia Count
+367,DISTPROF,DPETDSLP,District 2021 Student Membership: Dyslexia Percent
+368,DISTPROF,DPETGEEC,District 2021 Student Membership: EE Count
+369,DISTPROF,DPETGEEP,District 2021 Student Membership: EE Percent
+370,DISTPROF,DPETLEPC,District 2021 Student Membership: EL Count
+371,DISTPROF,DPETLEPP,District 2021 Student Membership: EL Percent
+372,DISTPROF,DPETECOC,District 2021 Student Membership: Econ Disadv Count
+373,DISTPROF,DPETECOP,District 2021 Student Membership: Econ Disadv Percent
+374,DISTPROF,DPETFEMC,District 2021 Student Membership: Female Count
+375,DISTPROF,DPETFEMP,District 2021 Student Membership: Female Percent
+376,DISTPROF,DPETFOSC,District 2021 Student Membership: Foster Care Count
+377,DISTPROF,DPETFOSP,District 2021 Student Membership: Foster Care Percent
+378,DISTPROF,DPETGIFC,District 2021 Student Membership: Gifted & Talented Count
+379,DISTPROF,DPETGIFP,District 2021 Student Membership: Gifted & Talented Percent
+380,DISTPROF,DPETHISC,District 2021 Student Membership: Hispanic Count
+381,DISTPROF,DPETHISP,District 2021 Student Membership: Hispanic Percent
+382,DISTPROF,DPETHOMC,District 2021 Student Membership: Homeless Count
+383,DISTPROF,DPETHOMP,District 2021 Student Membership: Homeless Percent
+384,DISTPROF,DPETIMMC,District 2021 Student Membership: Immigrant Count
+385,DISTPROF,DPETIMMP,District 2021 Student Membership: Immigrant Percent
+386,DISTPROF,DPETSINC,District 2021 Student Membership: Intellectual Disabilities Count
+387,DISTPROF,DPETSINP,District 2021 Student Membership: Intellectual Disabilities Percent
+388,DISTPROF,DPETGKNC,District 2021 Student Membership: KG Count
+389,DISTPROF,DPETGKNP,District 2021 Student Membership: KG Percent
+390,DISTPROF,DPETMALC,District 2021 Student Membership: Male Count
+391,DISTPROF,DPETMALP,District 2021 Student Membership: Male Percent
+392,DISTPROF,DPETMIGC,District 2021 Student Membership: Migrant Count
+393,DISTPROF,DPETMIGP,District 2021 Student Membership: Migrant Percent
+394,DISTPROF,DPETMLCC,District 2021 Student Membership: Military-Connected Count
+395,DISTPROF,DPETMLCP,District 2021 Student Membership: Military-Connected Percent
+396,DISTPROF,DPETSNOC,District 2021 Student Membership: Non-Categorical Early Childhood Count
+397,DISTPROF,DPETSNOP,District 2021 Student Membership: Non-Categorical Early Childhood Percent
+398,DISTPROF,DPETNEDC,District 2021 Student Membership: Non-Educationally Disadv Count
+399,DISTPROF,DPETNEDP,District 2021 Student Membership: Non-Educationally Disadv Percent
+400,DISTPROF,DPETGPKC,District 2021 Student Membership: PK Count
+401,DISTPROF,DPETGPKP,District 2021 Student Membership: PK Percent
+402,DISTPROF,DPETPCIC,District 2021 Student Membership: Pacific Islander Count
+403,DISTPROF,DPETPCIP,District 2021 Student Membership: Pacific Islander Percent
+404,DISTPROF,DPETSPHC,District 2021 Student Membership: Physical Disabilities Count
+405,DISTPROF,DPETSPHP,District 2021 Student Membership: Physical Disabilities Percent
+406,DISTPROF,DPET504C,District 2021 Student Membership: Section 504 Count
+407,DISTPROF,DPET504P,District 2021 Student Membership: Section 504 Percent
+408,DISTPROF,DPETSPEC,District 2021 Student Membership: Special Ed Count
+409,DISTPROF,DPETSPEP,District 2021 Student Membership: Special Ed Percent
+410,DISTPROF,DPETTT1C,District 2021 Student Membership: Title I Count
+411,DISTPROF,DPETTT1P,District 2021 Student Membership: Title I Percent
+412,DISTPROF,DPETSIMC,District 2021 Student Membership: Total Students with Disabilities Count
+413,DISTPROF,DPETTWOC,District 2021 Student Membership: Two or More Races Count
+414,DISTPROF,DPETTWOP,District 2021 Student Membership: Two or More Races Percent
+415,DISTPROF,DPETWHIC,District 2021 Student Membership: White Count
+416,DISTPROF,DPETWHIP,District 2021 Student Membership: White Percent
+417,DISTPROF,DISTNAME,District Name

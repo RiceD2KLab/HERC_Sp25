@@ -1,0 +1,420 @@
+,NAME,LABEL
+0,DISTRICT,District Number
+1,DPETGEEC,District 2024 Student Membership: EE Count
+2,DPETGPKC,District 2024 Student Membership: PK Count
+3,DPETGKNC,District 2024 Student Membership: KG Count
+4,DPETG01C,District 2024 Student Membership: 01 Count
+5,DPETG02C,District 2024 Student Membership: 02 Count
+6,DPETG03C,District 2024 Student Membership: 03 Count
+7,DPETG04C,District 2024 Student Membership: 04 Count
+8,DPETG05C,District 2024 Student Membership: 05 Count
+9,DPETG06C,District 2024 Student Membership: 06 Count
+10,DPETG07C,District 2024 Student Membership: 07 Count
+11,DPETG08C,District 2024 Student Membership: 08 Count
+12,DPETG09C,District 2024 Student Membership: 09 Count
+13,DPETG10C,District 2024 Student Membership: 10 Count
+14,DPETG11C,District 2024 Student Membership: 11 Count
+15,DPETG12C,District 2024 Student Membership: 12 Count
+16,DPETALLC,District 2024 Student Membership: All Students Count
+17,DPETSPEC,District 2024 Student Membership: Special Ed Count
+18,DPETBILC,District 2024 Student Membership: Bilingual/ESL Count
+19,DPETVOCC,District 2024 Student Membership: Career & Technical Education Count
+20,DPETGIFC,District 2024 Student Membership: Gifted & Talented Count
+21,DPETLEPC,District 2024 Student Membership: EB/EL Count
+22,DPETECOC,District 2024 Student Membership: Econ Disadv Count
+23,DPETNEDC,District 2024 Student Membership: Non-Educationally Disadv Count
+24,DPETRSKC,District 2024 Student Membership: At Risk Count
+25,DPETINDC,District 2024 Student Membership: American Indian Count
+26,DPETASIC,District 2024 Student Membership: Asian Count
+27,DPETPCIC,District 2024 Student Membership: Pacific Islander Count
+28,DPETTWOC,District 2024 Student Membership: Two or More Races Count
+29,DPETBLAC,District 2024 Student Membership: African American Count
+30,DPETHISC,District 2024 Student Membership: Hispanic Count
+31,DPETWHIC,District 2024 Student Membership: White Count
+32,DPETMALC,District 2024 Student Membership: Male Count
+33,DPETFEMC,District 2024 Student Membership: Female Count
+34,DPETDSLC,District 2024 Student Membership: Dyslexia Count
+35,DPET504C,District 2024 Student Membership: Section 504 Count
+36,DPETTT1C,District 2024 Student Membership: Title I Count
+37,DPETHOMC,District 2024 Student Membership: Homeless Count
+38,DPETIMMC,District 2024 Student Membership: Immigrant Count
+39,DPETMIGC,District 2024 Student Membership: Migrant Count
+40,DPETMLCC,District 2024 Student Membership: Military-Connected Count
+41,DPETFOSC,District 2024 Student Membership: Foster Care Count
+42,DPETVHSC,District 2024 Student Membership: Career & Technical (9-12) Education Count
+43,DPETDISD,District 2023 DAEP: Denominator
+44,DPETDISC,District 2023 DAEP: Count
+45,DPETDISP,District 2023 DAEP: Percent
+46,DPETATTC,District 2024 Student Membership: 2022-23 Attrition All Students Count
+47,DPETATTD,District 2024 Student Membership: 2022-23 Attrition All Students Denominator
+48,DPETATTP,District 2024 Student Membership: 2022-23 Attrition All Students Percent
+49,DPETSIMC,District 2024 Student Membership: Total Students with Disabilities Count
+50,DPETSINC,District 2024 Student Membership: Intellectual Disabilities Count
+51,DPETSPHC,District 2024 Student Membership: Physical Disabilities Count
+52,DPETSBHC,District 2024 Student Membership: Behavioral Disabilities Count
+53,DPETSAUC,District 2024 Student Membership: Autism Count
+54,DPETSNOC,District 2024 Student Membership: Non-Categorical Early Childhood Count
+55,DPETSINP,District 2024 Student Membership: Intellectual Disabilities Percent
+56,DPETSPHP,District 2024 Student Membership: Physical Disabilities Percent
+57,DPETSBHP,District 2024 Student Membership: Behavioral Disabilities Percent
+58,DPETSAUP,District 2024 Student Membership: Autism Percent
+59,DPETSNOP,District 2024 Student Membership: Non-Categorical Early Childhood Percent
+60,DPERRAKR,District 2023 Retention: Regular Ed KG Rate
+61,DPERRA1R,District 2023 Retention: Regular Ed 01 Rate
+62,DPERRA2R,District 2023 Retention: Regular Ed 02 Rate
+63,DPERRA3R,District 2023 Retention: Regular Ed 03 Rate
+64,DPERRA4R,District 2023 Retention: Regular Ed 04 Rate
+65,DPERRA5R,District 2023 Retention: Regular Ed 05 Rate
+66,DPERRA6R,District 2023 Retention: Regular Ed 06 Rate
+67,DPERRA7R,District 2023 Retention: Regular Ed 07 Rate
+68,DPERRA8R,District 2023 Retention: Regular Ed 08 Rate
+69,DPERRA9R,District 2023 Retention: Regular Ed 09 Rate
+70,DPERSAKR,District 2023 Retention: Special Ed KG Rate
+71,DPERSA1R,District 2023 Retention: Special Ed 01 Rate
+72,DPERSA2R,District 2023 Retention: Special Ed 02 Rate
+73,DPERSA3R,District 2023 Retention: Special Ed 03 Rate
+74,DPERSA4R,District 2023 Retention: Special Ed 04 Rate
+75,DPERSA5R,District 2023 Retention: Special Ed 05 Rate
+76,DPERSA6R,District 2023 Retention: Special Ed 06 Rate
+77,DPERSA7R,District 2023 Retention: Special Ed 07 Rate
+78,DPERSA8R,District 2023 Retention: Special Ed 08 Rate
+79,DPERSA9R,District 2023 Retention: Special Ed 09 Rate
+80,DAUND23C,District 2023 Underreported Students: Count
+81,DAUND23D,District 2023 Underreported Students: Gr. 7-12 Total
+82,DAUND23R,District 2023 Underreported Students: Rate
+83,DPEMALLC,District 2024 Student Membership: 2023 Mobility All Students Count
+84,DPEMALLT,District 2024 Student Membership: 2023 Mobility All Students Denominator
+85,DPEMALLP,District 2024 Student Membership: 2023 Mobility All Students Percent
+86,DPETWHIP,District 2024 Student Membership: White Percent
+87,DPETBLAP,District 2024 Student Membership: African American Percent
+88,DPETHISP,District 2024 Student Membership: Hispanic Percent
+89,DPETINDP,District 2024 Student Membership: American Indian Percent
+90,DPETASIP,District 2024 Student Membership: Asian Percent
+91,DPETPCIP,District 2024 Student Membership: Pacific Islander Percent
+92,DPETTWOP,District 2024 Student Membership: Two or More Races Percent
+93,DPETECOP,District 2024 Student Membership: Econ Disadv Percent
+94,DPETNEDP,District 2024 Student Membership: Non-Educationally Disadv Percent
+95,DPETRSKP,District 2024 Student Membership: At Risk Percent
+96,DPETLEPP,District 2024 Student Membership: EB/EL Percent
+97,DPETSPEP,District 2024 Student Membership: Special Ed Percent
+98,DPETVOCP,District 2024 Student Membership: Career & Technical Education Percent
+99,DPETBILP,District 2024 Student Membership: Bilingual/ESL Percent
+100,DPETGIFP,District 2024 Student Membership: Gifted & Talented Percent
+101,DPET504P,District 2024 Student Membership: Section 504 Percent
+102,DPETDSLP,District 2024 Student Membership: Dyslexia Percent
+103,DPETTT1P,District 2024 Student Membership: Title I Percent
+104,DPETHOMP,District 2024 Student Membership: Homeless Percent
+105,DPETIMMP,District 2024 Student Membership: Immigrant Percent
+106,DPETMIGP,District 2024 Student Membership: Migrant Percent
+107,DPETMLCP,District 2024 Student Membership: Military-Connected Percent
+108,DPETFOSP,District 2024 Student Membership: Foster Care Percent
+109,DPETGEEP,District 2024 Student Membership: EE Percent
+110,DPETGPKP,District 2024 Student Membership: PK Percent
+111,DPETGKNP,District 2024 Student Membership: KG Percent
+112,DPETG01P,District 2024 Student Membership: 01 Percent
+113,DPETG02P,District 2024 Student Membership: 02 Percent
+114,DPETG03P,District 2024 Student Membership: 03 Percent
+115,DPETG04P,District 2024 Student Membership: 04 Percent
+116,DPETG05P,District 2024 Student Membership: 05 Percent
+117,DPETG06P,District 2024 Student Membership: 06 Percent
+118,DPETG07P,District 2024 Student Membership: 07 Percent
+119,DPETG08P,District 2024 Student Membership: 08 Percent
+120,DPETG09P,District 2024 Student Membership: 09 Percent
+121,DPETG10P,District 2024 Student Membership: 10 Percent
+122,DPETG11P,District 2024 Student Membership: 11 Percent
+123,DPETG12P,District 2024 Student Membership: 12 Percent
+124,DPETMALP,District 2024 Student Membership: Male Percent
+125,DPETFEMP,District 2024 Student Membership: Female Percent
+126,DPETVHSP,District 2024 Student Membership: Career & Technical (9-12) Education Percent
+127,DPNTALLC,District 2024 Student Enrollment: All Students Count
+128,DPNTALLP,District 2024 Student Enrollment: All Students Percent
+129,DPNTGEEC,District 2024 Student Enrollment: EE Count
+130,DPNTGEEP,District 2024 Student Enrollment: EE Percent
+131,DPNTGPKC,District 2024 Student Enrollment: PK Count
+132,DPNTGPKP,District 2024 Student Enrollment: PK Percent
+133,DPNTGKNC,District 2024 Student Enrollment: KG Count
+134,DPNTGKNP,District 2024 Student Enrollment: KG Percent
+135,DPNTG01C,District 2024 Student Enrollment: 01 Count
+136,DPNTG01P,District 2024 Student Enrollment: 01 Percent
+137,DPNTG02C,District 2024 Student Enrollment: 02 Count
+138,DPNTG02P,District 2024 Student Enrollment: 02 Percent
+139,DPNTG03C,District 2024 Student Enrollment: 03 Count
+140,DPNTG03P,District 2024 Student Enrollment: 03 Percent
+141,DPNTG04C,District 2024 Student Enrollment: 04 Count
+142,DPNTG04P,District 2024 Student Enrollment: 04 Percent
+143,DPNTG05C,District 2024 Student Enrollment: 05 Count
+144,DPNTG05P,District 2024 Student Enrollment: 05 Percent
+145,DPNTG06C,District 2024 Student Enrollment: 06 Count
+146,DPNTG06P,District 2024 Student Enrollment: 06 Percent
+147,DPNTG07C,District 2024 Student Enrollment: 07 Count
+148,DPNTG07P,District 2024 Student Enrollment: 07 Percent
+149,DPNTG08C,District 2024 Student Enrollment: 08 Count
+150,DPNTG08P,District 2024 Student Enrollment: 08 Percent
+151,DPNTG09C,District 2024 Student Enrollment: 09 Count
+152,DPNTG09P,District 2024 Student Enrollment: 09 Percent
+153,DPNTG10C,District 2024 Student Enrollment: 10 Count
+154,DPNTG10P,District 2024 Student Enrollment: 10 Percent
+155,DPNTG11C,District 2024 Student Enrollment: 11 Count
+156,DPNTG11P,District 2024 Student Enrollment: 11 Percent
+157,DPNTG12C,District 2024 Student Enrollment: 12 Count
+158,DPNTG12P,District 2024 Student Enrollment: 12 Percent
+159,DPNTBLAC,District 2024 Student Enrollment: African American Count
+160,DPNTBLAP,District 2024 Student Enrollment: African American Percent
+161,DPNTHISC,District 2024 Student Enrollment: Hispanic Count
+162,DPNTHISP,District 2024 Student Enrollment: Hispanic Percent
+163,DPNTWHIC,District 2024 Student Enrollment: White Count
+164,DPNTWHIP,District 2024 Student Enrollment: White Percent
+165,DPNTINDC,District 2024 Student Enrollment: American Indian Count
+166,DPNTINDP,District 2024 Student Enrollment: American Indian Percent
+167,DPNTASIC,District 2024 Student Enrollment: Asian Count
+168,DPNTASIP,District 2024 Student Enrollment: Asian Percent
+169,DPNTPCIC,District 2024 Student Enrollment: Pacific Islander Count
+170,DPNTPCIP,District 2024 Student Enrollment: Pacific Islander Percent
+171,DPNTTWOC,District 2024 Student Enrollment: Two or More Races Count
+172,DPNTTWOP,District 2024 Student Enrollment: Two or More Races Percent
+173,DPNTFEMC,District 2024 Student Enrollment: Female Count
+174,DPNTFEMP,District 2024 Student Enrollment: Female Percent
+175,DPNTMALC,District 2024 Student Enrollment: Male Count
+176,DPNTMALP,District 2024 Student Enrollment: Male Percent
+177,DPNTECOC,District 2024 Student Enrollment: Econ Disadv Count
+178,DPNTECOP,District 2024 Student Enrollment: Econ Disadv Percent
+179,DPNTNEDC,District 2024 Student Enrollment: Non-Educationally Disadv Count
+180,DPNTNEDP,District 2024 Student Enrollment: Non-Educationally Disadv Percent
+181,DPNT504C,District 2024 Student Enrollment: Section 504 Count
+182,DPNT504P,District 2024 Student Enrollment: Section 504 Percent
+183,DPNTLEPC,District 2024 Student Enrollment: EL Count
+184,DPNTLEPP,District 2024 Student Enrollment: EL Percent
+185,DPNTDSLC,District 2024 Student Enrollment: Dyslexia Count
+186,DPNTDSLP,District 2024 Student Enrollment: Dyslexia Percent
+187,DPNTFOSC,District 2024 Student Enrollment: Foster Care Count
+188,DPNTFOSP,District 2024 Student Enrollment: Foster Care Percent
+189,DPNTHOMC,District 2024 Student Enrollment: Homeless Count
+190,DPNTHOMP,District 2024 Student Enrollment: Homeless Percent
+191,DPNTIMMC,District 2024 Student Enrollment: Immigrant Count
+192,DPNTIMMP,District 2024 Student Enrollment: Immigrant Percent
+193,DPNTMIGC,District 2024 Student Enrollment: Migrant Count
+194,DPNTMIGP,District 2024 Student Enrollment: Migrant Percent
+195,DPNTTT1C,District 2024 Student Enrollment: Title I Count
+196,DPNTTT1P,District 2024 Student Enrollment: Title I Percent
+197,DPNTMLCC,District 2024 Student Enrollment: Military-Connected Count
+198,DPNTMLCP,District 2024 Student Enrollment: Military-Connected Percent
+199,DPNTRSKC,District 2024 Student Enrollment: At Risk Count
+200,DPNTRSKP,District 2024 Student Enrollment: At Risk Percent
+201,DPNTBILC,District 2024 Student Enrollment: Bilingual/ESL Count
+202,DPNTBILP,District 2024 Student Enrollment: Bilingual/ESL Percent
+203,DPNTGIFC,District 2024 Student Enrollment: Gifted & Talented Count
+204,DPNTGIFP,District 2024 Student Enrollment: Gifted & Talented Percent
+205,DPNTSPEC,District 2024 Student Enrollment: Special Ed Count
+206,DPNTSPEP,District 2024 Student Enrollment: Special Ed Percent
+207,DPCTSOCS,District 2024 Class Size: Sec Soc Stud- # Students
+208,DPCTSOCC,District 2024 Class Size: Sec Soc Stud- # Classes
+209,DPCTSOCA,District 2024 Class Size: Sec Soc Stud- Avg Size
+210,DPCTSCIS,District 2024 Class Size: Sec Sci     - # Students
+211,DPCTSCIC,District 2024 Class Size: Sec Sci     - # Classes
+212,DPCTSCIA,District 2024 Class Size: Sec Sci     - Avg Size
+213,DPCTMATS,District 2024 Class Size: Sec Math    - # Students
+214,DPCTMATC,District 2024 Class Size: Sec Math    - # Classes
+215,DPCTMATA,District 2024 Class Size: Sec Math    - Avg Size
+216,DPCTGMES,District 2024 Class Size: Mixed Elem. - # Students
+217,DPCTGMEC,District 2024 Class Size: Mixed Elem. - # Classes
+218,DPCTGMEA,District 2024 Class Size: Mixed Elem. - Avg Size
+219,DPCTGKGS,District 2024 Class Size: Kindergarten- # Students
+220,DPCTGKGC,District 2024 Class Size: Kindergarten- # Classes
+221,DPCTGKGA,District 2024 Class Size: Kindergarten- Avg Size
+222,DPCTG06S,District 2024 Class Size: Grade 6     - # Students
+223,DPCTG06C,District 2024 Class Size: Grade 6     - # Classes
+224,DPCTG06A,District 2024 Class Size: Grade 6     - Avg Size
+225,DPCTG05S,District 2024 Class Size: Grade 5     - # Students
+226,DPCTG05C,District 2024 Class Size: Grade 5     - # Classes
+227,DPCTG05A,District 2024 Class Size: Grade 5     - Avg Size
+228,DPCTG04S,District 2024 Class Size: Grade 4     - # Students
+229,DPCTG04C,District 2024 Class Size: Grade 4     - # Classes
+230,DPCTG04A,District 2024 Class Size: Grade 4     - Avg Size
+231,DPCTG03S,District 2024 Class Size: Grade 3     - # Students
+232,DPCTG03C,District 2024 Class Size: Grade 3     - # Classes
+233,DPCTG03A,District 2024 Class Size: Grade 3     - Avg Size
+234,DPCTG02S,District 2024 Class Size: Grade 2     - # Students
+235,DPCTG02C,District 2024 Class Size: Grade 2     - # Classes
+236,DPCTG02A,District 2024 Class Size: Grade 2     - Avg Size
+237,DPCTG01S,District 2024 Class Size: Grade 1     - # Students
+238,DPCTG01C,District 2024 Class Size: Grade 1     - # Classes
+239,DPCTG01A,District 2024 Class Size: Grade 1     - Avg Size
+240,DPCTFLAS,District 2024 Class Size: Sec For Lng - # Students
+241,DPCTFLAC,District 2024 Class Size: Sec For Lng - # Classes
+242,DPCTFLAA,District 2024 Class Size: Sec For Lng - Avg Size
+243,DPCTENGS,District 2024 Class Size: Sec English - # Students
+244,DPCTENGC,District 2024 Class Size: Sec English - # Classes
+245,DPCTENGA,District 2024 Class Size: Sec English - Avg Size
+246,DPEMECOT,District 2024 Student Membership: 2023 Mobility Econ Disadv Denominator
+247,DPEMLEPT,District 2024 Student Membership: 2023 Mobility EB/EL Denominator
+248,DPEMSPET,District 2024 Student Membership: 2023 Mobility Special Ed Denominator
+249,DPEMINDC,District 2024 Student Membership: 2023 Mobility American Indian Count
+250,DPEMPCIC,District 2024 Student Membership: 2023 Mobility Pacific Islander Count
+251,DPEMASIC,District 2024 Student Membership: 2023 Mobility Asian Count
+252,DPEMBLAC,District 2024 Student Membership: 2023 Mobility African American Count
+253,DPEMHISC,District 2024 Student Membership: 2023 Mobility Hispanic Count
+254,DPEMWHIC,District 2024 Student Membership: 2023 Mobility White Count
+255,DPEMTWOC,District 2024 Student Membership: 2023 Mobility Two or More Races Count
+256,DPEMECOC,District 2024 Student Membership: 2023 Mobility Econ Disadv Count
+257,DPEMLEPC,District 2024 Student Membership: 2023 Mobility EB/EL Count
+258,DPEMSPEC,District 2024 Student Membership: 2023 Mobility Special Ed Count
+259,DPEMINDP,District 2024 Student Membership: 2023 Mobility American Indian Percent
+260,DPEMASIP,District 2024 Student Membership: 2023 Mobility Asian Percent
+261,DPEMPCIP,District 2024 Student Membership: 2023 Mobility Pacific Islander Percent
+262,DPEMTWOP,District 2024 Student Membership: 2023 Mobility Two or More Races Percent
+263,DPEMBLAP,District 2024 Student Membership: 2023 Mobility African American Percent
+264,DPEMHISP,District 2024 Student Membership: 2023 Mobility Hispanic Percent
+265,DPEMWHIP,District 2024 Student Membership: 2023 Mobility White Percent
+266,DPEMECOP,District 2024 Student Membership: 2023 Mobility Econ Disadv Percent
+267,DPEMLEPP,District 2024 Student Membership: 2023 Mobility EB/EL Percent
+268,DPEMSPEP,District 2024 Student Membership: 2023 Mobility Special Ed Percent
+269,DPSTTOFC,District 2024 Staff: Teacher Total Full Time Equiv Count
+270,DPSUTOFC,District 2024 Staff: Support Total Full Time Equiv Count
+271,DPSSTOFC,District 2024 Staff: School Admin Total Full Time Equiv Count
+272,DPSCTOFC,District 2024 Staff: Central Admin Total Full Time Equiv Count
+273,DPSETOFC,District 2024 Staff: Educ Aide Total Full Time Equiv Count
+274,DPSTTOST,District 2024 Staff: Teacher Total Base Salary Total
+275,DPSUTOST,District 2024 Staff: Support Total Base Salary Total
+276,DPSSTOST,District 2024 Staff: School Admin Total Base Salary Total
+277,DPSCTOST,District 2024 Staff: Central Admin Total Base Salary Total
+278,DPST00FC,District 2024 Staff: Teacher Beginning Full Time Equiv Count
+279,DPST01FC,District 2024 Staff: Teacher 1-5 Years Full Time Equiv Count
+280,DPST06FC,District 2024 Staff: Teacher 6-10 Years Full Time Equiv Count
+281,DPST11FC,District 2024 Staff: Teacher 11-20 Years Full Time Equiv Count
+282,DPST21FC,District 2024 Staff: Teacher 21-30 Years Full Time Equiv Count
+283,DPST30FC,District 2024 Staff: Teacher > 30 Years Full Time Equiv Count
+284,DPST00ST,District 2024 Staff: Teacher Beginning Base Salary Total
+285,DPST01ST,District 2024 Staff: Teacher 1-5 Years Base Salary Total
+286,DPST06ST,District 2024 Staff: Teacher 6-10 Years Base Salary Total
+287,DPST11ST,District 2024 Staff: Teacher 11-20 Years Base Salary Total
+288,DPST21ST,District 2024 Staff: Teacher 21-30 Years Base Salary Total
+289,DPST30ST,District 2024 Staff: Teacher > 30 Years Base Salary Total
+290,DPSTNOFC,District 2024 Staff: Teacher No Degree Full Time Equiv Count
+291,DPSTBAFC,District 2024 Staff: Teacher BA Degree Full Time Equiv Count
+292,DPSTMSFC,District 2024 Staff: Teacher MS Degree Full Time Equiv Count
+293,DPSTPHFC,District 2024 Staff: Teacher PH Degree Full Time Equiv Count
+294,DPSPCOFC,District 2024 Staff: SSA Professional Staff Full Time Equiv Count
+295,DPSECOFC,District 2024 Staff: SSA Educational Aides Full Time Equiv Count
+296,DPSPTOFC,District 2024 Staff: Professional Total Full Time Equiv Count
+297,DPSRTOPC,District 2024 Staff: Counselor Total Part Time Equiv Count
+298,DPSRTOFC,District 2024 Staff: Counselor Total Full Time Equiv Count
+299,DPSBTOPC,District 2024 Staff: Librarian Total Part Time Equiv Count
+300,DPSBTOFC,District 2024 Staff: Librarian Total Full Time Equiv Count
+301,DPSXTOFC,District 2024 Staff: Auxiliary Total Full Time Equiv Count
+302,DPSATOFC,District 2024 Staff: All Staff Total Full Time Equiv Count
+303,DPSOTOFC,District 2024 Staff: Contract Serv Total Full Time Equiv Count
+304,DPSTINFC,District 2024 Staff: Teacher American Indian Full Time Equiv Count
+305,DPSTPIFC,District 2024 Staff: Teacher Pacific Islander Full Time Equiv Count
+306,DPSTASFC,District 2024 Staff: Teacher Asian Full Time Equiv Count
+307,DPSTBLFC,District 2024 Staff: Teacher African American Full Time Equiv Count
+308,DPSTHIFC,District 2024 Staff: Teacher Hispanic Full Time Equiv Count
+309,DPSTWHFC,District 2024 Staff: Teacher White Full Time Equiv Count
+310,DPSTTWFC,District 2024 Staff: Teacher Two or more races Full Time Equiv Count
+311,DPSTMAFC,District 2024 Staff: Teacher Male Full Time Equiv Count
+312,DPSTFEFC,District 2024 Staff: Teacher Female Full Time Equiv Count
+313,DPSXCOFC,District 2024 Staff: SSA Auxiliary Staff Full Time Equiv Count
+314,DPSTREFC,District 2024 Staff: Teacher Regular Program Full Time Equiv Count
+315,DPSTVOFC,District 2024 Staff: Teacher Career & Technical Prgms Full Time Equiv Count
+316,DPSTBIFC,District 2024 Staff: Teacher Bilingual Program Full Time Equiv Count
+317,DPSTCOFC,District 2024 Staff: Teacher Compensatory Program Full Time Equiv Count
+318,DPSTGIFC,District 2024 Staff: Teacher Gifted & Talented Program Full Time Equiv Count
+319,DPSTSPFC,District 2024 Staff: Teacher Special Education Full Time Equiv Count
+320,DPSTOPFC,District 2024 Staff: Teacher Other Full Time Equiv Count
+321,DPSTURNN,District 2024 Staff: Teacher Turnover Numerator
+322,DPSTURND,District 2024 Staff: Teacher Turnover Denominator
+323,DPSTURNR,District 2024 Staff: Teacher Turnover Ratio
+324,DPSTFTEC,District 2024 Staff: Teacher Total Full Time Equiv - Experience Calculation
+325,DPSTTENA,District 2024 Staff: Teacher Tenure Average
+326,DPSTEXPA,District 2024 Staff: Teacher Experience Average
+327,DPSHEXPA,District 2024 Staff: Principal Experience Average
+328,DPSHTENA,District 2024 Staff: Principal Tenure Average
+329,DPSLEXPA,District 2024 Staff: Assistant Principal Experience Average
+330,DPSLTENA,District 2024 Staff: Assistant Principal Tenure Average
+331,DPSHEXPT,District 2024 Staff: Principal Experience Total
+332,DPSHTENT,District 2024 Staff: Principal Tenure Total
+333,DPSLEXPT,District 2024 Staff: Assistant Principal Experience Total
+334,DPSLTENT,District 2024 Staff: Assistant Principal Tenure Total
+335,DPSHFTEC,District 2024 Staff: Principal Count
+336,DPSLFTEC,District 2024 Staff: Assistant Principal Count
+337,DPSAMIFC,District 2024 Staff: All Staff Minority Full Time Equiv Count
+338,DPSTEXPT,District 2024 Staff: Teacher Experience Total
+339,DPSTTENT,District 2024 Staff: Teacher Tenure Total
+340,DPSPTOFP,District 2024 Staff: Professional Total Full Time Equiv Percent
+341,DPSTTOFP,District 2024 Staff: Teacher Total Full Time Equiv Percent
+342,DPSUTOFP,District 2024 Staff: Support Total Full Time Equiv Percent
+343,DPSSTOFP,District 2024 Staff: School Admin Total Full Time Equiv Percent
+344,DPSCTOFP,District 2024 Staff: Central Admin Total Full Time Equiv Percent
+345,DPSETOFP,District 2024 Staff: Educ Aide Total Full Time Equiv Percent
+346,DPSXTOFP,District 2024 Staff: Auxiliary Total Full Time Equiv Percent
+347,DPSAMIFP,District 2024 Staff: All Staff Minority Full Time Equiv Percent
+348,DPSTNOFP,District 2024 Staff: Teacher No Degree Full Time Equiv Percent
+349,DPSTBAFP,District 2024 Staff: Teacher BA Degree Full Time Equiv Percent
+350,DPSTMSFP,District 2024 Staff: Teacher MS Degree Full Time Equiv Percent
+351,DPSTPHFP,District 2024 Staff: Teacher PH Degree Full Time Equiv Percent
+352,DPST00FP,District 2024 Staff: Teacher Beginning Full Time Equiv Percent
+353,DPST01FP,District 2024 Staff: Teacher 1-5 Years Full Time Equiv Percent
+354,DPST06FP,District 2024 Staff: Teacher 6-10 Years Full Time Equiv Percent
+355,DPST11FP,District 2024 Staff: Teacher 11-20 Years Full Time Equiv Percent
+356,DPST21FP,District 2024 Staff: Teacher 21-30 Years Full Time Equiv Percent
+357,DPST30FP,District 2024 Staff: Teacher > 30 Years Full Time Equiv Percent
+358,DPSTREFP,District 2024 Staff: Teacher Regular Program Full Time Equiv Percent
+359,DPSTVOFP,District 2024 Staff: Teacher Career & Technical Prgms Full Time Equiv Percent
+360,DPSTBIFP,District 2024 Staff: Teacher Bilingual Program Full Time Equiv Percent
+361,DPSTCOFP,District 2024 Staff: Teacher Compensatory Program Full Time Equiv Percent
+362,DPSTGIFP,District 2024 Staff: Teacher Gifted & Talented Program Full Time Equiv Percent
+363,DPSTSPFP,District 2024 Staff: Teacher Special Education Full Time Equiv Percent
+364,DPSTOPFP,District 2024 Staff: Teacher Other Full Time Equiv Percent
+365,DPSTBLFP,District 2024 Staff: Teacher African American Full Time Equiv Percent
+366,DPSTWHFP,District 2024 Staff: Teacher White Full Time Equiv Percent
+367,DPSTHIFP,District 2024 Staff: Teacher Hispanic Full Time Equiv Percent
+368,DPSTPIFP,District 2024 Staff: Teacher Pacific Islander Full Time Equiv Percent
+369,DPSTINFP,District 2024 Staff: Teacher American Indian Full Time Equiv Percent
+370,DPSTASFP,District 2024 Staff: Teacher Asian Full Time Equiv Percent
+371,DPSTTWFP,District 2024 Staff: Teacher Two or more races Full Time Equiv Percent
+372,DPSTMAFP,District 2024 Staff: Teacher Male Full Time Equiv Percent
+373,DPSTFEFP,District 2024 Staff: Teacher Female Full Time Equiv Percent
+374,DPSTKIDR,District 2024 Staff: Teacher Student Ratio
+375,DPST00SA,District 2024 Staff: Teacher Beginning Base Salary Average
+376,DPST01SA,District 2024 Staff: Teacher 1-5 Years Base Salary Average
+377,DPST06SA,District 2024 Staff: Teacher 6-10 Years Base Salary Average
+378,DPST11SA,District 2024 Staff: Teacher 11-20 Years Base Salary Average
+379,DPST21SA,District 2024 Staff: Teacher 21-30 Years Base Salary Average
+380,DPST30SA,District 2024 Staff: Teacher > 30 Years Base Salary Average
+381,DPSTTOSA,District 2024 Staff: Teacher Total Base Salary Average
+382,DPSUTOSA,District 2024 Staff: Support Total Base Salary Average
+383,DPSSTOSA,District 2024 Staff: School Admin Total Base Salary Average
+384,DPSCTOSA,District 2024 Staff: Central Admin Total Base Salary Average
+385,DA0GR23N,District 2023 Graduates: All Students Count (including FHSP)
+386,DA0GM23N,District 2023 Graduates: Minimum HS PGM All Students Count
+387,DA0GH23N,District 2023 Graduates: RHSP/DAP All Students Count
+388,DA0GN23N,District 2023 Graduates: FHSP No Endorsement All Students Count
+389,DA0GE23N,District 2023 Graduates: FHSP-E All Students Count
+390,DA0GA23N,District 2023 Graduates: FHSP-DLA All Students Count
+391,DB0GR23N,District 2023 Graduates: African American Count
+392,DH0GR23N,District 2023 Graduates: Hispanic Count
+393,DW0GR23N,District 2023 Graduates: White Count
+394,DI0GR23N,District 2023 Graduates: American Indian Count
+395,D30GR23N,District 2023 Graduates: Asian Count
+396,D40GR23N,District 2023 Graduates: Pacific Islander Count
+397,D20GR23N,District 2023 Graduates: Two or More Races Count
+398,DE0GR23N,District 2023 Graduates: Econ Disadv Count
+399,DS0GR23N,District 2023 Graduates: Special Ed Count
+400,DL0GR23N,District 2023 Graduates: EB/EL Count
+401,DR0GR23N,District 2023 Graduates: At Risk Count
+402,DA0GH23P,District 2023 Graduates: RHSP/DAP All Students % (Profile Only)
+403,DA0GN23P,District 2023 Graduates: FHSP No Endorsement All Students % (Profile Only)
+404,DA0GE23P,District 2023 Graduates: FHSP-E All Students % (Profile Only)
+405,DA0GA23P,District 2023 Graduates: FHSP-DLA All Students % (Profile Only)
+406,DA0GR23R,District 2023 Graduates: All Students Group %
+407,DB0GR23R,District 2023 Graduates: African American Student Group %
+408,DH0GR23R,District 2023 Graduates: Hispanic Student Group %
+409,DW0GR23R,District 2023 Graduates: White Student Group %
+410,DI0GR23R,District 2023 Graduates: American Indian Student Group %
+411,D30GR23R,District 2023 Graduates: Asian Student Group %
+412,D40GR23R,District 2023 Graduates: Pacific Islander Student Group %
+413,D20GR23R,District 2023 Graduates: Two or More Races Student Group %
+414,DE0GR23R,District 2023 Graduates: Econ Disadv Student Group %
+415,DS0GR23R,District 2023 Graduates: Special Ed Student Group %
+416,DL0GR23R,District 2023 Graduates: EB/EL Student Group %
+417,DR0GR23R,District 2023 Graduates: At Risk Student Group %
+418,DA0GM23P,District 2023 Graduates: Minimum HS PGM All Students % (Profile Only)

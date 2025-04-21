@@ -9,3 +9,5 @@ scikit-learn
 seaborn
 scipy
 shinyswatch
+re
+folium
