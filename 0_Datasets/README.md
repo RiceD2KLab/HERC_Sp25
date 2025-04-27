@@ -54,7 +54,3 @@ The `Data{year}` folders contain **separate datasets** for each academic year, o
 
 - **Geometry Folder:**  
   - Contains files used for **map visualizations** in R.
-
----
-
-Would you also like a slightly more *visual* version, like with a mini folder structure diagram 📂 so it’s super clear at a glance? (optional, if you want to make it even cleaner!)
