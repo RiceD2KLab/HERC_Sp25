@@ -7,6 +7,14 @@ This guide provides step-by-step instructions to **package the TAPR Scraper appl
 
 ---
 
+## **Quick Access**  
+If you do not want to create the executable yourself, you can **directly download the pre-built `.exe` file** here:  
+🔗 [TAPR Scraper Executable Download](https://rice.box.com/s/svclj7g4456unwqj006pilassonxrete)
+
+Simply download the file and double-click to run — no Python installation required.
+
+---
+
 ## **Why Create an Executable?**  
 While `.py` scripts work perfectly for developers, they **require a full Python environment** to run.  
 Creating a `.exe` allows you to:  
