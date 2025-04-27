@@ -18,15 +18,10 @@ This folder processes the **raw data** scraped in the previous step, ensuring co
   - Replaces encoded missing values with standardized `NA`.  
   - Maps column IDs to human-readable column names.
   - Maps District/Region IDs to full names
-- `Combining All Datasets`
-    - Combines all of the columns and data from the files in the `0_Datasets` folder specifically 1.3 to 1.6
-- `Splitting_Sheets`
-  - This file splits up the sheets after `Combining All Datasets` into their respective years
-  - File also downloads the resulting files into your computer
--  `Checking_Split_Sheets`
-  - A simply function to double-check the files from `Splitting_Sheets` to make sure there are no duplicates and overlapping years in columns excluding columns that have multiple years in them.
-- `Final_Master_Sheet_ATT`
-  - This file mean to merge all of the yearly files from the master files together
+**Secondary Script:** `Yearly_Data_Merger.ipynb`
+- **Functionality:**  
+  - Reads in clean district datasets and merges it into one dataset by DISTRICT ID 
+
   
 
 ## **1.3_Wrangling_App**
