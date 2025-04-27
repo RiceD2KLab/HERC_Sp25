@@ -1,4 +1,4 @@
-# Bridging the Data Gap: Empowering Texas School Districts with Analytics
+# DistrictMatch: Empowering Public Education with District Comparison
 
 
 ## Table of Contents 
