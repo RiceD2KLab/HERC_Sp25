@@ -37,6 +37,7 @@ This folder contains the code for a **Python GUI application** that integrates w
   - **TAPR_Scraper_UserManual.pdf:**  
     - A user manual that provides detailed instructions on how to install, operate, and troubleshoot the TAPR scraping application.  
 
-This app enables users to **easily scrape**, **clean**, and **prepare** Texas district data without needing to run Jupyter notebooks manually.
+This app enables users to **easily scrape**, **clean**, and **prepare** Texas district data without needing to run Jupyter notebooks manually.  
 
+View this folder's README for more information on how to package the TAPR_Scraper.py into a .exe application. 
 
