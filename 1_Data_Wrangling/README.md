@@ -22,15 +22,21 @@ This folder processes the **raw data** scraped in the previous step, ensuring co
 - **Functionality:**  
   - Reads in clean district datasets and merges it into one dataset by DISTRICT ID 
 
-  
 
-## **1.3_Wrangling_App**
+## **1.3_Wrangling_App**  
 This folder contains the code for a **Python GUI application** that integrates web scraping and data cleaning into a user-friendly interface.
 
 - **Components:**  
-  - Combines **Web Scraping**, **Data Cleaning**, and **Python GUI** development.  
-  - Streamlines the data acquisition and preprocessing workflow.  
+  - **scraping.py:**  
+    - Functions originally developed in **1.1_Web_Scraping**, packaged into a `.py` script.  
+  - **wrangling.py:**  
+    - Functions originally developed in **1.2_Data_Cleaning**, packaged into a `.py` script.  
+  - **TAPR_Scraper.py:**  
+    - The **primary GUI application** that streamlines the **data acquisition** and **preprocessing** workflow.  
+    - Integrates the scraping and cleaning functions into a single, interactive tool.  
+  - **TAPR_Scraper_UserManual.pdf:**  
+    - A user manual that provides detailed instructions on how to install, operate, and troubleshoot the TAPR scraping application.  
 
-For detailed instructions on how to install and use the GUI application, please refer to the **README file inside this folder**.
+This app enables users to **easily scrape**, **clean**, and **prepare** Texas district data without needing to run Jupyter notebooks manually.
 
----
+
