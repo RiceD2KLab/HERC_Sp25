@@ -18,7 +18,7 @@ This folder processes the **raw data** scraped in the previous step, ensuring co
   - Replaces encoded missing values with standardized `NA`.  
   - Maps column IDs to human-readable column names.
   - Maps District/Region IDs to full names
-**Secondary Script:** `Yearly_Data_Merger.ipynb`
+- **Secondary Script:** `Yearly_Data_Merger.ipynb`
 - **Functionality:**  
   - Reads in clean district datasets and merges it into one dataset by DISTRICT ID 
 
