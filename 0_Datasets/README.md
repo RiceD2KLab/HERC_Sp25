@@ -1,78 +1,56 @@
-# **Dataset Description README**  
+# **Dataset Description README**
 
 ## **Overview**  
-This repository contains **district-level** datasets covering Texas school districts' **demographics** and **performance metrics** from **2018 to 2023**.  
+This repository contains datasets covering Texas school districts' **demographic** and **outcome oriented** data from **2018 to 2024**.  
 
-- **Data Source:** [Texas Academic Performance Reports (TAPR)](https://rptsvr1.tea.texas.gov/perfreport/tapr/2023/download/DownloadData.html)  
-- **Focus:** Only **district-level** data is used in this analysis.  
-- **For additional datasets, visit:** [INSERT Box Drive Link]  
-
----
-
-## **Clean Data File Descriptions**
-
-- **GRAD:** Attendance, Chronic Absenteeism, Graduation (RHSP/DAP & FHSP), and Dropout Rates  
-- **PERF1:** Postsecondary Indicators: College, Career, and Military Readiness (CCMR), TSIA, College Prep
-- **PERF2:** PERF2 Postsecondary Indicators: AP/IB, SAT/ACT
-- **PROF:** Profile: Staff, Student, and Annual Graduates  
-- **STAAR1:** STAAR Assessment Data (Primary Student Groups): Approaches, Meets, and Masters Grade Level (Grades 3 to 8)
+- **Source:** [Texas Academic Performance Reports (TAPR)](https://rptsvr1.tea.texas.gov/perfreport/tapr/2023/download/DownloadData.html)  
+- **Focus:** District-level data only.
 
 ---
 
-## **Repository Structure**  
+## **Primary Folder: 1.0MergedData**  
 
-```
-0_Datasets_csv/
-    │   ├── Data2018/District/  → (2017-2018 school year)
-    │   ├── Data2019/District/  → (2018-2019 school year)
-    │   ├── Data2020/  → (2019-2020 school year)
-    │   ├── Data2021/  → (2020-2021 school year)
-    │   ├── Data2022/  → (2021-2022 school year)
-    │   ├── Data2023/  → (2022-2023 school year)
-    │   ├── Master_Files/  → (Combined yearly datasets)
-    │   ├── Geometry/  → (Geographic Data Files)
-    │   ├── Archive/  → (Old Unused Files)
-```
+- The `1.0MergedData` folder will serve as the **main source** for analysis moving forward.  
+- Inside this folder are **individual merged files by year** (`merged_{year}`), each containing a **clean and combined** version of the following district-level datasets:
+  - **GRAD:** Graduation, attendance, chronic absenteeism, dropout rates
+  - **PERF1:** College, career, and military readiness (CCMR), TSIA, College Prep
+  - **PERF2:** AP/IB exam results, SAT/ACT results
+  - **PROF:** Staff and student profiles, graduate profiles
+  - **STAAR1:** STAAR Assessment results (Grades 3–8)
+  - **District Type**: Geographical description of districts
+- **Years Covered:** 2020–2024  
+- These files are fully integrated and ready for feature engineering and analysis.
 
-### **Inside Each Year’s Folder (e.g., `Data2020/`)**
-Each year contains three subfolders:
-```
-Data{Year}/
-    ├── District/
-    │   ├── raw_data/   → Unprocessed TEA files
-    │   ├── clean_data/ → Pre-processed, structured datasets
-    │
-    ├── State/
-    │   ├── raw_data/
-    │   ├── clean_data/
-    │
-    ├── Region/
-    │   ├── raw_data/
-    │   ├── clean_data/
-```
 ---
 
-### **Master Files Explained**  
+## **Individual Non-Merged Yearly Data**  
 
-The `0_Datasets/1.7Master_Files/Individual Year Files` folder contains the **result of merging** multiple datasets into a single dataset per year. These merged datasets combine critical performance and demographic indicators, simplifying the next stage of feature engineering. In order to combine all the files together you have to go to `HERC_Sp25/1_Data_Wrangling/1.2_Data_Cleaning/File_Merging` and use `Final_Mast_Sheet_ATT` to merge all of the individual year files together, make sure to download them to your desktop. 
+The `Data{year}` folders contain **separate datasets** for each academic year, organized by **district**, **regional**, and **state** levels.  
 
-### **Datasets Included in Merged Files:** GRAD, PERF1, PERF2, PROF, STAAR1
-These **fully integrated datasets** will be used in the **next stage of feature engineering**, ensuring a more comprehensive analysis of district-level trends across Texas school districts.
+- **Raw Files:**  
+  - Direct downloads from the TEA website.  
+  - **No cleaning or standardization** applied.  
+
+- **Clean Files:**  
+  - Datasets that have been **cleaned** and **standardized individually**.  
+  - **No merging** — each dataset remains separate by reporting category.
+
+- **Format Standards:**  
+  - Consistent folder structure for **2020–2023**.  
+  - **Exceptions:**  
+    - **2018, 2019, and 2024** follow a different format due to changes in TEA data reporting.
 
 ---
 
 ## **Important Notes**  
 
-### **Academic Year Naming**  
-- Each **year refers to the second** year of the academic period.  
-- Example: `2020` corresponds to the **2019-2020** school year.  
+- **Academic Year Naming:**  
+  - The dataset year corresponds to the **second** year of the academic cycle (e.g., `2020` = 2019–2020 school year).
 
-### **Data Cleaning Standards**  
-- **2020-2023** datasets follow a **standardized** cleaning process.  
-- **2018 & 2019** data follows a **different methodology** due to structural changes in TEA data formatting. These years contain one single unified clean dataset that last semester's team worked on.  
+- **Data Cleaning Standards:**  
+  - **2018–2019:** Older TEA format (custom cleaning).  
+  - **2020–2023:** Standardized cleaning process.  
+  - **2024:** New format adjustments (different from 2020–2023).
 
-### **Geometry Folder**  
-- These files are datasets used to create map visualizations in R  
-
-
-
+- **Geometry Folder:**  
+  - Contains files used for **map visualizations** in R.
