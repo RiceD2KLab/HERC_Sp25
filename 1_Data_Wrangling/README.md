@@ -24,7 +24,7 @@ This folder processes the **raw data** scraped in the previous step, ensuring co
 
 
 ## **1.3_Wrangling_App**  
-This folder contains the code for a **Python GUI application** that integrates web scraping and data cleaning into a user-friendly interface.
+This folder contains the code and a link for a **Python GUI application** that integrates web scraping and data cleaning into a user-friendly interface.
 
 - **Components:**  
   - **scraping.py:**  
