@@ -2,6 +2,9 @@
 
 This guide provides step-by-step instructions to **package the TAPR Scraper application into a standalone executable (.exe)** using `PyInstaller`.  
 
+> ⚠️ **Note:** This process is designed for **Windows devices only**.  
+> `.exe` files are Windows-native and will not run natively on Mac or Linux.
+
 ---
 
 ## **Why Create an Executable?**  
@@ -15,33 +18,27 @@ This step ensures that the TAPR Scraper can be **shared and used easily** outsid
 
 ---
 
-## **1. Setting Up the Environment**  
+## **1. Setting Up the Environment (Windows Only)**  
 
 ### **Step 1: Create and Activate a Virtual Environment**  
 Open a terminal or command prompt and run:  
-```sh
+```bash
 python -m venv venv
 ```
 Activate the virtual environment:  
-
-- **Windows:**  
-  ```sh
-  venv\Scripts\activate
-  ```
-- **Mac/Linux:**  
-  ```sh
-  source venv/bin/activate
-  ```
+```bash
+venv\Scripts\activate
+```
 
 ### **Step 2: Install Dependencies**  
-Install all necessary libraries:  
-```sh
+Install all necessary libraries using the provided `requirements.txt` file:  
+```bash
 pip install -r requirements.txt
 ```
 
 ### **Step 3: Verify Installation**  
 Confirm all dependencies are installed correctly:  
-```sh
+```bash
 pip freeze
 ```
 
@@ -51,44 +48,25 @@ pip freeze
 
 ### **Step 4: Test the Script Before Building**  
 Before creating an `.exe`, run the script to ensure it works properly:  
-```sh
+```bash
 python TAPR_Scraper.py
 ```
 
 ### **Step 5: Build the Executable**  
 Use `PyInstaller` to generate a standalone `.exe` file:  
-```sh
+```bash
 pyinstaller --onefile --noconsole --hidden-import=scraping --hidden-import=wrangling TAPR_Scraper.py
 ```
 
 - `--onefile`: Packages everything into a single `.exe` file.  
 - `--noconsole`: Prevents the console window from opening when the application runs.  
-- `--hidden-import`: Ensures that all necessary modules are included.  
+- `--hidden-import`: Ensures that all necessary modules are included.
 
 ---
 
-## **3. Managing Dependencies**  
-
-### **Using a `requirements.txt` File** (Recommended)  
-Instead of listing dependencies manually, create a `requirements.txt` file with:  
-```sh
-pip freeze > requirements.txt
-```
-Then, to install dependencies later:  
-```sh
-pip install -r requirements.txt
-```
-
-### **Dependencies List**  
-For reference, these are the required dependencies:  
-```txt
-[dependencies list stays the same]
-```
-
----
-
-## **4. Running the Application**  
-Once the `.exe` is generated, it can be executed directly without requiring Python. Simply double-click the `.exe` file to launch the application.  
+## **3. Running the Application**  
+Once the `.exe` is generated, it can be executed directly without requiring Python.  
+Simply double-click the `.exe` file to launch the application.
 
 ---
 
