@@ -17,7 +17,8 @@ This repository contains datasets covering Texas school districts' **demographic
   - **PERF2:** AP/IB exam results, SAT/ACT results
   - **PROF:** Staff and student profiles, graduate profiles
   - **STAAR1:** STAAR Assessment results (Grades 3–8)
-  - **District Type**: Geographical description of districts
+  - **REF:** Geographical district information
+  - **District Type**: TEA district classification (urban, rural, etc)
 - **Years Covered:** 2020–2024  
 - These files are fully integrated and ready for feature engineering and analysis.
 
