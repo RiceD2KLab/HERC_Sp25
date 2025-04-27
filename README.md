@@ -30,8 +30,6 @@ In this semester, our team plans to build on the work done in Fall 2024, expandi
 
 * **Facilitate Comparative Analysis Among School Districts:** Assist school districts in identifying and comparing themselves with similar districts by allowing users to select and prioritize relevant demographic features, thereby enhancing data-driven decision-making. The matching process should focus on demographic factors for similarities, rather than test scores and graduation rates, to allow districts to use those outcomes as a comparison after the fact.
 
-* **Engage and Collaborate with Local School Districts:** Actively consult with Houston area school districts to gather insights and feedback, ensuring the tool aligns with their specific needs and preferences, and provide comprehensive documentation to support its effective use. 
-
 * **Develop an Interactive Dashboard for District Comparisons:** Create a web-based or GUI-driven dashboard that allows users to visualize, compare, and analyze school district data interactively, making insights more accessible and actionable. This dashboard should be simpler and more applicable for districts than the one made in the prior semester. 
 
 
