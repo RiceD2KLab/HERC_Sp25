@@ -1,11 +1,10 @@
 # **Dataset Description README**  
 
 ## **Overview**  
-This repository contains **district-level** datasets covering Texas school districts' **demographics** and **performance metrics** from **2018 to 2023**.  
+This repository contains datasets covering Texas school districts' **demographics** and **outcome variables** from **2018 to 2023**.  
 
 - **Data Source:** [Texas Academic Performance Reports (TAPR)](https://rptsvr1.tea.texas.gov/perfreport/tapr/2023/download/DownloadData.html)  
 - **Focus:** Only **district-level** data is used in this analysis.  
-- **For additional datasets, visit:** [INSERT Box Drive Link]  
 
 ---
 
