@@ -18,39 +18,6 @@ This repository contains datasets covering Texas school districts' **demographic
 
 ---
 
-## **Repository Structure**  
-
-```
-0_Datasets_csv/
-    │   ├── Data2018/District/  → (2017-2018 school year)
-    │   ├── Data2019/District/  → (2018-2019 school year)
-    │   ├── Data2020/  → (2019-2020 school year)
-    │   ├── Data2021/  → (2020-2021 school year)
-    │   ├── Data2022/  → (2021-2022 school year)
-    │   ├── Data2023/  → (2022-2023 school year)
-    │   ├── Master_Files/  → (Combined yearly datasets)
-    │   ├── Geometry/  → (Geographic Data Files)
-    │   ├── Archive/  → (Old Unused Files)
-```
-
-### **Inside Each Year’s Folder (e.g., `Data2020/`)**
-Each year contains three subfolders:
-```
-Data{Year}/
-    ├── District/
-    │   ├── raw_data/   → Unprocessed TEA files
-    │   ├── clean_data/ → Pre-processed, structured datasets
-    │
-    ├── State/
-    │   ├── raw_data/
-    │   ├── clean_data/
-    │
-    ├── Region/
-    │   ├── raw_data/
-    │   ├── clean_data/
-```
----
-
 ### **Master Files Explained**  
 
 The `0_Datasets/1.7Master_Files/Individual Year Files` folder contains the **result of merging** multiple datasets into a single dataset per year. These merged datasets combine critical performance and demographic indicators, simplifying the next stage of feature engineering. In order to combine all the files together you have to go to `HERC_Sp25/1_Data_Wrangling/1.2_Data_Cleaning/File_Merging` and use `Final_Mast_Sheet_ATT` to merge all of the individual year files together, make sure to download them to your desktop. 
@@ -67,8 +34,11 @@ These **fully integrated datasets** will be used in the **next stage of feature 
 - Example: `2020` corresponds to the **2019-2020** school year.  
 
 ### **Data Cleaning Standards**  
-- **2020-2023** datasets follow a **standardized** cleaning process.  
 - **2018 & 2019** data follows a **different methodology** due to structural changes in TEA data formatting. These years contain one single unified clean dataset that last semester's team worked on.  
+- **2020-2023** datasets follow a **standardized** cleaning process.
+- **2024** datasets follow a **different methodology** due to structural changes in TEA data formatting. 
+
+
 
 ### **Geometry Folder**  
 - These files are datasets used to create map visualizations in R  
