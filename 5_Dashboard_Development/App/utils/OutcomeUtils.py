@@ -268,6 +268,7 @@ def plot_ccmr_rates(neighbors, year, subcategory = None):
     filtered_df = df_renamed[columns_to_keep]
     columns_to_keep = [column for column in columns_to_keep if filtered_df[column].sum() != 0]
     df_long = filtered_df.melt(id_vars=["DISTNAME", "DISTRICT_id"], value_vars=columns_to_keep, var_name="Demographic", value_name="Rate")
+    df_long['DISTNAME'] = df_long['DISTNAME'].apply(title_case_with_spaces)
     print("post-transformations data", df_long.shape)
     fig = px.bar(df_long, 
                  x='DISTNAME', y='Rate', color = 'Demographic',

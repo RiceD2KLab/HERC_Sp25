@@ -20,7 +20,7 @@ from modules import matches, why_districts, outcomes, about, howto
 # =============================================================================
 # 2. Constants and Settings
 # =============================================================================
-# List of group names for checkboxes.
+# List of group names for checkboxes
 feature_options = list(bucket_options.keys())
 
 ids2 = ids.copy()
@@ -57,7 +57,7 @@ app_ui = ui.page_navbar(
     ui.nav_spacer(),
     title=ui.TagList(
             # Logo (image)
-            ui.img(src="HERC_Logo_No_Text.png", height="30px"),
+            ui.img(src="HERC_Logo_No_Text.png", height="40px"),
             # Title text next to the logo
             " DistrictMatch"
         ),  
@@ -73,7 +73,8 @@ app_ui = ui.page_navbar(
             ),
             ui.input_numeric("n_neighbors", "Number of Neighbors", value=5, min=1),
             ui.input_numeric("year", "View Outcomes For", value=2024, min=2020, max = 2024),
-            ui.input_action_button("run", "Run Model")),
+            ui.input_action_button("run", "Run Model"),
+            width = 300),
     theme = theme.flatly,
     )  
 
@@ -92,7 +93,7 @@ def server(input, output, session):
                          'n': input.n_neighbors(), 
                          'year': input.year()}
         return user_selected
-    
+
     # Test
     @reactive.event(input.run)
     def test_button_click():
@@ -113,9 +114,19 @@ def server(input, output, session):
             return pd.DataFrame({"Error": ["District not found!"]})
         district_id = district_id_lookup.iloc[0]
 
-        n_neighbors = input.n_neighbors()
+        n_neighbors = input.n_neighbors() + 1
 
         buckets_selected = input.feature_groups()
+        if not buckets_selected:
+            print("DEBUG: No feature groups selected!")
+            # Show an error modal asking the user to select at least one feature group
+            m = ui.modal(
+                    "Please select at least one feature group before running the model.",
+                    title= "Error",
+                    easy_close=True
+                )
+            ui.modal_show(m)  
+            return "None"
         buckets = [bucket_options[key] for key in buckets_selected]
         # Debug print to output the parameters that will be passed to the model.
         print("DEBUG: Calling find_nearest_districts with:")

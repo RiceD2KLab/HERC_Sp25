@@ -4,18 +4,18 @@ body {
 }
 
 body {
-  font-size: 16px;  /* Default font size */
+  font-size: 14px;  /* Default font size */
 }
 
 @media (min-width: 768px) {
   body {
-    font-size: 18px;  /* Slightly larger font on medium screens */
+    font-size: 16px;  /* Slightly larger font on medium screens */
   }
 }
 
 @media (min-width: 1200px) {
   body {
-    font-size: 20px;  /* Even larger font on large screens */
+    font-size: 18px;  /* Even larger font on large screens */
   }
 }
 
