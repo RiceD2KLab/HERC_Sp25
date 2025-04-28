@@ -11,7 +11,7 @@ import textwrap
 import pandas as pd
 
 # Local Imports
-from utils.AppUtils import title_case_with_spaces
+from utils.AppUtils import title_case_with_spaces, clean_column
 
 # =============================================================================
 # 2. Constants / Configuration
@@ -92,6 +92,8 @@ def plot_race_ethnicity_stacked_bar(df, buckets, neighbors):
         value_name="Percentage"
     )
 
+    melted_df = clean_column(melted_df, "Race/Ethnicity")
+    
     # Optional: sort by input district on top
     melted_df["DISTNAME"] = pd.Categorical(
         melted_df["DISTNAME"],
@@ -99,13 +101,16 @@ def plot_race_ethnicity_stacked_bar(df, buckets, neighbors):
         ordered=True
     )
 
+    melted_df['DISTNAME'] = melted_df['DISTNAME'].apply(title_case_with_spaces)
+
+
     # Step 4: Plot
     fig = px.bar(
         melted_df,
         x="DISTNAME",
         y="Percentage",
         color="Race/Ethnicity",
-        color_discrete_sequence= px.colors.qualitative.D3,
+        color_discrete_sequence= px.colors.qualitative.Safe,
         hover_data={"group": True, "Percentage": ':.2f'},
         labels={"DISTNAME": "District", "Percentage": "Percentage (%)"},
         title=f"Race/Ethnicity % Distribution for Schools Similar to {title_case_with_spaces(input_dist)}"
@@ -113,13 +118,9 @@ def plot_race_ethnicity_stacked_bar(df, buckets, neighbors):
 
     fig.update_layout(
         barmode='stack',
-        height=600,  # Increase vertical space
         xaxis_title="District",
         yaxis_title="Percentage (%)",
-        legend_title="Race/Ethnicity",
-        xaxis_tickangle=-35,
-        legend=dict(x=1.05, y=0.5),
-        margin=dict(r=180, t=60)
+        legend_title="Race/Ethnicity"
     )
 
     return fig
@@ -171,6 +172,8 @@ def plot_special_ed_504_bar(df, buckets, neighbors):
         .str.replace(" Students Percent", "", regex=False)
     )
 
+    melted_df['DISTNAME'] = melted_df['DISTNAME'].apply(title_case_with_spaces)
+
     # Step 3: Create interactive grouped bar chart
     fig = px.bar(
         melted_df,
@@ -188,10 +191,7 @@ def plot_special_ed_504_bar(df, buckets, neighbors):
     fig.update_layout(
         xaxis_title="Student Category",
         yaxis_title="Percent of Students",
-        legend_title="District",
-        xaxis_tickangle=30,
-        height=500,
-        margin=dict(r=160, t=80)
+        legend_title="District"
     )
 
     return fig
@@ -225,6 +225,7 @@ def plot_dot_stack(df, buckets, neighbors, unit_label="Student-Teacher Ratio"):
     # Sort: input district first
     selected['sort_order'] = selected['Group'].apply(lambda g: 0 if g == "Input District" else 1)
     selected = selected.sort_values(by=['sort_order', metric_col], ascending=[True, False])
+    selected["DISTNAME"] = selected["DISTNAME"].apply(title_case_with_spaces)
     district_order = selected["DISTNAME"].tolist()
 
     # Build stacked dots
@@ -255,11 +256,8 @@ def plot_dot_stack(df, buckets, neighbors, unit_label="Student-Teacher Ratio"):
     fig.update_traces(marker=dict(size=12), selector=dict(mode='markers'))
 
     fig.update_layout(
-        height=500,
         yaxis=dict(title=unit_label, dtick=1, showgrid=False),
         xaxis=dict(title="District", categoryorder="array", categoryarray=district_order, showgrid=False),
-        xaxis_tickangle=30,
-        margin=dict(r=100, t=60),
         showlegend=True,
         plot_bgcolor="white"
     )
@@ -329,8 +327,6 @@ def plot_staff_student_dumbbell(df, buckets, neighbors):
         title=f"Staff and Student Counts for Districts Similar to {title_case_with_spaces(input_dist)}",
         xaxis_title="Count",
         yaxis_title="District",
-        height=600,
-        margin=dict(r=100, t=60),
         plot_bgcolor="white",
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=False),
@@ -422,10 +418,8 @@ def plot_special_populations_dropdown(df, buckets, neighbors):
             y=1,
             yanchor="top"
         )],
-        height=600,
         xaxis=dict(title="Percent of Students", showgrid=False),
         yaxis=dict(title="District", showgrid=False),
-        margin=dict(t=100, r=80, l=60, b=40),
         plot_bgcolor="white"
     )
 
@@ -471,10 +465,8 @@ def plot_gifted_talented_horizontal_bar(df, buckets, neighbors):
 
     fig.update_layout(
         yaxis=dict(autorange="reversed"),
-        height=500,
         xaxis_title="Percent of Students",
         yaxis_title="",
-        margin=dict(l=100, r=60, t=60, b=40),
         plot_bgcolor="white",
         showlegend=False  # Optional: turn on if you want color legend
     )
@@ -514,11 +506,13 @@ def plot_economically_disadvantaged_horizontal(df, buckets, neighbors):
     )
 
     # Clean column labels
-    melted_df["Category"] = melted_df["Category"].str.replace("District 2022-23 ", "", regex=False).str.replace(" Students Percent", "", regex=False)
+    melted_df2 = clean_column(melted_df, "Category").copy()
+
+    melted_df2['Category'] = melted_df2['Category'].replace('Econ Disadv Percent', 'Economically Disadvantaged Percent')
 
     # Plot
     fig = px.bar(
-        melted_df,
+        melted_df2,
         x="Percent",
         y="DISTNAME",
         color="Category",
@@ -531,10 +525,8 @@ def plot_economically_disadvantaged_horizontal(df, buckets, neighbors):
     )
 
     fig.update_layout(
-        height=600,
         xaxis_title="Percent of Students",
         yaxis_title="",
-        margin=dict(t=60, l=120, r=100),
         plot_bgcolor="white",
         legend_title="",
     )
@@ -627,9 +619,6 @@ def plot_language_education_filterable_bar(df, buckets, neighbors):
         title_text=f"{categories[0]} Percentage for Districts Similar to {title_case_with_spaces(input_dist)}",  # ✅ Use title_text instead of title
         yaxis_title="Percent of Students",
         xaxis_title="District",
-        xaxis_tickangle=35,
-        height=600,
-        margin=dict(t=80, r=100),
         plot_bgcolor="white",
         showlegend=False
     )

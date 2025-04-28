@@ -49,8 +49,7 @@ def why_districts_ui():
                 ui.input_checkbox_group("visible_plots", None, choices= list(plot_labels.values()), selected = list(plot_labels.values())),
                 class_="mb-4"
             ),
-            ui.output_ui("dynamic_plot_cards"),
-            style="width: 100%; padding: 1rem 2rem;"
+            ui.output_ui("dynamic_plot_cards", width="100%")
         ),
         value="panel2"
     )
@@ -82,7 +81,7 @@ def why_districts_server(input, output, session, run_result, get_inputs):
                 )
             )
 
-        return ui.div(*cards, style="width: 100%; padding-bottom: 2rem;")
+        return ui.div(*cards)
 
 
     # --- 2. Generate the actual plot outputs
@@ -97,4 +96,9 @@ def why_districts_server(input, output, session, run_result, get_inputs):
             df, label_dict, neighbors = result[0], result[1], result[2]
             df['DISTRICT_id'] = df['DISTRICT_id'].astype(str)
             neighbors['DISTRICT_id'] = neighbors['DISTRICT_id'].astype(str)
-            return plot_func(df, label_dict, neighbors)
+            return plot_func(df, label_dict, neighbors).update_layout(modebar_remove=[
+                                "zoom", "pan", "select", "zoomIn", "zoomOut", "autoScale", "resetScale", 
+                                "lasso2d", "hoverClosestCartesian", "hoverCompareCartesian",
+                                "toggleSpikelines", "toImage"  # temporarily remove to add back cleanly
+                            ],
+                            modebar_add=["toImage"])

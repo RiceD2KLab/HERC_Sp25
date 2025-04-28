@@ -404,13 +404,13 @@ def plot_exclusive_staar_with_filters(df, neighbors, subject):
     fig.update_layout(
         title={"text": f"{subject} STAAR Performance – Grade {grade_options[0]}"},
         legend=dict(
-            title="Performance Level",
-            orientation="v",
-            x=1.02,
-            xanchor="left",
-            y=1,
-            yanchor="top"
-        ),
+                    title="Performance Level",
+                    orientation="h",  # make it horizontal
+                    x=0.5,
+                    xanchor="center",
+                    y=-0.2,
+                    yanchor="top"
+                ),
         updatemenus=[{
             "buttons": dropdown_buttons,
             "direction": "down",
@@ -422,10 +422,7 @@ def plot_exclusive_staar_with_filters(df, neighbors, subject):
         }],
         barmode='stack',
         xaxis_title="District",
-        yaxis_title="Percentage of Students",
-        xaxis_tickangle=45,
-        height=600,
-        margin=dict(l=40, r=100, t=40, b=150)
+        yaxis_title="Percentage of Students"
     )
 
     # Step 6: Show default trace (first grade)

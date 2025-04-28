@@ -13,7 +13,7 @@ import pandas as pd
 ids = pd.read_csv("https://raw.githubusercontent.com/RiceD2KLab/HERC_Sp25/refs/heads/main/5_Dashboard_Development/data/ids.csv")
 
 # =============================================================================
-# 3. District Name Formatting Helper Function
+# 3. District Name and Column Formatting Helper Function
 # =============================================================================
 def title_case_with_spaces(text):
     """
@@ -39,6 +39,21 @@ def title_case_with_spaces(text):
         words = [word.title() if word != 'MSD' else word for word in words]
         return ' '.join(words)
     return re.sub(r'([a-z])([A-Z])', r'\1 \2', text).title()
+
+def clean_column(df, column_name):
+    """
+    Remove either 'District XXXX Student Enrollment: ' or 'District XXXX-XX' 
+    from a specified column, where XXXX and XX are any numbers.
+    
+    Args:
+        df (pd.DataFrame): DataFrame containing the column.
+        column_name (str): Name of the column to clean.
+        
+    Returns:
+        pd.DataFrame: Updated DataFrame with cleaned column.
+    """
+    df[column_name] = df[column_name].str.replace(r'District \d{4}-\d{2}|District \d+ Student Enrollment: ', '', regex=True)
+    return df
 
 # =============================================================================
 # 4. Demographic Buckets and Helper Functions

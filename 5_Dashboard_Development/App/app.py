@@ -23,7 +23,18 @@ from modules import matches, why_districts, outcomes, about, howto
 # List of group names for checkboxes.
 feature_options = list(bucket_options.keys())
 
-district_choices = sorted(ids[ids['Charter School (Y/N)'] == 'N']["DISTNAME"].unique())
+ids2 = ids.copy()
+
+# Find which DISTNAMEs are duplicated
+dupes = ids2['DISTNAME'].duplicated(keep=False)
+
+# Create new ID: combine DISTNAME and CNTYNAME if duplicated, otherwise just DISTNAME
+ids2['ID'] = ids2.apply(
+    lambda row: f"{row['DISTNAME']} ({row['CNTYNAME']})" if dupes[row.name] else row['DISTNAME'],
+    axis=1
+)
+
+district_choices = sorted(ids2[ids2['Charter School (Y/N)'] == 'N']["ID"].unique())
 
 app_deps = ui.head_content(
     ui.tags.link(rel="icon", type="image/png", sizes="32x32", href="HERC_Logo_No_Text.png"),
@@ -93,8 +104,9 @@ def server(input, output, session):
     def get_result():
         # Get the selected district name.
         selected_district_name = input.district_name()
+        print("the selected district is", selected_district_name)
         # Lookup the corresponding DISTRICT_id.
-        district_id_lookup = ids.loc[ids["DISTNAME"] == selected_district_name, "DISTRICT_id"]
+        district_id_lookup = ids2.loc[ids2["ID"] == selected_district_name, "DISTRICT_id"]
 
         if district_id_lookup.empty:
             print(f"DEBUG: District '{selected_district_name}' not found!")

@@ -62,8 +62,7 @@ def outcome_ui():
                 ui.output_ui("suboption_ui")
             ),
             ui.card(
-                output_widget('outcome_plot'),
-                style="height: 620px;"  # Taller card for full plot visibility
+                output_widget('outcome_plot')            
             ),
             col_widths=(3, 9)
         ),
@@ -133,11 +132,21 @@ def outcome_server(input, output, session, get_inputs, run_result):
 
         # For STAAR, call the plot function directly with (df, neighbors, subject)
         if main_option == "STAAR Testing":
-            return plot_function(result[0], result[2], sub_option)
+            return plot_function(result[0], result[2], sub_option).update_layout(modebar_remove=[
+                                                                                    "zoom", "pan", "select", "zoomIn", "zoomOut", "autoScale", "resetScale", 
+                                                                                    "lasso2d", "hoverClosestCartesian", "hoverCompareCartesian",
+                                                                                    "toggleSpikelines", "toImage"  # temporarily remove to add back cleanly
+                                                                                ],
+                                                                                modebar_add=["toImage"])
         else:
             return plot_selections(
                 plot_func=plot_function,
                 neighbors=result[2],
                 year=get_inputs()['year'],
                 subcategory=sub_option
-            )
+            ).update_layout(modebar_remove=[
+                                "zoom", "pan", "select", "zoomIn", "zoomOut", "autoScale", "resetScale", 
+                                "lasso2d", "hoverClosestCartesian", "hoverCompareCartesian",
+                                "toggleSpikelines", "toImage"  # temporarily remove to add back cleanly
+                            ],
+                            modebar_add=["toImage"])
