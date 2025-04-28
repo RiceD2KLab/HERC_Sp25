@@ -4,6 +4,7 @@ This folder contains the feature engineering notebooks used to prepare the data 
 The goal of this section is to select and organize the most helpful columns to be used for the upcoming data modeling work.  
 
 We anticipate that most of the modeling will be built using the demographic features, while the outcome features will be used mainly for district comparison after the model is developed.
+
 ---
 ## Files Included
 
