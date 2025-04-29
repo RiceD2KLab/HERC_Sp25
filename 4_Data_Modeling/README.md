@@ -18,12 +18,12 @@ This subfolder contains the **finalized logic and code** for computing nearest n
 
 ## 📂 4.2 Nearest Neighbor Model Validation
 
-This subfolder provides documentation and code used to **validate and select the optimal Nearest Neighbors model**. It is divided into three subdirectories:
+This subfolder provides documentation and code used to **validate and select the optimal Nearest Neighbors distance metric**. It is divided into three subdirectories:
 
 ### 🗂️ 1. Nearest Neighbors Model (Initial Version)
 
 - Contains an **earlier version** of the model prior to finalization in `4.1`.
-- Useful for understanding model evolution and comparing past vs final logic.
+- Contains the scripts used to produce the quantiative and qualitative validation results
 
 ### 🗂️ 2. Qualitative Model Validation
 
