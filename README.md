@@ -87,7 +87,7 @@ Make sure you have Python 3.12.4 installed on your system. If not, download it f
 ## Data Modeling
    Please see [4_Data_Modeling/README.md](4_Data_Modeling/README.md) for details on modeling approaches, training, and validation.
 ## Dashboard Development
-
+   Please see [5_Dashboard_Development/README.md](5_Dashboard_Development/README.md) for details on the dashboard development.
 ## Team Members & Contact Information
 Bianca Schutz: mbs5@rice.edu \
 Everett Adkins: ena4@rice.edu \
