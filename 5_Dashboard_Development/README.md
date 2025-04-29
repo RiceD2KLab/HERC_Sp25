@@ -1,8 +1,8 @@
 # 5 - Dashboard Development
 
-This directory contains files relating to developing a Shiny for Python dashboard. 
+This directory contains files relating to developing a Shiny for Python dashboard. In the App folder, you will find all files necessary for the bundle that was used to create the DistrictMatch Shiny Application, which you can access here: https://kinderherc.shinyapps.io/districtmatch/. The data subdirectory houses all of the data files used by the dashboard. 
 
-## Subdirectories
+## App Subdirectories
 
 1. **modules:** this houses the UI and server components of each navigation panel. 
 2. **utils:** stores the functions necessary to generate plots and run the nearest neighbors model. See the directory README for more information on what is in each file.
