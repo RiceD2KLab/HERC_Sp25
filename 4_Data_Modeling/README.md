@@ -1,6 +1,6 @@
 # 📁 Data Modeling README
 
-This folder contains all logic and validation work related to the development of our **Nearest Neighbors model** for identifying similar Texas school districts based on demographic and outcome data.
+This folder contains all logic and validation work related to the development of our **Nearest Neighbors model** for identifying similar Texas school districts based on demographic data.
 
 ---
 
