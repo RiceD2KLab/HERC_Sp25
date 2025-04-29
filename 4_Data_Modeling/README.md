@@ -1,11 +1,37 @@
-# Data Modeling README
+# 📁 Data Modeling README
 
-## 4.1 Nearest Neighbor Model 
-* Contains the most up to date logic to determine nearest neighbors
-* Contains 7 different .py files to do logic. Primarry neighbors notebook is KNN_Model and primary function is find_nearest_districts. You can see the implementation of this model in the 1. Nearest Neighbors Implementation document
+This folder contains all logic and validation work related to the development of our **Nearest Neighbors model** for identifying similar Texas school districts based on demographic and outcome data.
 
-## 4.2 Nearest Neighbor Model Validation 
-* Are three folders within this folder, 1. Nearest NEighbors Model, 2. Qualitative Model Validation, 3. Quantitative Model Validation
-* There is 1. Nearest Neighbor MOdel ebcause at this step the nearest neighbors model was not final. The previous iteration of what is seen in 4.1
-* 2 Contains the qunatiative work we did finding hte distance metrics. It entails the code we used to generate plots to send out to reports in local school districts for them to tell which distance metric yielded the best results
-* 3. Contains the quantiative work finding the distance metrics. Involved in fitting neighbors model on various input parameters and calculating the average standardized variance of columns. 
+---
+
+## 📂 4.1 Nearest Neighbor Model
+
+This subfolder contains the **finalized logic and code** for computing nearest neighbors.
+
+- **Key Script**: `KNN_Model.py`  
+  - Contains the `find_nearest_districts` function, which serves as the core method for generating neighbor lists.
+- **Support Files**: 6 additional `.py` files assist with utility functions, preprocessing, and diagnostics.
+- **Reference**: For a high-level walkthrough of the implementation, refer to the companion document:  
+  📄 *1. Nearest Neighbors Implementation*
+
+---
+
+## 📂 4.2 Nearest Neighbor Model Validation
+
+This subfolder provides documentation and code used to **validate and select the optimal Nearest Neighbors model**. It is divided into three subdirectories:
+
+### 🗂️ 1. Nearest Neighbors Model (Initial Version)
+
+- Contains an **earlier version** of the model prior to finalization in `4.1`.
+- Useful for understanding model evolution and comparing past vs final logic.
+
+### 🗂️ 2. Qualitative Model Validation
+
+- Includes code and outputs used to generate **diagnostic plots** of different distance metrics.
+- These plots were shared with **local school district officials** for blind evaluation of neighbor similarity.
+- Helped us assess which distance metric most closely aligned with expert judgment.
+
+### 🗂️ 3. Quantitative Model Validation
+
+- Focused on **empirical evaluation** of different distance metrics and model configurations.
+- We conducted simulations across various input parameters, then computed the **average standardized variance** across neighbor groups to identify the most consistent metric.
