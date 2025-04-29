@@ -26,7 +26,7 @@ def matches_ui():
                     full_screen=True),
             ui.card(ui.output_ui("link_to_why"), ui.output_data_frame("results_df"), fillable = True),
             col_widths=(7, 5)),
-            value = "panel1"
+            value = "matchpage"
     )
 
 # =============================================================================
@@ -46,7 +46,7 @@ def match_server(input, output, session, run_result, get_inputs):
     def results_df():
         result = run_result.get()
         if result is None or len(result) != 3:
-            return render.DataGrid(pd.DataFrame({"District": ['Waiting for model results. Run a model to view neighbors.']}))
+            return render.DataGrid(pd.DataFrame({'Waiting for model results.': ['Run a model to view neighbors.']}))
         for_table = generate_table(result[2], result[0])
         return render.DataGrid(for_table, width = '100%')
 

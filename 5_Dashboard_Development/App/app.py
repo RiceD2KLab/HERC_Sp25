@@ -13,7 +13,7 @@ import pandas as pd
 
 # Local Imports
 from utils.KNN_Model import find_nearest_districts
-from utils.AppUtils import bucket_options, ids
+from utils.AppUtils import bucket_options, ids, title_case_with_spaces
 from modules import matches, why_districts, outcomes, about, howto
 
 
@@ -103,50 +103,67 @@ def server(input, output, session):
     @reactive.effect
     @reactive.event(input.run)
     def get_result():
-        # Get the selected district name.
-        selected_district_name = input.district_name()
-        print("the selected district is", selected_district_name)
-        # Lookup the corresponding DISTRICT_id.
-        district_id_lookup = ids2.loc[ids2["ID"] == selected_district_name, "DISTRICT_id"]
+        # Create and show progress bar
+        with ui.Progress(min=0, max=2) as p:  # 3 steps we'll update manually
+            p.set(message="Starting...", value=0)
 
-        if district_id_lookup.empty:
-            print(f"DEBUG: District '{selected_district_name}' not found!")
-            return pd.DataFrame({"Error": ["District not found!"]})
-        district_id = district_id_lookup.iloc[0]
+            # Step 1: Get selected district
+            selected_district_name = input.district_name()
+            print("the selected district is", selected_district_name)
 
-        n_neighbors = input.n_neighbors() + 1
+            # Lookup the corresponding DISTRICT_id
+            district_id_lookup = ids2.loc[ids2["ID"] == selected_district_name, "DISTRICT_id"]
 
-        buckets_selected = input.feature_groups()
-        if not buckets_selected:
-            print("DEBUG: No feature groups selected!")
-            # Show an error modal asking the user to select at least one feature group
-            m = ui.modal(
+            dist_name = ids2.loc[ids2["ID"] == selected_district_name, "DISTNAME"].iloc[0]
+
+            if district_id_lookup.empty:
+                print(f"DEBUG: District '{selected_district_name}' not found!")
+                p.close()
+                return pd.DataFrame({"Error": ["District not found!"]})
+            
+            district_id = district_id_lookup.iloc[0]
+
+            # Step 2: Get feature groups
+            n_neighbors = input.n_neighbors()
+            buckets_selected = input.feature_groups()
+
+            if not buckets_selected:
+                print("DEBUG: No feature groups selected!")
+                m = ui.modal(
                     "Please select at least one feature group before running the model.",
-                    title= "Error",
+                    title="Error",
                     easy_close=True
                 )
-            ui.modal_show(m)  
-            return "None"
-        buckets = [bucket_options[key] for key in buckets_selected]
-        # Debug print to output the parameters that will be passed to the model.
-        print("DEBUG: Calling find_nearest_districts with:")
-        print(f"  district_id: {district_id}")
-        # Run the model and return the resulting DataFrame.
-        result = find_nearest_districts(
-            year=input.year(),
-            district_id=district_id,
-            feature_columns=buckets,
-            n_neighbors=n_neighbors
-        )
-        df, features_used, neighbors_list = result
-        # Store all 3 in one dictionary
-        result_data.set({
-            0: df,
-            1: features_used,
-            2: neighbors_list
-        })
+                ui.modal_show(m)
+                p.close()
+                return "None"
+            
+            buckets = [bucket_options[key] for key in buckets_selected]
 
-        return "Model run complete"
+            print("DEBUG: Calling find_nearest_districts with:")
+            print(f"  district_id: {district_id}")
+
+            p.set(message=f"Finding {title_case_with_spaces(dist_name)}'s matches...", value=1)
+
+            # Step 3: Run the model
+            result = find_nearest_districts(
+                year=input.year(),
+                district_id=district_id,
+                feature_columns=buckets,
+                n_neighbors=n_neighbors
+            )
+            df, features_used, neighbors_list = result
+            result_data.set({
+                0: df,
+                1: features_used,
+                2: neighbors_list
+            })
+
+            p.set(message="Done!", value=2)
+
+            ui.update_navs("page", selected="matchpage")
+
+            return "Model run complete"
     
     # Server for the matches page
     matches.match_server("matchpage", result_data, get_inputs)

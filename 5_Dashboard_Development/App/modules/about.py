@@ -13,10 +13,14 @@ from shiny import ui, module
 def about_ui():
     return ui.nav_panel(
         "About DistrictMatch", 
-        ui.div(
-                ui.img(src=str("Logo300x300.png"), height="300px"),  # Logo image
-                style="text-align: center; margin-bottom: 20px;"  # Center-align the logo
-            ),
+    ui.div(
+        ui.img(src="Logo300x300.png", height="300px"),
+        style="text-align: center; margin: 10px;"
+    ),
+    ui.div(
+        ui.img(src="Kinder.png", height="50px"),
+        style="text-align: center; margin: 10px;"
+    ),
         ui.TagList(
             ui.HTML("""
                 <h3><strong>About DistrictMatch</strong></h3>

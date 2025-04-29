@@ -18,7 +18,7 @@ def howto_ui():
                 <h1 style="text-align:center; margin-bottom: 30px;">How To Use Each DistrictMatch Page</h1>
                     
                 <figure style="text-align:center;">
-                    <img src="ViewMyMatches.png" alt="View My Matches Overview" style="max-width:45%; height:auto;">
+                    <img src="ViewMyMatches2.png" alt="View My Matches Overview" style="max-width:45%; height:auto;">
                     <figcaption style="margin-top: 10px; font-style: italic; color: #555;">View my matches page example</figcaption>
                 </figure>
 
@@ -33,7 +33,7 @@ def howto_ui():
                     <li>The table on the far right will also display the districts that are most similar to your districts based on your selected parameters. </li>
                 </ul>  
                 <figure style="text-align:center;">
-                    <img src="WhyTheseDistricts.png" alt="Why These Districts Overview" style="max-width:45%; height:auto;">
+                    <img src="WhyTheseDistricts2.png" alt="Why These Districts Overview" style="max-width:45%; height:auto;">
                     <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Why these districts? page example</figcaption>
                 </figure>    
                 <h3><strong>Using "Why These Districts?" tab </strong></h3>
@@ -43,7 +43,7 @@ def howto_ui():
                     <li>You can choose which specific demographic plots to view by toggling the checkboxes at the top of the page.</li>
                 </ul>    
                 <figure style="text-align:center;">
-                    <img src="UnderstandOutcomes.png" alt="Understand Outcomes Overview" style="max-width:45%; height:auto;">
+                    <img src="UnderstandOutcomes2.png" alt="Understand Outcomes Overview" style="max-width:45%; height:auto;">
                     <figcaption style="margin-top: 10px; font-style: italic; color: #555;">Understand outcomes page example</figcaption>
                 </figure>    
                 <h3><strong>Using Understand outcomes</strong></h3>
@@ -51,6 +51,6 @@ def howto_ui():
                     <li>This page displays visualizations that show how your selected district compares to its neighbors in terms of key outcome features. </li>
                     <li>Using the "View An Outcome" dropdown, select which outcome variable you want to explore among neighbors. Make sure to toggle additional information if requested. </li>
                 </ul>   
-            """) #note to add pictures here
+            """) 
         )
     )
