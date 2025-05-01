@@ -1,36 +1,33 @@
-Absolutely! Below are the two things you asked for:
-
----
-
-## 📄 `README.md` — How to Build Executable Using Nuitka
+## TAPR Scraper GUI Downloadable Application README
 
 ```markdown
-# TAPR Scraper GUI Application
+# TAPR Scraper GUI
 
-This repository contains a PyQt-based GUI tool that automates the scraping and processing of Texas Academic Performance Reports (TAPR) data.
+This is a PyQt5 desktop application for scraping and processing Texas Academic Performance Report (TAPR) data. It uses Selenium to automate browser actions and BeautifulSoup for parsing downloaded content.
 
 ---
 
-## ✅ Requirements
+## 📦 Requirements
 
 - Python 3.9–3.12
-- Windows OS (for this build process)
-- All dependencies listed in `requirements.txt`
+- Windows OS (for building)
+- Nuitka (Python-to-exe compiler)
 
 ---
 
 ## 🧱 Setup Instructions
 
-### 1. Clone the repository or copy project files
+### 1. Clone or download the project files
 
-Ensure these files are in your project folder:
-- `TAPR_Scraper.py` (main GUI file)
-- `scraping.py` (scraper functions)
-- `wrangling.py` (data cleaning functions)
+Make sure your folder includes:
+- `TAPR_Scraper.py` (GUI entry point)
+- `scraping.py` (scraper logic)
+- `wrangling.py` (data cleaning logic)
+- `requirements.txt`
 
 ---
 
-### 2. Create and activate a virtual environment
+### 2. Create a virtual environment
 
 ```bash
 python -m venv venv
@@ -39,7 +36,7 @@ venv\Scripts\activate  # On Windows
 
 ---
 
-### 3. Install required packages
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -47,9 +44,15 @@ pip install -r requirements.txt
 
 ---
 
-### 4. Build the executable with Nuitka
+### 4. Compile to `.exe` using Nuitka
 
-To build a fully standalone, one-file `.exe`:
+Make sure Nuitka is installed:
+
+```bash
+pip install nuitka
+```
+
+Then run the following build command:
 
 ```bash
 nuitka TAPR_Scraper.py ^
@@ -60,32 +63,35 @@ nuitka TAPR_Scraper.py ^
   --output-dir=dist_final
 ```
 
-> On macOS/Linux, replace `^` with `\` or just use a single line.
+> ⚠️ Use `^` on Windows for line breaks. On macOS/Linux, use `\` or a single line.
 
 ---
 
-### 5. Find your output
+### 5. Locate your final executable
 
-After successful build, the final executable will be located in:
+The generated `.exe` will be in:
 
 ```
 dist_final/TAPR_Scraper.exe
 ```
 
-You can now share this file with others. No Python installation is required on their machine.
+This file is fully portable and can be shared with others — no Python install needed.
 
 ---
 
-## 🧪 Tips
+## 🧪 Debugging Tips
 
-- If you want to test faster, skip `--onefile` to reduce build time.
-- If errors occur, try removing `--windows-disable-console` to see error output.
+- If nothing happens when you open the `.exe`, rebuild without `--windows-disable-console` to see errors.
+- For faster testing, use a regular `--standalone` build without `--onefile`.
+
+---
 ```
 
 ---
 
-## 📦 `requirements.txt` — Based on Your Imports
+## ✅ 2. `requirements.txt` — How It Works + What to Use
 
+### ✳️ Copy and paste this:
 ```txt
 selenium
 webdriver-manager
@@ -96,8 +102,17 @@ numpy
 PyQt5
 ```
 
+> You don’t need to list versions **unless** you're targeting a specific version for compatibility.
+
 ---
 
-Let me know if you'd like:
-- A Mac-specific version of the README
-- A `build.bat` or `build.sh` file to automate the build process
+### 🧪 How to install from `requirements.txt`:
+
+After activating your virtual environment, just run:
+
+```bash
+pip install -r requirements.txt
+```
+
+This command reads each line from `requirements.txt` and installs the corresponding packages via `pip`.
+
