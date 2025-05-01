@@ -45,10 +45,11 @@ def load_data(directory, year):
     if excel_files:
         file_path = excel_files[0]  # Taking the first Excel file found
         sheetname_ref = pd.ExcelFile(file_path).sheet_names
-        REF = {f"{sheet}_ref{year}": pd.read_excel(file_path, sheet_name=sheet) for sheet in sheetname_ref}
+        REF = {f"{sheet}_{year}": pd.read_excel(file_path, sheet_name=sheet) for sheet in sheetname_ref}
 
     # Return both dictionaries
     return RAWDATA, REF
+
 
 # Helper Function 2: Performing primary datacleaning of datasets including remove nas 
 def primary_data_cleaning(df_dict, level):
@@ -121,37 +122,34 @@ def rename_columns_using_ref(rawdata, ref):
     Returns:
         dict: Dictionary containing renamed DataFrames.
     """
-    
-    updated_data = {}  # Dictionary to store updated DataFrames
+    updated_data = {}
 
     for raw_key, raw_df in rawdata.items():
-        # Skip processing if key contains 'ref' or 'type'
         if 'ref' in raw_key.lower() or 'type' in raw_key.lower():
             updated_data[raw_key] = raw_df.copy()
             continue
-        
-        # Extract base name before the first underscore (_)
-        base_name = raw_key.split("_")[0]
-        
-        # Find the matching key in REF (case-insensitive)
-        matching_key = next((key for key in ref if key.lower().startswith(base_name.lower())), None)
-        
+
+        matching_key = raw_key if raw_key in ref else None
+
         if matching_key:
-            # Extract mapping from REF (second column = column ID, third column = actual column name)
             ref_df = ref[matching_key]
-            column_mapping = dict(zip(ref_df.iloc[:, 0], ref_df.iloc[:, 1]))  # Map column ID → Actual name
-            
-            # Rename columns in RAWDATA DataFrame
+
+            # Validate required columns exist
+            if "NAME" not in ref_df.columns or "LABEL" not in ref_df.columns:
+                raise ValueError(f"Reference file '{matching_key}' must contain 'NAME' and 'LABEL' columns.")
+
+            # Map NAME → LABEL
+            column_mapping = dict(zip(ref_df["NAME"], ref_df["LABEL"]))
+
+            # Rename columns
             renamed_df = raw_df.rename(columns=column_mapping)
         else:
-            # If no match is found, keep the DataFrame unchanged
+            print(f"Warning: No ref mapping found for {raw_key}, keeping columns unchanged.")
             renamed_df = raw_df.copy()
 
-        # Store in updated_data with the original key
         updated_data[raw_key] = renamed_df
 
-    # Print confirmation
-    print(f"Processed {len(updated_data)} DataFrames (Renamed: {len([k for k in updated_data if k not in rawdata or ('ref' not in k.lower() and 'type' not in k.lower())])}, Unchanged: {len([k for k in updated_data if 'ref' in k.lower() or 'type' in k.lower()])}).")
+    print(f"Processed {len(updated_data)} DataFrames (Renamed: {len([k for k in updated_data if 'ref' not in k.lower() and 'type' not in k.lower()])}, Unchanged: {len([k for k in updated_data if 'ref' in k.lower() or 'type' in k.lower()])}).")
 
     return updated_data
 
