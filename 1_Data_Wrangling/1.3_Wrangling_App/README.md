@@ -3,7 +3,7 @@
 ```markdown
 # TAPR Scraper GUI
 
-This is a PyQt5 desktop application for scraping and processing Texas Academic Performance Report (TAPR) data. It uses Selenium to automate browser actions and BeautifulSoup for parsing downloaded content.
+This is a PyQt6 desktop application for scraping and processing Texas Academic Performance Report (TAPR) data. It uses Selenium to automate browser actions and BeautifulSoup for parsing downloaded content.
 
 ---
 
