@@ -1,86 +1,103 @@
-# **Building the TAPR Scraper Executable**  
-
-This guide provides step-by-step instructions to **package the TAPR Scraper application into a standalone executable (.exe)** using `PyInstaller`.  
-
-> ⚠️ **Note:** This process is designed for **Windows devices only**.  
-> `.exe` files are Windows-native and will not run natively on Mac or Linux.
+Absolutely! Below are the two things you asked for:
 
 ---
 
-## **Quick Access**  
-If you do not want to create the executable yourself, you can **directly download the pre-built `.exe` file** here:  
-🔗 [TAPR Scraper Executable Download](https://rice.box.com/s/svclj7g4456unwqj006pilassonxrete)
+## 📄 `README.md` — How to Build Executable Using Nuitka
 
-Simply download the file and double-click to run — no Python installation required.
+```markdown
+# TAPR Scraper GUI Application
 
----
-
-## **Why Create an Executable?**  
-While `.py` scripts work perfectly for developers, they **require a full Python environment** to run.  
-Creating a `.exe` allows you to:  
-- **Distribute** the scraper to users who **do not have Python installed**.  
-- **Simplify installation** — users can just double-click the `.exe` to launch the application.  
-- **Make the scraper accessible** to a broader audience without needing a coding platform.
-
-This step ensures that the TAPR Scraper can be **shared and used easily** outside of development environments.
+This repository contains a PyQt-based GUI tool that automates the scraping and processing of Texas Academic Performance Reports (TAPR) data.
 
 ---
 
-## **1. Setting Up the Environment (Windows Only)**  
+## ✅ Requirements
 
-### **Step 1: Create and Activate a Virtual Environment**  
-Open a terminal or command prompt and run:  
+- Python 3.9–3.12
+- Windows OS (for this build process)
+- All dependencies listed in `requirements.txt`
+
+---
+
+## 🧱 Setup Instructions
+
+### 1. Clone the repository or copy project files
+
+Ensure these files are in your project folder:
+- `TAPR_Scraper.py` (main GUI file)
+- `scraping.py` (scraper functions)
+- `wrangling.py` (data cleaning functions)
+
+---
+
+### 2. Create and activate a virtual environment
+
 ```bash
 python -m venv venv
-```
-Activate the virtual environment:  
-```bash
-venv\Scripts\activate
+venv\Scripts\activate  # On Windows
 ```
 
-### **Step 2: Install Dependencies**  
-Install all necessary libraries using the provided `requirements.txt` file:  
+---
+
+### 3. Install required packages
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### **Step 3: Verify Installation**  
-Confirm all dependencies are installed correctly:  
+---
+
+### 4. Build the executable with Nuitka
+
+To build a fully standalone, one-file `.exe`:
+
 ```bash
-pip freeze
+nuitka TAPR_Scraper.py ^
+  --standalone ^
+  --onefile ^
+  --enable-plugin=pyqt5 ^
+  --windows-disable-console ^
+  --output-dir=dist_final
+```
+
+> On macOS/Linux, replace `^` with `\` or just use a single line.
+
+---
+
+### 5. Find your output
+
+After successful build, the final executable will be located in:
+
+```
+dist_final/TAPR_Scraper.exe
+```
+
+You can now share this file with others. No Python installation is required on their machine.
+
+---
+
+## 🧪 Tips
+
+- If you want to test faster, skip `--onefile` to reduce build time.
+- If errors occur, try removing `--windows-disable-console` to see error output.
 ```
 
 ---
 
-## **2. Testing and Building the Executable**  
+## 📦 `requirements.txt` — Based on Your Imports
 
-### **Step 4: Test the Script Before Building**  
-Before creating an `.exe`, run the script to ensure it works properly:  
-```bash
-python TAPR_Scraper.py
+```txt
+selenium
+webdriver-manager
+requests
+beautifulsoup4
+pandas
+numpy
+PyQt5
 ```
-
-### **Step 5: Build the Executable**  
-Use `PyInstaller` to generate a standalone `.exe` file:  
-```bash
-pyinstaller --onefile --noconsole --hidden-import=scraping --hidden-import=wrangling TAPR_Scraper.py
-```
-
-- `--onefile`: Packages everything into a single `.exe` file.  
-- `--noconsole`: Prevents the console window from opening when the application runs.  
-- `--hidden-import`: Ensures that all necessary modules are included.
 
 ---
 
-## **3. Running the Application**  
-Once the `.exe` is generated, it can be executed directly without requiring Python.  
-Simply double-click the `.exe` file to launch the application.
-
----
-
-### **💡 Best Practices**  
-- Always test your script **before** building the `.exe`.  
-- Use a **virtual environment** to keep dependencies isolated.  
-- **Store dependencies in `requirements.txt`** for easier installation and version control.  
-- If using **third-party APIs**, check if additional authentication is needed after bundling.
-
+Let me know if you'd like:
+- A Mac-specific version of the README
+- A `build.bat` or `build.sh` file to automate the build process
