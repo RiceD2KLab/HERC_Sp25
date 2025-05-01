@@ -1,118 +1,64 @@
-## TAPR Scraper GUI Downloadable Application README
-
-```markdown
 # TAPR Scraper GUI
 
-This is a PyQt6 desktop application for scraping and processing Texas Academic Performance Report (TAPR) data. It uses Selenium to automate browser actions and BeautifulSoup for parsing downloaded content.
+This is a PyQt6 desktop application that scrapes and processes Texas Academic Performance Report (TAPR) data. It automates data collection using Selenium and displays a user-friendly GUI via PyQt.
 
 ---
 
 ## 📦 Requirements
 
 - Python 3.9–3.12
-- Windows OS (for building)
-- Nuitka (Python-to-exe compiler)
+- Windows OS (for packaging into `.exe`)
+- Nuitka compiler
+- All Python packages listed in `requirements.txt`
 
 ---
 
-## 🧱 Setup Instructions
+## ⚙️ Setup & Build Instructions
 
-### 1. Clone or download the project files
+### 1. Clone or download this project
 
-Make sure your folder includes:
-- `TAPR_Scraper.py` (GUI entry point)
+Make sure the following files are in your working directory:
+
+- `TAPR_Scraper.py` (main GUI script)
 - `scraping.py` (scraper logic)
-- `wrangling.py` (data cleaning logic)
+- `wrangling.py` (data wrangling logic)
 - `requirements.txt`
 
 ---
 
-### 2. Create a virtual environment
+### 2. Create and activate a virtual environment
 
 ```bash
 python -m venv venv
 venv\Scripts\activate  # On Windows
 ```
 
----
-
-### 3. Install dependencies
-
+### 3. Install required Python packages
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-### 4. Compile to `.exe` using Nuitka
-
-Make sure Nuitka is installed:
-
+### 4. Install Nuitka (the Python-to-.exe compiler)
 ```bash
 pip install nuitka
 ```
 
-Then run the following build command:
-
+### 5. Build the final standalone .exe
 ```bash
 nuitka TAPR_Scraper.py ^
   --standalone ^
   --onefile ^
-  --enable-plugin=pyqt5 ^
+  --enable-plugin=pyqt6 ^
   --windows-disable-console ^
   --output-dir=dist_final
 ```
-
-> ⚠️ Use `^` on Windows for line breaks. On macOS/Linux, use `\` or a single line.
-
----
-
-### 5. Locate your final executable
-
-The generated `.exe` will be in:
-
-```
+This will create a single distributable .exe located at:
 dist_final/TAPR_Scraper.exe
-```
 
-This file is fully portable and can be shared with others — no Python install needed.
 
----
+### 🧪 Notes
+If the executable silently fails, rebuild without --windows-disable-console to reveal any errors in the terminal window.
 
-## 🧪 Debugging Tips
+For faster iteration during testing, use --standalone without --onefile.
 
-- If nothing happens when you open the `.exe`, rebuild without `--windows-disable-console` to see errors.
-- For faster testing, use a regular `--standalone` build without `--onefile`.
-
----
-```
-
----
-
-## ✅ 2. `requirements.txt` — How It Works + What to Use
-
-### ✳️ Copy and paste this:
-```txt
-selenium
-webdriver-manager
-requests
-beautifulsoup4
-pandas
-numpy
-PyQt5
-```
-
-> You don’t need to list versions **unless** you're targeting a specific version for compatibility.
-
----
-
-### 🧪 How to install from `requirements.txt`:
-
-After activating your virtual environment, just run:
-
-```bash
-pip install -r requirements.txt
-```
-
-This command reads each line from `requirements.txt` and installs the corresponding packages via `pip`.
-
+You can safely share the final .exe with others — it does not require them to install Python.
